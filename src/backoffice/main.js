@@ -1,10 +1,6 @@
-import { createApp } from 'vue'
 import App from './App.vue'
+import { createApp } from 'vue'
 
-exports.setup = () => {
-	createApp(App).mount('#app');
-}
+createApp(App).mount('#app');
 
-exports.test = () => {
-	console.log('ugh');
-}
+

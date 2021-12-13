@@ -1,7 +1,7 @@
 {
-  "name": "svelte",
+  "name": "nolonoloplus",
   "version": "1.0.0",
-  "description": "svelte",
+  "description": "ew",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "nodemon": "^2.0.15",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "vue": "^3.0.0"
   }
 }

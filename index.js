@@ -23,19 +23,22 @@ app.use(cors());
 app.use(helmet());
 app.enable('trust proxy');
 
-app.get('/',  function (req, res) {
-	res.sendFile(path.join(global.rootDir, 'src/frontoffice/frontoffice.html'))
+app.get('/',  function (req, res) { 
+	res.sendFile(path.join(global.rootDir, 'src/frontoffice/frontoffice.html'));
 });
 
-app.get('/backoffice',  function (req, res) {
-	res.sendFile(path.join(global.rootDir, 'src/backoffice/backoffice.html'))
+app.get('/backoffice',  function (req, res) { 
+	res.sendFile(path.join(global.rootDir, 'public/backoffice/index.html'));
+	//res.sendFile(path.join(global.rootDir, '/public/index.html'));
 });
 
-app.get('/dashboard',  function (req, res) {
-	res.sendFile(path.join(global.rootDir, 'src/dashboard/dashboard.html'))
-})
+app.get('/dashboard',  function (req, res) { 
+	res.sendFile(path.join(global.rootDir, 'src/dashboard/dashboard.html'));
+});
 
-app.listen(8000, function() {
-	global.startDate = new Date() ;
-	console.log(`App listening on port 8000 started ${global.startDate.toLocaleString()}` )
-})
+app.listen(8000, function() { 
+	global.startDate = new Date() ; 
+	console.log(`App listening on port 8000 started ${global.startDate.toLocaleString()}` );
+});
+
+
