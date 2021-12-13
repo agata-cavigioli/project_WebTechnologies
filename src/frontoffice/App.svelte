@@ -31,7 +31,7 @@
 		padding: 0px;
 		border:0px;
 		height: 100%;
-		background-image: url("https://3.bp.blogspot.com/-iY1OufyM7Q8/WWo81KOj_eI/AAAAAAAAMJM/rZFnRa5EzUUaqcEcc1i2hFaUW2Xir_dygCLcBGAs/s1600/Copertina.jpg");
+		background-image: url("background.jpg");
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -226,7 +226,7 @@
 			<div id='titolo' >Dining philosophers</div>
 			<div id='benvenuto' style='font-weight: 700;'>
 			Welcome!<br>
-			
+
 			</div>
 			<form action="" method="get">
   <div class="product-search">
