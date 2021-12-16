@@ -4,7 +4,7 @@ global.startDate = null;
 const path = require('path') ;
 const express = require('express') ;
 const cors = require("cors");
-const helmet = require("helmet");
+//const helmet = require("helmet");
 
 let app = express();
 //let app = svelte();
@@ -20,7 +20,7 @@ app.use('/img' , express.static(global.rootDir +'/public/media'));
 
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
-app.use(helmet());
+//app.use(helmet());
 app.enable('trust proxy');
 
 app.get('/',  function (req, res) { 
