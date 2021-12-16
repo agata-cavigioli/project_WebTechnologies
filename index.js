@@ -5,6 +5,7 @@ const path = require('path') ;
 const express = require('express') ;
 const cors = require("cors");
 
+
 let app = express();
 
 
@@ -19,6 +20,7 @@ app.use('/img' , express.static(global.rootDir +'/public/media'));
 
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
+
 app.enable('trust proxy');
 
 app.get('/',  function (req, res) { 
