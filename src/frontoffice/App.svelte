@@ -1,6 +1,7 @@
 
 <script>
 	import 'css/global.css';
+	import 'css/extra.css';
 	export let name;
 </script>
 
@@ -9,7 +10,7 @@
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
 
-	<link rel="shortcut icon" href="#" />
+	<link rel="shortcut icon" href="#">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
