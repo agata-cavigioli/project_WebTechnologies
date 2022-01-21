@@ -9,6 +9,7 @@
   font-weight: 100;
   }
 main{
+
   margin: 0px;
   padding: 0px;
   border:0px;
@@ -83,6 +84,7 @@ main{
 }
 #basso, .search-label, .search-button, .search-input, button {
   font-size: 4vw !important;
+
 }
 .search-element{
   width:100% !important;
@@ -90,9 +92,13 @@ main{
   border-radius: 5px !important;
   margin-bottom: 3vh;
 }
+.ricerca{
+
+}
 .product-search{
   display:table !important;
   width:100%;
+
 }
 .search-button{
   height: auto !important;
@@ -127,11 +133,15 @@ main{
   grid-area: head2;
   font-size: 2.1vw;
 }
+
+.ricerca{
+    grid-area: barra;
+}
+
 .product-search {
-  grid-area: barra;
   display: flex;
-  height:100%;
-  align-items: center;
+
+
 
   border-radius: 5px;
   margin: 0 auto;
@@ -151,6 +161,7 @@ main{
 
 .search-label {
   font-weight: 550;
+  font-size: 1.9vw;
 }
 
 .search-input {
@@ -168,7 +179,7 @@ main{
 }
 
 .search-button {
-  height:100%;
+  height:auto;
   flex-grow: 1;
   text-align: center;
   font-size: 1.9vw;
@@ -199,6 +210,7 @@ a {
   grid-area: 'basso';
   padding:2em;
   font-size: 2.1vw;
+  margin-top: 20px;
 }
 
 #finalbutton{
@@ -212,7 +224,7 @@ a {
   width: 20vmin;
   height: 10vmin;
   min-width: 120px;
-  position: fixed;
+  position: absolute;
   top: 10px;
   right: 5vw;
   display: flex;

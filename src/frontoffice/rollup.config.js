@@ -38,6 +38,7 @@ export default {
 	},
 	plugins: [
 		svelte({
+			//hydratable:true,
 			compilerOptions: {
 				// enable run-time checks when not in production
 				dev: !production
@@ -54,7 +55,7 @@ export default {
 		// https://github.com/rollup/plugins/tree/master/packages/commonjs
 		resolve({
 			browser: true,
-			dedupe: ['svelte']
+			dedupe: ['svelte', 'svelte/transition', 'svelte/internal']
 		}),
 		commonjs(),
 

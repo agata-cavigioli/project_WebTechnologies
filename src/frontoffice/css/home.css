@@ -1,0 +1,117 @@
+.home{
+  display:flex;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-color: #0098db black;
+  height:100%;
+  position: relative;
+  overflow: auto;
+  width:100%;
+}
+
+.home .centro{
+  width: 90%;
+  height: 100%;
+  z-index: 1;
+  top:0%;
+  bottom: 0%;
+  left: 5%;
+  justify-content: center;
+
+
+  display:grid;
+  grid-template-areas:    "titolo"
+                          "barra"
+                          "display";
+  grid-template-rows: 15% 10% auto;
+  grid-template-columns: 100%;
+}
+
+.home .centro .ricerca{
+  grid-area: barra;
+}
+.home .centro .product-search{
+  font-size: 0.3em;
+}
+.home .centro .search-label, .home .centro .search-input,.home .centro .search-button{
+  font-size:1.4vw ;
+}
+.home .centro #titolo{
+  grid-area: titolo;
+  font-size: 6vw;
+}
+
+.home .centro .dis {
+  background-color: white;
+  grid-area:display;
+  margin: 1em;
+  padding-bottom: 2em;
+}
+
+
+@media (max-width: 480px) {
+
+  .home .centro {
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    z-index: 0;
+    top: 1%;
+    left: 5%;
+    bottom: 5%;
+    display: flex;
+    justify-content: center;
+
+
+    display:grid;
+    grid-template-areas:    "titolo"
+                            "barra"
+                            "display";
+    grid-template-rows: 10% 30% auto;
+    grid-template-columns: 100%;
+  }
+
+.home #titolo{
+  font-size: 7vw !important;
+  text-align: left;
+}
+
+.search-label, .search-button, .search-input, button {
+  font-size: 4vw !important;
+
+}
+.home .search-element{
+  width:100% !important;
+  border-bottom: 1px solid rgba(10,10,10,.1);
+  border-radius: 5px !important;
+  margin-bottom: 0.2vh;
+}
+.dis{
+
+}
+.product-search{
+  display:table !important;
+  width:100%;
+
+}
+.search-button{
+  height: auto !important;
+  border-radius: 5px !important;
+}
+#finalbutton{
+  display: flex !important;
+  margin:0vw 15vw 20vw 15vw;
+}
+
+.button-div{
+  margin-top: 1vh;
+}
+.signature-div{
+  font-size: 3vw;
+}
+
+* {
+  font-size:inherit;
+}
+
+}
