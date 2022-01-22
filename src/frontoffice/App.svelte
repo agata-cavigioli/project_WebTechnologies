@@ -38,15 +38,13 @@ function searchfunction(){
 			<div id='benvenuto' style='font-weight: 700;'>	Welcome!<br>
 
 			</div>
-			<form action="" method="get">
-	<div class="ricerca">
-   <Searchbar/>
-	</div>
-</form>
+			<form class="ricerca" action="" method="get">
+        <Searchbar/>
+      </form>
 			<div id='basso'>
 			<span style='font-weight: 700;'> Don't know who you are looking for?</span>
 			<div class="search-button" id='finalbutton' on:click={searchfunction}>
-        <Link to="/home" type="submit" style="color:white;">Search everyone</Link>
+        <Link class="searchlink" to="/home" type="submit" style="color:white;">Search everyone</Link>
 			</div>
 			</div>
 		</div>

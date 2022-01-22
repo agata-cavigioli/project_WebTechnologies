@@ -1,0 +1,112 @@
+:root {
+  --mycolor:green;
+}
+
+.bg{
+  width:100%;
+}
+
+/*
+.mymodal{
+  background: white;
+z-index: 10;
+position: fixed;
+align-self: right;
+display: flex;
+width: 40%;
+left: 30%;
+height: 50%;
+justify-content: center;
+align-items: center;
+top: 25%;
+border-radius: 10px;
+border: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
+    -moz-box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+
+  display:grid;
+  grid-template-areas:    "title"
+                          "head2"
+                          "barra"
+                          "basso";
+  grid-template-rows: 25% 10% 40% 25%;
+  grid-template-columns: 100%;
+}
+*/
+.modal-title{
+  color: var(--mycolor);
+}
+
+
+.mymodal{
+  padding-top: 10%;
+}
+
+.modal-content{
+
+  z-index:20;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+      -webkit-box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
+      -moz-box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
+      box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding-box;
+      background-clip: padding-box;
+}
+
+.btn-outline-warning{
+  border-color: var(--mycolor) !important;
+}
+
+.btn-outline-warning:hover{
+  background-color: var(--mycolor) !important;
+}
+.btn-outline-warning:active{
+  background-color: var(--mycolor) !important;
+}
+
+ .form-control:focus{
+  border-color: var(--mycolor) !important;
+  box-shadow: 0 0 .2rem var(--mycolor) !important;
+}
+
+.close {
+  z-index: 20;
+position: absolute;
+left: 45%;
+top: 10%;
+width: 10%;
+height: 5%;
+opacity: 0.5;
+background-color: rgba(0,0,0,0);
+border: none;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  content: ' ';
+  height: 33px;
+  width: 3px;
+  top: 0px;
+  background-color: black;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 480px) {
+.close{
+  left: 10px;
+top: 10px;
+}
+}

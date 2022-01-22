@@ -48,6 +48,9 @@ main{
   grid-template-rows: 30% 15% 25% 30%;
   grid-template-columns: 100%;
 }
+.searchlink:hover{
+  text-decoration: none;
+}
 
 @media (min-width: 640px) {
   main {
@@ -78,6 +81,7 @@ main{
 
 #titolo{
   font-size: 16vw !important;
+
 }
 #benvenuto{
   font-size: 8vw !important;
@@ -128,10 +132,12 @@ main{
   font-family: 'Lobster', cursive;
   color: rgb(100, 149, 237);
   font-size: 8vw;
+  text-align: center;
 }
 #benvenuto{
   grid-area: head2;
   font-size: 2.1vw;
+  text-align: center;
 }
 
 .ricerca{
@@ -207,10 +213,11 @@ a {
 }
 
 #basso {
-  grid-area: 'basso';
+  grid-area: basso;
   padding:2em;
   font-size: 2.1vw;
   margin-top: 20px;
+  text-align: center;
 }
 
 #finalbutton{

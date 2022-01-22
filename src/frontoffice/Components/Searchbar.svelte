@@ -16,6 +16,6 @@ function searchfunction(){
       <input class="search-input" type="text" placeholder="State" autocomplete="on" name="location">
     </div>
     <div class="search-button" on:click={searchfunction}>
-      <Link to="/home" type="submit" style="color:white">Search</Link>
+      <Link class="searchlink" to="/home" type="submit" style="color:white">Search</Link>
     </div>
 </div>

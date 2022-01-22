@@ -2,7 +2,7 @@
   display:flex;
   overflow: hidden;
   overflow-y: scroll;
-  scrollbar-color: #0098db black;
+  scrollbar-color: gb(100, 149, 237) rgba(0,0,0,0);
   height:100%;
   position: relative;
   overflow: auto;
