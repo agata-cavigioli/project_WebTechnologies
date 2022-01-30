@@ -9,7 +9,6 @@
 
 	import 'css/global.css';
 	import 'css/extra.css';
-	export let name;
 
 
 function searchfunction(){

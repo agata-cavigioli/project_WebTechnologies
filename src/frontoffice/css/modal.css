@@ -39,6 +39,9 @@ border: 1px solid rgba(0, 0, 0, 0.3);
 */
 .modal-title{
   color: var(--mycolor);
+  line-height: 1;
+  font-size: 2.5vw;
+  font-weight: 600;
 }
 
 
@@ -51,9 +54,9 @@ border: 1px solid rgba(0, 0, 0, 0.3);
   z-index:20;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-      -webkit-box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
-      -moz-box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
-      box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
+      -webkit-box-shadow:  0px 0px 200px 200px rgba(0,0,0,0.5);
+      -moz-box-shadow:  0px 0px 200px 200px rgba(0,0,0,0.5);
+      box-shadow:  0px 0px 200px 200px rgba(0,0,0,0.5);
       -webkit-background-clip: padding-box;
       -moz-background-clip: padding-box;
       background-clip: padding-box;
@@ -61,10 +64,12 @@ border: 1px solid rgba(0, 0, 0, 0.3);
 
 .btn-outline-warning{
   border-color: var(--mycolor) !important;
+  color: var(--mycolor) !important;
 }
 
 .btn-outline-warning:hover{
   background-color: var(--mycolor) !important;
+  color: black !important;
 }
 .btn-outline-warning:active{
   background-color: var(--mycolor) !important;
@@ -75,14 +80,21 @@ border: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 .2rem var(--mycolor) !important;
 }
 
+button:not(:disabled):active {
+    background-color: rgba(0,0,0,0);
+}
+
 .close {
-  z-index: 20;
-position: absolute;
-left: 45%;
-top: 10%;
-width: 10%;
-height: 5%;
-opacity: 0.5;
+  z-index: 30;
+  position: fixed;
+  left: 65%;
+  top: 10%;
+  width: 33px;
+  height: 33px;
+  opacity: 0.8;
+  display: flex;
+  align-self: center;
+  border-radius: 10px;
 background-color: rgba(0,0,0,0);
 border: none;
 }
@@ -95,7 +107,7 @@ border: none;
   height: 33px;
   width: 3px;
   top: 0px;
-  background-color: black;
+  background-color: white;
 }
 .close:before {
   transform: rotate(45deg);
@@ -104,9 +116,24 @@ border: none;
   transform: rotate(-45deg);
 }
 
+.form-check-input:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(0,0,0,0) !important;
+}
+.form-check-label{
+  color:  var(--mycolor) !important;
+}
+.form-check-input{
+  background-color:  var(--mycolor) !important;
+}
+
 @media (max-width: 480px) {
 .close{
-  left: 10px;
+  left: 90%;
 top: 10px;
+}
+.modal-title{
+  font-size: 7vw;
 }
 }

@@ -1,6 +1,5 @@
 .home{
   display:flex;
-  overflow: hidden;
   overflow-y: scroll;
   scrollbar-color: gb(100, 149, 237) rgba(0,0,0,0);
   height:100%;
