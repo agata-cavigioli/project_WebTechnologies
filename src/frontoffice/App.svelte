@@ -51,7 +51,7 @@ function searchfunction(){
 		<Signlog/>
 		<Signature/>
 
-</Route>
+    </Route>
 		<Route path="/home">
 		    <Home/>
 		</Route>

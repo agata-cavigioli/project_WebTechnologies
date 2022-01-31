@@ -27,6 +27,15 @@ app.get('/',  function (req, res) {
 	res.sendFile(path.join(global.rootDir, 'src/frontoffice/frontoffice.html'));
 });
 
+app.get('/home',  function (req, res) {
+	res.sendFile(path.join(global.rootDir, 'src/frontoffice/frontoffice.html'));
+});
+
+app.get('/personal',  function (req, res) {
+	res.sendFile(path.join(global.rootDir, 'src/frontoffice/frontoffice.html'));
+});
+
+
 app.get('/backoffice',  function (req, res) {
 	res.sendFile(path.join(global.rootDir, 'public/backoffice/index.html'));
 	//res.sendFile(path.join(global.rootDir, '/public/index.html'));

@@ -25,14 +25,16 @@
     var pwd = document.getElementById("form2").value;
     if (checkpassword(mail,pwd)){
       loggedIn.update(b => !b);
+      close()
     }
-    close()
+
   }
 
   function checkpassword(mail, pwd){
     if (mail == pwd) return true;
     else {
       alert("wrong email or password");
+      return false;
     }
   }
 </script>
