@@ -21,13 +21,33 @@
   display:grid;
   grid-template-areas:    "titolo"
                           "barra"
+                          "filtri"
                           "display";
-  grid-template-rows: 15% 10% auto;
+  grid-template-rows: 15% 10% auto auto;
   grid-template-columns: 100%;
 }
 
 .home .centro .ricerca{
   grid-area: barra;
+}
+.home .centro .filtri{
+  grid-area: filtri;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 1em;
+}
+ .descrip{
+  font-size: 1.4vw;
+  color: var(--mycolor) !important;
+  font-weight:550;
+  padding:0.5em;
+  background-color: white !important;
+  border:none;
+  width:100%;
+}
+.descrip:focus{
+  outline: none !important;
+  box-shadow: none !important;
 }
 .home .centro .product-search{
   font-size: 0.3em;
@@ -65,8 +85,9 @@
     display:grid;
     grid-template-areas:    "titolo"
                             "barra"
+                            "filtri"
                             "display";
-    grid-template-rows: 10% 30% auto;
+    grid-template-rows: 10% 30% auto auto;
     grid-template-columns: 100%;
   }
 
@@ -110,4 +131,9 @@
   font-size:inherit;
 }
 
+}
+.btn-check{
+  border:none;
+  background:white;
+  padding-top:0px;
 }

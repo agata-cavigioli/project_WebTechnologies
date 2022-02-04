@@ -1,5 +1,5 @@
 :root {
-  --mycolor:green;
+  --mycolor:#fa864c;
 }
 
 .bg{
@@ -69,7 +69,7 @@ border: 1px solid rgba(0, 0, 0, 0.3);
 
 .btn-outline-warning:hover{
   background-color: var(--mycolor) !important;
-  color: black !important;
+  color: white !important;
 }
 .btn-outline-warning:active{
   background-color: var(--mycolor) !important;
@@ -122,7 +122,7 @@ border: none;
     box-shadow: 0 0 0 0 rgba(0,0,0,0) !important;
 }
 .form-check-label{
-  color:  var(--mycolor) !important;
+  color:  var(--mycolor);
 }
 .form-check-input{
   background-color:  var(--mycolor) !important;

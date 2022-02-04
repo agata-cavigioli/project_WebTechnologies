@@ -2,6 +2,7 @@
 import Searchbar from './Searchbar.svelte';
 import Signlog from './Signlog.svelte';
 import Signature from './Signature.svelte';
+import Filter from './Filter.svelte';
 //import 'css/global.css';
 //import 'css/extra.css';
 
@@ -16,6 +17,10 @@ window.onload = () => {
       <div id='titolo' >Dining philosophers</div>
         <div class="ricerca">
           <Searchbar/>
+        </div>
+        <div class="">
+
+          <Filter/>
         </div>
       <div class='dis'>
       bla<br>
