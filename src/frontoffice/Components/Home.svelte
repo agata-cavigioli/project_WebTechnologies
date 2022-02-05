@@ -18,10 +18,7 @@ window.onload = () => {
         <div class="ricerca">
           <Searchbar/>
         </div>
-        <div class="">
-
-          <Filter/>
-        </div>
+        <Filter/>
       <div class='dis'>
       bla<br>
       bla<br>

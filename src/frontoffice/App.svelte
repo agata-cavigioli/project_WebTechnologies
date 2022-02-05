@@ -28,7 +28,9 @@ function searchfunction(){
 
 </svelte:head>
 
-<svelte:body/>
+<svelte:body
+
+/>
 <main>
 <Router url="{url}">
 <Route path="/">

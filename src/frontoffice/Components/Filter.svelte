@@ -1,13 +1,13 @@
-<script>
-import DoubleRangeSlider from './DoubleRangeSlider.svelte';
-import { onMount } from 'svelte';
-	let start;
-	let end;
-	const nice = d => {
-		if (!d && d !== 0) return '';
-		return d.toFixed(2);
-	}
+ <script>
+		import { onMount } from 'svelte';
+		import jQ from 'jquery';
 
+		onMount(() => {
+			jQuery( document ).ready(function() {
+				var $j = jQuery.noConflict();
+				$j("#datepicker").datepicker();
+		});
+	 });
 
 </script>
 
@@ -21,7 +21,7 @@ import { onMount } from 'svelte';
 		<div class="container-fluid">
 		<div class="row px-2">
 		  <div class="col-sm ">
-		    <div class="input-group mb-3">
+		    <div class="input-group mb-2">
 		      <div class="input-group-prepend">
 		      <label class="input-group-text customcol-smor" for="inputGroupSelect01">Periodo</label>
 		      </div>
@@ -76,11 +76,12 @@ import { onMount } from 'svelte';
 		  <div class="col-sm-5 order-2">
 					<div class="input-group mb-2 mr-sm-2">
 						<div class="input-group-prepend">
-						<div class="input-group-text customcol-smor">Disponibilitá da:</div>
+						<div class="input-group-text customcol-smor">Da:</div>
 						</div>
-					<input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="0">
-					<div class="input-group-text rounded-0 border-left-0 border-right-0 customcol-smor">a:</div>
-					<input type="text" class="form-control" id="nlineFormInputGroupUsername2" placeholder="500">
+						    <input class="input-group date form-control" data-provide="datepicker" type="text">
+
+							<div class="input-group-text rounded-0 border-left-0 border-right-0 customcol-smor">a:</div>
+							    <input type="text" class="input-group date form-control" data-provide="datepicker" >
 
 				</div>
 		  </div>
