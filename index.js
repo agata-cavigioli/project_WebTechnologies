@@ -16,7 +16,7 @@ app.use('/js' , express.static(global.rootDir +'/public/js'));
 app.use('/css' , express.static(global.rootDir +'/public/css'));
 app.use('/data', express.static(global.rootDir +'/public/data'));
 app.use('/docs', express.static(global.rootDir +'/public/html'));
-app.use('/img' , express.static(global.rootDir +'/public/media'));
+app.use('/img' , express.static(global.rootDir +'/public/img'));
 
 app.use(express.urlencoded({extended: true}));
 app.use(cors());

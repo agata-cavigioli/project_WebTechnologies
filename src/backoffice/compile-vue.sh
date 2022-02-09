@@ -1,5 +1,5 @@
 vue build  
-rm ../../public/backoffice -fr
+rm ../../public/ -fr
 mkdir -p ../../public/backoffice
 mv ./dist/index.html ../../public/backoffice 
 mv ./dist/* ../../public 
