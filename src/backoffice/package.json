@@ -11,11 +11,11 @@
     "file-system": "^2.2.2",
     "fs": "^0.0.1-security",
     "read-file": "^0.2.0",
-    "vue": "^3.0.0"
+    "vue": "^3.2.29"
   },
   "devDependencies": {
     "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0"
+    "@vue/compiler-sfc": "file:node_modules/vue/compiler-sfc"
   },
   "browserslist": [
     "> 1%",

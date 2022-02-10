@@ -6,37 +6,6 @@
   width:100%;
 }
 
-/*
-.mymodal{
-  background: white;
-z-index: 10;
-position: fixed;
-align-self: right;
-display: flex;
-width: 40%;
-left: 30%;
-height: 50%;
-justify-content: center;
-align-items: center;
-top: 25%;
-border-radius: 10px;
-border: 1px solid rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
-    -moz-box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
-    box-shadow: 0 0 30em rgba(0, 0, 0, 0.9);
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding-box;
-    background-clip: padding-box;
-
-  display:grid;
-  grid-template-areas:    "title"
-                          "head2"
-                          "barra"
-                          "basso";
-  grid-template-rows: 25% 10% 40% 25%;
-  grid-template-columns: 100%;
-}
-*/
 .modal-title{
   color: var(--mycolor);
   line-height: 1;
@@ -88,7 +57,7 @@ button:not(:disabled):active {
   z-index: 30;
   position: fixed;
   left: 65%;
-  top: 10%;
+  top: 4em;
   width: 33px;
   height: 33px;
   opacity: 0.8;
@@ -136,4 +105,16 @@ top: 10px;
 .modal-title{
   font-size: 7vw;
 }
+.prenotazione{
+}
+}
+
+.modal-footer .button-div{
+  position:inherit !important;
+}
+.nolosign .modal-dialog{
+  max-width: 500px !important;
+}
+.nolosign .close{
+  position:relative !important;
 }

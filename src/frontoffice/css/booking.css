@@ -1,0 +1,19 @@
+.mybooking .bg{
+  position: fixed !important;
+top: 5em !important;
+z-index: 1000;
+width: 60%;
+left: 20%;
+}
+
+.mybooking .modal-dialog{
+  max-width:10000px;
+}
+
+
+@media (max-width: 480px) {
+  .mybooking .bg{
+  width: 100%;
+  left:0%;
+  }
+}

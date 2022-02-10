@@ -4,6 +4,7 @@
 	import Signlog from './Components/Signlog.svelte';
 	import Signature from './Components/Signature.svelte';
 	import Searchbar from './Components/Searchbar.svelte';
+  import Personal from './Components/Personal.svelte';
   import Home from './Components/Home.svelte';
 	export let url = "";
 
@@ -34,19 +35,29 @@ function searchfunction(){
 <main>
 <Router url="{url}">
 <Route path="/">
-		<div class='centro'>
-			<div id='titolo' >Dining philosophers</div>
-			<div id='benvenuto' style='font-weight: 700;'>	Welcome!<br>
+		<div class='container pt-5 position-absolute' id='appcont'>
+			<div class='row'>
+        <div class='col'>
+        <div  id='titolo'>Dining philosophers
+        </div>
+        <div id='benvenuto' class='fw-bold'>
+        Welcome!
+        </div>
+  			</div>
+      </div>
 
-			</div>
-			<form class="ricerca" action="" method="get">
+			<form class="ricerca row" action="" method="get">
+        <div class='col'>
         <Searchbar/>
+        </div>
       </form>
-			<div id='basso'>
-			<span style='font-weight: 700;'> Don't know who you are looking for?</span>
-			<div class="search-button" id='finalbutton' on:click={searchfunction}>
+			<div class='row align-items-center m-5 h2'>
+			<div class='col' style='font-weight: 700;'> Don't know who you are looking for?</div>
+			<div class=' col-lg-3 search-button ' style='border-radius: 5px;' on:click={searchfunction}>
+
         <Link class="searchlink" to="/home" type="submit" style="color:white;">Search everyone</Link>
-			</div>
+
+      </div>
 			</div>
 		</div>
 
@@ -56,6 +67,9 @@ function searchfunction(){
     </Route>
 		<Route path="/home">
 		    <Home/>
+		</Route>
+    <Route path="/personal">
+		    <Personal/>
 		</Route>
 </Router>
 </main>
