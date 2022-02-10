@@ -23,7 +23,7 @@
     </li>
   </ul>
   <div v-if="this.isActive[0]">
-    <TheInventory/>
+    <TheInventory :test="this.test" :products="this.products"/>
   </div>
   <div v-else-if="this.isActive[1]">
     <TheOrders/>
@@ -42,7 +42,7 @@ export default {
   components: {
     TheInventory
   },
-  props: ['loggedIn'],
+  props: ['products', 'test', 'loggedIn'],
   data () {
     return {
       isActive: [true, false, false]

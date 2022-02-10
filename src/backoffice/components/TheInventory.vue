@@ -75,15 +75,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="philosopher in this.products">
+          <tr v-for="philosopher in this.prods">
             <td href="card" v-if="philosopher['Philosophers'].includes(this.name) &&
             philosopher['Born'].includes(this.birth) &&
             philosopher['Birth place'].includes(this.birth_place) &&
             philosopher['Died'].includes(this.death) && 
             philosopher['Place of Death'].includes(this.death_place) &&
             philosopher['Subjects Of Study'].includes(this.subject)"
-                v-on:click="this.selectedProduct = philosopher"
-                v-for="field in philosopher">
+                            v-on:click="this.selectedProduct = philosopher"
+                            v-for="field in philosopher">
               {{field}}
             </td>
           </tr>
@@ -114,31 +114,30 @@
         <div class="col col-lg-2">
           <a class="w-100 btn btn-primary mb-2"
              href="#header"
+             v-on:click="this.prods = this.test()"
              role="button">
             Top
           </a>
-      </div>
+        </div>
       </div>
     </div>
     <div class="col-lg-4 col-12 ">
       <ProductCard id="card"
-        v-if="this.selectedProduct != undefined"
-        :product="this.selectedProduct"/>
+                   v-if="this.selectedProduct != undefined"
+                   :product="this.selectedProduct"/>
       <h4 v-else> No product selected.</h4>
     </div>
   </div>
 </template>
 
 <script>
-/*
-import * as mongo from '../../../mongo.js'
-phil: mongo.query({}, {}, 'test'),
-*/
+/* eslint-disable */
 import ProductCard from './ProductCard.vue'
 
 export default {
 
   name: 'TheInventory',
+  props: ['products', 'test'],
   components: {
     ProductCard
   },
@@ -152,7 +151,8 @@ export default {
       death_place: '',
       subject: '',
       fields : ['Nome', 'Nascita', 'Luogo Nascita', 'Morte', 'Luogo Morte', 'Tematiche'],
-      products : [
+      prods : this.products(),
+      prod : [
         {
           "Philosophers": "Aaron David Gordon",
           "Born": "1856",
@@ -2362,11 +2362,11 @@ export default {
     "Subjects Of Study": "Islam, Sufism, Sharif"
   }
 ],
-methods : {
-  categoryChanged(category) {
-    this.articles = this.categories[category].articles
+  methods : {
+    doMongo : function() {
+      this.products = [];
+    },
   }
-}
 }
 }
 }

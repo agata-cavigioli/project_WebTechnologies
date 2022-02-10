@@ -25,7 +25,7 @@
           @aborted-login="this.logging = false"/>
       </div>
       <div v-else>
-        <TheBackOffice :loggedIn="this.loggedIn"/>
+        <TheBackOffice :test="this.test" :products="this.products" :loggedIn="this.loggedIn"/>
       </div>
     </div>
 </template>
@@ -39,7 +39,7 @@ import LogoutButton from './components/LogoutButton.vue'
 
 export default {
   name: 'App',
-
+  props: ['products', 'test'],
   data () {
     return {
       loggedIn: false,
