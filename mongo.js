@@ -1,3 +1,4 @@
+/* eslint-disable */
 const { MongoClient } = require('mongodb')
 const mongouri = 'mongodb://site202123:thieCah0@mongo_site202123?writeConcern=majority';
 

@@ -1,4 +1,4 @@
-vue build  
+vue build 
 rm ../../public/ -fr
 mkdir -p ../../public/backoffice
 mv ./dist/index.html ../../public/backoffice 

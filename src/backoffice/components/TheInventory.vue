@@ -131,6 +131,7 @@
 
 <script>
 import ProductCard from './ProductCard.vue'
+const mongo = require('../../../mongo.js');
 
 export default {
 
@@ -148,7 +149,7 @@ export default {
       death_place: '',
       subject: '',
       fields : ['Nome', 'Nascita', 'Luogo Nascita', 'Morte', 'Luogo Morte', 'Tematiche'],
-      phil: await mongo.query({}, {}, 'test'),
+      phil: mongo.query({}, {}, 'test'),
       products : [
         {
           "Philosophers": "Aaron David Gordon",
