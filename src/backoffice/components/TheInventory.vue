@@ -75,7 +75,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="philosopher in this.phil">
+          <tr v-for="philosopher in this.products">
             <td href="card" v-if="philosopher['Philosophers'].includes(this.name) &&
             philosopher['Born'].includes(this.birth) &&
             philosopher['Birth place'].includes(this.birth_place) &&
@@ -130,8 +130,8 @@
 </template>
 
 <script>
+import * as mongo from '../../../mongo.js'
 import ProductCard from './ProductCard.vue'
-const mongo = require('../../../mongo.js');
 
 export default {
 
