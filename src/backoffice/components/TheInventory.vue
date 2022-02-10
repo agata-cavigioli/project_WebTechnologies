@@ -130,7 +130,10 @@
 </template>
 
 <script>
+/*
 import * as mongo from '../../../mongo.js'
+phil: mongo.query({}, {}, 'test'),
+*/
 import ProductCard from './ProductCard.vue'
 
 export default {
@@ -149,7 +152,6 @@ export default {
       death_place: '',
       subject: '',
       fields : ['Nome', 'Nascita', 'Luogo Nascita', 'Morte', 'Luogo Morte', 'Tematiche'],
-      phil: mongo.query({}, {}, 'test'),
       products : [
         {
           "Philosophers": "Aaron David Gordon",
