@@ -75,7 +75,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="philosopher in this.products">
+          <tr v-for="philosopher in this.phil">
             <td href="card" v-if="philosopher['Philosophers'].includes(this.name) &&
             philosopher['Born'].includes(this.birth) &&
             philosopher['Birth place'].includes(this.birth_place) &&
@@ -148,6 +148,7 @@ export default {
       death_place: '',
       subject: '',
       fields : ['Nome', 'Nascita', 'Luogo Nascita', 'Morte', 'Luogo Morte', 'Tematiche'],
+      phil: await mongo.query({}, {}, 'test'),
       products : [
         {
           "Philosophers": "Aaron David Gordon",
