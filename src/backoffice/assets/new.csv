@@ -1,4 +1,4 @@
-Philosophers,Born,Birth place,Died,Place of Death,Subjects Of Study
+name,birth,birth_p,death,death_p,subjects
 Aaron David Gordon,1856,Ukraine,1922,Palestine,"Agriculture, Zionism"
 Abraham Joshua Heschel,1907,Poland,1972,York,"Judaism, Philosophy Of Religion"
 Albert of Saxony,1316,Germany,1390,Germany,Gravity

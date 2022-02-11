@@ -4,7 +4,7 @@ const mongouri = 'mongodb://site202123:thieCah0@mongo_site202123?writeConcern=ma
 
 const mongo = new MongoClient(mongouri);
 
-exports.insertMany = async function(object, collection, database='nolonolo') {
+exports.insert_many = async function(object, collection, database='nolonolo') {
 	try {
 		await mongo.connect();
 

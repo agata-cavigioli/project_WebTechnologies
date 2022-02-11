@@ -45,7 +45,7 @@ const obj = [
 
 async function dostuff(){
     await mongo.erase_all('test');
-    await mongo.insertMany(obj, 'test');
+    await mongo.insert_many(obj, 'test');
     console.log(await mongo.query({ "Philosophers": "Albert of Saxony"}, { }, 'test'));
 }
 
