@@ -63,7 +63,16 @@ function preventivo(){
 
     }
     else {
-      console.log("not ok");
+      document.getElementById("preventivo").innerHTML="";
+      const node = document.createElement("h5");
+      const textnode4 = document.createTextNode("Inserire delle date corette");
+
+      node.appendChild(textnode4);
+      node.classList.add("font-weight-bold");
+      node.classList.add( "text-danger");
+
+      document.getElementById("preventivo").appendChild(node);
+
     }
 
 }
