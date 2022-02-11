@@ -16,4 +16,11 @@ left: 20%;
   width: 100%;
   left:0%;
   }
+  .mybooking .modal-dialog{
+    overflow-y: initial !important
+  }
+  .mybooking .modal-content{
+      height: 80vh;
+      overflow-y: auto;
+  }
 }

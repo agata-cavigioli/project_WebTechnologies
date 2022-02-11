@@ -49,24 +49,18 @@ main{
 }
 
 @media (max-width: 480px) {
-  .centro {
-    position: absolute;
-    width: 90%;
-    height: 80%;
-    z-index: 0;
-    top: 10%;
-    left: 5%;
-    display: flex;
-    justify-content: center;
-
-
-    display:grid;
-    grid-template-areas:    "head1"
-                            "head2"
-                            "barra"
-                            "basso";
-    grid-template-rows: 25% 10% 40% 25%;
-    grid-template-columns: 100%;
+#appcont{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  left:0;
+  scrollbar-color: gb(100, 149, 237) rgba(0,0,0,0);
+  height:100%;
+  position: relative;
+  width:100%;
+}
+#principalsearch{
+  width:100%;
+}
   }
 
 #titolo{
