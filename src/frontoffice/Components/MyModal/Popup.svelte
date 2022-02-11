@@ -1,15 +1,28 @@
-<script context="module">
-//export let user = {loggedIn: false};
-</script>
-
 <script>
   import { loggedIn } from '../../stores.js';
   import { getContext } from 'svelte';
   const { close } = getContext('simple-modal');
+  import { onMount } from 'svelte';
+  import jQ from 'jquery';
 
 
   export let op = 'login';
   export const message = 'Hi';
+
+  onMount(() => {
+    jQuery( document ).ready(function() {
+      var close = document.getElementsByClassName("close")[0];
+      close.id="closemodal";
+
+      close.addEventListener("click", function() {
+      let element;
+        if (element=document.getElementById('home')){
+        document.getElementById('home').classList.remove("overflow-hidden");
+        document.getElementById('home').classList.add("overflow-auto");
+      }
+    });
+  });
+ });
 
   function revealpwd() {
     var x = document.getElementById("form2");
@@ -25,6 +38,11 @@
     var pwd = document.getElementById("form2").value;
     if (checkpassword(mail,pwd)){
       loggedIn.update(b => !b);
+      let element;
+      if (element=document.getElementById('home')){
+      document.getElementById('home').classList.remove("overflow-hidden");
+      document.getElementById('home').classList.add("overflow-auto");
+    }
       close()
     }
 
@@ -69,7 +87,7 @@
     </div>
 
     <div class="modal-footer justify-content-center">
-      <p type="button" class="btn btn-outline-warning waves-effect" on:click={checklogin}>Send <i class="fas fa-paper-plane-o ml-1"></i></p>
+      <p type="button" class="btn btn-outline-warning waves-effect" on:click={checklogin}>Send </p>
     </div>
   </div>
   </div>
