@@ -2,7 +2,7 @@
 import { Router, Route, Link } from "svelte-routing";
 
 function searchfunction(){
-  var monthNames = ["January", "February"];
+
   var searchphilosophers = {};
   var searchphilosophersArray = [];
 
@@ -67,9 +67,11 @@ function searchfunction(){
       <label class="search-label" >Where are you looking?</label>
       <input id = "PlaceSearch" class="search-input" type="text" placeholder="State" autocomplete="on" name="location">
     </div>
+    <div class="text-center">
     <Link class="searchlink" on:click={searchfunction} to="/home" type="submit" style="color:white">
     <div class="search-button" id="principalsearch">
         Search
     </div>
     </Link>
+    </div>
 </div>

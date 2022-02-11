@@ -31,10 +31,17 @@
  });
 
 function preventivo(){
+  //remove red stars
+  const stars = document.querySelectorAll('.redstar');
+    stars.forEach(redstar => {
+    redstar.remove();
+    });
+    //
+
     let costo = 250.99;
     let datefrom = document.getElementById('datefromnolo').value;
     let dateto = document.getElementById('datetonolo').value;
-    if(datefrom<dateto) {
+    if(datefrom && dateto && datefrom<dateto) {
       const date1 = new Date(datefrom);
       const date2 = new Date(dateto);
       const diffTime = Math.abs(date2 - date1);
@@ -63,29 +70,80 @@ function preventivo(){
 
     }
     else {
+      redstar('dadate');
+      redstar('todate');
       document.getElementById("preventivo").innerHTML="";
-      const node = document.createElement("h5");
-      const textnode4 = document.createTextNode("Inserire delle date corette");
-
-      node.appendChild(textnode4);
-      node.classList.add("font-weight-bold");
-      node.classList.add( "text-danger");
-
-      document.getElementById("preventivo").appendChild(node);
-
     }
 
 }
 
-function sendnolo(){
+function redstar(id){
+  const redstar = document.createElement("span");
+  redstar.innerHTML = "&#42;";
 
+  redstar.classList.add( "text-danger");
+  redstar.classList.add( "fw-bold");
+  redstar.classList.add( "redstar");
+
+
+  document.getElementById(id).appendChild(redstar);
+}
+
+function sendnolo(){
+  const stars = document.querySelectorAll('.redstar');
+    stars.forEach(redstar => {
+    redstar.remove();
+    });
+    var sendcheck = true;
+    var booking = {};
+    var bookingArray = [];
+
+  let datefrom = document.getElementById('datefromnolo').value;
+  let dateto = document.getElementById('datetonolo').value;
+  if(datefrom && dateto && datefrom<dateto) {
+    const date1 = new Date(datefrom);
+    const date2 = new Date(dateto);
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+    booking.datefrom = datefrom;
+    booking.dateto = dateto;
+    booking.diffdate = diffDays;
+  }
+  else{
+    redstar('dadate');
+    redstar('todate');
+    sendcheck = false;
+  }
+  let address = document.getElementById('addressfromnolo').value;
+  if(address){
+    booking.address = address;
+  }
+  else {
+    redstar('addresslabel');
+    sendcheck = false;
+  }
+
+  let payment = document.getElementById('inputGroupPay').value;
+  if(payment){
+    booking.payment = payment;
+  }
+  else {
+    redstar('paylabel');
+    sendcheck = false;
+  }
+
+  if(sendcheck){
+  bookingArray.push({...booking});
+  console.log(JSON.stringify(bookingArray));
+}
 }
 
 </script>
 
 
 <div class="modal-dialog modal-notify modal-warning prenotazione" role="document">
-  <div class="modal-content container">
+  <div class="modal-content container" id="prenot-modal-content">
       <div class='row'>
           <div class="col-lg m-2">
               <div class="card">
@@ -125,10 +183,10 @@ function sendnolo(){
         </h5>
         <div class=" input-group mb-2 mr-sm-2">
 
-          <div class="input-group-text customcol-smor">Da:</div>
+          <div class="input-group-text customcol-smor" id='dadate'>Da:</div>
               <input class="input-group date form-control" data-provide="datepicker" type="text" id="datefromnolo" value="">
 
-            <div class="input-group-text rounded-0 border-left-0 border-right-0 customcol-smor">a:</div>
+            <div class="input-group-text rounded-0 border-left-0 border-right-0 customcol-smor" id="todate">a:</div>
                 <input type="text" class="input-group date form-control" data-provide="datepicker" id="datetonolo" value="">
 
       </div>
@@ -150,9 +208,26 @@ function sendnolo(){
 
 
 {:else if islogged}
+<h5 class="font-weight-bold text-secondary mt-4" id="addresslabel">
+Inserisci il tuo indirizzo
+</h5>
+<div class=" input-group mb-2 mr-sm-2">
+      <input class="input-group form-control"  type="text" id="addressfromnolo" value="">
+</div>
+
+<h5 class="font-weight-bold text-secondary mt-4" id="paylabel">
+Inserisci il tuo metodo di pagamento
+</h5>
+  <select class="custom-select form-control mb-4" id="inputGroupPay">
+    <option selected value="">Choose...</option>
+    <option value="paypal">PayPal</option>
+    <option value="credito">Carta di Credito</option>
+    <option value="regalo">Carta Regalo</option>
+      </select>
+
 
 <div class="modal-footer justify-content-center">
-  <p type="button" class="btn btn-outline-warning waves-effect" on:click={sendnolo}>Send </p>
+  <p type="button" class="btn btn-outline-warning waves-effect" on:click={sendnolo}>Procedi al pagamento</p>
 </div>
 
 {/if}

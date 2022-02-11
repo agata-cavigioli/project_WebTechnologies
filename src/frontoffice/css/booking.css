@@ -19,7 +19,7 @@ left: 20%;
   .mybooking .modal-dialog{
     overflow-y: initial !important
   }
-  .mybooking .modal-content{
+  .mybooking #prenot-modal-content{
       height: 80vh;
       overflow-y: auto;
   }
