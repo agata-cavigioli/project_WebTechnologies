@@ -34,12 +34,14 @@
         Note:
       </li>
     </ul>
-    <div class="card-body">
-      <a href="#" class="card-link"
-         v-on:click="this.editing = true"
-        >Modifica</a>
-      <a href="#" class="card-link"
-        >Elimina</a>
+    <div v-if="this.loggedIn">
+      <div class="card-body">
+        <a href="#" class="card-link"
+                    v-on:click="this.editing = true"
+                    >Modifica</a>
+        <a href="#" class="card-link"
+                    >Elimina</a>
+      </div>
     </div>
   </div>
   <div v-else class="card text-start">
@@ -166,7 +168,7 @@
 <script>
 export default {
   name: 'ProductCard',
-  props: ['product'],
+  props: ['loggedIn', 'product'],
   data () {
     return {
       editing: false

@@ -23,7 +23,7 @@
     </li>
   </ul>
   <div v-if="this.isActive[0]">
-    <TheInventory :test="this.test" :products="this.products"/>
+    <TheInventory :products="this.products" :loggedIn="this.loggedIn"/>
   </div>
   <div v-else-if="this.isActive[1]">
     <TheOrders/>

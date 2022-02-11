@@ -1,2210 +1,2210 @@
 [
     {
-        "Philosophers": "Aaron David Gordon",
-        "Born": "1856",
-        "Birth place": "Ukraine",
-        "Died": "1922",
-        "Place of Death": "Palestine",
-        "Subjects Of Study": "Agriculture, Zionism"
-    },
-    {
-        "Philosophers": "Abraham Joshua Heschel",
-        "Born": "1907",
-        "Birth place": "Poland",
-        "Died": "1972",
-        "Place of Death": "York",
-        "Subjects Of Study": "Judaism, Philosophy Of Religion"
-    },
-    {
-        "Philosophers": "Albert of Saxony",
-        "Born": "1316",
-        "Birth place": "Germany",
-        "Died": "1390",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Gravity"
-    },
-    {
-        "Philosophers": "Alessandro Achillini",
-        "Born": "1463",
-        "Birth place": "Italy",
-        "Died": "1512",
-        "Place of Death": "Bologna",
-        "Subjects Of Study": "William Of Ockham"
-    },
-    {
-        "Philosophers": "Alexander Gottlieb Baumgarten",
-        "Born": "1714",
-        "Birth place": "Germany",
-        "Died": "1762",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Aesthetics, Gottfried Wilhelm Leibniz, Feeling, Christian, Baron Von Wolff"
-    },
-    {
-        "Philosophers": "Alexius Meinong",
-        "Born": "1853",
-        "Birth place": "Ukraine",
-        "Died": "1920",
-        "Place of Death": "Austria",
-        "Subjects Of Study": "Objectivism, Intentionality"
-    },
-    {
-        "Philosophers": "Alfred Firmin Loisy",
-        "Born": "1857",
-        "Birth place": "France",
-        "Died": "1940",
-        "Place of Death": "France",
-        "Subjects Of Study": "Philosophy Of Religion, Modernism"
-    },
-    {
-        "Philosophers": "Alfred Korzybski",
-        "Born": "1879",
-        "Birth place": "Poland",
-        "Died": "1950",
-        "Place of Death": "Connecticut",
-        "Subjects Of Study": "Semantics, General Semantics"
-    },
-    {
-        "Philosophers": "Alfred North Whitehead",
-        "Born": "1861",
-        "Birth place": "England",
-        "Died": "1947",
-        "Place of Death": "Massachusetts",
-        "Subjects Of Study": "Education, Mathematics, Philosophy Of Science, Formal Logic, Materialism"
-    },
-    {
-        "Philosophers": "Allan Bloom",
-        "Born": "1930",
-        "Birth place": "Indiana",
-        "Died": "1992",
-        "Place of Death": "Illinois",
-        "Subjects Of Study": "Higher Education"
-    },
-    {
-        "Philosophers": "Anaxagoras",
-        "Born": "500",
-        "Birth place": "Clazomenae",
-        "Died": "428",
-        "Place of Death": "Lampsacus",
-        "Subjects Of Study": "Eclipse, Cosmology, Nous"
-    },
-    {
-        "Philosophers": "Anicius Manlius Severinus Boethius",
-        "Born": "475",
-        "Birth place": "Italy",
-        "Died": "524",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Aristotelianism, Universal, Trinity, Porphyry, Free Will"
-    },
-    {
-        "Philosophers": "Antonio Labriola",
-        "Born": "1843",
-        "Birth place": "Sicilies",
-        "Died": "1904",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Socialism, Historical Materialism"
+        "name": "Aaron David Gordon",
+        "birth": "1856",
+        "birth_p": "Ukraine",
+        "death": "1922",
+        "death_p": "Palestine",
+        "subjects": "Agriculture, Zionism"
+    },
+    {
+        "name": "Abraham Joshua Heschel",
+        "birth": "1907",
+        "birth_p": "Poland",
+        "death": "1972",
+        "death_p": "York",
+        "subjects": "Judaism, Philosophy Of Religion"
+    },
+    {
+        "name": "Albert of Saxony",
+        "birth": "1316",
+        "birth_p": "Germany",
+        "death": "1390",
+        "death_p": "Germany",
+        "subjects": "Gravity"
+    },
+    {
+        "name": "Alessandro Achillini",
+        "birth": "1463",
+        "birth_p": "Italy",
+        "death": "1512",
+        "death_p": "Bologna",
+        "subjects": "William Of Ockham"
+    },
+    {
+        "name": "Alexander Gottlieb Baumgarten",
+        "birth": "1714",
+        "birth_p": "Germany",
+        "death": "1762",
+        "death_p": "Germany",
+        "subjects": "Aesthetics, Gottfried Wilhelm Leibniz, Feeling, Christian, Baron Von Wolff"
+    },
+    {
+        "name": "Alexius Meinong",
+        "birth": "1853",
+        "birth_p": "Ukraine",
+        "death": "1920",
+        "death_p": "Austria",
+        "subjects": "Objectivism, Intentionality"
+    },
+    {
+        "name": "Alfred Firmin Loisy",
+        "birth": "1857",
+        "birth_p": "France",
+        "death": "1940",
+        "death_p": "France",
+        "subjects": "Philosophy Of Religion, Modernism"
+    },
+    {
+        "name": "Alfred Korzybski",
+        "birth": "1879",
+        "birth_p": "Poland",
+        "death": "1950",
+        "death_p": "Connecticut",
+        "subjects": "Semantics, General Semantics"
+    },
+    {
+        "name": "Alfred North Whitehead",
+        "birth": "1861",
+        "birth_p": "England",
+        "death": "1947",
+        "death_p": "Massachusetts",
+        "subjects": "Education, Mathematics, Philosophy Of Science, Formal Logic, Materialism"
+    },
+    {
+        "name": "Allan Bloom",
+        "birth": "1930",
+        "birth_p": "Indiana",
+        "death": "1992",
+        "death_p": "Illinois",
+        "subjects": "Higher Education"
+    },
+    {
+        "name": "Anaxagoras",
+        "birth": "500",
+        "birth_p": "Clazomenae",
+        "death": "428",
+        "death_p": "Lampsacus",
+        "subjects": "Eclipse, Cosmology, Nous"
+    },
+    {
+        "name": "Anicius Manlius Severinus Boethius",
+        "birth": "475",
+        "birth_p": "Italy",
+        "death": "524",
+        "death_p": "Italy",
+        "subjects": "Aristotelianism, Universal, Trinity, Porphyry, Free Will"
+    },
+    {
+        "name": "Antonio Labriola",
+        "birth": "1843",
+        "birth_p": "Sicilies",
+        "death": "1904",
+        "death_p": "Italy",
+        "subjects": "Socialism, Historical Materialism"
     },
     {
-        "Philosophers": "Antonio Rosmini-Serbati",
-        "Born": "1797",
-        "Birth place": "Italy",
-        "Died": "1855",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Philosophy Of Religion"
+        "name": "Antonio Rosmini-Serbati",
+        "birth": "1797",
+        "birth_p": "Italy",
+        "death": "1855",
+        "death_p": "Italy",
+        "subjects": "Philosophy Of Religion"
     },
     {
-        "Philosophers": "Antony Flew",
-        "Born": "1923",
-        "Birth place": "England",
-        "Died": "2010",
-        "Place of Death": "England",
-        "Subjects Of Study": "Atheism, Philosophy Of Religion, Theology"
+        "name": "Antony Flew",
+        "birth": "1923",
+        "birth_p": "England",
+        "death": "2010",
+        "death_p": "England",
+        "subjects": "Atheism, Philosophy Of Religion, Theology"
     },
     {
-        "Philosophers": "Aristotle",
-        "Born": "384",
-        "Birth place": "Greece",
-        "Died": "322",
-        "Place of Death": "Greece",
-        "Subjects Of Study": "Biology, Rhetoric, Aristotelianism, Zoology, Universal"
+        "name": "Aristotle",
+        "birth": "384",
+        "birth_p": "Greece",
+        "death": "322",
+        "death_p": "Greece",
+        "subjects": "Biology, Rhetoric, Aristotelianism, Zoology, Universal"
     },
     {
-        "Philosophers": "Armando Carlini",
-        "Born": "1878",
-        "Birth place": "Italy",
-        "Died": "1959",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Phenomenon"
+        "name": "Armando Carlini",
+        "birth": "1878",
+        "birth_p": "Italy",
+        "death": "1959",
+        "death_p": "Italy",
+        "subjects": "Phenomenon"
     },
     {
-        "Philosophers": "Arthur O. Lovejoy",
-        "Born": "1873",
-        "Birth place": "Germany",
-        "Died": "1962",
-        "Place of Death": "Maryland",
-        "Subjects Of Study": "Great Chain Of Being"
+        "name": "Arthur O. Lovejoy",
+        "birth": "1873",
+        "birth_p": "Germany",
+        "death": "1962",
+        "death_p": "Maryland",
+        "subjects": "Great Chain Of Being"
     },
     {
-        "Philosophers": "Arthur Schopenhauer",
-        "Born": "1788",
-        "Birth place": "Poland",
-        "Died": "1860",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Philosophy Of Art, Panpsychism"
+        "name": "Arthur Schopenhauer",
+        "birth": "1788",
+        "birth_p": "Poland",
+        "death": "1860",
+        "death_p": "Germany",
+        "subjects": "Philosophy Of Art, Panpsychism"
     },
     {
-        "Philosophers": "Arthur Stanley Eddington",
-        "Born": "1882",
-        "Birth place": "England",
-        "Died": "1944",
-        "Place of Death": "England",
-        "Subjects Of Study": "Star, Relativity, Globular Cluster, Physical Constant, Special Relativity"
+        "name": "Arthur Stanley Eddington",
+        "birth": "1882",
+        "birth_p": "England",
+        "death": "1944",
+        "death_p": "England",
+        "subjects": "Star, Relativity, Globular Cluster, Physical Constant, Special Relativity"
     },
     {
-        "Philosophers": "Ashvaghosha",
-        "Born": "80",
-        "Birth place": "India",
-        "Died": "150",
-        "Place of Death": "Pakistan",
-        "Subjects Of Study": "Mahayana"
+        "name": "Ashvaghosha",
+        "birth": "80",
+        "birth_p": "India",
+        "death": "150",
+        "death_p": "Pakistan",
+        "subjects": "Mahayana"
     },
     {
-        "Philosophers": "Auguste Comte",
-        "Born": "1798",
-        "Birth place": "France",
-        "Died": "1857",
-        "Place of Death": "France",
-        "Subjects Of Study": "Sociology, Social Evolution"
+        "name": "Auguste Comte",
+        "birth": "1798",
+        "birth_p": "France",
+        "death": "1857",
+        "death_p": "France",
+        "subjects": "Sociology, Social Evolution"
     },
     {
-        "Philosophers": "Averroes",
-        "Born": "1126",
-        "Birth place": "Spain",
-        "Died": "1198",
-        "Place of Death": "Marrakech",
-        "Subjects Of Study": "Islam, Platonism, Aristotelianism, Greek Philosophy"
+        "name": "Averroes",
+        "birth": "1126",
+        "birth_p": "Spain",
+        "death": "1198",
+        "death_p": "Marrakech",
+        "subjects": "Islam, Platonism, Aristotelianism, Greek Philosophy"
     },
     {
-        "Philosophers": "Avicenna",
-        "Born": "980",
-        "Birth place": "Uzbekistan",
-        "Died": "1037",
-        "Place of Death": "Iran",
-        "Subjects Of Study": "Islam, History Of Medicine, Aristotelianism, Greek Philosophy"
+        "name": "Avicenna",
+        "birth": "980",
+        "birth_p": "Uzbekistan",
+        "death": "1037",
+        "death_p": "Iran",
+        "subjects": "Islam, History Of Medicine, Aristotelianism, Greek Philosophy"
     },
     {
-        "Philosophers": "Bartolome de Medina",
-        "Born": "1528",
-        "Birth place": "Spain",
-        "Died": "1580",
-        "Place of Death": "Spain",
-        "Subjects Of Study": "Casuistry, Probabilism"
+        "name": "Bartolome de Medina",
+        "birth": "1528",
+        "birth_p": "Spain",
+        "death": "1580",
+        "death_p": "Spain",
+        "subjects": "Casuistry, Probabilism"
     },
     {
-        "Philosophers": "Benedetto Croce",
-        "Born": "1866",
-        "Birth place": "Italy",
-        "Died": "1952",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Political Philosophy, Philosophy Of History, Spiritualism"
+        "name": "Benedetto Croce",
+        "birth": "1866",
+        "birth_p": "Italy",
+        "death": "1952",
+        "death_p": "Italy",
+        "subjects": "Political Philosophy, Philosophy Of History, Spiritualism"
     },
     {
-        "Philosophers": "Benedict de Spinoza",
-        "Born": "1632",
-        "Birth place": "Netherlands",
-        "Died": "1677",
-        "Place of Death": "Netherlands",
-        "Subjects Of Study": "Pantheism, Mind-Body Dualism"
+        "name": "Benedict de Spinoza",
+        "birth": "1632",
+        "birth_p": "Netherlands",
+        "death": "1677",
+        "death_p": "Netherlands",
+        "subjects": "Pantheism, Mind-Body Dualism"
     },
     {
-        "Philosophers": "Bernard Bosanquet",
-        "Born": "1848",
-        "Birth place": "England",
-        "Died": "1923",
-        "Place of Death": "England",
-        "Subjects Of Study": "Ethics, Metaphysics, Aesthetics, Political Philosophy, Logic"
+        "name": "Bernard Bosanquet",
+        "birth": "1848",
+        "birth_p": "England",
+        "death": "1923",
+        "death_p": "England",
+        "subjects": "Ethics, Metaphysics, Aesthetics, Political Philosophy, Logic"
     },
     {
-        "Philosophers": "Bernard de Mandeville",
-        "Born": "1670",
-        "Birth place": "Netherlands",
-        "Died": "1733",
-        "Place of Death": "England",
-        "Subjects Of Study": "Virtue"
+        "name": "Bernard de Mandeville",
+        "birth": "1670",
+        "birth_p": "Netherlands",
+        "death": "1733",
+        "death_p": "England",
+        "subjects": "Virtue"
     },
     {
-        "Philosophers": "Bertrand Russell",
-        "Born": "1872",
-        "Birth place": "Wales",
-        "Died": "1970",
-        "Place of Death": "Wales",
-        "Subjects Of Study": "Formal Logic, Nuclear Weapon, Russell\u2019S Paradox, Disarmament, Axiomatic Method"
+        "name": "Bertrand Russell",
+        "birth": "1872",
+        "birth_p": "Wales",
+        "death": "1970",
+        "death_p": "Wales",
+        "subjects": "Formal Logic, Nuclear Weapon, Russell\u2019S Paradox, Disarmament, Axiomatic Method"
     },
     {
-        "Philosophers": "Bessarion",
-        "Born": "1403",
-        "Birth place": "Turkey",
-        "Died": "1472",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Greek Literature, Platonism"
+        "name": "Bessarion",
+        "birth": "1403",
+        "birth_p": "Turkey",
+        "death": "1472",
+        "death_p": "Italy",
+        "subjects": "Greek Literature, Platonism"
     },
     {
-        "Philosophers": "Bhartrihari",
-        "Born": "570",
-        "Birth place": "India",
-        "Died": "651",
-        "Place of Death": "India",
-        "Subjects Of Study": "Philosophy Of Language, Shabdadvaita"
+        "name": "Bhartrihari",
+        "birth": "570",
+        "birth_p": "India",
+        "death": "651",
+        "death_p": "India",
+        "subjects": "Philosophy Of Language, Shabdadvaita"
     },
     {
-        "Philosophers": "Blaise Pascal",
-        "Born": "1623",
-        "Birth place": "France",
-        "Died": "1662",
-        "Place of Death": "France",
-        "Subjects Of Study": "Probability, Conic Section, Pascal\u2019S Triangle, Cycloid, Pascal\u2019S Principle"
+        "name": "Blaise Pascal",
+        "birth": "1623",
+        "birth_p": "France",
+        "death": "1662",
+        "death_p": "France",
+        "subjects": "Probability, Conic Section, Pascal\u2019S Triangle, Cycloid, Pascal\u2019S Principle"
     },
     {
-        "Philosophers": "Blessed John Duns Scotus",
-        "Born": "1266",
-        "Birth place": "Scotland",
-        "Died": "1308",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Scholasticism, Realism, Incarnation, Immaculate Conception, Divine Union"
+        "name": "Blessed John Duns Scotus",
+        "birth": "1266",
+        "birth_p": "Scotland",
+        "death": "1308",
+        "death_p": "Germany",
+        "subjects": "Scholasticism, Realism, Incarnation, Immaculate Conception, Divine Union"
     },
     {
-        "Philosophers": "Carl Gustav Hempel",
-        "Born": "1905",
-        "Birth place": "Germany",
-        "Died": "1997",
-        "Place of Death": "Jersey",
-        "Subjects Of Study": "Philosophy Of Science, Scientific Theory, Covering-Law Model"
+        "name": "Carl Gustav Hempel",
+        "birth": "1905",
+        "birth_p": "Germany",
+        "death": "1997",
+        "death_p": "Jersey",
+        "subjects": "Philosophy Of Science, Scientific Theory, Covering-Law Model"
     },
     {
-        "Philosophers": "Charles Sanders Peirce",
-        "Born": "1839",
-        "Birth place": "Massachusetts",
-        "Died": "1914",
-        "Place of Death": "Pennsylvania",
-        "Subjects Of Study": "Category, Induction, Abduction"
+        "name": "Charles Sanders Peirce",
+        "birth": "1839",
+        "birth_p": "Massachusetts",
+        "death": "1914",
+        "death_p": "Pennsylvania",
+        "subjects": "Category, Induction, Abduction"
     },
     {
-        "Philosophers": "Cheng Hao",
-        "Born": "1032",
-        "Birth place": "China",
-        "Died": "1085",
-        "Place of Death": "China",
-        "Subjects Of Study": "Li, Neo-Confucianism"
+        "name": "Cheng Hao",
+        "birth": "1032",
+        "birth_p": "China",
+        "death": "1085",
+        "death_p": "China",
+        "subjects": "Li, Neo-Confucianism"
     },
     {
-        "Philosophers": "Cheng Yi",
-        "Born": "1033",
-        "Birth place": "China",
-        "Died": "1107",
-        "Place of Death": "China",
-        "Subjects Of Study": "Li, Neo-Confucianism, Lixue"
+        "name": "Cheng Yi",
+        "birth": "1033",
+        "birth_p": "China",
+        "death": "1107",
+        "death_p": "China",
+        "subjects": "Li, Neo-Confucianism, Lixue"
     },
     {
-        "Philosophers": "Claude-Adrien Helvetius",
-        "Born": "1715",
-        "Birth place": "France",
-        "Died": "1771",
-        "Place of Death": "France",
-        "Subjects Of Study": "Education"
+        "name": "Claude-Adrien Helvetius",
+        "birth": "1715",
+        "birth_p": "France",
+        "death": "1771",
+        "death_p": "France",
+        "subjects": "Education"
     },
     {
-        "Philosophers": "Confucius",
-        "Born": "551",
-        "Birth place": "China",
-        "Died": "479",
-        "Place of Death": "China",
-        "Subjects Of Study": "Ren, Junzi, Xiao, Li, 'Shijing'"
+        "name": "Confucius",
+        "birth": "551",
+        "birth_p": "China",
+        "death": "479",
+        "death_p": "China",
+        "subjects": "Ren, Junzi, Xiao, Li, 'Shijing'"
     },
     {
-        "Philosophers": "David Friedrich Strauss",
-        "Born": "1808",
-        "Birth place": "Germany",
-        "Died": "1874",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Rationalism, Religion, Dialectic"
+        "name": "David Friedrich Strauss",
+        "birth": "1808",
+        "birth_p": "Germany",
+        "death": "1874",
+        "death_p": "Germany",
+        "subjects": "Rationalism, Religion, Dialectic"
     },
     {
-        "Philosophers": "David Hartley",
-        "Born": "1705",
-        "Birth place": "England",
-        "Died": "1757",
-        "Place of Death": "England",
-        "Subjects Of Study": "Associationism"
+        "name": "David Hartley",
+        "birth": "1705",
+        "birth_p": "England",
+        "death": "1757",
+        "death_p": "England",
+        "subjects": "Associationism"
     },
     {
-        "Philosophers": "David Hume",
-        "Born": "1711",
-        "Birth place": "Scotland",
-        "Died": "1776",
-        "Place of Death": "Scotland",
-        "Subjects Of Study": "England, Miracle, Idea, Neutral Monism, Causation"
+        "name": "David Hume",
+        "birth": "1711",
+        "birth_p": "Scotland",
+        "death": "1776",
+        "death_p": "Scotland",
+        "subjects": "England, Miracle, Idea, Neutral Monism, Causation"
     },
     {
-        "Philosophers": "Denis Diderot",
-        "Born": "1713",
-        "Birth place": "France",
-        "Died": "1784",
-        "Place of Death": "France",
-        "Subjects Of Study": "Dramatic Literature"
+        "name": "Denis Diderot",
+        "birth": "1713",
+        "birth_p": "France",
+        "death": "1784",
+        "death_p": "France",
+        "subjects": "Dramatic Literature"
     },
     {
-        "Philosophers": "Derek Parfit",
-        "Born": "1942",
-        "Birth place": "China",
-        "Died": "2017",
-        "Place of Death": "England",
-        "Subjects Of Study": "Personal Identity, Triple Theory"
+        "name": "Derek Parfit",
+        "birth": "1942",
+        "birth_p": "China",
+        "death": "2017",
+        "death_p": "England",
+        "subjects": "Personal Identity, Triple Theory"
     },
     {
-        "Philosophers": "Dong Zhongshu",
-        "Born": "179",
-        "Birth place": "China",
-        "Died": "104",
-        "Place of Death": "China",
-        "Subjects Of Study": "Yinyang"
+        "name": "Dong Zhongshu",
+        "birth": "179",
+        "birth_p": "China",
+        "death": "104",
+        "death_p": "China",
+        "subjects": "Yinyang"
     },
     {
-        "Philosophers": "Edith Stein",
-        "Born": "1891",
-        "Birth place": "Poland",
-        "Died": "1942",
-        "Place of Death": "Poland",
-        "Subjects Of Study": "Phenomenology, Thomism"
+        "name": "Edith Stein",
+        "birth": "1891",
+        "birth_p": "Poland",
+        "death": "1942",
+        "death_p": "Poland",
+        "subjects": "Phenomenology, Thomism"
     },
     {
-        "Philosophers": "Edmund Husserl",
-        "Born": "1859",
-        "Birth place": "Czechoslovakia",
-        "Died": "1938",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Consciousness, Eidetic Reduction, Phenomenological Reduction"
+        "name": "Edmund Husserl",
+        "birth": "1859",
+        "birth_p": "Czechoslovakia",
+        "death": "1938",
+        "death_p": "Germany",
+        "subjects": "Consciousness, Eidetic Reduction, Phenomenological Reduction"
     },
     {
-        "Philosophers": "Eduard von Hartmann",
-        "Born": "1842",
-        "Birth place": "Germany",
-        "Died": "1906",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Rationalism, Irrationalism, Unconscious"
+        "name": "Eduard von Hartmann",
+        "birth": "1842",
+        "birth_p": "Germany",
+        "death": "1906",
+        "death_p": "Germany",
+        "subjects": "Rationalism, Irrationalism, Unconscious"
     },
     {
-        "Philosophers": "Edward Caird",
-        "Born": "1835",
-        "Birth place": "Scotland",
-        "Died": "1908",
-        "Place of Death": "England",
-        "Subjects Of Study": "Immanuel Kant, Theology"
+        "name": "Edward Caird",
+        "birth": "1835",
+        "birth_p": "Scotland",
+        "death": "1908",
+        "death_p": "England",
+        "subjects": "Immanuel Kant, Theology"
     },
     {
-        "Philosophers": "Edward Westermarck",
-        "Born": "1862",
-        "Birth place": "Finland",
-        "Died": "1939",
-        "Place of Death": "Finland",
-        "Subjects Of Study": "Primitive Culture, Marriage, Ethical Relativism, Morality"
+        "name": "Edward Westermarck",
+        "birth": "1862",
+        "birth_p": "Finland",
+        "death": "1939",
+        "death_p": "Finland",
+        "subjects": "Primitive Culture, Marriage, Ethical Relativism, Morality"
     },
     {
-        "Philosophers": "Emmanuel Levinas",
-        "Born": "1906",
-        "Birth place": "Lithuania",
-        "Died": "1995",
-        "Place of Death": "France",
-        "Subjects Of Study": "Judaism"
+        "name": "Emmanuel Levinas",
+        "birth": "1906",
+        "birth_p": "Lithuania",
+        "death": "1995",
+        "death_p": "France",
+        "subjects": "Judaism"
     },
     {
-        "Philosophers": "Empedocles",
-        "Born": "490",
-        "Birth place": "Italy",
-        "Died": "430",
-        "Place of Death": "Greece",
-        "Subjects Of Study": "Cosmology, Reincarnation, Strife, Element"
+        "name": "Empedocles",
+        "birth": "490",
+        "birth_p": "Italy",
+        "death": "430",
+        "death_p": "Greece",
+        "subjects": "Cosmology, Reincarnation, Strife, Element"
     },
     {
-        "Philosophers": "Erich Frank",
-        "Born": "1883",
-        "Birth place": "Republic",
-        "Died": "1949",
-        "Place of Death": "Netherlands",
-        "Subjects Of Study": "Faith"
+        "name": "Erich Frank",
+        "birth": "1883",
+        "birth_p": "Republic",
+        "death": "1949",
+        "death_p": "Netherlands",
+        "subjects": "Faith"
     },
     {
-        "Philosophers": "Erich Fromm",
-        "Born": "1900",
-        "Birth place": "Germany",
-        "Died": "1980",
-        "Place of Death": "Switzerland",
-        "Subjects Of Study": "Self-Image"
+        "name": "Erich Fromm",
+        "birth": "1900",
+        "birth_p": "Germany",
+        "death": "1980",
+        "death_p": "Switzerland",
+        "subjects": "Self-Image"
     },
     {
-        "Philosophers": "Ernest Nagel",
-        "Born": "1901",
-        "Birth place": "Czechoslovakia",
-        "Died": "1985",
-        "Place of Death": "York",
-        "Subjects Of Study": "Logic, Scientific Method"
+        "name": "Ernest Nagel",
+        "birth": "1901",
+        "birth_p": "Czechoslovakia",
+        "death": "1985",
+        "death_p": "York",
+        "subjects": "Logic, Scientific Method"
     },
     {
-        "Philosophers": "Ernest Renan",
-        "Born": "1823",
-        "Birth place": "France",
-        "Died": "1892",
-        "Place of Death": "France",
-        "Subjects Of Study": "Judaism, Jesus, Rationalism, Religion, Early Church"
+        "name": "Ernest Renan",
+        "birth": "1823",
+        "birth_p": "France",
+        "death": "1892",
+        "death_p": "France",
+        "subjects": "Judaism, Jesus, Rationalism, Religion, Early Church"
     },
     {
-        "Philosophers": "Ernst Mach",
-        "Born": "1838",
-        "Birth place": "Austria",
-        "Died": "1916",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Measurement, Wave, Sensation, Mach Number, Mach\u2019S Principle"
+        "name": "Ernst Mach",
+        "birth": "1838",
+        "birth_p": "Austria",
+        "death": "1916",
+        "death_p": "Germany",
+        "subjects": "Measurement, Wave, Sensation, Mach Number, Mach\u2019S Principle"
     },
     {
-        "Philosophers": "Ernst Troeltsch",
-        "Born": "1865",
-        "Birth place": "Germany",
-        "Died": "1923",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Christianity, Philosophy Of Religion, Historicism, Society, Relativism"
+        "name": "Ernst Troeltsch",
+        "birth": "1865",
+        "birth_p": "Germany",
+        "death": "1923",
+        "death_p": "Germany",
+        "subjects": "Christianity, Philosophy Of Religion, Historicism, Society, Relativism"
     },
     {
-        "Philosophers": "Erwin Schrodinger",
-        "Born": "1887",
-        "Birth place": "Austria",
-        "Died": "1961",
-        "Place of Death": "Austria",
-        "Subjects Of Study": "Quantum, Schr\u00f6dinger Equation"
+        "name": "Erwin Schrodinger",
+        "birth": "1887",
+        "birth_p": "Austria",
+        "death": "1961",
+        "death_p": "Austria",
+        "subjects": "Quantum, Schr\u00f6dinger Equation"
     },
     {
-        "Philosophers": "Etienne Bonnot de Condillac",
-        "Born": "1715",
-        "Birth place": "France",
-        "Died": "1780",
-        "Place of Death": "France",
-        "Subjects Of Study": "John Locke, Sensation"
+        "name": "Etienne Bonnot de Condillac",
+        "birth": "1715",
+        "birth_p": "France",
+        "death": "1780",
+        "death_p": "France",
+        "subjects": "John Locke, Sensation"
     },
     {
-        "Philosophers": "Etienne Gilson",
-        "Born": "1884",
-        "Birth place": "France",
-        "Died": "1978",
-        "Place of Death": "France",
-        "Subjects Of Study": "Middle Ages"
+        "name": "Etienne Gilson",
+        "birth": "1884",
+        "birth_p": "France",
+        "death": "1978",
+        "death_p": "France",
+        "subjects": "Middle Ages"
     },
     {
-        "Philosophers": "Ferdinand Christian Baur",
-        "Born": "1792",
-        "Birth place": "Germany",
-        "Died": "1860",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Christianity, Hegelianism"
+        "name": "Ferdinand Christian Baur",
+        "birth": "1792",
+        "birth_p": "Germany",
+        "death": "1860",
+        "death_p": "Germany",
+        "subjects": "Christianity, Hegelianism"
     },
     {
-        "Philosophers": "Francisco Suarez",
-        "Born": "1548",
-        "Birth place": "Spain",
-        "Died": "1617",
-        "Place of Death": "Lisbon",
-        "Subjects Of Study": "Church And State, Theocracy"
+        "name": "Francisco Suarez",
+        "birth": "1548",
+        "birth_p": "Spain",
+        "death": "1617",
+        "death_p": "Lisbon",
+        "subjects": "Church And State, Theocracy"
     },
     {
-        "Philosophers": "Franciscus Hemsterhuis",
-        "Born": "1721",
-        "Birth place": "Netherlands",
-        "Died": "1790",
-        "Place of Death": "Netherlands",
-        "Subjects Of Study": "Aesthetics, Rationalism, Sensationalism"
+        "name": "Franciscus Hemsterhuis",
+        "birth": "1721",
+        "birth_p": "Netherlands",
+        "death": "1790",
+        "death_p": "Netherlands",
+        "subjects": "Aesthetics, Rationalism, Sensationalism"
     },
     {
-        "Philosophers": "Franz Brentano",
-        "Born": "1838",
-        "Birth place": "Germany",
-        "Died": "1917",
-        "Place of Death": "Switzerland",
-        "Subjects Of Study": "Intentionality, Intentionalism"
+        "name": "Franz Brentano",
+        "birth": "1838",
+        "birth_p": "Germany",
+        "death": "1917",
+        "death_p": "Switzerland",
+        "subjects": "Intentionality, Intentionalism"
     },
     {
-        "Philosophers": "Franz Rosenzweig",
-        "Born": "1886",
-        "Birth place": "Germany",
-        "Died": "1929",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Judaism, Existentialism"
+        "name": "Franz Rosenzweig",
+        "birth": "1886",
+        "birth_p": "Germany",
+        "death": "1929",
+        "death_p": "Germany",
+        "subjects": "Judaism, Existentialism"
     },
     {
-        "Philosophers": "Frederick Robert Tennant",
-        "Born": "1866",
-        "Birth place": "England",
-        "Died": "1957",
-        "Place of Death": "England",
-        "Subjects Of Study": "Theism, Argument From Design"
+        "name": "Frederick Robert Tennant",
+        "birth": "1866",
+        "birth_p": "England",
+        "death": "1957",
+        "death_p": "England",
+        "subjects": "Theism, Argument From Design"
     },
     {
-        "Philosophers": "Friedrich Nietzsche",
-        "Born": "1844",
-        "Birth place": "Germany",
-        "Died": "1900",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Philosophy Of Art"
+        "name": "Friedrich Nietzsche",
+        "birth": "1844",
+        "birth_p": "Germany",
+        "death": "1900",
+        "death_p": "Germany",
+        "subjects": "Philosophy Of Art"
     },
     {
-        "Philosophers": "Friedrich Schleiermacher",
-        "Born": "1768",
-        "Birth place": "Poland",
-        "Died": "1834",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Protestantism"
+        "name": "Friedrich Schleiermacher",
+        "birth": "1768",
+        "birth_p": "Poland",
+        "death": "1834",
+        "death_p": "Germany",
+        "subjects": "Protestantism"
     },
     {
-        "Philosophers": "Friedrich Theodor von Vischer",
-        "Born": "1807",
-        "Birth place": "Germany",
-        "Died": "1887",
-        "Place of Death": "Austria",
-        "Subjects Of Study": "Literature, Realism"
+        "name": "Friedrich Theodor von Vischer",
+        "birth": "1807",
+        "birth_p": "Germany",
+        "death": "1887",
+        "death_p": "Austria",
+        "subjects": "Literature, Realism"
     },
     {
-        "Philosophers": "Friedrich Wilhelm Joseph von Schelling",
-        "Born": "1775",
-        "Birth place": "Germany",
-        "Died": "1854",
-        "Place of Death": "Switzerland",
-        "Subjects Of Study": "Ego, Consciousness, Free Will, Absolute"
+        "name": "Friedrich Wilhelm Joseph von Schelling",
+        "birth": "1775",
+        "birth_p": "Germany",
+        "death": "1854",
+        "death_p": "Switzerland",
+        "subjects": "Ego, Consciousness, Free Will, Absolute"
     },
     {
-        "Philosophers": "Fritz Mauthner",
-        "Born": "1849",
-        "Birth place": "Bohemia",
-        "Died": "1923",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Language, Epistemology"
+        "name": "Fritz Mauthner",
+        "birth": "1849",
+        "birth_p": "Bohemia",
+        "death": "1923",
+        "death_p": "Germany",
+        "subjects": "Language, Epistemology"
     },
     {
-        "Philosophers": "Fyodor Ippolitovich Shcherbatskoy",
-        "Born": "1866",
-        "Birth place": "Poland",
-        "Died": "1942",
-        "Place of Death": "Union",
-        "Subjects Of Study": "Buddhism, Indian Philosophy, Logic"
+        "name": "Fyodor Ippolitovich Shcherbatskoy",
+        "birth": "1866",
+        "birth_p": "Poland",
+        "death": "1942",
+        "death_p": "Union",
+        "subjects": "Buddhism, Indian Philosophy, Logic"
     },
     {
-        "Philosophers": "Gabriel Biel",
-        "Born": "1420",
-        "Birth place": "Speyer",
-        "Died": "1495",
-        "Place of Death": "W\u00fcrttemberg",
-        "Subjects Of Study": "Scholasticism, Political Economy, William Of Ockham, Economic Theory"
+        "name": "Gabriel Biel",
+        "birth": "1420",
+        "birth_p": "Speyer",
+        "death": "1495",
+        "death_p": "W\u00fcrttemberg",
+        "subjects": "Scholasticism, Political Economy, William Of Ockham, Economic Theory"
     },
     {
-        "Philosophers": "Gaston Frommel",
-        "Born": "1862",
-        "Birth place": "Switzerland",
-        "Died": "1906",
-        "Place of Death": "Switzerland",
-        "Subjects Of Study": "Theism"
+        "name": "Gaston Frommel",
+        "birth": "1862",
+        "birth_p": "Switzerland",
+        "death": "1906",
+        "death_p": "Switzerland",
+        "subjects": "Theism"
     },
     {
-        "Philosophers": "Ge Hong",
-        "Born": "283",
-        "Birth place": "China",
-        "Died": "343",
-        "Place of Death": "China",
-        "Subjects Of Study": "Ethics, Daoism, Confucianism, Alchemy"
+        "name": "Ge Hong",
+        "birth": "283",
+        "birth_p": "China",
+        "death": "343",
+        "death_p": "China",
+        "subjects": "Ethics, Daoism, Confucianism, Alchemy"
     },
     {
-        "Philosophers": "Georg Bernhard Bilfinger",
-        "Born": "1693",
-        "Birth place": "Germany",
-        "Died": "1750",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Gottfried Wilhelm Leibniz, Christian, Baron Von Wolff, Possibility, Monad"
+        "name": "Georg Bernhard Bilfinger",
+        "birth": "1693",
+        "birth_p": "Germany",
+        "death": "1750",
+        "death_p": "Germany",
+        "subjects": "Gottfried Wilhelm Leibniz, Christian, Baron Von Wolff, Possibility, Monad"
     },
     {
-        "Philosophers": "Georg Brandes",
-        "Born": "1842",
-        "Birth place": "Denmark",
-        "Died": "1927",
-        "Place of Death": "Denmark",
-        "Subjects Of Study": "Literature, Michelangelo, Julius Caesar, Voltaire, Naturalism"
+        "name": "Georg Brandes",
+        "birth": "1842",
+        "birth_p": "Denmark",
+        "death": "1927",
+        "death_p": "Denmark",
+        "subjects": "Literature, Michelangelo, Julius Caesar, Voltaire, Naturalism"
     },
     {
-        "Philosophers": "Georg Simmel",
-        "Born": "1858",
-        "Birth place": "Germany",
-        "Died": "1918",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Economics, Money, Human Being, Social Interaction"
+        "name": "Georg Simmel",
+        "birth": "1858",
+        "birth_p": "Germany",
+        "death": "1918",
+        "death_p": "Germany",
+        "subjects": "Economics, Money, Human Being, Social Interaction"
     },
     {
-        "Philosophers": "Georg Wilhelm Friedrich Hegel",
-        "Born": "1770",
-        "Birth place": "Germany",
-        "Died": "1831",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Rationalism, Absolute Idealism, Dialectic, Absolute Spirit, Geist"
+        "name": "Georg Wilhelm Friedrich Hegel",
+        "birth": "1770",
+        "birth_p": "Germany",
+        "death": "1831",
+        "death_p": "Germany",
+        "subjects": "Rationalism, Absolute Idealism, Dialectic, Absolute Spirit, Geist"
     },
     {
-        "Philosophers": "George Gemistus Plethon",
-        "Born": "1355",
-        "Birth place": "Turkey",
-        "Died": "1452",
-        "Place of Death": "Greece",
-        "Subjects Of Study": "Aristotelianism, Neoplatonism"
+        "name": "George Gemistus Plethon",
+        "birth": "1355",
+        "birth_p": "Turkey",
+        "death": "1452",
+        "death_p": "Greece",
+        "subjects": "Aristotelianism, Neoplatonism"
     },
     {
-        "Philosophers": "George Grant",
-        "Born": "1918",
-        "Birth place": "Canada",
-        "Died": "1988",
-        "Place of Death": "Canada",
-        "Subjects Of Study": "Canada, Nationalism"
+        "name": "George Grant",
+        "birth": "1918",
+        "birth_p": "Canada",
+        "death": "1988",
+        "death_p": "Canada",
+        "subjects": "Canada, Nationalism"
     },
     {
-        "Philosophers": "George Henry Lewes",
-        "Born": "1817",
-        "Birth place": "England",
-        "Died": "1878",
-        "Place of Death": "England",
-        "Subjects Of Study": "Science"
+        "name": "George Henry Lewes",
+        "birth": "1817",
+        "birth_p": "England",
+        "death": "1878",
+        "death_p": "England",
+        "subjects": "Science"
     },
     {
-        "Philosophers": "George Herbert Mead",
-        "Born": "1863",
-        "Birth place": "Massachusetts",
-        "Died": "1931",
-        "Place of Death": "Illinois",
-        "Subjects Of Study": "Language, Social Interaction"
+        "name": "George Herbert Mead",
+        "birth": "1863",
+        "birth_p": "Massachusetts",
+        "death": "1931",
+        "death_p": "Illinois",
+        "subjects": "Language, Social Interaction"
     },
     {
-        "Philosophers": "George Santayana",
-        "Born": "1863",
-        "Birth place": "Spain",
-        "Died": "1952",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Skepticism, Poetry, Faith, Reason, Essence"
+        "name": "George Santayana",
+        "birth": "1863",
+        "birth_p": "Spain",
+        "death": "1952",
+        "death_p": "Italy",
+        "subjects": "Skepticism, Poetry, Faith, Reason, Essence"
     },
     {
-        "Philosophers": "George Trumbull Ladd",
-        "Born": "1842",
-        "Birth place": "Ohio",
-        "Died": "1921",
-        "Place of Death": "Connecticut",
-        "Subjects Of Study": "Biological Psychology, Functionalism, Experimental Psychology"
+        "name": "George Trumbull Ladd",
+        "birth": "1842",
+        "birth_p": "Ohio",
+        "death": "1921",
+        "death_p": "Connecticut",
+        "subjects": "Biological Psychology, Functionalism, Experimental Psychology"
     },
     {
-        "Philosophers": "George Tyrrell",
-        "Born": "1861",
-        "Birth place": "Ireland",
-        "Died": "1909",
-        "Place of Death": "England",
-        "Subjects Of Study": "Theological Liberalism, Modernism"
+        "name": "George Tyrrell",
+        "birth": "1861",
+        "birth_p": "Ireland",
+        "death": "1909",
+        "death_p": "England",
+        "subjects": "Theological Liberalism, Modernism"
     },
     {
-        "Philosophers": "Geraud de Cordemoy",
-        "Born": "1620",
-        "Birth place": "France",
-        "Died": "1684",
-        "Place of Death": "France",
-        "Subjects Of Study": "Animal Magnetism, Matter"
+        "name": "Geraud de Cordemoy",
+        "birth": "1620",
+        "birth_p": "France",
+        "death": "1684",
+        "death_p": "France",
+        "subjects": "Animal Magnetism, Matter"
     },
     {
-        "Philosophers": "Giambattista Vico",
-        "Born": "1668",
-        "Birth place": "Italy",
-        "Died": "1744",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Philosophical Anthropology, Providence, Social Evolution"
+        "name": "Giambattista Vico",
+        "birth": "1668",
+        "birth_p": "Italy",
+        "death": "1744",
+        "death_p": "Italy",
+        "subjects": "Philosophical Anthropology, Providence, Social Evolution"
     },
     {
-        "Philosophers": "Giles of Rome",
-        "Born": "1243",
-        "Birth place": "Italy",
-        "Died": "1316",
-        "Place of Death": "France",
-        "Subjects Of Study": "Aristotelianism, Scholasticism, Papacy, Thomism, Authority"
+        "name": "Giles of Rome",
+        "birth": "1243",
+        "birth_p": "Italy",
+        "death": "1316",
+        "death_p": "France",
+        "subjects": "Aristotelianism, Scholasticism, Papacy, Thomism, Authority"
     },
     {
-        "Philosophers": "Gilles Deleuze",
-        "Born": "1925",
-        "Birth place": "France",
-        "Died": "1995",
-        "Place of Death": "France",
-        "Subjects Of Study": "Metaphysics"
+        "name": "Gilles Deleuze",
+        "birth": "1925",
+        "birth_p": "France",
+        "death": "1995",
+        "death_p": "France",
+        "subjects": "Metaphysics"
     },
     {
-        "Philosophers": "Gottfried Wilhelm Leibniz",
-        "Born": "1646",
-        "Birth place": "Germany",
-        "Died": "1716",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Problem Of Evil, Personalism, Differentiation, Best Of All Possible Worlds, Integration"
+        "name": "Gottfried Wilhelm Leibniz",
+        "birth": "1646",
+        "birth_p": "Germany",
+        "death": "1716",
+        "death_p": "Germany",
+        "subjects": "Problem Of Evil, Personalism, Differentiation, Best Of All Possible Worlds, Integration"
     },
     {
-        "Philosophers": "Gotthold Ephraim Lessing",
-        "Born": "1729",
-        "Birth place": "Germany",
-        "Died": "1781",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Dramatic Literature"
+        "name": "Gotthold Ephraim Lessing",
+        "birth": "1729",
+        "birth_p": "Germany",
+        "death": "1781",
+        "death_p": "Germany",
+        "subjects": "Dramatic Literature"
     },
     {
-        "Philosophers": "Gottlob Frege",
-        "Born": "1848",
-        "Birth place": "Germany",
-        "Died": "1925",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Variable, Quantifier"
+        "name": "Gottlob Frege",
+        "birth": "1848",
+        "birth_p": "Germany",
+        "death": "1925",
+        "death_p": "Germany",
+        "subjects": "Variable, Quantifier"
     },
     {
-        "Philosophers": "Gregory of Rimini",
-        "Born": "1300",
-        "Birth place": "Italy",
-        "Died": "1358",
-        "Place of Death": "Austria",
-        "Subjects Of Study": "Grace"
+        "name": "Gregory of Rimini",
+        "birth": "1300",
+        "birth_p": "Italy",
+        "death": "1358",
+        "death_p": "Austria",
+        "subjects": "Grace"
     },
     {
-        "Philosophers": "Gu Yanwu",
-        "Born": "1613",
-        "Birth place": "China",
-        "Died": "1682",
-        "Place of Death": "China",
-        "Subjects Of Study": "Confucianism"
+        "name": "Gu Yanwu",
+        "birth": "1613",
+        "birth_p": "China",
+        "death": "1682",
+        "death_p": "China",
+        "subjects": "Confucianism"
     },
     {
-        "Philosophers": "Gustav Theodor Fechner",
-        "Born": "1801",
-        "Birth place": "Germany",
-        "Died": "1887",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Perception, Sensation, Weber\u2019S Law"
+        "name": "Gustav Theodor Fechner",
+        "birth": "1801",
+        "birth_p": "Germany",
+        "death": "1887",
+        "death_p": "Germany",
+        "subjects": "Perception, Sensation, Weber\u2019S Law"
     },
     {
-        "Philosophers": "Hajji Hadi Sabzevari",
-        "Born": "1798",
-        "Birth place": "Iran",
-        "Died": "1878",
-        "Place of Death": "Iran",
-        "Subjects Of Study": "\u1e24ikmah"
+        "name": "Hajji Hadi Sabzevari",
+        "birth": "1798",
+        "birth_p": "Iran",
+        "death": "1878",
+        "death_p": "Iran",
+        "subjects": "\u1e24ikmah"
     },
     {
-        "Philosophers": "Hannah Arendt",
-        "Born": "1906",
-        "Birth place": "Germany",
-        "Died": "1975",
-        "Place of Death": "York",
-        "Subjects Of Study": "Anti-Semitism, Adolf Eichmann, Totalitarianism, Trial"
+        "name": "Hannah Arendt",
+        "birth": "1906",
+        "birth_p": "Germany",
+        "death": "1975",
+        "death_p": "York",
+        "subjects": "Anti-Semitism, Adolf Eichmann, Totalitarianism, Trial"
     },
     {
-        "Philosophers": "Hans Reichenbach",
-        "Born": "1891",
-        "Birth place": "Germany",
-        "Died": "1953",
-        "Place of Death": "California",
-        "Subjects Of Study": "Probability Theory, Induction"
+        "name": "Hans Reichenbach",
+        "birth": "1891",
+        "birth_p": "Germany",
+        "death": "1953",
+        "death_p": "California",
+        "subjects": "Probability Theory, Induction"
     },
     {
-        "Philosophers": "Hans-Georg Gadamer",
-        "Born": "1900",
-        "Birth place": "Germany",
-        "Died": "2002",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Hermeneutics"
+        "name": "Hans-Georg Gadamer",
+        "birth": "1900",
+        "birth_p": "Germany",
+        "death": "2002",
+        "death_p": "Germany",
+        "subjects": "Hermeneutics"
     },
     {
-        "Philosophers": "Harry S. Broudy",
-        "Born": "1905",
-        "Birth place": "Poland",
-        "Died": "1998",
-        "Place of Death": "Illinois",
-        "Subjects Of Study": "Education, Philosophy Of Education, Psychology"
+        "name": "Harry S. Broudy",
+        "birth": "1905",
+        "birth_p": "Poland",
+        "death": "1998",
+        "death_p": "Illinois",
+        "subjects": "Education, Philosophy Of Education, Psychology"
     },
     {
-        "Philosophers": "Hatano Seiichi",
-        "Born": "1877",
-        "Birth place": "Japan",
-        "Died": "1950",
-        "Place of Death": "Japan",
-        "Subjects Of Study": "Christianity"
+        "name": "Hatano Seiichi",
+        "birth": "1877",
+        "birth_p": "Japan",
+        "death": "1950",
+        "death_p": "Japan",
+        "subjects": "Christianity"
     },
     {
-        "Philosophers": "Hayashi Razan",
-        "Born": "1583",
-        "Birth place": "Japan",
-        "Died": "1657",
-        "Place of Death": "Japan",
-        "Subjects Of Study": "Shint\u014d, Zhu Xi, Neo-Confucianism"
+        "name": "Hayashi Razan",
+        "birth": "1583",
+        "birth_p": "Japan",
+        "death": "1657",
+        "death_p": "Japan",
+        "subjects": "Shint\u014d, Zhu Xi, Neo-Confucianism"
     },
     {
-        "Philosophers": "He Yan",
-        "Born": "193",
-        "Birth place": "China",
-        "Died": "249",
-        "Place of Death": "China",
-        "Subjects Of Study": "Daoism, Confucianism, Wuwei, Wu, Qingtan"
+        "name": "He Yan",
+        "birth": "193",
+        "birth_p": "China",
+        "death": "249",
+        "death_p": "China",
+        "subjects": "Daoism, Confucianism, Wuwei, Wu, Qingtan"
     },
     {
-        "Philosophers": "Hemachandra",
-        "Born": "1088",
-        "Birth place": "India",
-        "Died": "1172",
-        "Place of Death": "India",
-        "Subjects Of Study": "Jainism"
+        "name": "Hemachandra",
+        "birth": "1088",
+        "birth_p": "India",
+        "death": "1172",
+        "death_p": "India",
+        "subjects": "Jainism"
     },
     {
-        "Philosophers": "Henri Bergson",
-        "Born": "1859",
-        "Birth place": "France",
-        "Died": "1941",
-        "Place of Death": "France",
-        "Subjects Of Study": "Evolution, Time, Human Intelligence, Memory, Instinct"
+        "name": "Henri Bergson",
+        "birth": "1859",
+        "birth_p": "France",
+        "death": "1941",
+        "death_p": "France",
+        "subjects": "Evolution, Time, Human Intelligence, Memory, Instinct"
     },
     {
-        "Philosophers": "Henri Berr",
-        "Born": "1863",
-        "Birth place": "France",
-        "Died": "1954",
-        "Place of Death": "France",
-        "Subjects Of Study": "Philosophy Of History"
+        "name": "Henri Berr",
+        "birth": "1863",
+        "birth_p": "France",
+        "death": "1954",
+        "death_p": "France",
+        "subjects": "Philosophy Of History"
     },
     {
-        "Philosophers": "Henri Poincare",
-        "Born": "1854",
-        "Birth place": "France",
-        "Died": "1912",
-        "Place of Death": "France",
-        "Subjects Of Study": "Relativity, Fuchsian Function, Automorphic Function, N-Body Problem"
+        "name": "Henri Poincare",
+        "birth": "1854",
+        "birth_p": "France",
+        "death": "1912",
+        "death_p": "France",
+        "subjects": "Relativity, Fuchsian Function, Automorphic Function, N-Body Problem"
     },
     {
-        "Philosophers": "Henry Longueville Mansel",
-        "Born": "1820",
-        "Birth place": "England",
-        "Died": "1871",
-        "Place of Death": "England",
-        "Subjects Of Study": "Philosophy, Sir William Hamilton, 9Th Baronet, Knowledge"
+        "name": "Henry Longueville Mansel",
+        "birth": "1820",
+        "birth_p": "England",
+        "death": "1871",
+        "death_p": "England",
+        "subjects": "Philosophy, Sir William Hamilton, 9Th Baronet, Knowledge"
     },
     {
-        "Philosophers": "Henry Sidgwick",
-        "Born": "1838",
-        "Birth place": "England",
-        "Died": "1900",
-        "Place of Death": "England",
-        "Subjects Of Study": "Ethics, Utilitarianism, Egoism, Categorical Imperative, Intuitionism"
+        "name": "Henry Sidgwick",
+        "birth": "1838",
+        "birth_p": "England",
+        "death": "1900",
+        "death_p": "England",
+        "subjects": "Ethics, Utilitarianism, Egoism, Categorical Imperative, Intuitionism"
     },
     {
-        "Philosophers": "Herbert Spencer",
-        "Born": "1820",
-        "Birth place": "England",
-        "Died": "1903",
-        "Place of Death": "England",
-        "Subjects Of Study": "Evolution, Social Change, Social Structure, Cultural Evolution, Survival Of The Fittest"
+        "name": "Herbert Spencer",
+        "birth": "1820",
+        "birth_p": "England",
+        "death": "1903",
+        "death_p": "England",
+        "subjects": "Evolution, Social Change, Social Structure, Cultural Evolution, Survival Of The Fittest"
     },
     {
-        "Philosophers": "Hermann Cohen",
-        "Born": "1842",
-        "Birth place": "Germany",
-        "Died": "1918",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Judaism"
+        "name": "Hermann Cohen",
+        "birth": "1842",
+        "birth_p": "Germany",
+        "death": "1918",
+        "death_p": "Germany",
+        "subjects": "Judaism"
     },
     {
-        "Philosophers": "Hermann von Helmholtz",
-        "Born": "1821",
-        "Birth place": "Germany",
-        "Died": "1894",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Electricity, Sound, Wave, Non-Euclidean Geometry, Conservation Of Energy"
+        "name": "Hermann von Helmholtz",
+        "birth": "1821",
+        "birth_p": "Germany",
+        "death": "1894",
+        "death_p": "Germany",
+        "subjects": "Electricity, Sound, Wave, Non-Euclidean Geometry, Conservation Of Energy"
     },
     {
-        "Philosophers": "Ibn Gabirol",
-        "Born": "1022",
-        "Birth place": "Spain",
-        "Died": "1070",
-        "Place of Death": "Spain",
-        "Subjects Of Study": "Neoplatonism"
+        "name": "Ibn Gabirol",
+        "birth": "1022",
+        "birth_p": "Spain",
+        "death": "1070",
+        "death_p": "Spain",
+        "subjects": "Neoplatonism"
     },
     {
-        "Philosophers": "Immanuel Kant",
-        "Born": "1724",
-        "Birth place": "Prussia",
-        "Died": "1804",
-        "Place of Death": "Prussia",
-        "Subjects Of Study": "Political Philosophy, Immortality, Existence Of God, Teleology, Category"
+        "name": "Immanuel Kant",
+        "birth": "1724",
+        "birth_p": "Prussia",
+        "death": "1804",
+        "death_p": "Prussia",
+        "subjects": "Political Philosophy, Immortality, Existence Of God, Teleology, Category"
     },
     {
-        "Philosophers": "Isaak August Dorner",
-        "Born": "1809",
-        "Birth place": "Germany",
-        "Died": "1884",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Protestantism, Kantianism"
+        "name": "Isaak August Dorner",
+        "birth": "1809",
+        "birth_p": "Germany",
+        "death": "1884",
+        "death_p": "Germany",
+        "subjects": "Protestantism, Kantianism"
     },
     {
-        "Philosophers": "Ito Jinsai",
-        "Born": "1627",
-        "Birth place": "Japan",
-        "Died": "1705",
-        "Place of Death": "Japan",
-        "Subjects Of Study": "Kogaku"
+        "name": "Ito Jinsai",
+        "birth": "1627",
+        "birth_p": "Japan",
+        "death": "1705",
+        "death_p": "Japan",
+        "subjects": "Kogaku"
     },
     {
-        "Philosophers": "Jacob Moleschott",
-        "Born": "1822",
-        "Birth place": "Netherlands",
-        "Died": "1893",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Thought, Emotion"
+        "name": "Jacob Moleschott",
+        "birth": "1822",
+        "birth_p": "Netherlands",
+        "death": "1893",
+        "death_p": "Italy",
+        "subjects": "Thought, Emotion"
     },
     {
-        "Philosophers": "Jacques Derrida",
-        "Born": "1930",
-        "Birth place": "Algeria",
-        "Died": "2004",
-        "Place of Death": "France",
-        "Subjects Of Study": "Metaphysics, Deconstruction, Philosophy"
+        "name": "Jacques Derrida",
+        "birth": "1930",
+        "birth_p": "Algeria",
+        "death": "2004",
+        "death_p": "France",
+        "subjects": "Metaphysics, Deconstruction, Philosophy"
     },
     {
-        "Philosophers": "Jacques Maritain",
-        "Born": "1882",
-        "Birth place": "France",
-        "Died": "1973",
-        "Place of Death": "France",
-        "Subjects Of Study": "Thomas Aquinas, Saint"
+        "name": "Jacques Maritain",
+        "birth": "1882",
+        "birth_p": "France",
+        "death": "1973",
+        "death_p": "France",
+        "subjects": "Thomas Aquinas, Saint"
     },
     {
-        "Philosophers": "Jaime Luciano Balmes",
-        "Born": "1810",
-        "Birth place": "Spain",
-        "Died": "1848",
-        "Place of Death": "Spain",
-        "Subjects Of Study": "Roman Catholicism"
+        "name": "Jaime Luciano Balmes",
+        "birth": "1810",
+        "birth_p": "Spain",
+        "death": "1848",
+        "death_p": "Spain",
+        "subjects": "Roman Catholicism"
     },
     {
-        "Philosophers": "Jakob Bohme",
-        "Born": "1575",
-        "Birth place": "Germany",
-        "Died": "1624",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Mysticism, Alchemy, Paracelsus, Dialectic, Free Will"
+        "name": "Jakob Bohme",
+        "birth": "1575",
+        "birth_p": "Germany",
+        "death": "1624",
+        "death_p": "Germany",
+        "subjects": "Mysticism, Alchemy, Paracelsus, Dialectic, Free Will"
     },
     {
-        "Philosophers": "James Frederick Ferrier",
-        "Born": "1808",
-        "Birth place": "Scotland",
-        "Died": "1864",
-        "Place of Death": "Scotland",
-        "Subjects Of Study": "Agnoiology"
+        "name": "James Frederick Ferrier",
+        "birth": "1808",
+        "birth_p": "Scotland",
+        "death": "1864",
+        "death_p": "Scotland",
+        "subjects": "Agnoiology"
     },
     {
-        "Philosophers": "James J. Gibson",
-        "Born": "1904",
-        "Birth place": "Ithaca",
-        "Died": "1979",
-        "Place of Death": "York",
-        "Subjects Of Study": "Perception, 'The Perception Of The Visual World'"
+        "name": "James J. Gibson",
+        "birth": "1904",
+        "birth_p": "Ithaca",
+        "death": "1979",
+        "death_p": "York",
+        "subjects": "Perception, 'The Perception Of The Visual World'"
     },
     {
-        "Philosophers": "James Mark Baldwin",
-        "Born": "1861",
-        "Birth place": "Carolina",
-        "Died": "1934",
-        "Place of Death": "France",
-        "Subjects Of Study": "Individual Difference"
+        "name": "James Mark Baldwin",
+        "birth": "1861",
+        "birth_p": "Carolina",
+        "death": "1934",
+        "death_p": "France",
+        "subjects": "Individual Difference"
     },
     {
-        "Philosophers": "James Martineau",
-        "Born": "1805",
-        "Birth place": "England",
-        "Died": "1900",
-        "Place of Death": "England",
-        "Subjects Of Study": "Unitarianism, Authority, Religion, Conscience"
+        "name": "James Martineau",
+        "birth": "1805",
+        "birth_p": "England",
+        "death": "1900",
+        "death_p": "England",
+        "subjects": "Unitarianism, Authority, Religion, Conscience"
     },
     {
-        "Philosophers": "Jean Baudrillard",
-        "Born": "1929",
-        "Birth place": "France",
-        "Died": "2007",
-        "Place of Death": "France",
-        "Subjects Of Study": "Simulacrum, Hyperreality"
+        "name": "Jean Baudrillard",
+        "birth": "1929",
+        "birth_p": "France",
+        "death": "2007",
+        "death_p": "France",
+        "subjects": "Simulacrum, Hyperreality"
     },
     {
-        "Philosophers": "Jean-Jacques Rousseau",
-        "Born": "1712",
-        "Birth place": "Switzerland",
-        "Died": "1778",
-        "Place of Death": "France",
-        "Subjects Of Study": "Cultural Evolution, General Will"
+        "name": "Jean-Jacques Rousseau",
+        "birth": "1712",
+        "birth_p": "Switzerland",
+        "death": "1778",
+        "death_p": "France",
+        "subjects": "Cultural Evolution, General Will"
     },
     {
-        "Philosophers": "Jean-Paul Sartre",
-        "Born": "1905",
-        "Birth place": "France",
-        "Died": "1980",
-        "Place of Death": "France",
-        "Subjects Of Study": "Marxism, Existentialism, Phenomenology, Gustave Flaubert, Litt\u00e9rature Engag\u00e9e"
+        "name": "Jean-Paul Sartre",
+        "birth": "1905",
+        "birth_p": "France",
+        "death": "1980",
+        "death_p": "France",
+        "subjects": "Marxism, Existentialism, Phenomenology, Gustave Flaubert, Litt\u00e9rature Engag\u00e9e"
     },
     {
-        "Philosophers": "Jeremy Bentham",
-        "Born": "1748",
-        "Birth place": "England",
-        "Died": "1832",
-        "Place of Death": "England",
-        "Subjects Of Study": "Utility, Law"
+        "name": "Jeremy Bentham",
+        "birth": "1748",
+        "birth_p": "England",
+        "death": "1832",
+        "death_p": "England",
+        "subjects": "Utility, Law"
     },
     {
-        "Philosophers": "Joachim Wach",
-        "Born": "1898",
-        "Birth place": "Germany",
-        "Died": "1955",
-        "Place of Death": "Switzerland",
-        "Subjects Of Study": "Sociology, Phenomenology Of Religion, Religion, Comparative Religion"
+        "name": "Joachim Wach",
+        "birth": "1898",
+        "birth_p": "Germany",
+        "death": "1955",
+        "death_p": "Switzerland",
+        "subjects": "Sociology, Phenomenology Of Religion, Religion, Comparative Religion"
     },
     {
-        "Philosophers": "Johann Gottlieb Fichte",
-        "Born": "1762",
-        "Birth place": "Germany",
-        "Died": "1814",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Germany, Secondary Education, Elementary Education, Ego, Practical Reason"
+        "name": "Johann Gottlieb Fichte",
+        "birth": "1762",
+        "birth_p": "Germany",
+        "death": "1814",
+        "death_p": "Germany",
+        "subjects": "Germany, Secondary Education, Elementary Education, Ego, Practical Reason"
     },
     {
-        "Philosophers": "Johann Heinrich Lambert",
-        "Born": "1728",
-        "Birth place": "Alsace",
-        "Died": "1777",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Light, Measurement, Pi, Hyperbolic Functions, Irrational Number"
+        "name": "Johann Heinrich Lambert",
+        "birth": "1728",
+        "birth_p": "Alsace",
+        "death": "1777",
+        "death_p": "Germany",
+        "subjects": "Light, Measurement, Pi, Hyperbolic Functions, Irrational Number"
     },
     {
-        "Philosophers": "John Baconthorpe",
-        "Born": "1290",
-        "Birth place": "England",
-        "Died": "1346",
-        "Place of Death": "England",
-        "Subjects Of Study": "Aristotelianism, Latin Averroism"
+        "name": "John Baconthorpe",
+        "birth": "1290",
+        "birth_p": "England",
+        "death": "1346",
+        "death_p": "England",
+        "subjects": "Aristotelianism, Latin Averroism"
     },
     {
-        "Philosophers": "John Dewey",
-        "Born": "1859",
-        "Birth place": "Vermont",
-        "Died": "1952",
-        "Place of Death": "York",
-        "Subjects Of Study": "Philosophy Of Education, Progressive Education"
+        "name": "John Dewey",
+        "birth": "1859",
+        "birth_p": "Vermont",
+        "death": "1952",
+        "death_p": "York",
+        "subjects": "Philosophy Of Education, Progressive Education"
     },
     {
-        "Philosophers": "John Fiske",
-        "Born": "1842",
-        "Birth place": "Connecticut",
-        "Died": "1901",
-        "Place of Death": "Massachusetts",
-        "Subjects Of Study": "Evolution"
+        "name": "John Fiske",
+        "birth": "1842",
+        "birth_p": "Connecticut",
+        "death": "1901",
+        "death_p": "Massachusetts",
+        "subjects": "Evolution"
     },
     {
-        "Philosophers": "John Langshaw Austin",
-        "Born": "1911",
-        "Birth place": "England",
-        "Died": "1960",
-        "Place of Death": "England",
-        "Subjects Of Study": "Linguistics"
+        "name": "John Langshaw Austin",
+        "birth": "1911",
+        "birth_p": "England",
+        "death": "1960",
+        "death_p": "England",
+        "subjects": "Linguistics"
     },
     {
-        "Philosophers": "John Locke",
-        "Born": "1632",
-        "Birth place": "England",
-        "Died": "1704",
-        "Place of Death": "England",
-        "Subjects Of Study": "Christianity, Language, Government, Universal, Personal Identity"
+        "name": "John Locke",
+        "birth": "1632",
+        "birth_p": "England",
+        "death": "1704",
+        "death_p": "England",
+        "subjects": "Christianity, Language, Government, Universal, Personal Identity"
     },
     {
-        "Philosophers": "John Neville Keynes",
-        "Born": "1852",
-        "Birth place": "England",
-        "Died": "1949",
-        "Place of Death": "England",
-        "Subjects Of Study": "Economics, Deduction, Induction, Methodology"
+        "name": "John Neville Keynes",
+        "birth": "1852",
+        "birth_p": "England",
+        "death": "1949",
+        "death_p": "England",
+        "subjects": "Economics, Deduction, Induction, Methodology"
     },
     {
-        "Philosophers": "John Scott Haldane",
-        "Born": "1860",
-        "Birth place": "Scotland",
-        "Died": "1936",
-        "Place of Death": "England",
-        "Subjects Of Study": "Coal Mining, Safety, Mine Gas, Gas Exchange"
+        "name": "John Scott Haldane",
+        "birth": "1860",
+        "birth_p": "Scotland",
+        "death": "1936",
+        "death_p": "England",
+        "subjects": "Coal Mining, Safety, Mine Gas, Gas Exchange"
     },
     {
-        "Philosophers": "John Stuart Mill",
-        "Born": "1806",
-        "Birth place": "England",
-        "Died": "1873",
-        "Place of Death": "France",
-        "Subjects Of Study": "Utilitarianism, Induction"
+        "name": "John Stuart Mill",
+        "birth": "1806",
+        "birth_p": "England",
+        "death": "1873",
+        "death_p": "France",
+        "subjects": "Utilitarianism, Induction"
     },
     {
-        "Philosophers": "John Venn",
-        "Born": "1834",
-        "Birth place": "England",
-        "Died": "1923",
-        "Place of Death": "England",
-        "Subjects Of Study": "Probability Theory, Venn Diagram, Categorical Proposition, Syllogism"
+        "name": "John Venn",
+        "birth": "1834",
+        "birth_p": "England",
+        "death": "1923",
+        "death_p": "England",
+        "subjects": "Probability Theory, Venn Diagram, Categorical Proposition, Syllogism"
     },
     {
-        "Philosophers": "John Wycliffe",
-        "Born": "1330",
-        "Birth place": "England",
-        "Died": "1384",
-        "Place of Death": "England",
-        "Subjects Of Study": "Lollards, Predestination, Transubstantiation"
+        "name": "John Wycliffe",
+        "birth": "1330",
+        "birth_p": "England",
+        "death": "1384",
+        "death_p": "England",
+        "subjects": "Lollards, Predestination, Transubstantiation"
     },
     {
-        "Philosophers": "John of Paris",
-        "Born": "1255",
-        "Birth place": "France",
-        "Died": "1306",
-        "Place of Death": "France",
-        "Subjects Of Study": "Papacy, Thomism, Authority, Church And State, Eucharist"
+        "name": "John of Paris",
+        "birth": "1255",
+        "birth_p": "France",
+        "death": "1306",
+        "death_p": "France",
+        "subjects": "Papacy, Thomism, Authority, Church And State, Eucharist"
     },
     {
-        "Philosophers": "John of Salisbury",
-        "Born": "1120",
-        "Birth place": "England",
-        "Died": "1180",
-        "Place of Death": "France",
-        "Subjects Of Study": "Political Philosophy"
+        "name": "John of Salisbury",
+        "birth": "1120",
+        "birth_p": "England",
+        "death": "1180",
+        "death_p": "France",
+        "subjects": "Political Philosophy"
     },
     {
-        "Philosophers": "Jonathan Edwards",
-        "Born": "1703",
-        "Birth place": "Connecticut",
-        "Died": "1758",
-        "Place of Death": "Jersey",
-        "Subjects Of Study": "Puritanism, Revivalism"
+        "name": "Jonathan Edwards",
+        "birth": "1703",
+        "birth_p": "Connecticut",
+        "death": "1758",
+        "death_p": "Jersey",
+        "subjects": "Puritanism, Revivalism"
     },
     {
-        "Philosophers": "Jose Ortega y Gasset",
-        "Born": "1883",
-        "Birth place": "Spain",
-        "Died": "1955",
-        "Place of Death": "Spain",
-        "Subjects Of Study": "Mass Society"
+        "name": "Jose Ortega y Gasset",
+        "birth": "1883",
+        "birth_p": "Spain",
+        "death": "1955",
+        "death_p": "Spain",
+        "subjects": "Mass Society"
     },
     {
-        "Philosophers": "Jose Vasconcelos",
-        "Born": "1882",
-        "Birth place": "Mexico",
-        "Died": "1959",
-        "Place of Death": "Mexico",
-        "Subjects Of Study": "Monism"
+        "name": "Jose Vasconcelos",
+        "birth": "1882",
+        "birth_p": "Mexico",
+        "death": "1959",
+        "death_p": "Mexico",
+        "subjects": "Monism"
     },
     {
-        "Philosophers": "Joseph Butler",
-        "Born": "1692",
-        "Birth place": "England",
-        "Died": "1752",
-        "Place of Death": "England",
-        "Subjects Of Study": "Ethics, Revelation, Religion"
+        "name": "Joseph Butler",
+        "birth": "1692",
+        "birth_p": "England",
+        "death": "1752",
+        "death_p": "England",
+        "subjects": "Ethics, Revelation, Religion"
     },
     {
-        "Philosophers": "Joseph Priestley",
-        "Born": "1733",
-        "Birth place": "England",
-        "Died": "1804",
-        "Place of Death": "Pennsylvania",
-        "Subjects Of Study": "Electricity, Gas, Atmosphere, Photosynthesis, Oxide"
+        "name": "Joseph Priestley",
+        "birth": "1733",
+        "birth_p": "England",
+        "death": "1804",
+        "death_p": "Pennsylvania",
+        "subjects": "Electricity, Gas, Atmosphere, Photosynthesis, Oxide"
     },
     {
-        "Philosophers": "Josiah Royce",
-        "Born": "1855",
-        "Birth place": "California",
-        "Died": "1916",
-        "Place of Death": "Massachusetts",
-        "Subjects Of Study": "Truth, Will"
+        "name": "Josiah Royce",
+        "birth": "1855",
+        "birth_p": "California",
+        "death": "1916",
+        "death_p": "Massachusetts",
+        "subjects": "Truth, Will"
     },
     {
-        "Philosophers": "Julian Huxley",
-        "Born": "1887",
-        "Birth place": "England",
-        "Died": "1975",
-        "Place of Death": "England",
-        "Subjects Of Study": "Evolution, Taxonomy, Embryo, Behaviour"
+        "name": "Julian Huxley",
+        "birth": "1887",
+        "birth_p": "England",
+        "death": "1975",
+        "death_p": "England",
+        "subjects": "Evolution, Taxonomy, Embryo, Behaviour"
     },
     {
-        "Philosophers": "Justus Lipsius",
-        "Born": "1547",
-        "Birth place": "Belgium",
-        "Died": "1606",
-        "Place of Death": "Belgium",
-        "Subjects Of Study": "Stoicism"
+        "name": "Justus Lipsius",
+        "birth": "1547",
+        "birth_p": "Belgium",
+        "death": "1606",
+        "death_p": "Belgium",
+        "subjects": "Stoicism"
     },
     {
-        "Philosophers": "Karl Jaspers",
-        "Born": "1883",
-        "Birth place": "Germany",
-        "Died": "1969",
-        "Place of Death": "Switzerland",
-        "Subjects Of Study": "Psychopathology"
+        "name": "Karl Jaspers",
+        "birth": "1883",
+        "birth_p": "Germany",
+        "death": "1969",
+        "death_p": "Switzerland",
+        "subjects": "Psychopathology"
     },
     {
-        "Philosophers": "Karl Marx",
-        "Born": "1818",
-        "Birth place": "Germany",
-        "Died": "1883",
-        "Place of Death": "England",
-        "Subjects Of Study": "Philosophy Of History, Capitalism, Use Value, Exchange Value"
+        "name": "Karl Marx",
+        "birth": "1818",
+        "birth_p": "Germany",
+        "death": "1883",
+        "death_p": "England",
+        "subjects": "Philosophy Of History, Capitalism, Use Value, Exchange Value"
     },
     {
-        "Philosophers": "Karl Popper",
-        "Born": "1902",
-        "Birth place": "Austria",
-        "Died": "1994",
-        "Place of Death": "England",
-        "Subjects Of Study": "Scientific Method, Criterion Of Falsifiability, Induction"
+        "name": "Karl Popper",
+        "birth": "1902",
+        "birth_p": "Austria",
+        "death": "1994",
+        "death_p": "England",
+        "subjects": "Scientific Method, Criterion Of Falsifiability, Induction"
     },
     {
-        "Philosophers": "Kumazawa Banzan",
-        "Born": "1619",
-        "Birth place": "Japan",
-        "Died": "1691",
-        "Place of Death": "Japan",
-        "Subjects Of Study": "Wang Yangming, Neo-Confucianism"
+        "name": "Kumazawa Banzan",
+        "birth": "1619",
+        "birth_p": "Japan",
+        "death": "1691",
+        "death_p": "Japan",
+        "subjects": "Wang Yangming, Neo-Confucianism"
     },
     {
-        "Philosophers": "Leopold Kronecker",
-        "Born": "1823",
-        "Birth place": "Poland",
-        "Died": "1891",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Algebraic Equation, Algebraic Number, Elliptic Function"
+        "name": "Leopold Kronecker",
+        "birth": "1823",
+        "birth_p": "Poland",
+        "death": "1891",
+        "death_p": "Germany",
+        "subjects": "Algebraic Equation, Algebraic Number, Elliptic Function"
     },
     {
-        "Philosophers": "Li Ao",
-        "Born": "772",
-        "Birth place": "China",
-        "Died": "841",
-        "Place of Death": "China",
-        "Subjects Of Study": "Confucianism"
+        "name": "Li Ao",
+        "birth": "772",
+        "birth_p": "China",
+        "death": "841",
+        "death_p": "China",
+        "subjects": "Confucianism"
     },
     {
-        "Philosophers": "Liang Shuming",
-        "Born": "1893",
-        "Birth place": "China",
-        "Died": "1988",
-        "Place of Death": "China",
-        "Subjects Of Study": "China, Peasantry, Neo-Confucianism"
+        "name": "Liang Shuming",
+        "birth": "1893",
+        "birth_p": "China",
+        "death": "1988",
+        "death_p": "China",
+        "subjects": "China, Peasantry, Neo-Confucianism"
     },
     {
-        "Philosophers": "Lorenzo Valla",
-        "Born": "1407",
-        "Birth place": "Italy",
-        "Died": "1457",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Latin Language, Grammar, Donation Of Constantine"
+        "name": "Lorenzo Valla",
+        "birth": "1407",
+        "birth_p": "Italy",
+        "death": "1457",
+        "death_p": "Italy",
+        "subjects": "Latin Language, Grammar, Donation Of Constantine"
     },
     {
-        "Philosophers": "Louis Althusser",
-        "Born": "1918",
-        "Birth place": "Algeria",
-        "Died": "1990",
-        "Place of Death": "France",
-        "Subjects Of Study": "Marxism, Structuralism"
+        "name": "Louis Althusser",
+        "birth": "1918",
+        "birth_p": "Algeria",
+        "death": "1990",
+        "death_p": "France",
+        "subjects": "Marxism, Structuralism"
     },
     {
-        "Philosophers": "Louis Lavelle",
-        "Born": "1883",
-        "Birth place": "France",
-        "Died": "1951",
-        "Place of Death": "France",
-        "Subjects Of Study": "Ontology"
+        "name": "Louis Lavelle",
+        "birth": "1883",
+        "birth_p": "France",
+        "death": "1951",
+        "death_p": "France",
+        "subjects": "Ontology"
     },
     {
-        "Philosophers": "Louis-Alexandre Couturat",
-        "Born": "1868",
-        "Birth place": "France",
-        "Died": "1914",
-        "Place of Death": "France",
-        "Subjects Of Study": "Logic, Gottfried Wilhelm Leibniz, Formal System, International Language"
+        "name": "Louis-Alexandre Couturat",
+        "birth": "1868",
+        "birth_p": "France",
+        "death": "1914",
+        "death_p": "France",
+        "subjects": "Logic, Gottfried Wilhelm Leibniz, Formal System, International Language"
     },
     {
-        "Philosophers": "Lu Jiuyuan",
-        "Born": "1139",
-        "Birth place": "China",
-        "Died": "1193",
-        "Place of Death": "China",
-        "Subjects Of Study": "Xinxue, Neo-Confucianism"
+        "name": "Lu Jiuyuan",
+        "birth": "1139",
+        "birth_p": "China",
+        "death": "1193",
+        "death_p": "China",
+        "subjects": "Xinxue, Neo-Confucianism"
     },
     {
-        "Philosophers": "Lucien Levy-Bruhl",
-        "Born": "1857",
-        "Birth place": "France",
-        "Died": "1939",
-        "Place of Death": "France",
-        "Subjects Of Study": "Primitive Culture"
+        "name": "Lucien Levy-Bruhl",
+        "birth": "1857",
+        "birth_p": "France",
+        "death": "1939",
+        "death_p": "France",
+        "subjects": "Primitive Culture"
     },
     {
-        "Philosophers": "Ludwig Klages",
-        "Born": "1872",
-        "Birth place": "Germany",
-        "Died": "1956",
-        "Place of Death": "Switzerland",
-        "Subjects Of Study": "Geist"
+        "name": "Ludwig Klages",
+        "birth": "1872",
+        "birth_p": "Germany",
+        "death": "1956",
+        "death_p": "Switzerland",
+        "subjects": "Geist"
     },
     {
-        "Philosophers": "Ludwig Wittgenstein",
-        "Born": "1889",
-        "Birth place": "Austria",
-        "Died": "1951",
-        "Place of Death": "England",
-        "Subjects Of Study": "Picture Theory Of Meaning, Proposition, Language Game, Certainty"
+        "name": "Ludwig Wittgenstein",
+        "birth": "1889",
+        "birth_p": "Austria",
+        "death": "1951",
+        "death_p": "England",
+        "subjects": "Picture Theory Of Meaning, Proposition, Language Game, Certainty"
     },
     {
-        "Philosophers": "Madhva",
-        "Born": "1238",
-        "Birth place": "India",
-        "Died": "1317",
-        "Place of Death": "India",
-        "Subjects Of Study": "Hell, Heaven, Dvaita"
+        "name": "Madhva",
+        "birth": "1238",
+        "birth_p": "India",
+        "death": "1317",
+        "death_p": "India",
+        "subjects": "Hell, Heaven, Dvaita"
     },
     {
-        "Philosophers": "Maria Gaetana Agnesi",
-        "Born": "1718",
-        "Birth place": "Italy",
-        "Died": "1799",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Witch Of Agnesi"
+        "name": "Maria Gaetana Agnesi",
+        "birth": "1718",
+        "birth_p": "Italy",
+        "death": "1799",
+        "death_p": "Italy",
+        "subjects": "Witch Of Agnesi"
     },
     {
-        "Philosophers": "Marie-Francois-Pierre Maine de Biran",
-        "Born": "1766",
-        "Birth place": "France",
-        "Died": "1824",
-        "Place of Death": "France",
-        "Subjects Of Study": "Will"
+        "name": "Marie-Francois-Pierre Maine de Biran",
+        "birth": "1766",
+        "birth_p": "France",
+        "death": "1824",
+        "death_p": "France",
+        "subjects": "Will"
     },
     {
-        "Philosophers": "Marin Mersenne",
-        "Born": "1588",
-        "Birth place": "France",
-        "Died": "1648",
-        "Place of Death": "France",
-        "Subjects Of Study": "Vibration, Pendulum, Mersenne Prime, Cycloid, Prime"
+        "name": "Marin Mersenne",
+        "birth": "1588",
+        "birth_p": "France",
+        "death": "1648",
+        "death_p": "France",
+        "subjects": "Vibration, Pendulum, Mersenne Prime, Cycloid, Prime"
     },
     {
-        "Philosophers": "Marjorie Grene",
-        "Born": "1910",
-        "Birth place": "Wisconsin",
-        "Died": "2009",
-        "Place of Death": "Virginia",
-        "Subjects Of Study": "Evolution, Philosophy Of Biology, Existentialism, Martin Heidegger, Karl Jaspers"
+        "name": "Marjorie Grene",
+        "birth": "1910",
+        "birth_p": "Wisconsin",
+        "death": "2009",
+        "death_p": "Virginia",
+        "subjects": "Evolution, Philosophy Of Biology, Existentialism, Martin Heidegger, Karl Jaspers"
     },
     {
-        "Philosophers": "Marko Marulic",
-        "Born": "1450",
-        "Birth place": "Split",
-        "Died": "1524",
-        "Place of Death": "Split",
-        "Subjects Of Study": "Ethics"
+        "name": "Marko Marulic",
+        "birth": "1450",
+        "birth_p": "Split",
+        "death": "1524",
+        "death_p": "Split",
+        "subjects": "Ethics"
     },
     {
-        "Philosophers": "Marsilio Ficino",
-        "Born": "1433",
-        "Birth place": "Italy",
-        "Died": "1499",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Plato, Plotinus, Soul"
+        "name": "Marsilio Ficino",
+        "birth": "1433",
+        "birth_p": "Italy",
+        "death": "1499",
+        "death_p": "Italy",
+        "subjects": "Plato, Plotinus, Soul"
     },
     {
-        "Philosophers": "Maurice Blondel",
-        "Born": "1861",
-        "Birth place": "France",
-        "Died": "1949",
-        "Place of Death": "France",
-        "Subjects Of Study": "Dialectic"
+        "name": "Maurice Blondel",
+        "birth": "1861",
+        "birth_p": "France",
+        "death": "1949",
+        "death_p": "France",
+        "subjects": "Dialectic"
     },
     {
-        "Philosophers": "Maurice Merleau-Ponty",
-        "Born": "1908",
-        "Birth place": "France",
-        "Died": "1961",
-        "Place of Death": "France",
-        "Subjects Of Study": "Marxism"
+        "name": "Maurice Merleau-Ponty",
+        "birth": "1908",
+        "birth_p": "France",
+        "death": "1961",
+        "death_p": "France",
+        "subjects": "Marxism"
     },
     {
-        "Philosophers": "Max Black",
-        "Born": "1909",
-        "Birth place": "Azerbaijan",
-        "Died": "1988",
-        "Place of Death": "York",
-        "Subjects Of Study": "Mathematics, Ludwig Wittgenstein"
+        "name": "Max Black",
+        "birth": "1909",
+        "birth_p": "Azerbaijan",
+        "death": "1988",
+        "death_p": "York",
+        "subjects": "Mathematics, Ludwig Wittgenstein"
     },
     {
-        "Philosophers": "Max Scheler",
-        "Born": "1874",
-        "Birth place": "Germany",
-        "Died": "1928",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Ethics, Value"
+        "name": "Max Scheler",
+        "birth": "1874",
+        "birth_p": "Germany",
+        "death": "1928",
+        "death_p": "Germany",
+        "subjects": "Ethics, Value"
     },
     {
-        "Philosophers": "Max Stirner",
-        "Born": "1806",
-        "Birth place": "Germany",
-        "Died": "1856",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Ego"
+        "name": "Max Stirner",
+        "birth": "1806",
+        "birth_p": "Germany",
+        "death": "1856",
+        "death_p": "Germany",
+        "subjects": "Ego"
     },
     {
-        "Philosophers": "Michel Foucault",
-        "Born": "1926",
-        "Birth place": "France",
-        "Died": "1984",
-        "Place of Death": "France",
-        "Subjects Of Study": "Mental Disorder, Prison, Sexuality, Society"
+        "name": "Michel Foucault",
+        "birth": "1926",
+        "birth_p": "France",
+        "death": "1984",
+        "death_p": "France",
+        "subjects": "Mental Disorder, Prison, Sexuality, Society"
     },
     {
-        "Philosophers": "Moritz Lazarus",
-        "Born": "1824",
-        "Birth place": "Germany",
-        "Died": "1903",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Judaism, Anti-Semitism, Comparative Psychology"
+        "name": "Moritz Lazarus",
+        "birth": "1824",
+        "birth_p": "Germany",
+        "death": "1903",
+        "death_p": "Italy",
+        "subjects": "Judaism, Anti-Semitism, Comparative Psychology"
     },
     {
-        "Philosophers": "Mortimer J. Adler",
-        "Born": "1902",
-        "Birth place": "York",
-        "Died": "2001",
-        "Place of Death": "California",
-        "Subjects Of Study": "Secondary Education, Adult Education, Elementary Education, Liberal Arts, Paideia"
+        "name": "Mortimer J. Adler",
+        "birth": "1902",
+        "birth_p": "York",
+        "death": "2001",
+        "death_p": "California",
+        "subjects": "Secondary Education, Adult Education, Elementary Education, Liberal Arts, Paideia"
     },
     {
-        "Philosophers": "Moses Maimonides",
-        "Born": "1135",
-        "Birth place": "Spain",
-        "Died": "1204",
-        "Place of Death": "Egypt",
-        "Subjects Of Study": "Judaism, Medicine, Philosophy Of Religion, Hebraic Law, Thirteen Articles Of Faith"
+        "name": "Moses Maimonides",
+        "birth": "1135",
+        "birth_p": "Spain",
+        "death": "1204",
+        "death_p": "Egypt",
+        "subjects": "Judaism, Medicine, Philosophy Of Religion, Hebraic Law, Thirteen Articles Of Faith"
     },
     {
-        "Philosophers": "Moses Mendelssohn",
-        "Born": "1729",
-        "Birth place": "Germany",
-        "Died": "1786",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Judaism, Immortality, Soul, Religious Toleration"
+        "name": "Moses Mendelssohn",
+        "birth": "1729",
+        "birth_p": "Germany",
+        "death": "1786",
+        "death_p": "Germany",
+        "subjects": "Judaism, Immortality, Soul, Religious Toleration"
     },
     {
-        "Philosophers": "Mulla Sadra",
-        "Born": "1571",
-        "Birth place": "Iran",
-        "Died": "1640",
-        "Place of Death": "Iraq",
-        "Subjects Of Study": "Mysticism, Ishr\u0101q\u012byah, Philosophy Of Nature"
+        "name": "Mulla Sadra",
+        "birth": "1571",
+        "birth_p": "Iran",
+        "death": "1640",
+        "death_p": "Iraq",
+        "subjects": "Mysticism, Ishr\u0101q\u012byah, Philosophy Of Nature"
     },
     {
-        "Philosophers": "Muro Kyuso",
-        "Born": "1658",
-        "Birth place": "Japan",
-        "Died": "1734",
-        "Place of Death": "Japan",
-        "Subjects Of Study": "Confucianism, Zhu Xi"
+        "name": "Muro Kyuso",
+        "birth": "1658",
+        "birth_p": "Japan",
+        "death": "1734",
+        "death_p": "Japan",
+        "subjects": "Confucianism, Zhu Xi"
     },
     {
-        "Philosophers": "Nicholas of Cusa",
-        "Born": "1401",
-        "Birth place": "Germany",
-        "Died": "1464",
-        "Place of Death": "States",
-        "Subjects Of Study": "Conciliarism, Papal Primacy"
+        "name": "Nicholas of Cusa",
+        "birth": "1401",
+        "birth_p": "Germany",
+        "death": "1464",
+        "death_p": "States",
+        "subjects": "Conciliarism, Papal Primacy"
     },
     {
-        "Philosophers": "Nikolay Yakovlevich Danilevsky",
-        "Born": "1822",
-        "Birth place": "Russia",
-        "Died": "1885",
-        "Place of Death": "Georgia",
-        "Subjects Of Study": "Philosophy Of History, Civilization"
+        "name": "Nikolay Yakovlevich Danilevsky",
+        "birth": "1822",
+        "birth_p": "Russia",
+        "death": "1885",
+        "death_p": "Georgia",
+        "subjects": "Philosophy Of History, Civilization"
     },
     {
-        "Philosophers": "Nishida Kitaro",
-        "Born": "1870",
-        "Birth place": "Japan",
-        "Died": "1945",
-        "Place of Death": "Japan",
-        "Subjects Of Study": "Nothingness, Experience"
+        "name": "Nishida Kitaro",
+        "birth": "1870",
+        "birth_p": "Japan",
+        "death": "1945",
+        "death_p": "Japan",
+        "subjects": "Nothingness, Experience"
     },
     {
-        "Philosophers": "Norman Robert Campbell",
-        "Born": "1880",
-        "Birth place": "England",
-        "Died": "1949",
-        "Place of Death": "England",
-        "Subjects Of Study": "X-Ray, Measurement, Ionization"
+        "name": "Norman Robert Campbell",
+        "birth": "1880",
+        "birth_p": "England",
+        "death": "1949",
+        "death_p": "England",
+        "subjects": "X-Ray, Measurement, Ionization"
     },
     {
-        "Philosophers": "Oswald Kulpe",
-        "Born": "1862",
-        "Birth place": "Russia",
-        "Died": "1915",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Thought"
+        "name": "Oswald Kulpe",
+        "birth": "1862",
+        "birth_p": "Russia",
+        "death": "1915",
+        "death_p": "Germany",
+        "subjects": "Thought"
     },
     {
-        "Philosophers": "Oswald Spengler",
-        "Born": "1880",
-        "Birth place": "Germany",
-        "Died": "1936",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Culture"
+        "name": "Oswald Spengler",
+        "birth": "1880",
+        "birth_p": "Germany",
+        "death": "1936",
+        "death_p": "Germany",
+        "subjects": "Culture"
     },
     {
-        "Philosophers": "Otto Friedrich von Gierke",
-        "Born": "1841",
-        "Birth place": "Prussia",
-        "Died": "1921",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Devolution, Pluralism, Historical Jurisprudence"
+        "name": "Otto Friedrich von Gierke",
+        "birth": "1841",
+        "birth_p": "Prussia",
+        "death": "1921",
+        "death_p": "Germany",
+        "subjects": "Devolution, Pluralism, Historical Jurisprudence"
     },
     {
-        "Philosophers": "Otto Neurath",
-        "Born": "1882",
-        "Birth place": "Austria",
-        "Died": "1945",
-        "Place of Death": "England",
-        "Subjects Of Study": "Logical Positivism"
+        "name": "Otto Neurath",
+        "birth": "1882",
+        "birth_p": "Austria",
+        "death": "1945",
+        "death_p": "England",
+        "subjects": "Logical Positivism"
     },
     {
-        "Philosophers": "Paul Shorey",
-        "Born": "1857",
-        "Birth place": "Iowa",
-        "Died": "1934",
-        "Place of Death": "Illinois",
-        "Subjects Of Study": "Plato, Platonism"
+        "name": "Paul Shorey",
+        "birth": "1857",
+        "birth_p": "Iowa",
+        "death": "1934",
+        "death_p": "Illinois",
+        "subjects": "Plato, Platonism"
     },
     {
-        "Philosophers": "Paul Tillich",
-        "Born": "1886",
-        "Birth place": "Germany",
-        "Died": "1965",
-        "Place of Death": "Illinois",
-        "Subjects Of Study": "Faith, Justification, Theonomy"
+        "name": "Paul Tillich",
+        "birth": "1886",
+        "birth_p": "Germany",
+        "death": "1965",
+        "death_p": "Illinois",
+        "subjects": "Faith, Justification, Theonomy"
     },
     {
-        "Philosophers": "Paul of Venice",
-        "Born": "1372",
-        "Birth place": "Udine",
-        "Died": "1429",
-        "Place of Death": "Padua",
-        "Subjects Of Study": "Logic"
+        "name": "Paul of Venice",
+        "birth": "1372",
+        "birth_p": "Udine",
+        "death": "1429",
+        "death_p": "Padua",
+        "subjects": "Logic"
     },
     {
-        "Philosophers": "Pierre Bayle",
-        "Born": "1647",
-        "Birth place": "France",
-        "Died": "1706",
-        "Place of Death": "Netherlands",
-        "Subjects Of Study": "Christianity, Heterodoxy"
+        "name": "Pierre Bayle",
+        "birth": "1647",
+        "birth_p": "France",
+        "death": "1706",
+        "death_p": "Netherlands",
+        "subjects": "Christianity, Heterodoxy"
     },
     {
-        "Philosophers": "Pierre Gassendi",
-        "Born": "1592",
-        "Birth place": "France",
-        "Died": "1655",
-        "Place of Death": "France",
-        "Subjects Of Study": "Epicurus"
+        "name": "Pierre Gassendi",
+        "birth": "1592",
+        "birth_p": "France",
+        "death": "1655",
+        "death_p": "France",
+        "subjects": "Epicurus"
     },
     {
-        "Philosophers": "Pierre Laromiguiere",
-        "Born": "1756",
-        "Birth place": "France",
-        "Died": "1837",
-        "Place of Death": "France",
-        "Subjects Of Study": "\u00c9tienne Bonnot De Condillac"
+        "name": "Pierre Laromiguiere",
+        "birth": "1756",
+        "birth_p": "France",
+        "death": "1837",
+        "death_p": "France",
+        "subjects": "\u00c9tienne Bonnot De Condillac"
     },
     {
-        "Philosophers": "Pierre Leroux",
-        "Born": "1797",
-        "Birth place": "France",
-        "Died": "1871",
-        "Place of Death": "France",
-        "Subjects Of Study": "Pantheism"
+        "name": "Pierre Leroux",
+        "birth": "1797",
+        "birth_p": "France",
+        "death": "1871",
+        "death_p": "France",
+        "subjects": "Pantheism"
     },
     {
-        "Philosophers": "Pierre Nicole",
-        "Born": "1625",
-        "Birth place": "France",
-        "Died": "1695",
-        "Place of Death": "France",
-        "Subjects Of Study": "Jansenism"
+        "name": "Pierre Nicole",
+        "birth": "1625",
+        "birth_p": "France",
+        "death": "1695",
+        "death_p": "France",
+        "subjects": "Jansenism"
     },
     {
-        "Philosophers": "Pierre Teilhard de Chardin",
-        "Born": "1881",
-        "Birth place": "France",
-        "Died": "1955",
-        "Place of Death": "York",
-        "Subjects Of Study": "Evolution, Peking Man, No\u00f6sphere"
+        "name": "Pierre Teilhard de Chardin",
+        "birth": "1881",
+        "birth_p": "France",
+        "death": "1955",
+        "death_p": "York",
+        "subjects": "Evolution, Peking Man, No\u00f6sphere"
     },
     {
-        "Philosophers": "Pierre-Felix Guattari",
-        "Born": "1930",
-        "Birth place": "France",
-        "Died": "1992",
-        "Place of Death": "France",
-        "Subjects Of Study": "Psychiatry, Philosophy"
+        "name": "Pierre-Felix Guattari",
+        "birth": "1930",
+        "birth_p": "France",
+        "death": "1992",
+        "death_p": "France",
+        "subjects": "Psychiatry, Philosophy"
     },
     {
-        "Philosophers": "Pietro Pomponazzi",
-        "Born": "1462",
-        "Birth place": "Mantua",
-        "Died": "1525",
-        "Place of Death": "Bologna",
-        "Subjects Of Study": "Immortality"
+        "name": "Pietro Pomponazzi",
+        "birth": "1462",
+        "birth_p": "Mantua",
+        "death": "1525",
+        "death_p": "Bologna",
+        "subjects": "Immortality"
     },
     {
-        "Philosophers": "Plato",
-        "Born": "428",
-        "Birth place": "Greece",
-        "Died": "348",
-        "Place of Death": "Greece",
-        "Subjects Of Study": "Socrates, Immortality, Philosopher King, Soul, A Priori Knowledge"
+        "name": "Plato",
+        "birth": "428",
+        "birth_p": "Greece",
+        "death": "348",
+        "death_p": "Greece",
+        "subjects": "Socrates, Immortality, Philosopher King, Soul, A Priori Knowledge"
     },
     {
-        "Philosophers": "Pythagoras",
-        "Born": "570",
-        "Birth place": "Greece",
-        "Died": "490",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Interval, Number"
+        "name": "Pythagoras",
+        "birth": "570",
+        "birth_p": "Greece",
+        "death": "490",
+        "death_p": "Italy",
+        "subjects": "Interval, Number"
     },
     {
-        "Philosophers": "Ramana Maharshi",
-        "Born": "1879",
-        "Birth place": "India",
-        "Died": "1950",
-        "Place of Death": "India",
-        "Subjects Of Study": "Maya, Vichara, Monism"
+        "name": "Ramana Maharshi",
+        "birth": "1879",
+        "birth_p": "India",
+        "death": "1950",
+        "death_p": "India",
+        "subjects": "Maya, Vichara, Monism"
     },
     {
-        "Philosophers": "Ramanuja",
-        "Born": "1017",
-        "Birth place": "India",
-        "Died": "1137",
-        "Place of Death": "India",
-        "Subjects Of Study": "Hinduism, Bhakti, Vishishtadvaita, Vedanta, Vishnu"
+        "name": "Ramanuja",
+        "birth": "1017",
+        "birth_p": "India",
+        "death": "1137",
+        "death_p": "India",
+        "subjects": "Hinduism, Bhakti, Vishishtadvaita, Vedanta, Vishnu"
     },
     {
-        "Philosophers": "Ramon Llull",
-        "Born": "1233",
-        "Birth place": "Spain",
-        "Died": "1316",
-        "Place of Death": "Spain",
-        "Subjects Of Study": "Mysticism, Neoplatonism"
+        "name": "Ramon Llull",
+        "birth": "1233",
+        "birth_p": "Spain",
+        "death": "1316",
+        "death_p": "Spain",
+        "subjects": "Mysticism, Neoplatonism"
     },
     {
-        "Philosophers": "Reinhold Niebuhr",
-        "Born": "1892",
-        "Birth place": "Missouri",
-        "Died": "1971",
-        "Place of Death": "Massachusetts",
-        "Subjects Of Study": "Protestantism, Socialism, Pacifism, Neoorthodoxy"
+        "name": "Reinhold Niebuhr",
+        "birth": "1892",
+        "birth_p": "Missouri",
+        "death": "1971",
+        "death_p": "Massachusetts",
+        "subjects": "Protestantism, Socialism, Pacifism, Neoorthodoxy"
     },
     {
-        "Philosophers": "Rene Descartes",
-        "Born": "1596",
-        "Birth place": "France",
-        "Died": "1650",
-        "Place of Death": "Sweden",
-        "Subjects Of Study": "A Priori Knowledge, Mind-Body Dualism, Philosophy, Methodic Doubt, Innate Idea"
+        "name": "Rene Descartes",
+        "birth": "1596",
+        "birth_p": "France",
+        "death": "1650",
+        "death_p": "Sweden",
+        "subjects": "A Priori Knowledge, Mind-Body Dualism, Philosophy, Methodic Doubt, Innate Idea"
     },
     {
-        "Philosophers": "Richard Hooker",
-        "Born": "1554",
-        "Birth place": "England",
-        "Died": "1600",
-        "Place of Death": "England",
-        "Subjects Of Study": "Church Of England"
+        "name": "Richard Hooker",
+        "birth": "1554",
+        "birth_p": "England",
+        "death": "1600",
+        "death_p": "England",
+        "subjects": "Church Of England"
     },
     {
-        "Philosophers": "Richard Price",
-        "Born": "1723",
-        "Birth place": "Wales",
-        "Died": "1791",
-        "Place of Death": "England",
-        "Subjects Of Study": "American Revolution, French Revolution, National Economy"
+        "name": "Richard Price",
+        "birth": "1723",
+        "birth_p": "Wales",
+        "death": "1791",
+        "death_p": "England",
+        "subjects": "American Revolution, French Revolution, National Economy"
     },
     {
-        "Philosophers": "Robert Boyle",
-        "Born": "1627",
-        "Birth place": "Ireland",
-        "Died": "1691",
-        "Place of Death": "England",
-        "Subjects Of Study": "Gas, Pressure, Air, Boyle\u2019S Law, Vacuum"
+        "name": "Robert Boyle",
+        "birth": "1627",
+        "birth_p": "Ireland",
+        "death": "1691",
+        "death_p": "England",
+        "subjects": "Gas, Pressure, Air, Boyle\u2019S Law, Vacuum"
     },
     {
-        "Philosophers": "Robert Grosseteste",
-        "Born": "1175",
-        "Birth place": "England",
-        "Died": "1253",
-        "Place of Death": "England",
-        "Subjects Of Study": "Aristotle"
+        "name": "Robert Grosseteste",
+        "birth": "1175",
+        "birth_p": "England",
+        "death": "1253",
+        "death_p": "England",
+        "subjects": "Aristotle"
     },
     {
-        "Philosophers": "Roger Bacon",
-        "Born": "1220",
-        "Birth place": "England",
-        "Died": "1292",
-        "Place of Death": "England",
-        "Subjects Of Study": "Light, Gunpowder, Eyeglasses, Rainbow, Empirical Method"
+        "name": "Roger Bacon",
+        "birth": "1220",
+        "birth_p": "England",
+        "death": "1292",
+        "death_p": "England",
+        "subjects": "Light, Gunpowder, Eyeglasses, Rainbow, Empirical Method"
     },
     {
-        "Philosophers": "Rudolf Bultmann",
-        "Born": "1884",
-        "Birth place": "Germany",
-        "Died": "1976",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Theological Existentialism"
+        "name": "Rudolf Bultmann",
+        "birth": "1884",
+        "birth_p": "Germany",
+        "death": "1976",
+        "death_p": "Germany",
+        "subjects": "Theological Existentialism"
     },
     {
-        "Philosophers": "Rudolf Carnap",
-        "Born": "1891",
-        "Birth place": "Germany",
-        "Died": "1970",
-        "Place of Death": "California",
-        "Subjects Of Study": "Formal Logic, Probability Theory, A Priori Knowledge, Verifiability Principle, Analytic Proposition"
+        "name": "Rudolf Carnap",
+        "birth": "1891",
+        "birth_p": "Germany",
+        "death": "1970",
+        "death_p": "California",
+        "subjects": "Formal Logic, Probability Theory, A Priori Knowledge, Verifiability Principle, Analytic Proposition"
     },
     {
-        "Philosophers": "Rudolf Otto",
-        "Born": "1869",
-        "Birth place": "Germany",
-        "Died": "1937",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Sacred, Religion, Mysterium Tremendum Et Fascinans, Numinous"
+        "name": "Rudolf Otto",
+        "birth": "1869",
+        "birth_p": "Germany",
+        "death": "1937",
+        "death_p": "Germany",
+        "subjects": "Sacred, Religion, Mysterium Tremendum Et Fascinans, Numinous"
     },
     {
-        "Philosophers": "Salomon Maimon",
-        "Born": "1754",
-        "Birth place": "Lithuania",
-        "Died": "1800",
-        "Place of Death": "Poland",
-        "Subjects Of Study": "Skepticism, Moses Maimonides, Philosophy"
+        "name": "Salomon Maimon",
+        "birth": "1754",
+        "birth_p": "Lithuania",
+        "death": "1800",
+        "death_p": "Poland",
+        "subjects": "Skepticism, Moses Maimonides, Philosophy"
     },
     {
-        "Philosophers": "Samuel Alexander",
-        "Born": "1859",
-        "Birth place": "Australia",
-        "Died": "1938",
-        "Place of Death": "England",
-        "Subjects Of Study": "Ethics, Evolution, Space-Time"
+        "name": "Samuel Alexander",
+        "birth": "1859",
+        "birth_p": "Australia",
+        "death": "1938",
+        "death_p": "England",
+        "subjects": "Ethics, Evolution, Space-Time"
     },
     {
-        "Philosophers": "Samuel Bailey",
-        "Born": "1791",
-        "Birth place": "England",
-        "Died": "1870",
-        "Place of Death": "England",
-        "Subjects Of Study": "Value"
+        "name": "Samuel Bailey",
+        "birth": "1791",
+        "birth_p": "England",
+        "death": "1870",
+        "death_p": "England",
+        "subjects": "Value"
     },
     {
-        "Philosophers": "Samuel Hirsch",
-        "Born": "1815",
-        "Birth place": "Germany",
-        "Died": "1889",
-        "Place of Death": "Illinois",
-        "Subjects Of Study": "Judaism, Philosophy Of Religion, Reform Judaism"
+        "name": "Samuel Hirsch",
+        "birth": "1815",
+        "birth_p": "Germany",
+        "death": "1889",
+        "death_p": "Illinois",
+        "subjects": "Judaism, Philosophy Of Religion, Reform Judaism"
     },
     {
-        "Philosophers": "Shankara",
-        "Born": "700",
-        "Birth place": "India",
-        "Died": "750",
-        "Place of Death": "India",
-        "Subjects Of Study": "Upanishad, 'Brahma-Sutra-Bhashya'"
+        "name": "Shankara",
+        "birth": "700",
+        "birth_p": "India",
+        "death": "750",
+        "death_p": "India",
+        "subjects": "Upanishad, 'Brahma-Sutra-Bhashya'"
     },
     {
-        "Philosophers": "Shao Yong",
-        "Born": "1011",
-        "Birth place": "China",
-        "Died": "1077",
-        "Place of Death": "China",
-        "Subjects Of Study": "'Yijing', Numerology, Cyclicism, Neo-Confucianism"
+        "name": "Shao Yong",
+        "birth": "1011",
+        "birth_p": "China",
+        "death": "1077",
+        "death_p": "China",
+        "subjects": "'Yijing', Numerology, Cyclicism, Neo-Confucianism"
     },
     {
-        "Philosophers": "Shri Aurobindo",
-        "Born": "1872",
-        "Birth place": "India",
-        "Died": "1950",
-        "Place of Death": "India",
-        "Subjects Of Study": "Yoga, Moksha, Enlightenment"
+        "name": "Shri Aurobindo",
+        "birth": "1872",
+        "birth_p": "India",
+        "death": "1950",
+        "death_p": "India",
+        "subjects": "Yoga, Moksha, Enlightenment"
     },
     {
-        "Philosophers": "Sidney Hook",
-        "Born": "1902",
-        "Birth place": "York",
-        "Died": "1989",
-        "Place of Death": "California",
-        "Subjects Of Study": "Marxism"
+        "name": "Sidney Hook",
+        "birth": "1902",
+        "birth_p": "York",
+        "death": "1989",
+        "death_p": "California",
+        "subjects": "Marxism"
     },
     {
-        "Philosophers": "Simon Foucher",
-        "Born": "1644",
-        "Birth place": "France",
-        "Died": "1696",
-        "Place of Death": "France",
-        "Subjects Of Study": "Truth"
+        "name": "Simon Foucher",
+        "birth": "1644",
+        "birth_p": "France",
+        "death": "1696",
+        "death_p": "France",
+        "subjects": "Truth"
     },
     {
-        "Philosophers": "Simone Weil",
-        "Born": "1909",
-        "Birth place": "France",
-        "Died": "1943",
-        "Place of Death": "England",
-        "Subjects Of Study": "Religion"
+        "name": "Simone Weil",
+        "birth": "1909",
+        "birth_p": "France",
+        "death": "1943",
+        "death_p": "England",
+        "subjects": "Religion"
     },
     {
-        "Philosophers": "Socrates",
-        "Born": "470",
-        "Birth place": "Greece",
-        "Died": "399",
-        "Place of Death": "Greece",
-        "Subjects Of Study": "Universal, Soul, Idea, Definition, Induction"
+        "name": "Socrates",
+        "birth": "470",
+        "birth_p": "Greece",
+        "death": "399",
+        "death_p": "Greece",
+        "subjects": "Universal, Soul, Idea, Definition, Induction"
     },
     {
-        "Philosophers": "Solomon Formstecher",
-        "Born": "1808",
-        "Birth place": "Germany",
-        "Died": "1889",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Judaism, Idealism"
+        "name": "Solomon Formstecher",
+        "birth": "1808",
+        "birth_p": "Germany",
+        "death": "1889",
+        "death_p": "Germany",
+        "subjects": "Judaism, Idealism"
     },
     {
-        "Philosophers": "Soren Kierkegaard",
-        "Born": "1813",
-        "Birth place": "Denmark",
-        "Died": "1855",
-        "Place of Death": "Denmark",
-        "Subjects Of Study": "Christianity, Rationalism, Free Will, Dread, Leap Of Faith"
+        "name": "Soren Kierkegaard",
+        "birth": "1813",
+        "birth_p": "Denmark",
+        "death": "1855",
+        "death_p": "Denmark",
+        "subjects": "Christianity, Rationalism, Free Will, Dread, Leap Of Faith"
     },
     {
-        "Philosophers": "Stanislaw Lesniewski",
-        "Born": "1886",
-        "Birth place": "Russia",
-        "Died": "1939",
-        "Place of Death": "Poland",
-        "Subjects Of Study": "Foundations Of Mathematics, Formal System, Mereology, Protothetic"
+        "name": "Stanislaw Lesniewski",
+        "birth": "1886",
+        "birth_p": "Russia",
+        "death": "1939",
+        "death_p": "Poland",
+        "subjects": "Foundations Of Mathematics, Formal System, Mereology, Protothetic"
     },
     {
-        "Philosophers": "Stephen Edelston Toulmin",
-        "Born": "1922",
-        "Birth place": "England",
-        "Died": "2009",
-        "Place of Death": "California",
-        "Subjects Of Study": "Ethics, Prescriptive Grammar"
+        "name": "Stephen Edelston Toulmin",
+        "birth": "1922",
+        "birth_p": "England",
+        "death": "2009",
+        "death_p": "California",
+        "subjects": "Ethics, Prescriptive Grammar"
     },
     {
-        "Philosophers": "Susanne K. Langer",
-        "Born": "1895",
-        "Birth place": "York",
-        "Died": "1985",
-        "Place of Death": "Connecticut",
-        "Subjects Of Study": "Semiotics, The Arts, Sign, Symbolism"
+        "name": "Susanne K. Langer",
+        "birth": "1895",
+        "birth_p": "York",
+        "death": "1985",
+        "death_p": "Connecticut",
+        "subjects": "Semiotics, The Arts, Sign, Symbolism"
     },
     {
-        "Philosophers": "Taixu",
-        "Born": "1890",
-        "Birth place": "China",
-        "Died": "1947",
-        "Place of Death": "China",
-        "Subjects Of Study": "Buddhism"
+        "name": "Taixu",
+        "birth": "1890",
+        "birth_p": "China",
+        "death": "1947",
+        "death_p": "China",
+        "subjects": "Buddhism"
     },
     {
-        "Philosophers": "Theodor Gomperz",
-        "Born": "1832",
-        "Birth place": "Republic",
-        "Died": "1912",
-        "Place of Death": "Austria",
-        "Subjects Of Study": "Greek Philosophy"
+        "name": "Theodor Gomperz",
+        "birth": "1832",
+        "birth_p": "Republic",
+        "death": "1912",
+        "death_p": "Austria",
+        "subjects": "Greek Philosophy"
     },
     {
-        "Philosophers": "Theodor Wiesengrund Adorno",
-        "Born": "1903",
-        "Birth place": "Germany",
-        "Died": "1969",
-        "Place of Death": "Switzerland",
-        "Subjects Of Study": "Philosophy Of Art, Music"
+        "name": "Theodor Wiesengrund Adorno",
+        "birth": "1903",
+        "birth_p": "Germany",
+        "death": "1969",
+        "death_p": "Switzerland",
+        "subjects": "Philosophy Of Art, Music"
     },
     {
-        "Philosophers": "Theodosius Dobzhansky",
-        "Born": "1900",
-        "Birth place": "Ukraine",
-        "Died": "1975",
-        "Place of Death": "California",
-        "Subjects Of Study": "Evolution, Speciation, Drosophila, Synthetic Theory Of Evolution"
+        "name": "Theodosius Dobzhansky",
+        "birth": "1900",
+        "birth_p": "Ukraine",
+        "death": "1975",
+        "death_p": "California",
+        "subjects": "Evolution, Speciation, Drosophila, Synthetic Theory Of Evolution"
     },
     {
-        "Philosophers": "Thomas Henry Huxley",
-        "Born": "1825",
-        "Birth place": "England",
-        "Died": "1895",
-        "Place of Death": "England",
-        "Subjects Of Study": "Evolution, Taxonomy, Agnosticism, Religion, Darwinism"
+        "name": "Thomas Henry Huxley",
+        "birth": "1825",
+        "birth_p": "England",
+        "death": "1895",
+        "death_p": "England",
+        "subjects": "Evolution, Taxonomy, Agnosticism, Religion, Darwinism"
     },
     {
-        "Philosophers": "Thomas Hobbes",
-        "Born": "1588",
-        "Birth place": "England",
-        "Died": "1679",
-        "Place of Death": "England",
-        "Subjects Of Study": "Sovereignty, Natural Law, Church And State, Absolutism, Social Contract"
+        "name": "Thomas Hobbes",
+        "birth": "1588",
+        "birth_p": "England",
+        "death": "1679",
+        "death_p": "England",
+        "subjects": "Sovereignty, Natural Law, Church And State, Absolutism, Social Contract"
     },
     {
-        "Philosophers": "Thomas Reid",
-        "Born": "1710",
-        "Birth place": "Scotland",
-        "Died": "1796",
-        "Place of Death": "Scotland",
-        "Subjects Of Study": "Intuitionism"
+        "name": "Thomas Reid",
+        "birth": "1710",
+        "birth_p": "Scotland",
+        "death": "1796",
+        "death_p": "Scotland",
+        "subjects": "Intuitionism"
     },
     {
-        "Philosophers": "Tommaso Campanella",
-        "Born": "1568",
-        "Birth place": "Naples",
-        "Died": "1639",
-        "Place of Death": "France",
-        "Subjects Of Study": "Roman Catholicism, Metaphysics, Humanism, Pragmatism"
+        "name": "Tommaso Campanella",
+        "birth": "1568",
+        "birth_p": "Naples",
+        "death": "1639",
+        "death_p": "France",
+        "subjects": "Roman Catholicism, Metaphysics, Humanism, Pragmatism"
     },
     {
-        "Philosophers": "Uriel Acosta",
-        "Born": "1585",
-        "Birth place": "Portugal",
-        "Died": "1640",
-        "Place of Death": "Netherlands",
-        "Subjects Of Study": "Rationalism, Religion"
+        "name": "Uriel Acosta",
+        "birth": "1585",
+        "birth_p": "Portugal",
+        "death": "1640",
+        "death_p": "Netherlands",
+        "subjects": "Rationalism, Religion"
     },
     {
-        "Philosophers": "Vallabha",
-        "Born": "1479",
-        "Birth place": "India",
-        "Died": "1531",
-        "Place of Death": "India",
-        "Subjects Of Study": "Suddhadvaita"
+        "name": "Vallabha",
+        "birth": "1479",
+        "birth_p": "India",
+        "death": "1531",
+        "death_p": "India",
+        "subjects": "Suddhadvaita"
     },
     {
-        "Philosophers": "Vladimir Sergeyevich Solovyov",
-        "Born": "1853",
-        "Birth place": "Russia",
-        "Died": "1900",
-        "Place of Death": "Russia",
-        "Subjects Of Study": "Mysticism"
+        "name": "Vladimir Sergeyevich Solovyov",
+        "birth": "1853",
+        "birth_p": "Russia",
+        "death": "1900",
+        "death_p": "Russia",
+        "subjects": "Mysticism"
     },
     {
-        "Philosophers": "Walter Benjamin",
-        "Born": "1892",
-        "Birth place": "Germany",
-        "Died": "1940",
-        "Place of Death": "Spain",
-        "Subjects Of Study": "Aesthetics, Literature"
+        "name": "Walter Benjamin",
+        "birth": "1892",
+        "birth_p": "Germany",
+        "death": "1940",
+        "death_p": "Spain",
+        "subjects": "Aesthetics, Literature"
     },
     {
-        "Philosophers": "Wang Bi",
-        "Born": "226",
-        "Birth place": "China",
-        "Died": "249",
-        "Place of Death": "China",
-        "Subjects Of Study": "Emotion, 'Yijing', 'Tao-Te Ching', Dark Learning"
+        "name": "Wang Bi",
+        "birth": "226",
+        "birth_p": "China",
+        "death": "249",
+        "death_p": "China",
+        "subjects": "Emotion, 'Yijing', 'Tao-Te Ching', Dark Learning"
     },
     {
-        "Philosophers": "Wang Chong",
-        "Born": "27",
-        "Birth place": "China",
-        "Died": "100",
-        "Place of Death": "China",
-        "Subjects Of Study": "Confucianism, Rationalism, Naturalism"
+        "name": "Wang Chong",
+        "birth": "27",
+        "birth_p": "China",
+        "death": "100",
+        "death_p": "China",
+        "subjects": "Confucianism, Rationalism, Naturalism"
     },
     {
-        "Philosophers": "Wang Yangming",
-        "Born": "1472",
-        "Birth place": "China",
-        "Died": "1529",
-        "Place of Death": "China",
-        "Subjects Of Study": "Xinxue, Neo-Confucianism"
+        "name": "Wang Yangming",
+        "birth": "1472",
+        "birth_p": "China",
+        "death": "1529",
+        "death_p": "China",
+        "subjects": "Xinxue, Neo-Confucianism"
     },
     {
-        "Philosophers": "Watsuji Tetsuro",
-        "Born": "1889",
-        "Birth place": "Japan",
-        "Died": "1960",
-        "Place of Death": "Japan",
-        "Subjects Of Study": "Ethics, Buddhism, Existentialism"
+        "name": "Watsuji Tetsuro",
+        "birth": "1889",
+        "birth_p": "Japan",
+        "death": "1960",
+        "death_p": "Japan",
+        "subjects": "Ethics, Buddhism, Existentialism"
     },
     {
-        "Philosophers": "Werner Heisenberg",
-        "Born": "1901",
-        "Birth place": "Germany",
-        "Died": "1976",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Uncertainty Principle, Complementarity Principle, Matrix Mechanics, Spinor Equation"
+        "name": "Werner Heisenberg",
+        "birth": "1901",
+        "birth_p": "Germany",
+        "death": "1976",
+        "death_p": "Germany",
+        "subjects": "Uncertainty Principle, Complementarity Principle, Matrix Mechanics, Spinor Equation"
     },
     {
-        "Philosophers": "Wilfrid Sellars",
-        "Born": "1912",
-        "Birth place": "Michigan",
-        "Died": "1989",
-        "Place of Death": "Pennsylvania",
-        "Subjects Of Study": "Philosophy Of Mind"
+        "name": "Wilfrid Sellars",
+        "birth": "1912",
+        "birth_p": "Michigan",
+        "death": "1989",
+        "death_p": "Pennsylvania",
+        "subjects": "Philosophy Of Mind"
     },
     {
-        "Philosophers": "Wilhelm Dilthey",
-        "Born": "1833",
-        "Birth place": "Germany",
-        "Died": "1911",
-        "Place of Death": "Austria",
-        "Subjects Of Study": "Social Science, Humanities, Methodology"
+        "name": "Wilhelm Dilthey",
+        "birth": "1833",
+        "birth_p": "Germany",
+        "death": "1911",
+        "death_p": "Austria",
+        "subjects": "Social Science, Humanities, Methodology"
     },
     {
-        "Philosophers": "Willard Van Orman Quine",
-        "Born": "1908",
-        "Birth place": "Ohio",
-        "Died": "2000",
-        "Place of Death": "Massachusetts",
-        "Subjects Of Study": "Formal Logic, Meaning"
+        "name": "Willard Van Orman Quine",
+        "birth": "1908",
+        "birth_p": "Ohio",
+        "death": "2000",
+        "death_p": "Massachusetts",
+        "subjects": "Formal Logic, Meaning"
     },
     {
-        "Philosophers": "William Godwin",
-        "Born": "1756",
-        "Birth place": "England",
-        "Died": "1836",
-        "Place of Death": "England",
-        "Subjects Of Study": "Individualism, Cultural Determinism"
+        "name": "William Godwin",
+        "birth": "1756",
+        "birth_p": "England",
+        "death": "1836",
+        "death_p": "England",
+        "subjects": "Individualism, Cultural Determinism"
     },
     {
-        "Philosophers": "William James",
-        "Born": "1842",
-        "Birth place": "York",
-        "Died": "1910",
-        "Place of Death": "Hampshire",
-        "Subjects Of Study": "Religious Experience, Psychology, Neutral Monism, Free Will, Religious Belief"
+        "name": "William James",
+        "birth": "1842",
+        "birth_p": "York",
+        "death": "1910",
+        "death_p": "Hampshire",
+        "subjects": "Religious Experience, Psychology, Neutral Monism, Free Will, Religious Belief"
     },
     {
-        "Philosophers": "William Kingdon Clifford",
-        "Born": "1845",
-        "Birth place": "England",
-        "Died": "1879",
-        "Place of Death": "Portugal",
-        "Subjects Of Study": "Tribal Self, Biquaternion"
+        "name": "William Kingdon Clifford",
+        "birth": "1845",
+        "birth_p": "England",
+        "death": "1879",
+        "death_p": "Portugal",
+        "subjects": "Tribal Self, Biquaternion"
     },
     {
-        "Philosophers": "William Paley",
-        "Born": "1743",
-        "Birth place": "England",
-        "Died": "1805",
-        "Place of Death": "England",
-        "Subjects Of Study": "Ethics, Utilitarianism, Argument From Design"
+        "name": "William Paley",
+        "birth": "1743",
+        "birth_p": "England",
+        "death": "1805",
+        "death_p": "England",
+        "subjects": "Ethics, Utilitarianism, Argument From Design"
     },
     {
-        "Philosophers": "William Ralph Inge",
-        "Born": "1860",
-        "Birth place": "England",
-        "Died": "1954",
-        "Place of Death": "England",
-        "Subjects Of Study": "Platonism"
-    },
-    {
-        "Philosophers": "William Whewell",
-        "Born": "1794",
-        "Birth place": "England",
-        "Died": "1866",
-        "Place of Death": "England",
-        "Subjects Of Study": "Induction"
-    },
-    {
-        "Philosophers": "William of Auxerre",
-        "Born": "1150",
-        "Birth place": "France",
-        "Died": "1231",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Theology, Natural Law, Free Will, Liturgy"
-    },
-    {
-        "Philosophers": "William of Champeaux",
-        "Born": "1070",
-        "Birth place": "France",
-        "Died": "1121",
-        "Place of Death": "France",
-        "Subjects Of Study": "Universal"
-    },
-    {
-        "Philosophers": "William of Ockham",
-        "Born": "1285",
-        "Birth place": "England",
-        "Died": "1349",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Roman Catholicism, Occam\u2019S Razor, Heterodoxy"
-    },
-    {
-        "Philosophers": "Xiong Shili",
-        "Born": "1885",
-        "Birth place": "China",
-        "Died": "1968",
-        "Place of Death": "China",
-        "Subjects Of Study": "Ren"
-    },
-    {
-        "Philosophers": "Xunzi",
-        "Born": "300",
-        "Birth place": "China",
-        "Died": "230",
-        "Place of Death": "China",
-        "Subjects Of Study": "Confucianism, Human Nature, Li, Good And Evil"
-    },
-    {
-        "Philosophers": "Yan Yuan",
-        "Born": "1635",
-        "Birth place": "China",
-        "Died": "1704",
-        "Place of Death": "China",
-        "Subjects Of Study": "Confucianism"
-    },
-    {
-        "Philosophers": "Zhang Zai",
-        "Born": "1020",
-        "Birth place": "China",
-        "Died": "1077",
-        "Place of Death": "China",
-        "Subjects Of Study": "Ren, Qi"
-    },
-    {
-        "Philosophers": "Zhou Dunyi",
-        "Born": "1017",
-        "Birth place": "China",
-        "Died": "1073",
-        "Place of Death": "China",
-        "Subjects Of Study": "Confucianism, Dark Learning"
-    },
-    {
-        "Philosophers": "Zhu Xi",
-        "Born": "1130",
-        "Birth place": "China",
-        "Died": "1200",
-        "Place of Death": "China",
-        "Subjects Of Study": "Qi, Li"
-    },
-    {
-        "Philosophers": "al-Farabi",
-        "Born": "878",
-        "Birth place": "Turkistan",
-        "Died": "950",
-        "Place of Death": "Syria",
-        "Subjects Of Study": "Political Philosophy, Greek Philosophy"
-    },
-    {
-        "Philosophers": "al-Ghazali",
-        "Born": "1058",
-        "Birth place": "Iran",
-        "Died": "1111",
-        "Place of Death": "Iran",
-        "Subjects Of Study": "Islam, Sufism, Sharif"
+        "name": "William Ralph Inge",
+        "birth": "1860",
+        "birth_p": "England",
+        "death": "1954",
+        "death_p": "England",
+        "subjects": "Platonism"
+    },
+    {
+        "name": "William Whewell",
+        "birth": "1794",
+        "birth_p": "England",
+        "death": "1866",
+        "death_p": "England",
+        "subjects": "Induction"
+    },
+    {
+        "name": "William of Auxerre",
+        "birth": "1150",
+        "birth_p": "France",
+        "death": "1231",
+        "death_p": "Italy",
+        "subjects": "Theology, Natural Law, Free Will, Liturgy"
+    },
+    {
+        "name": "William of Champeaux",
+        "birth": "1070",
+        "birth_p": "France",
+        "death": "1121",
+        "death_p": "France",
+        "subjects": "Universal"
+    },
+    {
+        "name": "William of Ockham",
+        "birth": "1285",
+        "birth_p": "England",
+        "death": "1349",
+        "death_p": "Germany",
+        "subjects": "Roman Catholicism, Occam\u2019S Razor, Heterodoxy"
+    },
+    {
+        "name": "Xiong Shili",
+        "birth": "1885",
+        "birth_p": "China",
+        "death": "1968",
+        "death_p": "China",
+        "subjects": "Ren"
+    },
+    {
+        "name": "Xunzi",
+        "birth": "300",
+        "birth_p": "China",
+        "death": "230",
+        "death_p": "China",
+        "subjects": "Confucianism, Human Nature, Li, Good And Evil"
+    },
+    {
+        "name": "Yan Yuan",
+        "birth": "1635",
+        "birth_p": "China",
+        "death": "1704",
+        "death_p": "China",
+        "subjects": "Confucianism"
+    },
+    {
+        "name": "Zhang Zai",
+        "birth": "1020",
+        "birth_p": "China",
+        "death": "1077",
+        "death_p": "China",
+        "subjects": "Ren, Qi"
+    },
+    {
+        "name": "Zhou Dunyi",
+        "birth": "1017",
+        "birth_p": "China",
+        "death": "1073",
+        "death_p": "China",
+        "subjects": "Confucianism, Dark Learning"
+    },
+    {
+        "name": "Zhu Xi",
+        "birth": "1130",
+        "birth_p": "China",
+        "death": "1200",
+        "death_p": "China",
+        "subjects": "Qi, Li"
+    },
+    {
+        "name": "al-Farabi",
+        "birth": "878",
+        "birth_p": "Turkistan",
+        "death": "950",
+        "death_p": "Syria",
+        "subjects": "Political Philosophy, Greek Philosophy"
+    },
+    {
+        "name": "al-Ghazali",
+        "birth": "1058",
+        "birth_p": "Iran",
+        "death": "1111",
+        "death_p": "Iran",
+        "subjects": "Islam, Sufism, Sharif"
     }
 ]
