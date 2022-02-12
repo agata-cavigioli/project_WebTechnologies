@@ -14,10 +14,12 @@ let filosofi = [
         "Birth place": "Ukraine",
         "Died": "1922",
         "Place of Death": "Palestine",
-        "Subjects Of Study": "Agriculture, Zionism"
+        "Subjects Of Study": "Agriculture, Zionism",
+        "Cost":"250.99"
     },
     {
         "Philosophers": "Abraham Joshua Heschel",
+        "Cost":"250.99",
         "Born": "1907",
         "Birth place": "Poland",
         "Died": "1972",
@@ -26,6 +28,7 @@ let filosofi = [
     },
     {
         "Philosophers": "Albert of Saxony",
+        "Cost":"250.99",
         "Born": "1316",
         "Birth place": "Germany",
         "Died": "1390",
@@ -34,6 +37,7 @@ let filosofi = [
     },
     {
         "Philosophers": "Alessandro Achillini",
+        "Cost":"250.99",
         "Born": "1463",
         "Birth place": "Italy",
         "Died": "1512",
@@ -42,6 +46,7 @@ let filosofi = [
     },
     {
         "Philosophers": "Alexander Gottlieb Baumgarten",
+        "Cost":"250.99",
         "Born": "1714",
         "Birth place": "Germany",
         "Died": "1762",
@@ -50,6 +55,7 @@ let filosofi = [
     },
     {
         "Philosophers": "Alexius Meinong",
+        "Cost":"250.99",
         "Born": "1853",
         "Birth place": "Ukraine",
         "Died": "1920",
@@ -58,6 +64,7 @@ let filosofi = [
     },
     {
         "Philosophers": "Alfred Firmin Loisy",
+        "Cost":"250.99",
         "Born": "1857",
         "Birth place": "France",
         "Died": "1940",
@@ -66,6 +73,7 @@ let filosofi = [
     },
     {
         "Philosophers": "Alfred Korzybski",
+        "Cost":"250.99",
         "Born": "1879",
         "Birth place": "Poland",
         "Died": "1950",
@@ -74,6 +82,7 @@ let filosofi = [
     },
     {
         "Philosophers": "Alfred North Whitehead",
+        "Cost":"250.99",
         "Born": "1861",
         "Birth place": "England",
         "Died": "1947",
@@ -82,6 +91,7 @@ let filosofi = [
     },
     {
         "Philosophers": "Allan Bloom",
+        "Cost":"250.99",
         "Born": "1930",
         "Birth place": "Indiana",
         "Died": "1992",
@@ -90,6 +100,7 @@ let filosofi = [
     },
     {
         "Philosophers": "Anaxagoras",
+        "Cost":"250.99",
         "Born": "500",
         "Birth place": "Clazomenae",
         "Died": "428",
@@ -98,6 +109,7 @@ let filosofi = [
     },
     {
         "Philosophers": "Anicius Manlius Severinus Boethius",
+        "Cost":"250.99",
         "Born": "475",
         "Birth place": "Italy",
         "Died": "524",
@@ -106,6 +118,7 @@ let filosofi = [
     },
     {
         "Philosophers": "Antonio Labriola",
+        "Cost":"250.99",
         "Born": "1843",
         "Birth place": "Sicilies",
         "Died": "1904",
@@ -197,7 +210,7 @@ container.appendChild(row);
                     {filosofo.Died}
                     {filosofo.Deathp}
                     </div>
-                    <h3 class="mb-0 font-weight-semibold">&euro; 250.99 al giorno</h3>
+                    <h3 class="mb-0 font-weight-semibold">&euro; {filosofo.Cost} al giorno</h3>
                     <div class='mybooking'>
                     <Modal>
                       <PrenotButton philosopher={filosofo}/>

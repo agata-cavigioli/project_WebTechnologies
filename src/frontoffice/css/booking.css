@@ -24,3 +24,8 @@ left: 20%;
       overflow-y: auto;
   }
 }
+
+#riepilogodiv{
+  line-height: 2 !important;
+text-align: left !important;
+}

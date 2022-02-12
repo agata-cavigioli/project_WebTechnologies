@@ -7,6 +7,8 @@
   import jQ from 'jquery';
 
   let islogged;
+  let confermato = false;
+  var booking = {};
 
 	loggedIn.subscribe(value => {
 		islogged = value;
@@ -38,10 +40,10 @@ function preventivo(){
     });
     //
 
-    let costo = 250.99;
+    let costo = filo.Cost;
     let datefrom = document.getElementById('datefromnolo').value;
     let dateto = document.getElementById('datetonolo').value;
-    if(datefrom && dateto && datefrom<dateto) {
+    if(datefrom && dateto && datefrom<=dateto) {
       const date1 = new Date(datefrom);
       const date2 = new Date(dateto);
       const diffTime = Math.abs(date2 - date1);
@@ -95,12 +97,12 @@ function sendnolo(){
     redstar.remove();
     });
     var sendcheck = true;
-    var booking = {};
+
     var bookingArray = [];
 
   let datefrom = document.getElementById('datefromnolo').value;
   let dateto = document.getElementById('datetonolo').value;
-  if(datefrom && dateto && datefrom<dateto) {
+  if(datefrom && dateto && datefrom<=dateto) {
     const date1 = new Date(datefrom);
     const date2 = new Date(dateto);
     const diffTime = Math.abs(date2 - date1);
@@ -136,7 +138,15 @@ function sendnolo(){
   if(sendcheck){
   bookingArray.push({...booking});
   console.log(JSON.stringify(bookingArray));
+  confermato = true;
 }
+
+}
+
+
+
+function confirm(){
+
 }
 
 </script>
@@ -167,17 +177,18 @@ function sendnolo(){
                       {filo.Died}
                       {filo.Deathp}
                       </div>
-                      <h3 class="mb-0 font-weight-semibold">&euro; 250.99 al giorno</h3>
+                      <h3 class="mb-0 font-weight-semibold">&euro; {filo.Cost} al giorno</h3>
 
                   </div>
               </div>
           </div>
+
       <div class="col-lg">
 
         <div class="modal-header text-center">
         <h4 class="modal-title white-text w-100 font-weight-bold py-2">Noleggia {filo.Philosophers}</h4>
         </div>
-
+        {#if !confermato}
         <h5 class="font-weight-bold text-secondary mt-4">
         Inserisci la date di noleggio
         </h5>
@@ -191,7 +202,7 @@ function sendnolo(){
 
       </div>
 
- {#if !islogged}
+      {#if !islogged}
 
       <p type="button" class="btn btn-outline-warning waves-effect" on:click={preventivo}>Calcola un preventivo</p>
       <div id="preventivo">
@@ -220,9 +231,9 @@ Inserisci il tuo metodo di pagamento
 </h5>
   <select class="custom-select form-control mb-4" id="inputGroupPay">
     <option selected value="">Choose...</option>
-    <option value="paypal">PayPal</option>
-    <option value="credito">Carta di Credito</option>
-    <option value="regalo">Carta Regalo</option>
+    <option value="PayPal">PayPal</option>
+    <option value="Carta di Credito">Carta di Credito</option>
+    <option value="Carta Regalo">Carta Regalo</option>
       </select>
 
 
@@ -230,6 +241,28 @@ Inserisci il tuo metodo di pagamento
   <p type="button" class="btn btn-outline-warning waves-effect" on:click={sendnolo}>Procedi al pagamento</p>
 </div>
 
+{/if}
+{:else if confermato}
+
+
+<h4 class="font-weight-bold text-info mt-4">
+Riepilogo dell'ordine
+</h4>
+<h5 class="font-weight-bold text-secondary mt-4" id="riepilogodiv">
+Periodo: da {booking.datefrom} a {booking.dateto}
+<br>
+Costo per {booking.diffdate} {(booking.diffdate>1)? "giorni":"giorno"}: {booking.diffdate*filo.Cost}
+<br>
+Indirizzo: {booking.address}
+<br>
+Metodo di pagamento: {booking.payment}
+</h5>
+
+<div class="modal-footer justify-content-center">
+  <p type="button" class="btn btn-outline-info waves-effect" on:click={()=>(confermato = false)}>Modifica</p>
+  <p type="button" class="btn btn-outline-warning waves-effect" on:click={confirm}>Conferma</p>
+
+</div>
 {/if}
 
     </div>

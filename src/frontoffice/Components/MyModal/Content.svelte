@@ -17,7 +17,10 @@
     let element;
     if (element=document.getElementById('home')){
     element.classList.add("overflow-hidden");}
-    open(Popup, { op: option, message: "It's a modal!" });
+    if (document.getElementById('prenot-modal-content')){
+    document.getElementById('prenot-modal-content').classList.add("overflow-hidden");
+  }
+  open(Popup, { op: option, message: "It's a modal!" });
   }
 
 </script>

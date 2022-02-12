@@ -11,18 +11,25 @@
 
   onMount(() => {
     jQuery( document ).ready(function() {
-      var close = document.getElementsByClassName("close")[0];
-      close.id="closemodal";
 
-      close.addEventListener("click", function() {
-      let element;
-        if (element=document.getElementById('home')){
-        document.getElementById('home').classList.remove("overflow-hidden");
-        document.getElementById('home').classList.add("overflow-auto");
-      }
+      if (document.getElementById('home')&& !document.getElementById('prenot-modal-content')){
+        var close = document.getElementsByClassName("close")[0];
+        close.id="closemodal";
+        close.addEventListener("click", function() {
+            document.getElementById('home').classList.remove("overflow-hidden");
+            document.getElementById('home').classList.add("overflow-auto");
+          });
+          }
+      else if (document.getElementById('prenot-modal-content')){
+          var close = document.getElementsByClassName("close")[1];
+          close.id="closemodal";
+          close.addEventListener("click", function() {
+              document.getElementById('prenot-modal-content').classList.remove("overflow-hidden");
+              document.getElementById('prenot-modal-content').classList.add("overflow-auto");
+            });
+          }
     });
   });
- });
 
   function revealpwd() {
     var x = document.getElementById("form2");
@@ -39,9 +46,15 @@
     if (checkpassword(mail,pwd)){
       loggedIn.update(b => !b);
       let element;
-      if (element=document.getElementById('home')){
+      if (element=document.getElementById('home')&& !document.getElementById('prenot-modal-content')){
       document.getElementById('home').classList.remove("overflow-hidden");
       document.getElementById('home').classList.add("overflow-auto");
+      }
+      console.log(document.getElementById('prenot-modal-content'));
+      if (document.getElementById('prenot-modal-content')){
+        console.log('ue');
+      document.getElementById('prenot-modal-content').classList.remove("overflow-hidden");
+      document.getElementById('prenot-modal-content').classList.add("overflow-auto");
     }
       close()
     }
