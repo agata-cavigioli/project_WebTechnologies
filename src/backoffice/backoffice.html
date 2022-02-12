@@ -1,0 +1,642 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>NoloNoloPLVS Retrobottega</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="backoffice/css/style.css">
+  </head>
+
+  <body>
+    <!--
+      <img id="background" src="backoffice/img/background.jpg" alt=""/>
+    -->
+    <div class="container-fluid">
+      <div id="title" class="major p-3 pt-lg-5 pb-lg-3 px-lg-5">
+        <div class="row justify-content-between">
+          <div class="col-lg-8">
+            <h1>Dining Philosophers' Back Office</h1>
+            <small>powered by NoloNolo+</small>
+          </div>
+          <div id="header_buttons" class= "col-lg-3">
+            <button onclick="doLogin()" type="button" class="btn btn-primary w-100">Login</button>
+          </div>
+        </div>
+      </div>
+      <div id="login_window" style="display: none;">
+        <div class="row justify-content-center align-items-center">
+          <form onsubmit="return false" id="login_form" class="col-md-4 pt-5 minor">
+            <h2 class="mb-3 text-center">BackOffice login</h2>
+            <div class='mb-3'>
+              <label for='LoginFormEmail' class='form-label'>Email address</label>
+              <input name="email" type='email'
+                     class='form-control'
+                     id='LoginFormEmail'
+                     placeholder='name@example.com'>
+            </div>
+            <div class='mb-3'>
+              <label for='LoginFormPassword' class='form-label'>Password</label>
+              <input name="password" type='password'
+                     class='form-control'
+                     id='LoginFormPassword'>
+            </div>
+            <div class='mb-3'>
+              <div class="row">
+                <div class="col">
+                  <button onclick="checkCredentials()" type='submit'
+                          class='btn btn-primary w-100'
+                          id='LoginFormButton'>
+                    Login
+                  </button>
+                </div>
+                <div class="col">
+                  <button onclick="doLogin()" type='submit'
+                          class='btn btn-secondary w-100'
+                          id='LoginFormButton'>
+                    Back
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p id="incorrect_email_message" style="display: none;">Incorrect email or password. Please retry.</p>
+          </form>
+        </div> 
+      </div>
+      <div id="the_office" class="">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a id="inventory_tab"
+               class="top-tabs nav-link active"
+               onclick="updateTab('inventory')"
+               aria-current="true"
+               href="#">Inventario</a>
+          </li>
+          <li class="nav-item">
+            <a id="nolo_tab"
+               class="top-tabs nav-link"
+               onclick="updateTab('nolo')"
+               href="#">Noleggi</a>
+          </li>
+          <li class="nav-item">
+            <a id="clients_tab"
+               class="top-tabs nav-link"
+               style="display: none;"
+               onclick="updateTab('clients')"
+               href="#">Clienti</a>
+          </li>
+        </ul>
+        <div id="inventory" class="content-tab bg-white p-3-lg row">
+          <div class="table-responsive col-lg-8 col-12">
+            <table id="twrap"
+                   class="text-start table table-striped table-hover ">
+              <thead id="header" >
+                <tr>
+                  <th scope="col">
+                    Nome
+                    <form class="d-flex">
+                      <input
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="..."
+                        aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">
+                    Nascita
+                    <form class="d-flex">
+                      <input
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="..."
+                        aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">
+                    Luogo Nascita
+                    <form class="d-flex">
+                      <input
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="..."
+                        aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">
+                    Morte
+                    <form class="d-flex">
+                      <input
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="..."
+                        aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">
+                    Luogo Morte
+                    <form class="d-flex">
+                      <input
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="..."
+                        aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">
+                    Tematiche
+                    <form class="d-flex">
+                      <input
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="..."
+                        aria-label="Search">
+                    </form>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="products">
+              </tbody>
+            </table>
+            <div class="row justify-content-start g-3 major">
+              <div class="col col-lg-2">
+                <button class="w-100 btn btn-primary mb-2"
+                        type="">
+                  Nuovo 
+                </button>
+              </div>
+              <div class="col col-lg-2">
+                <a class="w-100 btn btn-primary mb-2"
+                   href="#header"
+                   role="button"
+                   type="reset">
+                  Reset
+                </a>
+              </div>
+              <div class="col col-lg-2">
+                <a class="w-100 btn btn-primary mb-2"
+                   href="#header"
+                   role="button">
+                  Top
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-12 minor">
+            <div id="product_card"
+                 class="card text-start"
+                 style="display: none;">
+              <div class="card-body">
+                <div class="row"> 
+                  <div class="col"> 
+                    <h5 id="product_card_name"
+                        class="card-title fw-bold"></h5>
+                    <p>Id: <small id="product_card_id"></small></p>
+                    <p id="product_card_age"
+                       class="card-text"></p>
+                    <h6 class="fw-bold">Tematiche:</h6>
+                    <p id="product_card_subject" class="card-text"></p>
+                  </div>
+                  <div class="col"> 
+                    <img src="https://picsum.photos/400" class="card-img-top" alt="...">
+                  </div>
+                </div>
+              </div>
+              <form id="nolo_form">
+                <ul id="product_card_nolo_list"
+                    style="display: none;"
+                    class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div class="row">
+
+                      <div class="col-6 col-lg-2">
+                        <b>Da:</b>
+                      </div>
+                      <div class="col-6 col-lg-4">
+                        <input type="date"
+                               id="product_card_modify_cost"
+                               name="date_from"
+                               class="card-text form-control"
+                               aria-label="Inizio noleggio">
+                      </div>
+
+                      <div class="col-6 col-lg-2">
+                        <b>A:</b>
+                      </div>
+                      <div class="col-6 col-lg-4">
+                        <input type="date"
+                               id="product_card_modify_available"
+                               name="date_to"
+                               class="card-text form-control"
+                               aria-label="Termine noleggio">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col">
+                        <b>Sconto</b>
+                      </div>
+                      <div class="col">
+                        <input type="text"
+                               id="product_card_modify_discount"
+                               name="discount"
+                               class="card-text form-control"
+                               aria-label="Sconto">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col">
+                        <b>Note</b>
+                      </div>
+                      <div class="col">
+                        <input type="text"
+                               id="product_card_modify_info"
+                               name="info"
+                               class="card-text form-control"
+                               aria-label="Note">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="row">
+                      <b class="col"> Totale: </b>
+                      <span class="col"id="total"></span>
+                    </div>
+                  </li>
+                </ul>
+              </form>
+
+              <ul id="product_card_info_list" class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <b> Prezzo: </b>
+                  <span id="product_card_price"></span>
+                </li>
+                <li class="list-group-item">
+                  <b> Stato: </b>
+                  <span id="product_card_condition"></span>
+                </li>
+                <li class="list-group-item">
+                  <b> Disponibile: </b>
+                  <span id="product_card_avail"></span>
+                </li>
+                <li class="list-group-item">
+                  <b> Sconto: </b>
+                  <span id="product_card_discount"></span>
+                </li>
+                <li class="list-group-item">
+                  <b> Note: </b>
+                  <span id="product_card_info"></span>
+                </li>
+              </ul>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-6 col-lg-3">
+                    <a href="#product_card"
+                       id="nolo_button"
+                       onclick="noloProduct()"
+                       class="card-link">Preventivo</a>
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <a class="btn btn-primary"
+                       id="nolo_calc_button"
+                       onclick="doNolo()"
+                       style="display: none;">Calcola</a>
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <a href="#"
+                       class="product_card_options card-link"
+                       style="display: none;"
+                       onclick="modifyProduct()">Modifica</a>
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <a href="#"
+                       class="product_card_options card-link"
+                       style="display: none;">Elimina</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <form id="product_card_modify" 
+                  class="card text-start"
+                  style="display: none;">
+              <div class="card-body">
+                <input type="text"
+                       id="product_card_modify_name"
+                       name="name"
+                       class="card-title fw-bold form-control"
+                       aria-label="Nome">
+                <div class="row mb-2">
+                  <div class="col">
+                    <input type="text"
+                           id="product_card_modify_birth_p"
+                           name="birth_p"
+                           class="card-text form-control"
+                           aria-label="Luogo di Nascita">
+                  </div>
+                  <div class="col">
+                    <input type="text"
+                           id="product_card_modify_birth"
+                           name="birth"
+                           class="card-text form-control"
+                           aria-label="Data di Nascita">
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col">
+                    <input type="text"
+                           id="product_card_modify_death_p"
+                           name="death_p"
+                           class="card-text form-control"
+                           aria-label="Luogo di morte">
+                  </div>
+                  <div class="col">
+                    <input type="text"
+                           id="product_card_modify_death"
+                           name="death"
+                           class="card-text form-control"
+                           :placeholder="this.product['Died']"
+                           aria-label="Data di Morte">
+                  </div>
+                </div>
+                <h6 class="fw-bold">Tematiche:</h6>
+                <input type="text"
+                       id="product_card_modify_subjects"
+                       name="subjects"
+                       class="card-text form-control"
+                       aria-label="Tematiche">
+              </div>
+              <!--
+                <div class="col"> 
+                <img src="https://picsum.photos/400" class="card-img-top" alt="...">
+                </div>
+              -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <b>Prezzo:</b>
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="product_card_modify_cost"
+                             name="cost"
+                             class="card-text form-control"
+                             aria-label="Prezzo">
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <b>Disponibile:</b>
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="product_card_modify_available"
+                             name="available"
+                             class="card-text form-control"
+                             aria-label="Disponibile">
+                    </div>
+                  </div>
+                </li><li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <b>Sconto:</b>
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="product_card_modify_discount"
+                             name="discount"
+                             class="card-text form-control"
+                             aria-label="Sconto">
+                    </div>
+                  </div>
+                </li><li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <b>Note:</b>
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="product_card_modify_info"
+                             name="info"
+                             class="card-text form-control"
+                             aria-label="Note">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div class="card-body">
+                <a href="#"
+                   onclick=""
+                   class="card-link">
+                  Salva</a>
+                <a href="#"
+                   class="card-link"
+                   onclick="abortModify('inventory')"
+                   >Annulla</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div id="clients"
+             style="display: none;"
+             class="content-tab bg-white p-3-lg row">
+          <div class="table-responsive col-lg-8 col-12">
+            <table id="twrap" class="text-start table table-striped table-hover ">
+              <thead id="header" >
+                <tr>
+                  <th scope="col">
+                    Nome <form class="d-flex">
+                      <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">
+                    Cognome <form class="d-flex">
+                      <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">
+                    Email <form class="d-flex">
+                      <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">
+                    Telefono <form class="d-flex">
+                      <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">
+                    Indirizzo <form class="d-flex">
+                      <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+                    </form>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="people">
+              </tbody>
+            </table>
+            <div class="row justify-content-start g-3 major">
+              <div class="col col-lg-2">
+                <button class="w-100 btn btn-primary mb-2">Nuovo</button>
+              </div>
+              <div class="col col-lg-2">
+                <a class="w-100 btn btn-primary mb-2"
+                   href="#header"
+                   role="button"
+                   type="reset"> Reset </a>
+              </div>
+              <div class="col col-lg-2">
+                <a class="w-100 btn btn-primary mb-2"
+                   href="#header"
+                   role="button">Top</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-12 minor">
+            <div id="client_card"
+                 class="card text-start"
+                 style="display: none;">
+              <div class="card-body">
+                <div class="row"> 
+                  <div class="col"> 
+                    <h5 id="client_card_name"
+                        class="card-title fw-bold"></h5>
+                    <p>Id: <small id="client_card_id"></small></p>
+                    <p class="card-text">
+                      <p class="fw-bold">Email:</p>
+                      <p id="client_card_email" ></p>
+                    </p>
+                    <p class="card-text">
+                      <p class="fw-bold">Telefono:</p>
+                      <p id="client_card_phone" ></p>
+                    </p>
+                    <p class="card-text">
+                      <p class="fw-bold">Indirizzo:</p>
+                      <p id="client_card_address" ></p>
+                    </p>
+
+                  </div>
+                  <div class="col"> 
+                    <img src="https://picsum.photos/400" class="card-img-top" alt="...">
+                  </div>
+                </div>
+              </div>
+
+              <ul id="client_card_info_list" class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <b> Note: </b>
+                  <span id="client_card_info"></span>
+                </li>
+                <li class="list-group-item">
+                  <button class="btn btn-primary">Storico</button>
+                </li>
+              </ul>
+              <div class="card-body row">
+                <div class="col">
+                  <a href="#"
+                     class="client_card_options card-link"
+                     onclick="modifyClient()">Modifica</a>
+                </div>
+                <div class="col">
+                  <a href="#"
+                     class="client_card_options card-link">Elimina</a>
+                </div>
+              </div>
+            </div>
+            <form id="client_card_modify" 
+                  class="card text-start"
+                  style="display: none;">
+              <div class="card-body">
+                <div class="row mb-2">
+                  <div class="col">
+                    <input type="text"
+                           id="client_card_modify_name"
+                           name="name"
+                           class="card-title fw-bold form-control"
+                           aria-label="Nome">
+                  </div>
+                  <div class="col">
+                    <input type="text"
+                           id="client_card_modify_surname"
+                           name="surname"
+                           class="card-title form-control"
+                           aria-label="Cognome">
+                  </div>
+                </div>
+                <input type="text"
+                       id="client_card_modify_email"
+                       name="email"
+                       class="card-text form-control mb-2"
+                       aria-label="Email">
+                <input type="text"
+                       id="client_card_modify_phone"
+                       name="phone"
+                       class="card-text form-control mb-2"
+                       aria-label="Telefono">
+                <input type="text"
+                       id="client_card_modify_address"
+                       name="address"
+                       class="card-text form-control mb-2"
+                       aria-label="Address">
+              </div>
+              <!--
+                <div class="col"> 
+                <img src="https://picsum.photos/400" class="card-img-top" alt="...">
+                </div>
+              -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      Note:
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="client_card_modify_info"
+                             name="info"
+                             class="card-text form-control"
+                             aria-label="Note">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div class="card-body">
+                <a href="#"
+                   onclick=""
+                   class="card-link">
+                  Salva</a>
+                <a href="#"
+                   class="card-link"
+                   onclick="abortModify('clients')"
+                   >Annulla</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/backoffice/js/main.js"/>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
