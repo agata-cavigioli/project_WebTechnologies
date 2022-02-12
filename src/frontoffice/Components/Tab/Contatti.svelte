@@ -1,6 +1,6 @@
-<div class="personaltab align-items-center container">
+<div class="personaltab align-items-center container overflow-auto">
 <div class="row">
-<div class="col-md-3 mt-2">
+<div class="col-md-6 mt-2">
     <div class="card">
         <div class="card-body">
             <div class="card-img-actions">
@@ -30,7 +30,7 @@
         </div>
     </div>
 </div>
-<div class="col-md-3 mt-2">
+<div class="col-md-6 mt-2">
     <div class="card">
         <div class="card-body">
             <div class="card-img-actions">
