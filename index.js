@@ -10,6 +10,7 @@ let app = express();
 app.use('/frontoffice/js' , express.static(global.rootDir +'/src/frontoffice'));
 app.use('/frontoffice/css' , express.static(global.rootDir +'/src/frontoffice'));
 
+
 app.use('/backoffice/js' , express.static(global.rootDir +'/src/backoffice'));
 app.use('/backoffice/css' , express.static(global.rootDir +'/src/backoffice'));
 app.use('/backoffice/img' , express.static(global.rootDir +'/src/backoffice'));

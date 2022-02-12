@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <div class="card-img-actions">
-            <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png" class="card-img img-fluid" width="50" height="200" alt="">
+            <img src="./curriculum2.jpg" >
             </div>
         </div>
         <div class="card-body bg-light text-center">
@@ -19,10 +19,7 @@
                 </div>
             </div>
             <div class="text-muted mb-3">
-            d
-            f,
-            g
-            h
+            <a href="https://www.linkedin.com/in/agata-cavigioli-b4b252229">Linkedin </a>
             </div>
             <h3 class="mb-0 font-weight-semibold">&euro; t al giorno</h3>
             <div class='mybooking'>
