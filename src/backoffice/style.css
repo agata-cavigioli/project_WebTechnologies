@@ -1,0 +1,78 @@
+/*
+#background {
+  position: absolute;
+  opacity: 0.3;
+  width: 100vw;
+  height: 100vh;
+  object-fit: fill;
+  z-index: -1;
+}
+*/
+
+#twrap {
+  max-height: 60vh;
+  overflow: auto;
+  display:inline-block;
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+}
+
+#twrap::-webkit-scrollbar {
+  display: none;
+}
+
+th, td {
+  width: 16.6%;
+}
+
+body{
+  background-color: #fffdfa;
+  background-size: cover;
+  background-opacity: 0.3;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    overflow-y: auto;
+  }
+}
+
+.major h1 {
+  color: #3674E7;
+}
+
+.major b, .major h2, .major a {
+  color: #1FA2FF;
+}
+
+.major button, .major .btn {
+  border-style: none;
+  background-color: #3674E7;
+}
+.major button:hover {
+  background-color: #1FA2FF;
+}
+
+.minor h1 {
+  color: #FA864C;
+}
+.minor b, .minor h2, .minor a{
+  color: #F7B32B;
+}
+
+.minor button, .minor .btn {
+  border-style: none;
+  background-color: #FA864C;
+}
+
+.minor button:hover {
+  background-color: #F7B32B;
+}
+
+a.btn {
+  color: #FFFFFF;
+}
+
+
+https://coolors.co/3674e7-1fa2ff-fffdfa-fa864c-f7b32b
