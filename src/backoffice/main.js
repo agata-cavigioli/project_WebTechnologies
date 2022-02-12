@@ -228,6 +228,7 @@ function checkCredentials(){
 		$('#the_office').toggle();
 		$('#login_window').toggle();
 		$('#clients_tab').toggle();
+		$('#nolo_tab').toggle();
 		$('.product_card_options').toggle();
 		$('#header_buttons').toggle();
 
@@ -240,6 +241,7 @@ function logout(){
 	$('#header_buttons')
 		.html('<button onclick="doLogin()" type="button" class="btn btn-primary w-100">Login</button>');
 	$('#clients_tab').toggle();
+	$('#nolo_tab').toggle();
 	$('.product_card_options').toggle();
 	$('#product_card').css('display', 'none');
 	$('#product_card_modify').css('display', 'none');
@@ -252,6 +254,7 @@ function updateTab(_tab){
 	let alltabs = $('.top-tabs');
 	alltabs.removeClass('active');
 	alltabs.attr('aria-current', 'page');
+	alltabs.css('background', '#eeeeee');
 
 	let allcontent = $('.content-tab');
 	allcontent.css('display', 'none');
@@ -261,6 +264,7 @@ function updateTab(_tab){
 	let tab = $('#'+_tab + '_tab');
 	tab.addClass('active');
 	tab.attr('aria-current', 'true');
+	tab.css('background', '#ffffff');
 
 	let content = $('#'+_tab);
 	content.css('display', '');
