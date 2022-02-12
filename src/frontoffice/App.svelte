@@ -32,7 +32,7 @@ function searchfunction(){
 <svelte:body
 
 />
-<main>
+<main class="overflow-auto">
 <Router url="{url}">
 <Route path="/">
 		<div class='container pt-5 position-absolute' id='appcont'>
