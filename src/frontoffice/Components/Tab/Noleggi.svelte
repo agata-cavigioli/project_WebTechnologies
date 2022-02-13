@@ -175,6 +175,20 @@ let noleggi = [
         "enddate": "02/14/2022"
     }
 ]
+
+function calcolocosto(noleggio){
+	const date1 = new Date(noleggio.startdate);
+	const date2 = new Date(noleggio.enddate);
+	const diffTime = Math.abs(date2 - date1);
+	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+	//let start = noleggio.startdate;
+	//console.log(start);
+	//let end = noleggio.enddate;
+	//console.log(end);
+	console.log(diffDays);
+	return (diffDays*noleggio.Cost);
+}
 </script>
 <div class="personaltab container">
 <div class="row">
@@ -202,16 +216,17 @@ Noleggi in corso
 									</div>
 								</h6>
 								<div class="text-muted" data-abc="true">
-								{noleggio.Sub}
+								Periodo di noleggio: {noleggio.startdate} - {noleggio.enddate}
 								</div>
 						</div>
 						<div class="text-muted mb-3">
-						{noleggio.Born}
-						{noleggio.Birthp},
-						{noleggio.Died}
-						{noleggio.Deathp}
+						Costo giornaliero: {noleggio.Cost}
+						<br>
+						Sconti applicati:
+						<br>
+						Luogo di noleggio:
 						</div>
-						<h3 class="mb-0 font-weight-semibold">&euro; {noleggio.Cost} al giorno</h3>
+						<h3 class="mb-0 font-weight-semibold">Costo del noleggio: {calcolocosto(noleggio)}</h3>
 						<div class='mybooking'>
 						</div>
 				</div>
@@ -224,7 +239,7 @@ Noleggi in corso
           </div>
 
           <div class="col">
-            <p id="nolofattura" type='button' class='row-lg mt-4 btn btn-outline-warning waves-effect' on:click={()=>(nolotime = "past")}>Elimina</p>
+            <p id="nolofattura" type='button' class='row-lg mt-4 btn btn-outline-warning waves-effect' on:click={()=>(nolotime = "past")}>Concludi il noleggio</p>
           </div>
 
         </div>
@@ -254,16 +269,17 @@ Noleggi previsti
 									</div>
 								</h6>
 								<div class="text-muted" data-abc="true">
-								{noleggio.Sub}
+								Periodo di noleggio: {noleggio.startdate} - {noleggio.enddate}
 								</div>
 						</div>
 						<div class="text-muted mb-3">
-						{noleggio.Born}
-						{noleggio.Birthp},
-						{noleggio.Died}
-						{noleggio.Deathp}
+						Costo giornaliero: {noleggio.Cost}
+						<br>
+						Sconti applicati:
+						<br>
+						Luogo di noleggio:
 						</div>
-						<h3 class="mb-0 font-weight-semibold">&euro; {noleggio.Cost} al giorno</h3>
+						<h3 class="mb-0 font-weight-semibold">Costo del noleggio: {(noleggio.startdate-noleggio.enddate +1)*noleggio.Cost} al giorno</h3>
 						<div class='mybooking'>
 						</div>
 				</div>
@@ -306,16 +322,17 @@ Noleggi conclusi
 									</div>
 								</h6>
 								<div class="text-muted" data-abc="true">
-								{noleggio.Sub}
+								Periodo di noleggio: {noleggio.startdate} - {noleggio.enddate}
 								</div>
 						</div>
 						<div class="text-muted mb-3">
-						{noleggio.Born}
-						{noleggio.Birthp},
-						{noleggio.Died}
-						{noleggio.Deathp}
+						Costo giornaliero: {noleggio.Cost}
+						<br>
+						Sconti applicati:
+						<br>
+						Luogo di noleggio:
 						</div>
-						<h3 class="mb-0 font-weight-semibold">&euro; {noleggio.Cost} al giorno</h3>
+						<h3 class="mb-0 font-weight-semibold">Costo del noleggio: {(noleggio.startdate-noleggio.enddate +1)*noleggio.Cost} al giorno</h3>
 						<div class='mybooking'>
 						</div>
 				</div>

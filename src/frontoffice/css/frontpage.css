@@ -40,6 +40,7 @@ main{
 }
 .searchlink{
   text-decoration: none;
+  height: 100% !important;
 }
 
 @media (min-width: 640px) {
