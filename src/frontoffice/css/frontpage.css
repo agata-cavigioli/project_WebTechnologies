@@ -16,7 +16,7 @@ main{
   height: 100% !important;
   background-image:
       /* top, transparent red */
-      linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,.4)),
+      linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6)),
       /* your image */
       url("../background.jpg") !important;
 

@@ -1,6 +1,6 @@
 <script>
 import { onMount } from 'svelte';
-import jQ from 'jquery';
+import jQuery from 'jquery';
 
 let nolotime = "present";
 var today = new Date();
@@ -18,173 +18,177 @@ onMount(() => {
 });
 
 let noleggi = [
+	{ 	"product_id" : 0,
+         "client_id" : 0,
+         "date_from" : "12/12/2021",
+         "date_to" : "1/1/2022",
+         "status" : "booked",
+         "nolo_data" : {
+             "other_fees" : 0,
+             "info" : "" }
+     },
     {
-        "Philosophers": "Aaron David Gordon",
-        "Born": "1856",
-        "Birth place": "Ukraine",
-        "Died": "1922",
-        "Place of Death": "Palestine",
-        "Subjects Of Study": "Agriculture, Zionism",
+        "name": "Aaron David Gordon",
         "Cost":"250.99",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/14/2022",
-        "enddate": "02/18/2022"
+        "date_from": "02/14/2022",
+        "date_to": "02/18/2022"
     },
     {
-        "Philosophers": "Abraham Joshua Heschel",
+        "name": "Abraham Joshua Heschel",
         "Cost":"250.99",
-        "Born": "1907",
-        "Birth place": "Poland",
-        "Died": "1972",
-        "Place of Death": "York",
-        "Subjects Of Study": "Judaism, Philosophy Of Religion",
+        "birth": "1907",
+        "birth_p": "Poland",
+        "death": "1972",
+        "death_p": "York",
+        "subjects": "Judaism, Philosophy Of Religion",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/14/2022",
-        "enddate": "02/18/2022"
+        "date_from": "02/14/2022",
+        "date_to": "02/18/2022"
     },
     {
-        "Philosophers": "Albert of Saxony",
+        "name": "Albert of Saxony",
         "Cost":"250.99",
-        "Born": "1316",
-        "Birth place": "Germany",
-        "Died": "1390",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Gravity",
+        "birth": "1316",
+        "birth_p": "Germany",
+        "death": "1390",
+        "death_p": "Germany",
+        "subjects": "Gravity",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/14/2022",
-        "enddate": "02/18/2022"
+        "date_from": "02/14/2022",
+        "date_to": "02/18/2022"
     },
     {
-        "Philosophers": "Alessandro Achillini",
+        "name": "Alessandro Achillini",
         "Cost":"250.99",
-        "Born": "1463",
-        "Birth place": "Italy",
-        "Died": "1512",
-        "Place of Death": "Bologna",
-        "Subjects Of Study": "William Of Ockham",
+        "birth": "1463",
+        "birth_p": "Italy",
+        "death": "1512",
+        "death_p": "Bologna",
+        "subjects": "William Of Ockham",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/14/2022",
-        "enddate": "02/18/2022"
+        "date_from": "02/14/2022",
+        "date_to": "02/18/2022"
     },
     {
-        "Philosophers": "Alexander Gottlieb Baumgarten",
+        "name": "Alexander Gottlieb Baumgarten",
         "Cost":"250.99",
-        "Born": "1714",
-        "Birth place": "Germany",
-        "Died": "1762",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Aesthetics, Gottfried Wilhelm Leibniz, Feeling, Christian, Baron Von Wolff",
+        "birth": "1714",
+        "birth_p": "Germany",
+        "death": "1762",
+        "death_p": "Germany",
+        "subjects": "Aesthetics, Gottfried Wilhelm Leibniz, Feeling, Christian, Baron Von Wolff",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/14/2022",
-        "enddate": "02/18/2022"
+        "date_from": "02/14/2022",
+        "date_to": "02/18/2022"
     },
     {
-        "Philosophers": "Alexius Meinong",
+        "name": "Alexius Meinong",
         "Cost":"250.99",
-        "Born": "1853",
-        "Birth place": "Ukraine",
-        "Died": "1920",
-        "Place of Death": "Austria",
-        "Subjects Of Study": "Objectivism, Intentionality",
+        "birth": "1853",
+        "birth_p": "Ukraine",
+        "death": "1920",
+        "death_p": "Austria",
+        "subjects": "Objectivism, Intentionality",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/14/2022",
-        "enddate": "02/18/2022"
+        "date_from": "02/14/2022",
+        "date_to": "02/18/2022"
     },
     {
-        "Philosophers": "Alfred Firmin Loisy",
+        "name": "Alfred Firmin Loisy",
         "Cost":"250.99",
-        "Born": "1857",
-        "Birth place": "France",
-        "Died": "1940",
-        "Place of Death": "France",
-        "Subjects Of Study": "Philosophy Of Religion, Modernism",
+        "birth": "1857",
+        "birth_p": "France",
+        "death": "1940",
+        "death_p": "France",
+        "subjects": "Philosophy Of Religion, Modernism",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/14/2022",
-        "enddate": "02/18/2022"
+        "date_from": "02/14/2022",
+        "date_to": "02/18/2022"
     },
     {
-        "Philosophers": "Alfred Korzybski",
+        "name": "Alfred Korzybski",
         "Cost":"250.99",
-        "Born": "1879",
-        "Birth place": "Poland",
-        "Died": "1950",
-        "Place of Death": "Connecticut",
-        "Subjects Of Study": "Semantics, General Semantics",
+        "birth": "1879",
+        "birth_p": "Poland",
+        "death": "1950",
+        "death_p": "Connecticut",
+        "subjects": "Semantics, General Semantics",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/14/2022",
-        "enddate": "02/18/2022"
+        "date_from": "02/14/2022",
+        "date_to": "02/18/2022"
     },
     {
-        "Philosophers": "Alfred North Whitehead",
+        "name": "Alfred North Whitehead",
         "Cost":"250.99",
-        "Born": "1861",
-        "Birth place": "England",
-        "Died": "1947",
-        "Place of Death": "Massachusetts",
-        "Subjects Of Study": "Education, Mathematics, Philosophy Of Science, Formal Logic, Materialism",
+        "birth": "1861",
+        "birth_p": "England",
+        "death": "1947",
+        "death_p": "Massachusetts",
+        "subjects": "Education, Mathematics, Philosophy Of Science, Formal Logic, Materialism",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/14/2022",
-        "enddate": "02/18/2022"
+        "date_from": "02/14/2022",
+        "date_to": "02/18/2022"
     },
     {
-        "Philosophers": "Allan Bloom",
+        "name": "Allan Bloom",
         "Cost":"250.99",
-        "Born": "1930",
-        "Birth place": "Indiana",
-        "Died": "1992",
-        "Place of Death": "Illinois",
-        "Subjects Of Study": "Higher Education",
+        "birth": "1930",
+        "birth_p": "Indiana",
+        "death": "1992",
+        "death_p": "Illinois",
+        "subjects": "Higher Education",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/01/2022",
-        "enddate": "02/10/2022"
+        "date_from": "02/01/2022",
+        "date_to": "02/10/2022"
     },
     {
-        "Philosophers": "Anaxagoras",
+        "name": "Anaxagoras",
         "Cost":"250.99",
-        "Born": "500",
-        "Birth place": "Clazomenae",
-        "Died": "428",
-        "Place of Death": "Lampsacus",
-        "Subjects Of Study": "Eclipse, Cosmology, Nous",
+        "birth": "500",
+        "birth_p": "Clazomenae",
+        "death": "428",
+        "death_p": "Lampsacus",
+        "subjects": "Eclipse, Cosmology, Nous",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/11/2022",
-        "enddate": "02/13/2022"
+        "date_from": "02/11/2022",
+        "date_to": "02/13/2022"
     },
     {
-        "Philosophers": "Anicius Manlius Severinus Boethius",
+        "name": "Anicius Manlius Severinus Boethius",
         "Cost":"250.99",
-        "Born": "475",
-        "Birth place": "Italy",
-        "Died": "524",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Aristotelianism, Universal, Trinity, Porphyry, Free Will",
+        "birth": "475",
+        "birth_p": "Italy",
+        "death": "524",
+        "death_p": "Italy",
+        "subjects": "Aristotelianism, Universal, Trinity, Porphyry, Free Will",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/13/2022",
-        "enddate": "02/15/2022"
+        "date_from": "02/13/2022",
+        "date_to": "02/15/2022"
     },
     {
-        "Philosophers": "Antonio Labriola",
+        "name": "Antonio Labriola",
         "Cost":"250.99",
-        "Born": "1843",
-        "Birth place": "Sicilies",
-        "Died": "1904",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Socialism, Historical Materialism",
+        "birth": "1843",
+        "birth_p": "Sicilies",
+        "death": "1904",
+        "death_p": "Italy",
+        "subjects": "Socialism, Historical Materialism",
 				"image": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-        "startdate": "02/12/2022",
-        "enddate": "02/14/2022"
+        "date_from": "02/12/2022",
+        "date_to": "02/14/2022"
     }
 ]
 
 function calcolocosto(noleggio){
-	const date1 = new Date(noleggio.startdate);
-	const date2 = new Date(noleggio.enddate);
+	const date1 = new Date(noleggio.date_from);
+	const date2 = new Date(noleggio.date_to);
 	const diffTime = Math.abs(date2 - date1);
 	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
-	//let start = noleggio.startdate;
+	//let start = noleggio.date_from;
 	//console.log(start);
-	//let end = noleggio.enddate;
+	//let end = noleggio.date_to;
 	//console.log(end);
 	console.log(diffDays);
 	return (diffDays*noleggio.Cost);
@@ -203,7 +207,7 @@ function calcolocosto(noleggio){
 Noleggi in corso
 </h4>
 {#each noleggi as noleggio}
-    {#if ((noleggio.startdate<=today)&&(noleggio.enddate>=today))}
+    {#if ((noleggio.date_from<=today)&&(noleggio.date_to>=today))}
 		<div class="card flex-row row mt-2">
 				<div class="col-3 m-2">
 						<div class="card-img-actions"> <img src={noleggio.image} class="card-img img-fluid" width="96" height="350" alt=""> </div>
@@ -212,19 +216,17 @@ Noleggi in corso
 						<div class="mb-2">
 								<h6 class="font-weight-semibold mb-2">
 									<div class="text-default mb-2" data-abc="true">
-									{noleggio.Philosophers}
+									{noleggio.name}
 									</div>
 								</h6>
 								<div class="text-muted" data-abc="true">
-								Periodo di noleggio: {noleggio.startdate} - {noleggio.enddate}
+								Periodo di noleggio: {noleggio.date_from} - {noleggio.date_to}
 								</div>
 						</div>
 						<div class="text-muted mb-3">
 						Costo giornaliero: {noleggio.Cost}
 						<br>
 						Sconti applicati:
-						<br>
-						Luogo di noleggio:
 						</div>
 						<h3 class="mb-0 font-weight-semibold">Costo del noleggio: {calcolocosto(noleggio)}</h3>
 						<div class='mybooking'>
@@ -256,7 +258,7 @@ Noleggi in corso
 Noleggi previsti
 </h4>
 {#each noleggi as noleggio}
-    {#if (noleggio.startdate>today)}
+    {#if (noleggio.date_from>today)}
 		<div class="card flex-row row mt-2">
 				<div class="col-3 m-2">
 						<div class="card-img-actions"> <img src={noleggio.image} class="card-img img-fluid" width="96" height="350" alt=""> </div>
@@ -265,11 +267,11 @@ Noleggi previsti
 						<div class="mb-2">
 								<h6 class="font-weight-semibold mb-2">
 									<div class="text-default mb-2" data-abc="true">
-									{noleggio.Philosophers}
+									{noleggio.name}
 									</div>
 								</h6>
 								<div class="text-muted" data-abc="true">
-								Periodo di noleggio: {noleggio.startdate} - {noleggio.enddate}
+								Periodo di noleggio: {noleggio.date_from} - {noleggio.date_to}
 								</div>
 						</div>
 						<div class="text-muted mb-3">
@@ -279,7 +281,7 @@ Noleggi previsti
 						<br>
 						Luogo di noleggio:
 						</div>
-						<h3 class="mb-0 font-weight-semibold">Costo del noleggio: {(noleggio.startdate-noleggio.enddate +1)*noleggio.Cost} al giorno</h3>
+						<h3 class="mb-0 font-weight-semibold">Costo del noleggio: {(noleggio.date_from-noleggio.date_to +1)*noleggio.Cost} al giorno</h3>
 						<div class='mybooking'>
 						</div>
 				</div>
@@ -309,7 +311,7 @@ Noleggi previsti
 Noleggi conclusi
 </h4>
 {#each noleggi as noleggio}
-    {#if (noleggio.enddate<today)}
+    {#if (noleggio.date_to<today)}
 		<div class="card flex-row row mt-2">
 				<div class="col-3 m-2">
 						<div class="card-img-actions"> <img src={noleggio.image} class="card-img img-fluid" width="96" height="350" alt=""> </div>
@@ -318,11 +320,11 @@ Noleggi conclusi
 						<div class="mb-2">
 								<h6 class="font-weight-semibold mb-2">
 									<div class="text-default mb-2" data-abc="true">
-									{noleggio.Philosophers}
+									{noleggio.name}
 									</div>
 								</h6>
 								<div class="text-muted" data-abc="true">
-								Periodo di noleggio: {noleggio.startdate} - {noleggio.enddate}
+								Periodo di noleggio: {noleggio.date_from} - {noleggio.date_to}
 								</div>
 						</div>
 						<div class="text-muted mb-3">
@@ -332,7 +334,7 @@ Noleggi conclusi
 						<br>
 						Luogo di noleggio:
 						</div>
-						<h3 class="mb-0 font-weight-semibold">Costo del noleggio: {(noleggio.startdate-noleggio.enddate +1)*noleggio.Cost} al giorno</h3>
+						<h3 class="mb-0 font-weight-semibold">Costo del noleggio: {(noleggio.date_from-noleggio.date_to +1)*noleggio.Cost} al giorno</h3>
 						<div class='mybooking'>
 						</div>
 				</div>

@@ -4,11 +4,28 @@
   import { getContext } from 'svelte';
   const { close } = getContext('simple-modal');
   import { onMount } from 'svelte';
-  import jQ from 'jquery';
+  import jQuery from 'jquery';
 
   let islogged;
   let confermato = false;
   var booking = {};
+
+  /*
+  {
+      "name": "Anaxagoras",
+      "birth": "500",
+      "birth_p": "Clazomenae",
+      "death": "428",
+      "death_p": "Lampsacus",
+      "subjects": "Eclipse, Cosmology, Nous",
+      "nolo_data": { "cost": 100,
+          "available_from": "1/1/2345",
+          "available_to": "7/3/2736",
+          "discount": 0,
+          "info": "",
+          "condition": "Buono" }
+  },
+  */
 
 	loggedIn.subscribe(value => {
 		islogged = value;
@@ -164,20 +181,20 @@ function confirm(){
                       <div class="mb-2">
                           <h6 class="font-weight-semibold mb-2">
                             <div class="text-default mb-2" data-abc="true">
-                            {filo.Philosophers}
+                            {filo.name}
                             </div>
                           </h6>
                           <div class="text-muted" data-abc="true">
-                          {filo.Sub}
+                          {filo.subjects}
                           </div>
                       </div>
                       <div class="text-muted mb-3">
-                      {filo.Born}
-                      {filo.Birthp},
-                      {filo.Died}
-                      {filo.Deathp}
+                      {filo.birth}
+                      {filo.birth_p},
+                      {filo.death}
+                      {filo.death_p}
                       </div>
-                      <h3 class="mb-0 font-weight-semibold">&euro; {filo.Cost} al giorno</h3>
+                      <h3 class="mb-0 font-weight-semibold">&euro; {filo.nolo_data.cost} al giorno</h3>
 
                   </div>
               </div>
@@ -186,7 +203,7 @@ function confirm(){
       <div class="col-lg">
 
         <div class="modal-header text-center">
-        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Noleggia {filo.Philosophers}</h4>
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Noleggia {filo.name}</h4>
         </div>
         {#if !confermato}
         <h5 class="font-weight-bold text-secondary mt-4">

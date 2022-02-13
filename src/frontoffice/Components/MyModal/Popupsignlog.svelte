@@ -3,7 +3,7 @@
   import { getContext } from 'svelte';
   const { close } = getContext('simple-modal');
   import { onMount } from 'svelte';
-  import jQ from 'jquery';
+  import jQuery from 'jquery';
 
 
   export let op = 'Login';
@@ -11,7 +11,6 @@
 
   onMount(() => {
     jQuery( document ).ready(function() {
-      console.log(op);
       if (document.getElementById('home')&& !document.getElementById('prenot-modal-content')){
         var close = document.getElementsByClassName("close")[0];
         close.id="closemodal";
@@ -61,7 +60,10 @@
   }
 
   function checksignup(){
-    if (sendsignup()){
+    let signupArray = sendsignup();
+    if (signupArray){
+      console.log(JSON.stringify(signupArray));
+
       loggedIn.update(b => !b);
       let element;
       if (element=document.getElementById('home')&& !document.getElementById('prenot-modal-content')){
@@ -108,7 +110,7 @@
       else {redstar('label2');
         sendcheck = false;
       }
-      if(telefono){signup.telefono = telefono;}
+      if(telefono && !isNaN(telefono)){signup.telefono = telefono;}
       else {redstar('label4');
         sendcheck = false;
       }
@@ -119,9 +121,9 @@
 
       if(sendcheck){
       signupArray.push({...signup});
-      console.log(JSON.stringify(signupArray));
-      //confermato = true;
+      return signupArray;
     }
+    else return false;
 }
 
   function checkpassword(mail, pwd){
@@ -191,7 +193,7 @@
 
   {:else if (op=='Signup')}
   <div class="modal-dialog modal-notify modal-warning" role="document">
-    <div class="modal-content">
+    <div class="modal-content overflow-auto" style="overfow-y:auto !important">
       <div class="modal-header text-center">
         <h4 class="modal-title white-text w-100 font-weight-bold py-2">{op}</h4>
       </div>

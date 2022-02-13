@@ -8,122 +8,200 @@ import Modal from 'svelte-simple-modal';
 import PrenotButton from './MyModal/PrenotButton.svelte'
 
 let filosofi = [
+    { "name": "Aaron David Gordon",
+         "birth": "1856",
+         "birth_p": "Ukraine",
+         "death": "1922",
+         "death_p": "Palestine",
+         "subjects": "Agriculture, Zionism",
+         "nolo_data": { "cost": 100,
+             "available_from": "1/1/2345",
+             "available_to": "7/3/2736",
+             "discount": 0,
+             "info": "",
+             "condition": "Buono" }
+     },
     {
-        "Philosophers": "Aaron David Gordon",
-        "Born": "1856",
-        "Birth place": "Ukraine",
-        "Died": "1922",
-        "Place of Death": "Palestine",
-        "Subjects Of Study": "Agriculture, Zionism",
-        "Cost":"250.99"
+        "name": "Aaron David Gordon",
+        "birth": "1856",
+        "birth_p": "Ukraine",
+        "death": "1922",
+        "death_p": "Palestine",
+        "subjects": "Agriculture, Zionism",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Abraham Joshua Heschel",
-        "Cost":"250.99",
-        "Born": "1907",
-        "Birth place": "Poland",
-        "Died": "1972",
-        "Place of Death": "York",
-        "Subjects Of Study": "Judaism, Philosophy Of Religion"
+        "name": "Abraham Joshua Heschel",
+        "birth": "1907",
+        "birth_p": "Poland",
+        "death": "1972",
+        "death_p": "York",
+        "subjects": "Judaism, Philosophy Of Religion",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Albert of Saxony",
-        "Cost":"250.99",
-        "Born": "1316",
-        "Birth place": "Germany",
-        "Died": "1390",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Gravity"
+        "name": "Albert of Saxony",
+        "birth": "1316",
+        "birth_p": "Germany",
+        "death": "1390",
+        "death_p": "Germany",
+        "subjects": "Gravity",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Alessandro Achillini",
-        "Cost":"250.99",
-        "Born": "1463",
-        "Birth place": "Italy",
-        "Died": "1512",
-        "Place of Death": "Bologna",
-        "Subjects Of Study": "William Of Ockham"
+        "name": "Alessandro Achillini",
+        "birth": "1463",
+        "birth_p": "Italy",
+        "death": "1512",
+        "death_p": "Bologna",
+        "subjects": "William Of Ockham",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Alexander Gottlieb Baumgarten",
-        "Cost":"250.99",
-        "Born": "1714",
-        "Birth place": "Germany",
-        "Died": "1762",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Aesthetics, Gottfried Wilhelm Leibniz, Feeling, Christian, Baron Von Wolff"
+        "name": "Alexander Gottlieb Baumgarten",
+        "birth": "1714",
+        "birth_p": "Germany",
+        "death": "1762",
+        "death_p": "Germany",
+        "subjects": "Aesthetics, Gottfried Wilhelm Leibniz, Feeling, Christian, Baron Von Wolff",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Alexius Meinong",
-        "Cost":"250.99",
-        "Born": "1853",
-        "Birth place": "Ukraine",
-        "Died": "1920",
-        "Place of Death": "Austria",
-        "Subjects Of Study": "Objectivism, Intentionality"
+        "name": "Alexius Meinong",
+        "birth": "1853",
+        "birth_p": "Ukraine",
+        "death": "1920",
+        "death_p": "Austria",
+        "subjects": "Objectivism, Intentionality",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Alfred Firmin Loisy",
-        "Cost":"250.99",
-        "Born": "1857",
-        "Birth place": "France",
-        "Died": "1940",
-        "Place of Death": "France",
-        "Subjects Of Study": "Philosophy Of Religion, Modernism"
+        "name": "Alfred Firmin Loisy",
+        "birth": "1857",
+        "birth_p": "France",
+        "death": "1940",
+        "death_p": "France",
+        "subjects": "Philosophy Of Religion, Modernism",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Alfred Korzybski",
-        "Cost":"250.99",
-        "Born": "1879",
-        "Birth place": "Poland",
-        "Died": "1950",
-        "Place of Death": "Connecticut",
-        "Subjects Of Study": "Semantics, General Semantics"
+        "name": "Alfred Korzybski",
+        "birth": "1879",
+        "birth_p": "Poland",
+        "death": "1950",
+        "death_p": "Connecticut",
+        "subjects": "Semantics, General Semantics",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Alfred North Whitehead",
-        "Cost":"250.99",
-        "Born": "1861",
-        "Birth place": "England",
-        "Died": "1947",
-        "Place of Death": "Massachusetts",
-        "Subjects Of Study": "Education, Mathematics, Philosophy Of Science, Formal Logic, Materialism"
+        "name": "Alfred North Whitehead",
+        "birth": "1861",
+        "birth_p": "England",
+        "death": "1947",
+        "death_p": "Massachusetts",
+        "subjects": "Education, Mathematics, Philosophy Of Science, Formal Logic, Materialism",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Allan Bloom",
-        "Cost":"250.99",
-        "Born": "1930",
-        "Birth place": "Indiana",
-        "Died": "1992",
-        "Place of Death": "Illinois",
-        "Subjects Of Study": "Higher Education"
+        "name": "Allan Bloom",
+        "birth": "1930",
+        "birth_p": "Indiana",
+        "death": "1992",
+        "death_p": "Illinois",
+        "subjects": "Higher Education",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Anaxagoras",
-        "Cost":"250.99",
-        "Born": "500",
-        "Birth place": "Clazomenae",
-        "Died": "428",
-        "Place of Death": "Lampsacus",
-        "Subjects Of Study": "Eclipse, Cosmology, Nous"
+        "name": "Anaxagoras",
+        "birth": "500",
+        "birth_p": "Clazomenae",
+        "death": "428",
+        "death_p": "Lampsacus",
+        "subjects": "Eclipse, Cosmology, Nous",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Anicius Manlius Severinus Boethius",
-        "Cost":"250.99",
-        "Born": "475",
-        "Birth place": "Italy",
-        "Died": "524",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Aristotelianism, Universal, Trinity, Porphyry, Free Will"
+        "name": "Anicius Manlius Severinus Boethius",
+        "birth": "475",
+        "birth_p": "Italy",
+        "death": "524",
+        "death_p": "Italy",
+        "subjects": "Aristotelianism, Universal, Trinity, Porphyry, Free Will",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     },
     {
-        "Philosophers": "Antonio Labriola",
-        "Cost":"250.99",
-        "Born": "1843",
-        "Birth place": "Sicilies",
-        "Died": "1904",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Socialism, Historical Materialism"
+        "name": "Antonio Labriola",
+        "birth": "1843",
+        "birth_p": "Sicilies",
+        "death": "1904",
+        "death_p": "Italy",
+        "subjects": "Socialism, Historical Materialism",
+        "nolo_data": { "cost": 100,
+            "available_from": "1/1/2345",
+            "available_to": "7/3/2736",
+            "discount": 0,
+            "info": "",
+            "condition": "Buono" }
     }
 ]
 
@@ -197,20 +275,20 @@ container.appendChild(row);
                     <div class="mb-2">
                         <h6 class="font-weight-semibold mb-2">
                           <div class="text-default mb-2" data-abc="true">
-                          {filosofo.Philosophers}
+                          {filosofo.name}
                           </div>
                         </h6>
                         <div class="text-muted" data-abc="true">
-                        {filosofo.Sub}
+                        {filosofo.subjects}
                         </div>
                     </div>
                     <div class="text-muted mb-3">
-                    {filosofo.Born}
-                    {filosofo.Birthp},
-                    {filosofo.Died}
-                    {filosofo.Deathp}
+                    {filosofo.birth}
+                    {filosofo.birth_p},
+                    {filosofo.death}
+                    {filosofo.death_p}
                     </div>
-                    <h3 class="mb-0 font-weight-semibold">&euro; {filosofo.Cost} al giorno</h3>
+                    <h3 class="mb-0 font-weight-semibold">&euro; {filosofo.nolo_data.cost} al giorno</h3>
                     <div class='mybooking'>
                     <Modal>
                       <PrenotButton philosopher={filosofo}/>
