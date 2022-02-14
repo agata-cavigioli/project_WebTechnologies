@@ -121,16 +121,6 @@ Noleggi in corso
         <div class="col-lg-2">
         <div class="container">
 
-        <div class="row">
-          <div class="col">
-            <p id="nolofattura" type='button' class='mt-4 btn btn-outline-info waves-effect' on:click={()=>(nolotime = "past")}>Modifica</p>
-          </div>
-
-          <div class="col">
-            <p id="nolofattura" type='button' class='row-lg mt-4 btn btn-outline-warning waves-effect' on:click={()=>(nolotime = "past")}>Concludi il noleggio</p>
-          </div>
-
-        </div>
 
         </div>
         </div>
