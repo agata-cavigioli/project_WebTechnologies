@@ -6,9 +6,6 @@
     <title>NoloNoloPLVS Retrobottega</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="backoffice/css/style.css">
-
-
-
   </head>
 
   <body>
@@ -64,8 +61,8 @@
           </form>
         </div> 
       </div>
-      <div id="the_office" class="">
-        <ul class="nav nav-tabs">
+      <div id="the_office">
+        <ul id="the_nav" class="nav nav-tabs">
           <li class="nav-item">
             <a id="inventory_tab"
                class="nav-link active top-tabs"
@@ -74,9 +71,9 @@
                href="#">Inventario</a>
           </li>
           <li class="nav-item">
-            <a id="nolo_tab"
+            <a id="nolos_tab"
                class="nav-link top-tabs"
-               onclick="updateTab('nolo')"
+               onclick="updateTab('nolos')"
                style="background: #eeeeee; display: none;"
                href="#">Noleggi</a>
           </li>
@@ -88,10 +85,11 @@
                href="#">Clienti</a>
           </li>
         </ul>
+
+
         <div id="inventory" class="content-tab my-bg p-3-lg row">
           <div class="table-responsive col-lg-8 col-12">
-            <table id="twrap"
-                   class="text-start table table-striped table-hover ">
+            <table id="twrap" class="text-start table table-striped table-hover ">
               <thead id="header" >
                 <tr>
                   <th scope="col">
@@ -214,7 +212,7 @@
                       </div>
                       <div class="col-6 col-lg-4">
                         <input type="date"
-                               id="product_card_modify_cost"
+                               id="nolo_form_date_from"
                                name="date_from"
                                class="card-text form-control"
                                aria-label="Inizio noleggio">
@@ -225,7 +223,7 @@
                       </div>
                       <div class="col-6 col-lg-4">
                         <input type="date"
-                               id="product_card_modify_available"
+                               id="nolo_form_date_to"
                                name="date_to"
                                class="card-text form-control"
                                aria-label="Termine noleggio">
@@ -239,7 +237,7 @@
                       </div>
                       <div class="col">
                         <input type="text"
-                               id="product_card_modify_discount"
+                               id="nolo_form_discount"
                                name="discount"
                                class="card-text form-control"
                                aria-label="Sconto">
@@ -253,7 +251,7 @@
                       </div>
                       <div class="col">
                         <input type="text"
-                               id="product_card_modify_info"
+                               id="nolo_form_info"
                                name="info"
                                class="card-text form-control"
                                aria-label="Note">
@@ -440,12 +438,80 @@
                    >Annulla</a>
               </div>
             </form>
+            <form id="nolo_form">
+              <ul id="nolo_form_nolo_list"
+                  style="display: none;"
+                  class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col-6 col-lg-2">
+                      <b>Da:</b>
+                    </div>
+                    <div class="col-6 col-lg-4">
+                      <input type="date"
+                             id="nolo_form_modify_cost"
+                             name="date_from"
+                             class="card-text form-control"
+                             aria-label="Inizio noleggio">
+                    </div>
+
+                    <div class="col-6 col-lg-2">
+                      <b>A:</b>
+                    </div>
+                    <div class="col-6 col-lg-4">
+                      <input type="date"
+                             id="nolo_form_modify_available"
+                             name="date_to"
+                             class="card-text form-control"
+                             aria-label="Termine noleggio">
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <b>Sconto</b>
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="nolo_form_modify_discount"
+                             name="discount"
+                             class="card-text form-control"
+                             aria-label="Sconto">
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <b>Note</b>
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="nolo_form_modify_info"
+                             name="info"
+                             class="card-text form-control"
+                             aria-label="Note">
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <b class="col"> Totale: </b>
+                    <span class="col"id="total"></span>
+                  </div>
+                </li>
+              </ul>
+            </form>
+
           </div>
         </div>
+
+
         <div id="clients"
              style="display: none;"
              class="content-tab my-bg p-3-lg row">
-          <div class="table-responsive col-lg-8 col-12">
+          <div id="clients_table" class="table-responsive col-lg-8 col-12">
             <table id="twrap" class="text-start table table-striped table-hover ">
               <thead id="header" >
                 <tr>
@@ -479,6 +545,8 @@
               <tbody id="people">
               </tbody>
             </table>
+
+
             <div class="row justify-content-start g-3 major">
               <div class="col col-lg-2">
                 <button class="w-100 btn btn-primary mb-2">Nuovo</button>
@@ -496,6 +564,28 @@
               </div>
             </div>
           </div>
+
+
+          <div id="client_history"
+               style="display: none;"
+               class="col-lg-8 col-12 minor p-2 px-lg-5 py-lg-3">
+            <h1>Storico Cliente</h1>
+            <div>
+              <h2>Noleggi passati</h2>
+              <div id="client_history_past"
+                class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+              </div>
+              <h2>Noleggi presenti</h2>
+              <div id="client_history_present"
+                class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+              </div>
+              <h2>Noleggi futuri</h2>
+              <div id="client_history_future"
+                class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+              </div>
+            </div>
+          </div>
+
           <div class="col-lg-4 col-12 minor">
             <div id="client_card"
                  class="card text-start"
@@ -532,7 +622,8 @@
                   <span id="client_card_info"></span>
                 </li>
                 <li class="list-group-item">
-                  <button class="btn btn-primary">Storico</button>
+                  <button class="btn btn-primary"
+                          onclick="showHistory()">Storico</button>
                 </li>
               </ul>
               <div class="card-body row">
@@ -617,6 +708,284 @@
             </form>
           </div>
         </div>
+
+
+        <div id="nolos"
+             class="content-tab my-bg p-3-lg row"
+             style="display: none;">
+          <div class="table-responsive col-lg-8 col-12">
+            <table id="twrap" class="text-start table table-striped table-hover ">
+              <thead id="header">
+                <tr>
+                  <th scope="col">Cliente
+                    <form class="d-flex">
+                      <input class="form-control me-2"
+                             type="search"
+                             placeholder="..."
+                             aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">Prodotto
+                    <form class="d-flex">
+                      <input class="form-control me-2"
+                             type="search"
+                             placeholder="..."
+                             aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">Inizio
+                    <form class="d-flex">
+                      <input class="form-control me-2"
+                             type="search"
+                             placeholder="..."
+                             aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">Fine
+                    <form class="d-flex">
+                      <input class="form-control me-2"
+                             type="search"
+                             placeholder="..."
+                             aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">Stato
+                    <form class="d-flex">
+                      <input class="form-control me-2"
+                             type="search"
+                             placeholder="..."
+                             aria-label="Search">
+                    </form>
+                  </th>
+                  <th scope="col">Totale
+                    <form class="d-flex">
+                      <input class="form-control me-2"
+                             type="search"
+                             placeholder="..."
+                             aria-label="Search">
+                    </form>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="nolo">
+              </tbody>
+            </table>
+            <div class="row justify-content-start g-3 major">
+              <div class="col col-lg-2">
+                <button class="w-100 btn btn-primary mb-2"
+                        type="">
+                  Nuovo 
+                </button>
+              </div>
+              <div class="col col-lg-2">
+                <a class="w-100 btn btn-primary mb-2"
+                   href="#header"
+                   role="button"
+                   type="reset">
+                  Reset
+                </a>
+              </div>
+              <div class="col col-lg-2">
+                <a class="w-100 btn btn-primary mb-2"
+                   href="#header"
+                   role="button">
+                  Top
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-12 minor ">
+            <div id="nolo_card"
+                 class="card text-start"
+                 style="display: none;">
+              <div class="card-body">
+                <div class="row"> 
+                  <div class="col"> 
+                    <p>Id: <small id="nolo_card_id"></small></p>
+                    <p>
+                      <span class="fw-bold">Cliente:</span>
+                      <span id="nolo_card_client" class="card-text"></span>
+                    </p>
+                    <p>
+                      <span class="fw-bold">Prodotto:</span>
+                      <span id="nolo_card_product" class="card-text"></span>
+                    </p>
+                    <h6 class="fw-bold">Periodo:</h6>
+                    <p id="nolo_card_date" class="card-text"></p>
+                    <p>
+                      <span class="fw-bold">Totale:</span>
+                      <span id="nolo_card_total" class="card-text"></span>
+                    </p>
+                  </div>
+                  <div class="col"> 
+                    <img src="https://picsum.photos/400" class="card-img-top" alt="...">
+                  </div>
+                </div>
+              </div>
+
+
+              <ul id="nolo_card_info_list" class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <b> Stato: </b>
+                  <span id="nolo_card_status"></span>
+                </li>
+                <li class="list-group-item">
+                  <b> Giorni: </b>
+                  <span id="nolo_card_days"></span>
+                </li>
+                <li class="list-group-item">
+                  <b>Costo giornaliero: </b>
+                  <span id="nolo_card_daily_cost"></span>
+                </li>
+                <li class="list-group-item">
+                  <b>Sconto: </b>
+                  <span id="nolo_card_discount"></span>
+                </li>
+                <li class="list-group-item">
+                  <b> Costi aggiuntivi: </b>
+                  <span id="nolo_card_other_fees"></span>
+                </li>
+                <li class="list-group-item">
+                  <b> Note: </b>
+                  <span id="nolo_card_info"></span>
+                </li>
+              </ul>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-6 col-lg-3">
+                    <a href="#"
+                       class="nolo_card_options card-link"
+                       onclick="modifyNolo()">Modifica</a>
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <a href="#"
+                       class="nolo_card_options card-link">Elimina</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <form id="nolo_card_modify" 
+                  class="card text-start"
+                  style="display: none;">
+              <div class="card-body">
+                <div class="mb-2">
+                  <input type="text"
+                         id="nolo_card_modify_client"
+                         name="client"
+                         class="card-title fw-bold form-control"
+                         aria-label="Cliente">
+                  <input type="text"
+                         id="nolo_card_modify_product"
+                         name="product"
+                         class="card-text form-control"
+                         aria-label="Prodotto">
+                </div>
+                <h6 class="fw-bold">Periodo:</h6>
+                <div class="row mb-2">
+                  <div class="col">
+                    <input type="text"
+                           id="nolo_card_modify_date_from"
+                           name="date_from"
+                           class="card-text form-control"
+                           aria-label="Inizio noleggio">
+                  </div>
+                  <div class="col">
+                    <input type="text"
+                           id="nolo_card_modify_date_to"
+                           name="date_to"
+                           class="card-text form-control"
+                           :placeholder="this.nolo['Died']"
+                           aria-label="Termine noleggio">
+                  </div>
+                </div>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <b>Stato:</b>
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="nolo_card_modify_status"
+                             name="status"
+                             class="card-text form-control"
+                             aria-label="Condizioni">
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <b>Costo giornaliero:</b>
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="nolo_card_modify_daily_cost"
+                             name="daily_cost"
+                             class="card-text form-control"
+                             aria-label="Costo giornaliero">
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <b>Sconto:</b>
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="nolo_card_modify_discount"
+                             name="discount"
+                             class="card-text form-control"
+                             aria-label="Sconto">
+                    </div>
+                  </div>
+                </li>
+
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <b>Costi aggiuntivi:</b>
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="nolo_card_modify_other_fees"
+                             name="other_fees"
+                             class="card-text form-control"
+                             aria-label="Costi aggiuntivi">
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="row">
+                    <div class="col">
+                      <b>Note:</b>
+                    </div>
+                    <div class="col">
+                      <input type="text"
+                             id="nolo_card_modify_info"
+                             name="info"
+                             class="card-text form-control"
+                             aria-label="Note">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div class="card-body">
+                <a href="#"
+                   onclick=""
+                   class="card-link">
+                  Salva</a>
+                <a href="#"
+                   class="card-link"
+                   onclick="abortModify('nolos')"
+                   >Annulla</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

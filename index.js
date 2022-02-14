@@ -4,6 +4,7 @@ global.startDate = null;
 const path = require('path') ;
 const express = require('express') ;
 const cors = require('cors');
+const mongo = require('./mongo.js');
 
 let app = express();
 
@@ -28,6 +29,12 @@ app.enable('trust proxy');
 
 app.get('/',  function (req, res) {
     res.sendFile(path.join(global.rootDir, 'src/frontoffice/frontoffice.html'));
+});
+
+app.get('/query',  async function (req, res) {
+    const result = await mongo.test();
+    console.log(result);
+    res.send(result);
 });
 
 app.get('/home',  function (req, res) {

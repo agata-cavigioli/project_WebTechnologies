@@ -4,7 +4,7 @@ const mongouri = 'mongodb://site202123:thieCah0@mongo_site202123?writeConcern=ma
 
 const mongo = new MongoClient(mongouri);
 
-exports.test_query = async function(){
+exports.test = async function (){
 	return [
 		{
 			"name": "Aaron David Gordon",
