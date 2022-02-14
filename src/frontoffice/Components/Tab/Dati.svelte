@@ -16,28 +16,18 @@ onMount(() => {
 
 
 let people = [
-	{ "id": "1234",
-	"name": "Mario",
-     "surname": "Rossi",
-     "email": "mario.rossi@gmail.com",
-     "phone": "3456778254",
-     "address": "via vai",
-     "nolo_data": {
-         "info": ""
-     },
-	 },
-    {
-			"id": "4321",
-			"name": "Luca",
-			"surname": "Bianchi",
-			"email": "luca.bianchi@gmail.com",
-			"phone": "3786557942",
-			"address": "via via",
-			"fotoprofilo": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png",
-			"nolo_data": {
-          "info": ""
-      },
-		},
+	{"id" : "1234",
+	"name": "Paola",
+	"surname": "Bianchi",
+	"email": "Paola.Bianchi@gmail.com",
+	"phone": "3908779564",
+	"address": "Via Monti 4, Milano",
+	"nolo_data":
+		{"info": ""}
+},
+	{"name": "Lucia", "surname": "Mari", "email": "Lucia.Mari@gmail.com", "phone": "3901228935", "address": "Via Beaux-Arts, Parigi", "nolo_data": {"info": ""}},
+	{"name": "Mario", "surname": "Rossi", "email": "Mario.Rossi@gmail.com", "phone": "3736445896", "address": "Via Mari 3, Roma", "nolo_data": {"info": ""}},
+	{"name": "Luca", "surname": "Verdi", "email": "Luca.Verdi@gmail.com", "phone": "3901223784", "address": "Via del Campo 5, Genova", "nolo_data": {"info": ""}}
 	]
 
 function getPersonalData(){
@@ -65,7 +55,6 @@ function loadinfo(){
 	}
 
 function modify(){
-	personaldata.email = "rossi.mario@gmail.com";
 	document.getElementById('datatab').innerHTML="";
 	document.getElementById('datatab').innerHTML=(
 	"	<h5 class='font-weight-bold text-secondary mt-4' id='riepilogodiv'> \

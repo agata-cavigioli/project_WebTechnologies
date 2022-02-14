@@ -8,201 +8,26 @@ import Modal from 'svelte-simple-modal';
 import PrenotButton from './MyModal/PrenotButton.svelte'
 
 let filosofi = [
-    { "name": "Aaron David Gordon",
-         "birth": "1856",
-         "birth_p": "Ukraine",
-         "death": "1922",
-         "death_p": "Palestine",
-         "subjects": "Agriculture, Zionism",
-         "nolo_data": { "cost": 100,
-             "available_from": "1/1/2345",
-             "available_to": "7/3/2736",
-             "discount": 0,
-             "info": "",
-             "condition": "Buono" }
-     },
-    {
-        "name": "Aaron David Gordon",
-        "birth": "1856",
-        "birth_p": "Ukraine",
-        "death": "1922",
-        "death_p": "Palestine",
-        "subjects": "Agriculture, Zionism",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Abraham Joshua Heschel",
-        "birth": "1907",
-        "birth_p": "Poland",
-        "death": "1972",
-        "death_p": "York",
-        "subjects": "Judaism, Philosophy Of Religion",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Albert of Saxony",
-        "birth": "1316",
-        "birth_p": "Germany",
-        "death": "1390",
-        "death_p": "Germany",
-        "subjects": "Gravity",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Alessandro Achillini",
-        "birth": "1463",
-        "birth_p": "Italy",
-        "death": "1512",
-        "death_p": "Bologna",
-        "subjects": "William Of Ockham",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Alexander Gottlieb Baumgarten",
-        "birth": "1714",
-        "birth_p": "Germany",
-        "death": "1762",
-        "death_p": "Germany",
-        "subjects": "Aesthetics, Gottfried Wilhelm Leibniz, Feeling, Christian, Baron Von Wolff",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Alexius Meinong",
-        "birth": "1853",
-        "birth_p": "Ukraine",
-        "death": "1920",
-        "death_p": "Austria",
-        "subjects": "Objectivism, Intentionality",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Alfred Firmin Loisy",
-        "birth": "1857",
-        "birth_p": "France",
-        "death": "1940",
-        "death_p": "France",
-        "subjects": "Philosophy Of Religion, Modernism",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Alfred Korzybski",
-        "birth": "1879",
-        "birth_p": "Poland",
-        "death": "1950",
-        "death_p": "Connecticut",
-        "subjects": "Semantics, General Semantics",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Alfred North Whitehead",
-        "birth": "1861",
-        "birth_p": "England",
-        "death": "1947",
-        "death_p": "Massachusetts",
-        "subjects": "Education, Mathematics, Philosophy Of Science, Formal Logic, Materialism",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Allan Bloom",
-        "birth": "1930",
-        "birth_p": "Indiana",
-        "death": "1992",
-        "death_p": "Illinois",
-        "subjects": "Higher Education",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Anaxagoras",
-        "birth": "500",
-        "birth_p": "Clazomenae",
-        "death": "428",
-        "death_p": "Lampsacus",
-        "subjects": "Eclipse, Cosmology, Nous",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Anicius Manlius Severinus Boethius",
-        "birth": "475",
-        "birth_p": "Italy",
-        "death": "524",
-        "death_p": "Italy",
-        "subjects": "Aristotelianism, Universal, Trinity, Porphyry, Free Will",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    },
-    {
-        "name": "Antonio Labriola",
-        "birth": "1843",
-        "birth_p": "Sicilies",
-        "death": "1904",
-        "death_p": "Italy",
-        "subjects": "Socialism, Historical Materialism",
-        "nolo_data": { "cost": 100,
-            "available_from": "1/1/2345",
-            "available_to": "7/3/2736",
-            "discount": 0,
-            "info": "",
-            "condition": "Buono" }
-    }
+  {
+"name": "Aaron David Gordon",
+"birth": "1856",
+"birth_p": "Ukraine",
+"death": "1922",
+"death_p": "Palestine",
+"subjects": "Agriculture, Zionism",
+"nolo_data": {
+  "cost": 134,
+  "available_from": "",
+   "available_to": "",
+   "discount": 0,
+   "condition": "Entusiasta",
+   "info": ""}},
+{"name": "Abraham Joshua Heschel", "birth": "1907", "birth_p": "Poland", "death": "1972", "death_p": "York", "subjects": "Judaism, Philosophy Of Religion", "nolo_data": {"cost": 245, "available_from": "", "available_to": "", "discount": 50, "condition": "Gi\\u00fa di morale", "info": ""}},
+{"name": "Albert of Saxony", "birth": "1316", "birth_p": "Germany", "death": "1390", "death_p": "Germany", "subjects": "Gravity", "nolo_data": {"cost": 295, "available_from": "", "available_to": "", "discount": 0, "condition": "Entusiasta", "info": ""}},
+{"name": "Alessandro Achillini", "birth": "1463", "birth_p": "Italy", "death": "1512", "death_p": "Bologna", "subjects": "William Of Ockham", "nolo_data": {"cost": 116, "available_from": "", "available_to": "", "discount": 0, "condition": "Riflessivo", "info": ""}},
+{"name": "Alexander Gottlieb Baumgarten", "birth": "1714", "birth_p": "Germany", "death": "1762", "death_p": "Germany", "subjects": "Aesthetics, Gottfried Wilhelm Leibniz, Feeling, Christian, Baron Von Wolff", "nolo_data": {"cost": 165, "available_from": "", "available_to": "", "discount": 0, "condition": "Entusiasta", "info": ""}},
+{"name": "Alexius Meinong", "birth": "1853", "birth_p": "Ukraine", "death": "1920", "death_p": "Austria", "subjects": "Objectivism, Intentionality", "nolo_data": {"cost": 130, "available_from": "", "available_to": "", "discount": 10, "condition": "Riflessivo", "info": ""}},
+{"name": "Alfred Firmin Loisy", "birth": "1857", "birth_p": "France", "death": "1940", "death_p": "France", "subjects": "Philosophy Of Religion, Modernism", "nolo_data": {"cost": 226, "available_from": "", "available_to": "", "discount": 10, "condition": "Riflessivo", "info": ""}}
 ]
 
 /*
@@ -289,6 +114,10 @@ container.appendChild(row);
                     {filosofo.death_p}
                     </div>
                     <h3 class="mb-0 font-weight-semibold">&euro; {filosofo.nolo_data.cost} al giorno</h3>
+                    {#if (filosofo.nolo_data.discount>0)}
+                    <h3 class="mb-0 font-weight-semibold text-danger">Sconto:  {filosofo.nolo_data.discount}&#37;</h3>
+
+                    {/if}
                     <div class='mybooking'>
                     <Modal>
                       <PrenotButton philosopher={filosofo}/>

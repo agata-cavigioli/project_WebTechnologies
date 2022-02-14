@@ -57,7 +57,8 @@ function preventivo(){
     });
     //
 
-    let costo = filo.Cost;
+    let costo = filo.nolo_data.cost;
+    let discount = filo.nolo_data.discount;
     let datefrom = document.getElementById('datefromnolo').value;
     let dateto = document.getElementById('datetonolo').value;
     if(datefrom && dateto && datefrom<=dateto) {
@@ -69,21 +70,26 @@ function preventivo(){
       document.getElementById("preventivo").innerHTML="";
       const node = document.createElement("h5");
 
-      const textnode1 = document.createTextNode("Costo del noleggio per "+ diffDays);
-      node.appendChild(textnode1);
+      const totale = document.createElement("div");
+      totale.innerHTML = "Costo del noleggio per "+ diffDays;
+
       if(diffDays>1) {
-        const textnode2 = document.createTextNode(" giorni: ");
-        node.appendChild(textnode2);
+        totale.innerHTML += " giorni: &euro; ";
       }
       else {
-        const textnode3 = document.createTextNode(" giorno: ");
-        node.appendChild(textnode3);
+        totale.innerHTML += " giorno: &euro; ";
       }
-      const textnode4 = document.createTextNode(costo*diffDays);
+      totale.innerHTML += costo*diffDays;
+      node.appendChild(totale);
 
-      node.appendChild(textnode4);
-      node.classList.add("font-weight-bold");
-      node.classList.add( "text-secondary");
+      const finale = document.createElement("div");
+      finale.innerHTML = "Prezzo finale: &euro;" + ((costo*diffDays)-((costo*diffDays*discount)/100));
+      node.appendChild(finale);
+
+      totale.classList.add("font-weight-bold");
+      totale.classList.add( "text-secondary");
+      finale.classList.add("font-weight-bold");
+      finale.classList.add( "text-danger");
 
       document.getElementById("preventivo").appendChild(node);
 
@@ -195,7 +201,10 @@ function confirm(){
                       {filo.death_p}
                       </div>
                       <h3 class="mb-0 font-weight-semibold">&euro; {filo.nolo_data.cost} al giorno</h3>
+                      {#if (filo.nolo_data.discount>0)}
+                      <h3 class="mb-0 font-weight-semibold text-danger">Sconto:  {filo.nolo_data.discount}&#37;</h3>
 
+                      {/if}
                   </div>
               </div>
           </div>
@@ -268,8 +277,13 @@ Riepilogo dell'ordine
 <h5 class="font-weight-bold text-secondary mt-4" id="riepilogodiv">
 Periodo: da {booking.datefrom} a {booking.dateto}
 <br>
-Costo per {booking.diffdate} {(booking.diffdate>1)? "giorni":"giorno"}: {booking.diffdate*filo.Cost}
+Costo per {booking.diffdate} {(booking.diffdate>1)? "giorni":"giorno"}: &euro;{booking.diffdate*filo.nolo_data.cost}
 <br>
+Sconto applicato: {filo.nolo_data.discount}&#37;
+<br>
+<div class="text-danger">
+Prezzo finale: &euro;{(booking.diffdate*filo.nolo_data.cost)-((booking.diffdate*filo.nolo_data.cost*filo.nolo_data.discount)/100)}
+</div>
 Indirizzo: {booking.address}
 <br>
 Metodo di pagamento: {booking.payment}

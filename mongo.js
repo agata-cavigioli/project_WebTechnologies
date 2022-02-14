@@ -1,5 +1,5 @@
 /* eslint-disable */
-const mongodb = require('./index.js');
+//const mongodb = require('./index.js');
 const mongouri = 'mongodb://site202123:thieCah0@mongo_site202123?writeConcern=majority';
 
 const mongo = new MongoClient(mongouri);
