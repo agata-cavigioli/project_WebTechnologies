@@ -1,14 +1,35 @@
-
 global.rootDir = __dirname ;
 global.startDate = null;
 
 const path = require('path') ;
 const express = require('express') ;
 const cors = require('cors');
+const url = require('url');
 const mongo = require('./mongo.js');
 
 
 let app = express();
+
+var id_num = Math.max(
+    Math.max(
+        findMax(mongo.query({}, {}, 'products')),
+        findMax(mongo.query({}, {}, 'clients'))
+    ),
+    Math.max(
+        findMax(mongo.query({}, {}, 'staff')) ,
+        findMax(mongo.query({}, {}, 'nolos'))
+    ));
+
+function findMax(obj){
+    var m = -1;
+    for(o in obj){
+        if(o.id > m) m = o.id;
+    }
+    return m;
+}
+
+console.log(id_num);
+
 
 app.use('/frontoffice/js' , express.static(global.rootDir +'/src/frontoffice'));
 app.use('/frontoffice/css' , express.static(global.rootDir +'/src/frontoffice'));
@@ -34,11 +55,75 @@ app.get('/',  function (req, res) {
     res.sendFile(path.join(global.rootDir, 'src/frontoffice/frontoffice.html'));
 });
 
-app.get('/query',  async function (req, res) {
-    const result = await mongo.test();
-    console.log(result);
-    res.send(result);
+
+
+
+/********************************* API ***************************************/
+
+function createMongoQuery(req){
+    const url_query = url.parse(req.url, true).query;
+    var query = {};
+    for(q in url_query){
+        try {
+            query[q] = JSON.parse(url_query[q]);
+        } catch(x){
+            query[q] = url_query[q];
+        };
+    }
+    return query;
+}
+
+app.get('/products',  async function (req, res) {
+    res.send(await
+        mongo.query(createMongoQuery(req), {}, 'products'));
 });
+
+app.get('/clients',  async function (req, res) {
+    res.send(await
+        mongo.query(createMongoQuery(), {}, 'clients'));
+});
+
+app.get('/nolos',  async function (req, res) {
+    res.send(await
+        mongo.query(createMongoQuery(), {}, 'nolos'));
+});
+
+app.get('/staff',  async function (req, res) {
+    res.send(await
+        mongo.query(createMongoQuery(), {}, 'staff'));
+});
+
+
+app.post('/products', async function (req, res){
+    console.log('req');
+    var obj = await req.body;
+    obj.id = ++id_num;
+    console.log(obj)
+    mongo.insert_one(obj, 'products');
+    res.send(obj);
+});
+
+app.post('/clients', function (req, res){
+    var obj = req.body;
+    req.body.id = ++id_num;
+    mongo.insert_one(req.body, 'clients');
+});
+
+app.post('/nolos', function (req, res){
+    var obj = req.body;
+    req.body.id = ++id_num;
+    mongo.insert_one(req.body, 'nolos');
+});
+
+app.get('/erase', function(req, res){
+    const url_query = url.parse(req.url, true).query;
+    res.send(url_query);
+    mongo.erase_all(url_query.collection);
+});
+
+
+/**************************************************************************************/
+
 
 app.get('/home',  function (req, res) {
     res.sendFile(path.join(global.rootDir, 'src/frontoffice/frontoffice.html'));

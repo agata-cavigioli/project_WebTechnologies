@@ -4,75 +4,6 @@ const mongouri = 'mongodb://site202123:thieCah0@mongo_site202123?writeConcern=ma
 
 const mongo = new MongoClient(mongouri);
 
-exports.test = async function (){
-	return [
-		{
-			"name": "Aaron David Gordon",
-			"birth": "1856",
-			"birth_p": "Ukraine",
-			"death": "1922",
-			"death_p": "Palestine",
-			"subjects": "Agriculture, Zionism"
-		},
-		{
-			"name": "Abraham Joshua Heschel",
-			"birth": "1907",
-			"birth_p": "Poland",
-			"death": "1972",
-			"death_p": "York",
-			"subjects": "Judaism, Philosophy Of Religion"
-		},
-		{
-			"name": "Albert of Saxony",
-			"birth": "1316",
-			"birth_p": "Germany",
-			"death": "1390",
-			"death_p": "Germany",
-			"subjects": "Gravity"
-		},
-		{
-			"name": "Alessandro Achillini",
-			"birth": "1463",
-			"birth_p": "Italy",
-			"death": "1512",
-			"death_p": "Bologna",
-			"subjects": "William Of Ockham"
-		},
-		{
-			"name": "Alexander Gottlieb Baumgarten",
-			"birth": "1714",
-			"birth_p": "Germany",
-			"death": "1762",
-			"death_p": "Germany",
-			"subjects": "Aesthetics, Gottfried Wilhelm Leibniz, Feeling, Christian, Baron Von Wolff"
-		},
-		{
-			"name": "Alexius Meinong",
-			"birth": "1853",
-			"birth_p": "Ukraine",
-			"death": "1920",
-			"death_p": "Austria",
-			"subjects": "Objectivism, Intentionality"
-		},
-		{
-			"name": "Alfred Firmin Loisy",
-			"birth": "1857",
-			"birth_p": "France",
-			"death": "1940",
-			"death_p": "France",
-			"subjects": "Philosophy Of Religion, Modernism"
-		},
-		{
-			"name": "Alfred Korzybski",
-			"birth": "1879",
-			"birth_p": "Poland",
-			"death": "1950",
-			"death_p": "Connecticut",
-			"subjects": "Semantics, General Semantics"
-		}];
-
-}
-
 exports.insert_many = async function(object, collection, database='nolonolo') {
 	try {
 		await mongo.connect();
@@ -82,6 +13,22 @@ exports.insert_many = async function(object, collection, database='nolonolo') {
 
 		const options = { ordered: true };
 		const result = await coll.insertMany(object, options);
+		console.log(`${result.insertedCount} documents were inserted`);
+
+	} finally {
+		await mongo.close();
+	}
+}
+
+exports.insert_one = async function(object, collection, database='nolonolo') {
+	try {
+		await mongo.connect();
+
+		const db = mongo.db(database);
+		const coll = db.collection(collection);
+
+		const options = { ordered: true };
+		const result = await coll.insertOne(object, options);
 		console.log(`${result.insertedCount} documents were inserted`);
 
 	} finally {
