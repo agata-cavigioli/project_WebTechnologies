@@ -2,7 +2,7 @@
   import { Router, Route, Link } from "svelte-routing";
   import {tweened} from 'svelte/motion' ;
   import { getContext } from 'svelte';
-  import Popup from './Popup.svelte';
+  import Popup from './Popupsignlog.svelte';
   const { open } = getContext('simple-modal');
 
   import { loggedIn } from '../../stores.js';

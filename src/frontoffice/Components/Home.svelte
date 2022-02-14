@@ -8,123 +8,26 @@ import Modal from 'svelte-simple-modal';
 import PrenotButton from './MyModal/PrenotButton.svelte'
 
 let filosofi = [
-    {
-        "Philosophers": "Aaron David Gordon",
-        "Born": "1856",
-        "Birth place": "Ukraine",
-        "Died": "1922",
-        "Place of Death": "Palestine",
-        "Subjects Of Study": "Agriculture, Zionism",
-        "Cost":"250.99"
-    },
-    {
-        "Philosophers": "Abraham Joshua Heschel",
-        "Cost":"250.99",
-        "Born": "1907",
-        "Birth place": "Poland",
-        "Died": "1972",
-        "Place of Death": "York",
-        "Subjects Of Study": "Judaism, Philosophy Of Religion"
-    },
-    {
-        "Philosophers": "Albert of Saxony",
-        "Cost":"250.99",
-        "Born": "1316",
-        "Birth place": "Germany",
-        "Died": "1390",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Gravity"
-    },
-    {
-        "Philosophers": "Alessandro Achillini",
-        "Cost":"250.99",
-        "Born": "1463",
-        "Birth place": "Italy",
-        "Died": "1512",
-        "Place of Death": "Bologna",
-        "Subjects Of Study": "William Of Ockham"
-    },
-    {
-        "Philosophers": "Alexander Gottlieb Baumgarten",
-        "Cost":"250.99",
-        "Born": "1714",
-        "Birth place": "Germany",
-        "Died": "1762",
-        "Place of Death": "Germany",
-        "Subjects Of Study": "Aesthetics, Gottfried Wilhelm Leibniz, Feeling, Christian, Baron Von Wolff"
-    },
-    {
-        "Philosophers": "Alexius Meinong",
-        "Cost":"250.99",
-        "Born": "1853",
-        "Birth place": "Ukraine",
-        "Died": "1920",
-        "Place of Death": "Austria",
-        "Subjects Of Study": "Objectivism, Intentionality"
-    },
-    {
-        "Philosophers": "Alfred Firmin Loisy",
-        "Cost":"250.99",
-        "Born": "1857",
-        "Birth place": "France",
-        "Died": "1940",
-        "Place of Death": "France",
-        "Subjects Of Study": "Philosophy Of Religion, Modernism"
-    },
-    {
-        "Philosophers": "Alfred Korzybski",
-        "Cost":"250.99",
-        "Born": "1879",
-        "Birth place": "Poland",
-        "Died": "1950",
-        "Place of Death": "Connecticut",
-        "Subjects Of Study": "Semantics, General Semantics"
-    },
-    {
-        "Philosophers": "Alfred North Whitehead",
-        "Cost":"250.99",
-        "Born": "1861",
-        "Birth place": "England",
-        "Died": "1947",
-        "Place of Death": "Massachusetts",
-        "Subjects Of Study": "Education, Mathematics, Philosophy Of Science, Formal Logic, Materialism"
-    },
-    {
-        "Philosophers": "Allan Bloom",
-        "Cost":"250.99",
-        "Born": "1930",
-        "Birth place": "Indiana",
-        "Died": "1992",
-        "Place of Death": "Illinois",
-        "Subjects Of Study": "Higher Education"
-    },
-    {
-        "Philosophers": "Anaxagoras",
-        "Cost":"250.99",
-        "Born": "500",
-        "Birth place": "Clazomenae",
-        "Died": "428",
-        "Place of Death": "Lampsacus",
-        "Subjects Of Study": "Eclipse, Cosmology, Nous"
-    },
-    {
-        "Philosophers": "Anicius Manlius Severinus Boethius",
-        "Cost":"250.99",
-        "Born": "475",
-        "Birth place": "Italy",
-        "Died": "524",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Aristotelianism, Universal, Trinity, Porphyry, Free Will"
-    },
-    {
-        "Philosophers": "Antonio Labriola",
-        "Cost":"250.99",
-        "Born": "1843",
-        "Birth place": "Sicilies",
-        "Died": "1904",
-        "Place of Death": "Italy",
-        "Subjects Of Study": "Socialism, Historical Materialism"
-    }
+  {
+"name": "Aaron David Gordon",
+"birth": "1856",
+"birth_p": "Ukraine",
+"death": "1922",
+"death_p": "Palestine",
+"subjects": "Agriculture, Zionism",
+"nolo_data": {
+  "cost": 134,
+  "available_from": "",
+   "available_to": "",
+   "discount": 0,
+   "condition": "Entusiasta",
+   "info": ""}},
+{"name": "Abraham Joshua Heschel", "birth": "1907", "birth_p": "Poland", "death": "1972", "death_p": "York", "subjects": "Judaism, Philosophy Of Religion", "nolo_data": {"cost": 245, "available_from": "", "available_to": "", "discount": 50, "condition": "Gi\\u00fa di morale", "info": ""}},
+{"name": "Albert of Saxony", "birth": "1316", "birth_p": "Germany", "death": "1390", "death_p": "Germany", "subjects": "Gravity", "nolo_data": {"cost": 295, "available_from": "", "available_to": "", "discount": 0, "condition": "Entusiasta", "info": ""}},
+{"name": "Alessandro Achillini", "birth": "1463", "birth_p": "Italy", "death": "1512", "death_p": "Bologna", "subjects": "William Of Ockham", "nolo_data": {"cost": 116, "available_from": "", "available_to": "", "discount": 0, "condition": "Riflessivo", "info": ""}},
+{"name": "Alexander Gottlieb Baumgarten", "birth": "1714", "birth_p": "Germany", "death": "1762", "death_p": "Germany", "subjects": "Aesthetics, Gottfried Wilhelm Leibniz, Feeling, Christian, Baron Von Wolff", "nolo_data": {"cost": 165, "available_from": "", "available_to": "", "discount": 0, "condition": "Entusiasta", "info": ""}},
+{"name": "Alexius Meinong", "birth": "1853", "birth_p": "Ukraine", "death": "1920", "death_p": "Austria", "subjects": "Objectivism, Intentionality", "nolo_data": {"cost": 130, "available_from": "", "available_to": "", "discount": 10, "condition": "Riflessivo", "info": ""}},
+{"name": "Alfred Firmin Loisy", "birth": "1857", "birth_p": "France", "death": "1940", "death_p": "France", "subjects": "Philosophy Of Religion, Modernism", "nolo_data": {"cost": 226, "available_from": "", "available_to": "", "discount": 10, "condition": "Riflessivo", "info": ""}}
 ]
 
 /*
@@ -197,20 +100,24 @@ container.appendChild(row);
                     <div class="mb-2">
                         <h6 class="font-weight-semibold mb-2">
                           <div class="text-default mb-2" data-abc="true">
-                          {filosofo.Philosophers}
+                          {filosofo.name}
                           </div>
                         </h6>
                         <div class="text-muted" data-abc="true">
-                        {filosofo.Sub}
+                        {filosofo.subjects}
                         </div>
                     </div>
                     <div class="text-muted mb-3">
-                    {filosofo.Born}
-                    {filosofo.Birthp},
-                    {filosofo.Died}
-                    {filosofo.Deathp}
+                    {filosofo.birth}
+                    {filosofo.birth_p},
+                    {filosofo.death}
+                    {filosofo.death_p}
                     </div>
-                    <h3 class="mb-0 font-weight-semibold">&euro; {filosofo.Cost} al giorno</h3>
+                    <h3 class="mb-0 font-weight-semibold">&euro; {filosofo.nolo_data.cost} al giorno</h3>
+                    {#if (filosofo.nolo_data.discount>0)}
+                    <h3 class="mb-0 font-weight-semibold text-danger">Sconto:  {filosofo.nolo_data.discount}&#37;</h3>
+
+                    {/if}
                     <div class='mybooking'>
                     <Modal>
                       <PrenotButton philosopher={filosofo}/>

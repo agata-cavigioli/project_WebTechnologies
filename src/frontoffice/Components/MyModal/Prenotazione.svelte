@@ -4,11 +4,28 @@
   import { getContext } from 'svelte';
   const { close } = getContext('simple-modal');
   import { onMount } from 'svelte';
-  import jQ from 'jquery';
+  import jQuery from 'jquery';
 
   let islogged;
   let confermato = false;
   var booking = {};
+
+  /*
+  {
+      "name": "Anaxagoras",
+      "birth": "500",
+      "birth_p": "Clazomenae",
+      "death": "428",
+      "death_p": "Lampsacus",
+      "subjects": "Eclipse, Cosmology, Nous",
+      "nolo_data": { "cost": 100,
+          "available_from": "1/1/2345",
+          "available_to": "7/3/2736",
+          "discount": 0,
+          "info": "",
+          "condition": "Buono" }
+  },
+  */
 
 	loggedIn.subscribe(value => {
 		islogged = value;
@@ -40,7 +57,8 @@ function preventivo(){
     });
     //
 
-    let costo = filo.Cost;
+    let costo = filo.nolo_data.cost;
+    let discount = filo.nolo_data.discount;
     let datefrom = document.getElementById('datefromnolo').value;
     let dateto = document.getElementById('datetonolo').value;
     if(datefrom && dateto && datefrom<=dateto) {
@@ -52,21 +70,26 @@ function preventivo(){
       document.getElementById("preventivo").innerHTML="";
       const node = document.createElement("h5");
 
-      const textnode1 = document.createTextNode("Costo del noleggio per "+ diffDays);
-      node.appendChild(textnode1);
+      const totale = document.createElement("div");
+      totale.innerHTML = "Costo del noleggio per "+ diffDays;
+
       if(diffDays>1) {
-        const textnode2 = document.createTextNode(" giorni: ");
-        node.appendChild(textnode2);
+        totale.innerHTML += " giorni: &euro; ";
       }
       else {
-        const textnode3 = document.createTextNode(" giorno: ");
-        node.appendChild(textnode3);
+        totale.innerHTML += " giorno: &euro; ";
       }
-      const textnode4 = document.createTextNode(costo*diffDays);
+      totale.innerHTML += costo*diffDays;
+      node.appendChild(totale);
 
-      node.appendChild(textnode4);
-      node.classList.add("font-weight-bold");
-      node.classList.add( "text-secondary");
+      const finale = document.createElement("div");
+      finale.innerHTML = "Prezzo finale: &euro;" + ((costo*diffDays)-((costo*diffDays*discount)/100));
+      node.appendChild(finale);
+
+      totale.classList.add("font-weight-bold");
+      totale.classList.add( "text-secondary");
+      finale.classList.add("font-weight-bold");
+      finale.classList.add( "text-danger");
 
       document.getElementById("preventivo").appendChild(node);
 
@@ -164,21 +187,24 @@ function confirm(){
                       <div class="mb-2">
                           <h6 class="font-weight-semibold mb-2">
                             <div class="text-default mb-2" data-abc="true">
-                            {filo.Philosophers}
+                            {filo.name}
                             </div>
                           </h6>
                           <div class="text-muted" data-abc="true">
-                          {filo.Sub}
+                          {filo.subjects}
                           </div>
                       </div>
                       <div class="text-muted mb-3">
-                      {filo.Born}
-                      {filo.Birthp},
-                      {filo.Died}
-                      {filo.Deathp}
+                      {filo.birth}
+                      {filo.birth_p},
+                      {filo.death}
+                      {filo.death_p}
                       </div>
-                      <h3 class="mb-0 font-weight-semibold">&euro; {filo.Cost} al giorno</h3>
+                      <h3 class="mb-0 font-weight-semibold">&euro; {filo.nolo_data.cost} al giorno</h3>
+                      {#if (filo.nolo_data.discount>0)}
+                      <h3 class="mb-0 font-weight-semibold text-danger">Sconto:  {filo.nolo_data.discount}&#37;</h3>
 
+                      {/if}
                   </div>
               </div>
           </div>
@@ -186,7 +212,7 @@ function confirm(){
       <div class="col-lg">
 
         <div class="modal-header text-center">
-        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Noleggia {filo.Philosophers}</h4>
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Noleggia {filo.name}</h4>
         </div>
         {#if !confermato}
         <h5 class="font-weight-bold text-secondary mt-4">
@@ -251,8 +277,13 @@ Riepilogo dell'ordine
 <h5 class="font-weight-bold text-secondary mt-4" id="riepilogodiv">
 Periodo: da {booking.datefrom} a {booking.dateto}
 <br>
-Costo per {booking.diffdate} {(booking.diffdate>1)? "giorni":"giorno"}: {booking.diffdate*filo.Cost}
+Costo per {booking.diffdate} {(booking.diffdate>1)? "giorni":"giorno"}: &euro;{booking.diffdate*filo.nolo_data.cost}
 <br>
+Sconto applicato: {filo.nolo_data.discount}&#37;
+<br>
+<div class="text-danger">
+Prezzo finale: &euro;{(booking.diffdate*filo.nolo_data.cost)-((booking.diffdate*filo.nolo_data.cost*filo.nolo_data.discount)/100)}
+</div>
 Indirizzo: {booking.address}
 <br>
 Metodo di pagamento: {booking.payment}

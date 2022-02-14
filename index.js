@@ -1,3 +1,4 @@
+
 global.rootDir = __dirname ;
 global.startDate = null;
 
@@ -6,10 +7,12 @@ const express = require('express') ;
 const cors = require('cors');
 const mongo = require('./mongo.js');
 
+
 let app = express();
 
 app.use('/frontoffice/js' , express.static(global.rootDir +'/src/frontoffice'));
 app.use('/frontoffice/css' , express.static(global.rootDir +'/src/frontoffice'));
+
 
 app.use('/backoffice/js' , express.static(global.rootDir +'/src/backoffice'));
 app.use('/backoffice/css' , express.static(global.rootDir +'/src/backoffice'));

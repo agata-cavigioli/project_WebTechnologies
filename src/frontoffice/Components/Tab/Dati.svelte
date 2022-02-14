@@ -1,6 +1,6 @@
 <script>
 import { onMount } from 'svelte';
-import jQ from 'jquery';
+import jQuery from 'jquery';
 
 export let id = "1234";
 let personaldata;
@@ -16,24 +16,18 @@ onMount(() => {
 
 
 let people = [
-    {
-				"id": "1234",
-        "nome": "Mario",
-        "cognome": "Rossi",
-        "email": "mario.rossi@gmail.com",
-        "telefono": "3456778254",
-        "indirizzo": "via vai",
-        "fotoprofilo": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png"
-    },
-    {
-			"id": "4321",
-			"nome": "Luca",
-			"cognome": "Bianchi",
-			"email": "luca.bianchi@gmail.com",
-			"telefono": "3786557942",
-			"indirizzo": "via via",
-			"fotoprofilo": "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png"
-	}
+	{"id" : "1234",
+	"name": "Paola",
+	"surname": "Bianchi",
+	"email": "Paola.Bianchi@gmail.com",
+	"phone": "3908779564",
+	"address": "Via Monti 4, Milano",
+	"nolo_data":
+		{"info": ""}
+},
+	{"name": "Lucia", "surname": "Mari", "email": "Lucia.Mari@gmail.com", "phone": "3901228935", "address": "Via Beaux-Arts, Parigi", "nolo_data": {"info": ""}},
+	{"name": "Mario", "surname": "Rossi", "email": "Mario.Rossi@gmail.com", "phone": "3736445896", "address": "Via Mari 3, Roma", "nolo_data": {"info": ""}},
+	{"name": "Luca", "surname": "Verdi", "email": "Luca.Verdi@gmail.com", "phone": "3901223784", "address": "Via del Campo 5, Genova", "nolo_data": {"info": ""}}
 	]
 
 function getPersonalData(){
@@ -52,24 +46,23 @@ function getPersonalData(){
 function loadinfo(){
 	document.getElementById('datatab').innerHTML=(
 	"	<h5 class='font-weight-bold text-secondary mt-4' id='riepilogodiv'> \
-		Nome: <span class='modificabile d-inline'>"+ personaldata.nome + " </span> <br> \
-		Cognome: <span class='modificabile d-inline'>"+ personaldata.cognome + " </span> <br> \
+		Nome: <span class='modificabile d-inline'>"+ personaldata.name + " </span> <br> \
+		Cognome: <span class='modificabile d-inline'>"+ personaldata.surname + " </span> <br> \
 		Email: <span class='modificabile d-inline'>"+ personaldata.email + " </span> <br> \
-		Numero di telefono: <span class='modificabile d-inline'>"+ personaldata.telefono + " </span> <br> \
-		Indirizzo: <span class='modificabile d-inline'>"+ personaldata.indirizzo + " </span> \
+		Numero di phone: <span class='modificabile d-inline'>"+ personaldata.phone + " </span> <br> \
+		Indirizzo: <span class='modificabile d-inline'>"+ personaldata.address + " </span> \
 		</h5> ")
 	}
 
 function modify(){
-	personaldata.email = "rossi.mario@gmail.com";
 	document.getElementById('datatab').innerHTML="";
 	document.getElementById('datatab').innerHTML=(
 	"	<h5 class='font-weight-bold text-secondary mt-4' id='riepilogodiv'> \
-		Nome: <input type='text' id = 'personalnome' class='modificabile m-1 d-inline' value='"+ personaldata.nome + "'> </input> <br> \
-		Cognome: <input type='text'id='personalcognome' class='modificabile m-1 d-inline' value='"+ personaldata.cognome + "'> </input> <br> \
+		Nome: <input type='text' id = 'personalnome' class='modificabile m-1 d-inline' value='"+ personaldata.name + "'> </input> <br> \
+		Cognome: <input type='text'id='personalcognome' class='modificabile m-1 d-inline' value='"+ personaldata.surname + "'> </input> <br> \
 		Email: <input type='text' id='personalemail' class='modificabile m-1 d-inline' value='"+ personaldata.email + "'> </input> <br> \
-		Numero di telefono: <input type='text' id='personaltelefono' class='m-1 modificabile d-inline' value='"+ personaldata.telefono + "'> </input> <br> \
-		Indirizzo: <input type='text' id='personalindirizzo' class='m-1 modificabile d-inline' value='"+ personaldata.indirizzo + "'> </input> \
+		Numero di phone: <input type='text' id='personaltelefono' class='m-1 modificabile d-inline' value='"+ personaldata.phone + "'> </input> <br> \
+		Indirizzo: <input type='text' id='personalindirizzo' class='m-1 modificabile d-inline' value='"+ personaldata.address + "'> </input> \
 		</h5> ");
 
 		document.getElementById('modifyconfirm').innerHTML="Conferma";
@@ -82,11 +75,11 @@ function modify(){
 
 function confirm(){
 	/////////////////////////
-	personaldata.nome  = document.getElementById('personalnome').value;
-	personaldata.cognome  = document.getElementById('personalcognome').value;
+	personaldata.name  = document.getElementById('personalnome').value;
+	personaldata.surname  = document.getElementById('personalcognome').value;
 	personaldata.email  = document.getElementById('personalemail').value;
-	personaldata.telefono  = document.getElementById('personaltelefono').value;
-	personaldata.indirizzo  = document.getElementById('personalindirizzo').value;
+	personaldata.phone  = document.getElementById('personaltelefono').value;
+	personaldata.address  = document.getElementById('personalindirizzo').value;
 /////////////////////////////
 	loadinfo();
 

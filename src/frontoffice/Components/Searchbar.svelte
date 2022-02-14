@@ -68,7 +68,7 @@ function searchfunction(){
       <input id = "PlaceSearch" class="search-input" type="text" placeholder="State" autocomplete="on" name="location">
     </div>
     <div class="text-center">
-    <Link class="searchlink" on:click={searchfunction} to="/home" type="submit" style="color:white">
+    <Link class="searchlink" on:click={searchfunction} to="/home" style="color:white">
     <div class="search-button" id="principalsearch">
         Search
     </div>

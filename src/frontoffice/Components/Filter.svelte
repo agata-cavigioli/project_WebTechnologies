@@ -1,6 +1,6 @@
  <script>
 		import { onMount } from 'svelte';
-		import jQ from 'jquery';
+		import jQuery from 'jquery';
 
     function filterreset(){
       document.getElementById('inputGroupPeriod').value= "";
