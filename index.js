@@ -1,6 +1,7 @@
 global.rootDir = __dirname ;
 global.startDate = null;
 
+
 const path = require('path') ;
 const express = require('express') ;
 const cors = require('cors');
@@ -11,14 +12,11 @@ const mongo = require('./mongo.js');
 let app = express();
 
 var id_num = Math.max(
-    Math.max(
         findMax(mongo.query({}, {}, 'products')),
-        findMax(mongo.query({}, {}, 'clients'))
-    ),
-    Math.max(
-        findMax(mongo.query({}, {}, 'staff')) ,
+        findMax(mongo.query({}, {}, 'clients')),
+        findMax(mongo.query({}, {}, 'staff')),
         findMax(mongo.query({}, {}, 'nolos'))
-    ));
+    );
 
 function findMax(obj){
     var m = -1;
@@ -61,7 +59,10 @@ app.get('/',  function (req, res) {
 /********************************* API ***************************************/
 
 function createMongoQuery(req){
-    const url_query = url.parse(req.url, true).query;
+    var url_query = {};
+    try {
+        url_query = url.parse(req.url, true).query;
+    } catch(x) {console.log(x)} 
     var query = {};
     for(q in url_query){
         try {
@@ -70,6 +71,7 @@ function createMongoQuery(req){
             query[q] = url_query[q];
         };
     }
+    console.log(query);
     return query;
 }
 
@@ -80,17 +82,17 @@ app.get('/products',  async function (req, res) {
 
 app.get('/clients',  async function (req, res) {
     res.send(await
-        mongo.query(createMongoQuery(), {}, 'clients'));
+        mongo.query(createMongoQuery(req), {}, 'clients'));
 });
 
 app.get('/nolos',  async function (req, res) {
     res.send(await
-        mongo.query(createMongoQuery(), {}, 'nolos'));
+        mongo.query(createMongoQuery(req), {}, 'nolos'));
 });
 
 app.get('/staff',  async function (req, res) {
     res.send(await
-        mongo.query(createMongoQuery(), {}, 'staff'));
+        mongo.query(createMongoQuery(req), {}, 'staff'));
 });
 
 
@@ -107,12 +109,14 @@ app.post('/clients', function (req, res){
     var obj = req.body;
     req.body.id = ++id_num;
     mongo.insert_one(req.body, 'clients');
+    res.send(obj);
 });
 
 app.post('/nolos', function (req, res){
     var obj = req.body;
     req.body.id = ++id_num;
     mongo.insert_one(req.body, 'nolos');
+    res.send(obj);
 });
 
 app.get('/erase', function(req, res){
