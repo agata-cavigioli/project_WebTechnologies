@@ -5,12 +5,16 @@
   import Popup from './Popupsignlog.svelte';
   const { open } = getContext('simple-modal');
 
-  import { loggedIn } from '../../stores.js';
+  import { loggedIn, userID } from '../../stores.js';
 
-  let islogged;
+  let islogged ;
+  let user ;
 
 	loggedIn.subscribe(value => {
 		islogged = value;
+	});
+  userID.subscribe(value => {
+		user = value;
 	});
 
   const openmodal = (option) => {
@@ -32,7 +36,7 @@
 -->
 <div class="button-div container" style=" width: 40vmin; right:0vw;">
   <div class='row'>
-  <button class="signup-button col col-xs-6 p-0" on:click={() => {loggedIn.update(b => !b);}}>
+  <button class="signup-button col col-xs-6 p-0" on:click={() => {loggedIn.update(b => !b); userID.update(b => 0);}}>
 
       Logout
 

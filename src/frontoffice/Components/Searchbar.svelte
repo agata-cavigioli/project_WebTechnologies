@@ -1,58 +1,124 @@
 <script>
 import { Router, Route, Link } from "svelte-routing";
 
+export let filosofi = "";
+let search;
+
 function searchfunction(){
 
   var searchphilosophers = {};
   var searchphilosophersArray = [];
 
-  var name = document.getElementById('NameSearch').value;
-    if (name) searchphilosophers.name = name;
-  var place = document.getElementById('PlaceSearch').value;
-    if(place) searchphilosophers.place = place;
+  var tempurl="";
+  var count = 0;
 
+  var name = document.getElementById('NameSearch').value;
+    if (name) {
+      tempurl+='birth='+name;
+      count++;}
+  var place = document.getElementById('PlaceSearch').value;
+    if(place) {
+      if (count>0){tempurl+='&'; count++;}
+      tempurl+='death_p='+place;
+      count++;
+    }
 
   let filters;
     if (filters=document.getElementById('home')){
       var period = document.getElementById('inputGroupPeriod').value;
       if(period) {
+        console.log(period);
+
         let livedfrom = 0;
         let livedto = 0;
-        if (period == 'antica'){ livedfrom = 3100; livedto = 476;}
+
+        if (period == 'antica'){ livedfrom = -3100; livedto = 476;}
         else if (period == 'medievale'){livedfrom = 476; livedto = 1492;}
         else if (period == 'moderna'){livedfrom = 1492; livedto = 1815;}
         else if (period == 'contemporanea'){ livedfrom = 1815; livedto = 2022;}
 
-        searchphilosophers.birthday = livedfrom;
-        searchphilosophers.deathday = livedto;
+        //searchphilosophers.birthday = livedfrom;
+        //searchphilosophers.deathday = livedto;
+
+        //birth={"$gt":"1400"}&death={"$lt":"1900"}
+        if (count>0){tempurl+='&'; count++;}
+        tempurl+='birth={"$gt":"'+livedfrom+'"}&death={"$lt":"'+livedto+'"}';
+        count++;
+
       }
       var costfrom = document.getElementById('costfrom').value;
-      if(costfrom && !isNaN(costfrom)) searchphilosophers.costfrom = costfrom;
+      if(costfrom && !isNaN(costfrom)) {
+        if (count>0){tempurl+='&'; count++;}
+        tempurl+='cost={"$gt":"'+costfrom+'"}';
+        count++;
+      }
 
       var costto = document.getElementById('costto').value;
-      if(costto && !isNaN(costto)) searchphilosophers.costto = costto;
+      if(costto && !isNaN(costto)) {
+        if (count>0){tempurl+='&'; count++;}
+        tempurl+='cost={"$lt":"'+costto+'"}';
+        count++;
+      }
 
       var birthplace = document.getElementById('birthplace').value;
-      if(birthplace) searchphilosophers.birthplace = birthplace;
+      if(birthplace) {
+        if (count>0){tempurl+='&'; count++;}
+        tempurl+='birth_p='+birthplace;
+        count++;
+      }
 
       var deathplace = document.getElementById('deathplace').value;
-      if(deathplace) searchphilosophers.deathplace = deathplace;
+      if(deathplace) {
+        if (count>0){tempurl+='&'; count++;}
+        tempurl+='death_p='+deathplace;
+        count++;
+      }
 
       var inputtematiche = document.getElementById('inputtematiche').value;
-      if(inputtematiche) searchphilosophers.tematiche = inputtematiche;
+      if(inputtematiche) {
+        if (count>0){tempurl+='&'; count++;}
+        tempurl+='subjects='+inputtematiche;
+        count++;
+      }
 
       var datefrom = document.getElementById('datefrom').value;
-      if(datefrom) searchphilosophers.datefrom = datefrom;
+      if(datefrom) {
+        if (count>0){tempurl+='&'; count++;}
+        tempurl+='available_from={"$gt":"'+datefrom+'"}';
+        count++;
+      }
 
       var dateto = document.getElementById('dateto').value;
-      if(dateto) searchphilosophers.dateto = dateto;
+      if(dateto) {
+        if (count>0){tempurl+='&'; count++;}
+        tempurl+='available_to={"$lt":"'+dateto+'"}';
+        count++;
+      }
 
       if(document.getElementById("discoutCheck").checked == true)
-        searchphilosophers.discoutCheck = "true";
+      {
+        if (count>0){tempurl+='&'; count++;}
+        tempurl+='discount={"$gt":"0"}';
+        count++;
+      }
 
   }
   searchphilosophersArray.push({...searchphilosophers});
-  console.log(JSON.stringify(searchphilosophersArray));
+  search = JSON.stringify(searchphilosophersArray);
+  //console.log(tempurl);
+  searchphilosophersfun(tempurl, count);
+
+}
+
+function searchphilosophersfun(tempurl, count){
+  let searchurl = "http://site202123.tw.cs.unibo.it/products";
+  if (count>0) searchurl += "?" + tempurl;
+  console.log(searchurl);
+
+  jQuery.get(searchurl, async function(data){
+   filosofi = data;
+   console.log(filosofi);
+  })
 }
 
 </script>

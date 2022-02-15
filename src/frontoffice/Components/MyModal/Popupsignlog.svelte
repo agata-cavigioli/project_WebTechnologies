@@ -1,5 +1,5 @@
 <script>
-  import { loggedIn } from '../../stores.js';
+  import { loggedIn, userID } from '../../stores.js';
   import { getContext } from 'svelte';
   const { close } = getContext('simple-modal');
   import { onMount } from 'svelte';
@@ -8,6 +8,11 @@
 
   export let op = 'Login';
   export const message = 'Hi';
+
+  let id;
+  userID.subscribe(value => {
+		id = value;
+	});
 
   onMount(() => {
     jQuery( document ).ready(function() {
@@ -42,6 +47,14 @@
   function checklogin(){
     var mail = document.getElementById("form3").value;
     var pwd = document.getElementById("form2").value;
+    if (!mail || !pwd) {
+      redstar('label2');
+      redstar('label3');
+      return false;
+    }
+
+
+    tempurl = '?email="'+ document.getElementById("form3").value + '"&pwd="' + document.getElementById("form2").value +'"';
     if (checkpassword(mail,pwd)){
       loggedIn.update(b => !b);
       let element;
@@ -59,18 +72,28 @@
 
   }
 
-  function checksignup(){
-    let signupArray = sendsignup();
-    if (signupArray){
-      console.log(JSON.stringify(signupArray));
+  async function checksignup(){
+    let signup= sendsignup();
+    if (signup){
+      //console.log("stringa: " + JSON.stringify(signupArray));
+      //console.log("array" + signupArray);
+      //let created =
+      await jQuery.post("http://site202123.tw.cs.unibo.it/clients",signup).done(
+        function(res){
+          userID.update(b => res.id);
+          console.log(id);
+        }
+      );
 
+      //userID.update(b=>created.id);
       loggedIn.update(b => !b);
+
       let element;
       if (element=document.getElementById('home')&& !document.getElementById('prenot-modal-content')){
       document.getElementById('home').classList.remove("overflow-hidden");
       document.getElementById('home').classList.add("overflow-auto");
       }
-      console.log(document.getElementById('prenot-modal-content'));
+      //console.log(document.getElementById('prenot-modal-content'));
       if (document.getElementById('prenot-modal-content')){
       document.getElementById('prenot-modal-content').classList.remove("overflow-hidden");
       document.getElementById('prenot-modal-content').classList.add("overflow-auto");
@@ -96,10 +119,10 @@
         let telefono = document.getElementById("form4").value;
         let indirizzo = document.getElementById("form5").value;
 
-      if(nome){signup.nome = nome;}
+      if(nome){signup.name = nome;}
         else {redstar('label0');
         sendcheck = false;}
-      if(cognome){signup.cognome = cognome;}
+      if(cognome){signup.surname = cognome;}
         else {redstar('label1');
           sendcheck = false;}
       if(mail && validateEmail(mail)){signup.email = mail;}
@@ -110,18 +133,24 @@
       else {redstar('label2');
         sendcheck = false;
       }
-      if(telefono && !isNaN(telefono)){signup.telefono = telefono;}
+      if(telefono && !isNaN(telefono)){signup.phone = telefono;}
       else {redstar('label4');
         sendcheck = false;
       }
-      if(indirizzo){signup.indirizzo = indirizzo;}
+      if(indirizzo){signup.address = indirizzo;}
       else {redstar('label5');
         sendcheck = false;
       }
 
       if(sendcheck){
+        signup.nolo_data = {};
+        signup.nolo_data.info = "";
       signupArray.push({...signup});
-      return signupArray;
+      //console.log(signupArray);
+      console.log(signup);
+      //console.log(JSON.stringify(signupArray));
+      //console.log(JSON.stringify(signup));
+      return signup;
     }
     else return false;
 }
@@ -155,9 +184,10 @@
   }
 </script>
 
-<div class='mymodal'>
+
 
 {#if (op == "Login")}
+<div class='mymodal'>
 <div class="modal-dialog modal-notify modal-warning" role="document">
   <div class="modal-content">
     <div class="modal-header text-center">
@@ -190,10 +220,11 @@
     </div>
   </div>
   </div>
-
+</div>
   {:else if (op=='Signup')}
+<div class='mymodal signupmodal1'>
   <div class="modal-dialog modal-notify modal-warning" role="document">
-    <div class="modal-content overflow-auto" style="overfow-y:auto !important">
+    <div class="modal-content overflow-auto" style="overfow-y:auto !important; height:80vh">
       <div class="modal-header text-center">
         <h4 class="modal-title white-text w-100 font-weight-bold py-2">{op}</h4>
       </div>
@@ -248,5 +279,5 @@
       </div>
     </div>
     </div>
+    </div>
   {/if}
-</div>

@@ -84,10 +84,10 @@
 						<div class="input-group-prepend">
 						<div class="input-group-text customcol-smor">Da:</div>
 						</div>
-						    <input class="input-group date form-control" data-provide="datepicker" type="text" id="datefrom" value="">
+						    <input class="input-group date form-control" type="date" id="datefrom" value="">
 
 							<div class="input-group-text rounded-0 border-left-0 border-right-0 customcol-smor">a:</div>
-							    <input type="text" class="input-group date form-control" data-provide="datepicker" id="dateto" value="">
+							    <input type="date" class="input-group date form-control"  id="dateto" value="">
 
 				</div>
 		  </div>
