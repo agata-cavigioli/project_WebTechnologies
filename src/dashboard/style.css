@@ -1,0 +1,63 @@
+#background {
+  position: absolute;
+  opacity: 0.3;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+
+}
+body {
+  background-color: #fffdfa;
+  background-size: cover;
+  background-opacity: 0.3;
+  overflow: hidden;
+}
+
+.major h1 {
+  color: #3674E7;
+}
+
+.major b, .major h2, .major a {
+  color: #1FA2FF;
+}
+
+.major button, .major .btn {
+  border-style: none;
+  background-color: #3674E7;
+}
+.major button:hover {
+  background-color: #1FA2FF;
+}
+
+.minor h1 {
+  color: #FA864C;
+}
+.minor b, .minor h2, .minor a{
+  color: #F7B32B;
+}
+
+.minor button, .minor .btn {
+  border-style: none;
+  background-color: #FA864C;
+}
+
+.minor button:hover {
+  background-color: #F7B32B;
+}
+
+a.btn {
+  color: #FFFFFF;
+}
+
+.my-bg * {
+  background-color: #fffdfa;
+}
+
+.top-tabs{
+  color: #000000;
+}
+
+.problem {
+  background-color: #FA864C;
+}
