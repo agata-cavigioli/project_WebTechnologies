@@ -1,6 +1,13 @@
 <script>
+import { userID } from '../../stores.js';
 import { onMount } from 'svelte';
 import jQuery from 'jquery';
+
+let id;
+
+userID.subscribe(value => {
+	id = value;
+});
 
 let nolotime = "present";
 var today = new Date();
@@ -11,48 +18,24 @@ var yyyy = today.getFullYear();
 today = mm + '/' + dd + '/' + yyyy;
 
 onMount(() => {
-	jQuery( document ).ready(function() {
-
+	jQuery( document ).ready(async function() {
+		let done = await getPersonalNolos();
 	});
 });
+
 let image = "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png";
-let noleggi = [
-	{ 	"product_id" : "present",
-         "client_id" : 0,
-         "date_from" : "01/01/2022",
-         "date_to" : "04/04/2022",
-         "status" : "booked",
-         "nolo_data" : {
-					 	"discount" : 10,
-          	"daily_cost" : 213,
-             "other_fees" : 0,
-             "info" : "" }
-     },
-		 { 	"product_id" : "past",
-	          "client_id" : 0,
-	          "date_from" : "01/01/2022",
-	          "date_to" : "02/02/2022",
-	          "status" : "booked",
-	          "nolo_data" : {
-	 					 	"discount" : 10,
-	           	"daily_cost" : 213,
-	              "other_fees" : +10,
-	              "info" : "" }
-	      },
+let noleggi = "";
 
-				{ 	"product_id" : "future",
-			         "client_id" : 0,
-			         "date_from" : "05/05/2022",
-			         "date_to" : "08/08/2022",
-			         "status" : "booked",
-			         "nolo_data" : {
-								 	"discount" : 10,
-			          	"daily_cost" : 213,
-			             "other_fees" : -10,
-			             "info" : "" }
-			     }
+function getPersonalNolos(){
+  let searchurl = "http://site202123.tw.cs.unibo.it/nolos";
+  searchurl += '?client_id="' + id + '"';
+  console.log(searchurl);
 
-]
+  jQuery.get(searchurl, async function(data){
+   noleggi = data;
+  })
+}
+
 
 function calcolocosto(noleggio){
 	const date1 = new Date(noleggio.date_from);
@@ -82,7 +65,7 @@ function calcolofinale(noleggio){
 </div>
 
 {#if (nolotime=="present")}
-<h4 class='font-weight-bold text-info mt-4'>
+<h4 class='font-weight-bold text-info mt-4' id="nolo-header">
 Noleggi in corso
 </h4>
 {#each noleggi as noleggio}
@@ -91,7 +74,7 @@ Noleggi in corso
 				<div class="col-3 m-2">
 						<div class="card-img-actions"> <img src={image} class="card-img img-fluid" width="96" height="350" alt=""> </div>
 				</div>
-				<div class="col-6 m-2">
+				<div class="col-lg-6 m-2">
 						<div class="mb-2">
 								<h6 class="font-weight-semibold mb-2">
 									<div class="text-default mb-2" data-abc="true">
@@ -112,7 +95,7 @@ Noleggi in corso
 						<br>
 						Costi aggiuntivi: {noleggio.nolo_data.other_fees} &euro;
 						</div>
-						<h3 class="mb-0 font-weight-semibold">Costo del noleggio: &euro;{calcolocosto(noleggio)}</h3>
+						<h3 class="mb-0 font-weight-semibold">Costo base: &euro;{calcolocosto(noleggio)}</h3>
 						<h3 class="mb-0 text-danger font-weight-semibold">Prezzo finale: &euro;{calcolofinale(noleggio)}</h3>
 
 						<div class='mybooking'>
@@ -139,7 +122,7 @@ Noleggi previsti
 				<div class="col-3 m-2">
 						<div class="card-img-actions"> <img src={image} class="card-img img-fluid" width="96" height="350" alt=""> </div>
 				</div>
-				<div class="col-6 m-2">
+				<div class="col-lg-6 m-2">
 						<div class="mb-2">
 								<h6 class="font-weight-semibold mb-2">
 									<div class="text-default mb-2" data-abc="true">
@@ -160,7 +143,7 @@ Noleggi previsti
 						<br>
 						Costi aggiuntivi: {noleggio.nolo_data.other_fees} &euro;
 						</div>
-						<h3 class="mb-0 font-weight-semibold">Costo del noleggio: &euro;{calcolocosto(noleggio)}</h3>
+						<h3 class="mb-0 font-weight-semibold">Costo base: &euro;{calcolocosto(noleggio)}</h3>
 						<h3 class="mb-0 text-danger font-weight-semibold">Prezzo finale: &euro;{calcolofinale(noleggio)}</h3>
 
 						<div class='mybooking'>
@@ -197,7 +180,7 @@ Noleggi conclusi
 				<div class="col-3 m-2">
 						<div class="card-img-actions"> <img src={image} class="card-img img-fluid" width="96" height="350" alt=""> </div>
 				</div>
-				<div class="col-6 m-2">
+				<div class="col-lg-6 m-2">
 						<div class="mb-2">
 								<h6 class="font-weight-semibold mb-2">
 									<div class="text-default mb-2" data-abc="true">
@@ -218,7 +201,7 @@ Noleggi conclusi
 						<br>
 						Costi aggiuntivi: {noleggio.nolo_data.other_fees} &euro;
 						</div>
-						<h3 class="mb-0 font-weight-semibold">Costo del noleggio: &euro;{calcolocosto(noleggio)}</h3>
+						<h3 class="mb-0 font-weight-semibold">Costo base: &euro;{calcolocosto(noleggio)}</h3>
 						<h3 class="mb-0 text-danger font-weight-semibold">Prezzo finale: &euro;{calcolofinale(noleggio)}</h3>
 
 						<div class='mybooking'>

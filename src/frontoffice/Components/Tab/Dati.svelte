@@ -1,51 +1,51 @@
 <script>
+import { userID } from '../../stores.js';
 import { onMount } from 'svelte';
 import jQuery from 'jquery';
 
-export let id = "1234";
-let personaldata;
-let personaldatastring;
+let id;
+
+userID.subscribe(value => {
+	id = value;
+});
+
 
 onMount(() => {
-	jQuery( document ).ready(function() {
-		getPersonalData();
-		loadinfo();
-
+	jQuery( document ).ready(async function() {
+		console.log("id: "+id);
+		//document.getElementById('datatab').innerHTML="";
+		let found = await getPersonalData();
+		if (found) loadinfo();
 	});
 });
 
 
-let people = [
-	{"id" : "1234",
-	"name": "Paola",
-	"surname": "Bianchi",
-	"email": "Paola.Bianchi@gmail.com",
-	"phone": "3908779564",
-	"address": "Via Monti 4, Milano",
-	"nolo_data":
-		{"info": ""}
-},
-	{"name": "Lucia", "surname": "Mari", "email": "Lucia.Mari@gmail.com", "phone": "3901228935", "address": "Via Beaux-Arts, Parigi", "nolo_data": {"info": ""}},
-	{"name": "Mario", "surname": "Rossi", "email": "Mario.Rossi@gmail.com", "phone": "3736445896", "address": "Via Mari 3, Roma", "nolo_data": {"info": ""}},
-	{"name": "Luca", "surname": "Verdi", "email": "Luca.Verdi@gmail.com", "phone": "3901223784", "address": "Via del Campo 5, Genova", "nolo_data": {"info": ""}}
-	]
+let personaldata = "";
 
-function getPersonalData(){
-	let found = false;
-	people.forEach((person) => {
-		if(person.id == id) {
-			found = true;
-			personaldata = person;
-			personaldatastring = JSON.stringify(person);
-		}
-	});
-	if (!found) document.getElementById('datatab').innerHTML=("Cannot find personal data");
-	else console.log(personaldata);
+async function getPersonalData(){
+
+	let searchurl = "http://site202123.tw.cs.unibo.it/clients";
+  searchurl += "?id=" + id;
+  console.log(searchurl);
+
+  await jQuery.get(searchurl).done(
+		function(data){
+	 			personaldata = data[0];
+	 			if(personaldata) {
+					console.log(personaldata);
+					console.log(personaldata.name);
+					return true;
+				}
+	 			else {
+	 			document.getElementById('datatab').innerHTML=("Cannot find personal data");
+				return false;
+	 			}
+ 		}
+ )
 }
 
 function loadinfo(){
-	document.getElementById('datatab').innerHTML=(
-	"	<h5 class='font-weight-bold text-secondary mt-4' id='riepilogodiv'> \
+		document.getElementById('datatab').innerHTML=( "<h5 class='font-weight-bold text-secondary mt-4' id='riepilogodiv'> \
 		Nome: <span class='modificabile d-inline'>"+ personaldata.name + " </span> <br> \
 		Cognome: <span class='modificabile d-inline'>"+ personaldata.surname + " </span> <br> \
 		Email: <span class='modificabile d-inline'>"+ personaldata.email + " </span> <br> \

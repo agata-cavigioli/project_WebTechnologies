@@ -11,10 +11,17 @@
 	import 'css/global.css';
 	import 'css/extra.css';
 
+//let filosofi = "";
+let filosofi = "";
 
-function searchfunction(){
-
-}
+function searchfunall(){
+    let searchurl = "http://site202123.tw.cs.unibo.it/products";
+    console.log(searchurl);
+    jQuery.get(searchurl, async function(data){
+     filosofi = data;
+     console.log(filosofi);
+    })
+  }
 
 </script>
 
@@ -48,14 +55,14 @@ function searchfunction(){
 
 			<form class="ricerca row" action="" method="get">
         <div class='col'>
-        <Searchbar/>
+        <Searchbar bind:filosofi={filosofi}/>
         </div>
       </form>
 			<div class='row align-items-center m-5 h2'>
 			<div class='col' style='font-weight: 700;'> Don't know who you are looking for?</div>
-			<div class=' col-lg-3 search-button ' style='border-radius: 5px;' on:click={searchfunction}>
+			<div class=' col-lg-3 search-button ' style='border-radius: 5px;'>
 
-        <Link class="searchlink" to="/home" type="submit" style="color:white;">Search everyone</Link>
+        <Link class="searchlink" to="/home" style="color:white;" on:click={searchfunall}>Search everyone</Link>
 
       </div>
 			</div>
@@ -66,7 +73,7 @@ function searchfunction(){
 
     </Route>
 		<Route path="/home">
-		    <Home/>
+		    <Home filosofi={filosofi} />
 		</Route>
     <Route path="/personal">
 		    <Personal/>

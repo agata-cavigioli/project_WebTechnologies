@@ -1,5 +1,5 @@
 <script>
-  import { loggedIn } from '../../stores.js';
+  import { loggedIn, userID } from '../../stores.js';
   import Signlog from '../Signlog.svelte';
   import { getContext } from 'svelte';
   const { close } = getContext('simple-modal');
@@ -7,32 +7,26 @@
   import jQuery from 'jquery';
 
   let islogged;
+  let user;
   let confermato = false;
   var booking = {};
+  export let filo = '';
+  export const message = 'Hi';
 
-  /*
-  {
-      "name": "Anaxagoras",
-      "birth": "500",
-      "birth_p": "Clazomenae",
-      "death": "428",
-      "death_p": "Lampsacus",
-      "subjects": "Eclipse, Cosmology, Nous",
-      "nolo_data": { "cost": 100,
-          "available_from": "1/1/2345",
-          "available_to": "7/3/2736",
-          "discount": 0,
-          "info": "",
-          "condition": "Buono" }
-  },
-  */
+  let nolotime = "present";
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
 
 	loggedIn.subscribe(value => {
 		islogged = value;
 	});
-
-  export let filo = '';
-  export const message = 'Hi';
+  userID.subscribe(value => {
+		user = value;
+	});
 
   onMount(() => {
     jQuery( document ).ready(function() {
@@ -61,7 +55,7 @@ function preventivo(){
     let discount = filo.nolo_data.discount;
     let datefrom = document.getElementById('datefromnolo').value;
     let dateto = document.getElementById('datetonolo').value;
-    if(datefrom && dateto && datefrom<=dateto) {
+    if(datefrom && dateto && datefrom<=dateto && datefrom>=today) {
       const date1 = new Date(datefrom);
       const date2 = new Date(dateto);
       const diffTime = Math.abs(date2 - date1);
@@ -120,19 +114,17 @@ function sendnolo(){
     redstar.remove();
     });
     var sendcheck = true;
-
     var bookingArray = [];
-
   let datefrom = document.getElementById('datefromnolo').value;
   let dateto = document.getElementById('datetonolo').value;
-  if(datefrom && dateto && datefrom<=dateto) {
+  if(datefrom && dateto && datefrom<=dateto && datefrom>=today) {
     const date1 = new Date(datefrom);
     const date2 = new Date(dateto);
     const diffTime = Math.abs(date2 - date1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
-    booking.datefrom = datefrom;
-    booking.dateto = dateto;
+    booking.date_from = datefrom;
+    booking.date_to = dateto;
     booking.diffdate = diffDays;
   }
   else{
@@ -140,13 +132,10 @@ function sendnolo(){
     redstar('todate');
     sendcheck = false;
   }
-  let address = document.getElementById('addressfromnolo').value;
-  if(address){
-    booking.address = address;
-  }
-  else {
-    redstar('addresslabel');
-    sendcheck = false;
+  let note = document.getElementById('notefromnolo').value;
+  booking.nolo_data = {};
+  if(note){
+    booking.nolo_data.info = note;
   }
 
   let payment = document.getElementById('inputGroupPay').value;
@@ -159,17 +148,44 @@ function sendnolo(){
   }
 
   if(sendcheck){
+    booking.product_id = filo.id;
+    booking.client_id = user;
+    booking.dep_id = -1;
+    booking.status = (datefrom==today) ? "started" : "booked";
+    booking.nolo_data.discount = filo.nolo_data.discount;
+    booking.nolo_data.cost = filo.nolo_data.cost;
+    booking.nolo_data.other_fees = 0;
   bookingArray.push({...booking});
-  console.log(JSON.stringify(bookingArray));
   confermato = true;
+  booking = bookingArray[0];
+  console.log(booking);
 }
 
 }
 
 
 
-function confirm(){
+async function confirm(){
+//POST booking
+if (booking){
+  //console.log("stringa: " + JSON.stringify(signupArray));
+  //console.log("array" + signupArray);
+  //let created =
+  await jQuery.post("http://site202123.tw.cs.unibo.it/nolos",booking).done(
+    function(res){
+      console.log("booking posted");
+    }
+  );
 
+  confermato = false;
+
+  let element;
+  if (element=document.getElementById('home')&& !document.getElementById('prenot-modal-content')){
+  document.getElementById('home').classList.remove("overflow-hidden");
+  document.getElementById('home').classList.add("overflow-auto");
+  }
+  close()
+  }
 }
 
 </script>
@@ -221,10 +237,10 @@ function confirm(){
         <div class=" input-group mb-2 mr-sm-2">
 
           <div class="input-group-text customcol-smor" id='dadate'>Da:</div>
-              <input class="input-group date form-control" data-provide="datepicker" type="text" id="datefromnolo" value="">
+              <input class="input-group date form-control" type="date" id="datefromnolo" value="">
 
             <div class="input-group-text rounded-0 border-left-0 border-right-0 customcol-smor" id="todate">a:</div>
-                <input type="text" class="input-group date form-control" data-provide="datepicker" id="datetonolo" value="">
+                <input type="date" class="input-group date form-control"  id="datetonolo" value="">
 
       </div>
 
@@ -245,12 +261,6 @@ function confirm(){
 
 
 {:else if islogged}
-<h5 class="font-weight-bold text-secondary mt-4" id="addresslabel">
-Inserisci il tuo indirizzo
-</h5>
-<div class=" input-group mb-2 mr-sm-2">
-      <input class="input-group form-control"  type="text" id="addressfromnolo" value="">
-</div>
 
 <h5 class="font-weight-bold text-secondary mt-4" id="paylabel">
 Inserisci il tuo metodo di pagamento
@@ -261,7 +271,12 @@ Inserisci il tuo metodo di pagamento
     <option value="Carta di Credito">Carta di Credito</option>
     <option value="Carta Regalo">Carta Regalo</option>
       </select>
-
+<h5 class="font-weight-bold text-secondary mt-4" id="addresslabel">
+Inserisci eventuali note
+</h5>
+<div class=" input-group mb-2 mr-sm-2">
+      <input class="input-group form-control"  type="text" id="notefromnolo" value="">
+</div>
 
 <div class="modal-footer justify-content-center">
   <p type="button" class="btn btn-outline-warning waves-effect" on:click={sendnolo}>Procedi al pagamento</p>
@@ -284,10 +299,10 @@ Sconto applicato: {filo.nolo_data.discount}&#37;
 <div class="text-danger">
 Prezzo finale: &euro;{(booking.diffdate*filo.nolo_data.cost)-((booking.diffdate*filo.nolo_data.cost*filo.nolo_data.discount)/100)}
 </div>
-Indirizzo: {booking.address}
-<br>
 Metodo di pagamento: {booking.payment}
+Note: {filo.nolo_data.info}
 </h5>
+
 
 <div class="modal-footer justify-content-center">
   <p type="button" class="btn btn-outline-info waves-effect" on:click={()=>(confermato = false)}>Modifica</p>

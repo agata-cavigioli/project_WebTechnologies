@@ -118,3 +118,6 @@ top: 10px;
 .nolosign .close{
   position:relative !important;
 }
+.nolosign .signupmodal1{
+  padding-top: 0% !important;
+}
