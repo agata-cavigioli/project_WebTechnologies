@@ -19,8 +19,12 @@
   display: none;
 }
 
+tr:focus{
+  background-color: pink;
+}
+
 th, td {
-  width: 16.6%;
+  max-width: 16.6%;
 }
 
 body{
@@ -70,6 +74,7 @@ body{
 
 a.btn {
   color: #FFFFFF;
+  background-color: #3674E7;
 }
 
 .my-bg * {

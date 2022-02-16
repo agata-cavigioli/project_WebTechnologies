@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="it">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,12 +10,13 @@
 
   <body>
     <img id="background" src="backoffice/img/background.jpg" alt=""/>
+
     <div class="container-fluid">
       <div id="title" class="major p-3 pt-lg-4 pb-lg-3 px-lg-5">
         <div class="row justify-content-between">
           <div class="my-bg col-lg-6">
             <div class="p-3 pb-2">
-              <h1>Dining Philosophers' BackOffice</h1>
+              <h1 lang="en">Dining Philosophers' BackOffice</h1>
               <h2 id="login_message" style="display: none;">
                 Ciao, <span id="login_message_text"> Maria Maria </span>
               </h2>
@@ -66,29 +67,31 @@
         </div> 
       </div>
       <div id="the_office">
-        <ul id="the_nav" class="nav nav-tabs">
-          <li class="nav-item">
-            <a id="inventory_tab"
-               class="nav-link active top-tabs"
-               onclick="updateTab('inventory')"
-               aria-current="true"
-               href="#">Inventario</a>
-          </li>
-          <li class="nav-item">
-            <a id="nolos_tab"
-               class="nav-link top-tabs"
-               onclick="updateTab('nolos')"
-               style="background: #eeeeee; display: none;"
-               href="#">Noleggi</a>
-          </li>
-          <li class="nav-item">
-            <a id="clients_tab"
-               class="nav-link top-tabs"
-               onclick="updateTab('clients')"
-               style="background: #eeeeee; display: none;"
-               href="#">Clienti</a>
-          </li>
-        </ul>
+        <nav>
+          <ul role="navigation" id="the_nav" class="nav nav-tabs">
+            <li class="nav-item">
+              <a id="inventory_tab"
+                 class="nav-link active top-tabs"
+                 onclick="updateTab('inventory')"
+                 aria-current="true"
+                 href="#">Inventario</a>
+            </li>
+            <li class="nav-item">
+              <a id="nolos_tab"
+                 class="nav-link top-tabs"
+                 onclick="updateTab('nolos')"
+                 style="background: #eeeeee; display: none;"
+                 href="#">Noleggi</a>
+            </li>
+            <li class="nav-item">
+              <a id="clients_tab"
+                 class="nav-link top-tabs"
+                 onclick="updateTab('clients')"
+                 style="background: #eeeeee; display: none;"
+                 href="#">Clienti</a>
+            </li>
+          </ul>
+        </nav>
 
 
         <div id="inventory" class="content-tab my-bg p-3-lg row">
@@ -103,7 +106,7 @@
                         <input class="form-control me-2"
                                name="birth"
                                type="search"
-                               placeholder="Cerca">
+                               aria-label="Cerca data di nascita">
                       </label>
                     </th>
                     <th scope="col">
@@ -112,7 +115,7 @@
                         <input class="form-control me-2"
                                name="birth_p"
                                type="search"
-                               placeholder="Cerca">
+                               aria-label="Cerca luogo di nascita">
                       </label>
                     </th>
                     <th scope="col">
@@ -155,6 +158,15 @@
                                aria-label="Cerca tematiche">
                       </label>
                     </th>
+                    <th>
+                      <a class="w-100 btn btn-primary"
+                         href="#product_header"
+                         onclick="filterProducts()"
+                         role="button"
+                         type="submit">
+                        Filtra
+                      </a>
+                    </th>
                   </form>
                 </tr>
               </thead>
@@ -165,20 +177,10 @@
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
                    href="#product_header"
-                   onclick="filterProducts()"
-                   role="button"
-                   type="submit">
-                  Cerca
-                </a>
-              </div>
-
-              <div class="col col-lg-2">
-                <a class="w-100 btn btn-primary mb-2"
-                   href="#product_header"
                    role="button"
                    onclick="resetSearchInputs('#product_header')"
                    type="reset">
-                  Reset
+                  Aggiorna
                 </a>
               </div>
               <div class="col col-lg-2">
@@ -196,9 +198,9 @@
                   Nuovo 
                 </button>
               </div>
-
             </div>
           </div>
+
           <div class="col-lg-4 col-12 minor ">
             <div id="product_card"
                  class="card text-start"
@@ -673,7 +675,6 @@
               </div>
             </form>
           </div>
-
         </div>
 
 
@@ -727,6 +728,16 @@
                                placeholder="Cerca">
                       </label>
                     </th>
+                    <th>
+                      <a class="w-100 h-100 btn btn-primary"
+                         href="#clients_header"
+                         onclick="filterClients()"
+                         role="button"
+                         type="submit">
+                        Filtra
+                      </a>
+                    </th>
+
                   </form>
                 </tr>
               </thead>
@@ -736,22 +747,13 @@
 
 
             <div class="row justify-content-start g-3 major">
-              <div class="col col-lg-2">
-                <a class="w-100 btn btn-primary mb-2"
-                   href="#clients_header"
-                   onclick="filterClients()"
-                   role="button"
-                   type="submit">
-                  Cerca
-                </a>
-              </div>
 
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
                    href="#clients_header"
                    role="button"
                    onclick="resetSearchInputs('#clients_header')"
-                   type="reset"> Reset </a>
+                   type="reset"> Aggiorna </a>
               </div>
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
@@ -1047,7 +1049,7 @@
                         Stato
 
                         <select name="status"
-                                class="form-control me-2"
+                                class="form-control me-2 w-100"
                                 aria-label="Stato noleggio">
                           <option value="">Tutti</option>
                           <option value="Prenotato">Prenotato</option>
@@ -1058,6 +1060,15 @@
 
                       </label>
                     </th>
+                    <th>
+                      <a class="w-100 h-100 btn btn-primary"
+                         href="#nolo_header"
+                         onclick="filterNolos()"
+                         role="button"
+                         type="submit">
+                        Filtra
+                      </a>
+                    </th>
                   </form>
                 </tr>
               </thead>
@@ -1065,22 +1076,14 @@
               </tbody>
             </table>
             <div class="row justify-content-start g-3 major">
-              <div class="col col-lg-2">
-                <a class="w-100 btn btn-primary mb-2"
-                   href="#nolo_header"
-                   onclick="filterNolos()"
-                   role="button"
-                   type="submit">
-                  Cerca
-                </a>
-              </div>
+
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
                    href="#nolo_header"
                    role="button"
                    onclick="resetSearchInputs('#nolo_header')"
                    type="reset">
-                  Reset
+                  Aggiorna
                 </a>
               </div>
               <div class="col col-lg-2">
@@ -1446,8 +1449,8 @@
           </div>
         </div>
       </div>
-
     </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="/backoffice/js/main.js"/>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

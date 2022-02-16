@@ -150,14 +150,43 @@ async function fillTable(list, type){
 		}
 
 		if(type == 'inventory')
-			$('#products').append(`<tr onclick="showProduct(${y.id})">${values}</tr>`);
+			$('#products')
+				.append(`<tr tabindex=0 onclick="showProduct(${y.id})">
+				${values}
+				<td><button class="btn" aria-label="Visualizza" onclick="showProduct(${y.id})">></button>
+				</tr>`);
 		else if(type == 'clients')
-			$('#people').append(`<tr onclick="showClient(${y.id})">${values}</tr>`);
+			$('#people')
+				.append(`<tr tabindex=0 onclick="showClient(${y.id})">
+				${values}
+				<td><button class="btn" aria-label="Visualizza" onclick="showClient(${y.id})">></button>
+				</tr>`);
 		else if(type == 'nolos') {
 			if(y.status == "In ritardo")
-				$('#nolo').append(`<tr class="problem" onclick="showNolo(${y.id})">${values}</tr>`);
+				$('#nolo')
+					.append(`<tr tabindex=0 class="problem" onclick="showNolo(${y.id})">
+					${values}
+					<td><button class="btn" aria-label="Visualizza" onclick="showNolo(${y.id})">></button>
+					</tr>`);
 			else
-				$('#nolo').append(`<tr onclick="showNolo(${y.id})">${values}</tr>`);
+				$('#nolo')
+					.append(`<tr tabindex=0 onclick="showNolo(${y.id})">
+					${values}
+					<td><button class="btn" aria-label="Visualizza" onclick="showNolo(${y.id})">></button>
+					</tr>`);
+		}
+	}
+
+	if (list.length == 0){
+		if(type == 'inventory')
+			$('#products').css('display', 'none')
+				.before('<h2 class="p-3 text-center no-results-message">Nessun risultato</h2>');
+		else if(type == 'clients')
+			$('#people').css('display', 'none')
+				.before('<h2 class="p-3 text-center no-results-message">Nessun risultato</h2>');
+		else if(type == 'nolos') {
+			$('#nolo').css('display', 'none')
+				.before('<h2 class="p-3 text-center no-results-message">Nessun risultato</h2>');
 		}
 	}
 }
@@ -174,6 +203,9 @@ function resetSearchInputs(div){
 	$(div + ' :input').each(function() {
 		$(this).val('');
 	});
+
+	$('.no-results-message').css('display', 'none');
+
 	var type = div == '#product_header' ? 'inventory' : 
 		(div == '#clients_header' ? 'clients' : 'nolos');
 	console.log(type);
@@ -449,6 +481,8 @@ async function saveNewClient(){
 			obj.nolo_data[v] = values[v];
 		} else obj[v] = values[v];
 	}
+
+	obj.pwd = obj.name + obj.surname;
 
 	await $.post("http://site202123.tw.cs.unibo.it/clients", obj)
 		.done(function(res){
@@ -832,6 +866,7 @@ async function checkMailAndPwd(mail, pwd){
 
 	if (user.pwd == pwd){
 		logged_user = user;
+		logged_id = user.id;
 		return true;
 	}
 	return false;
@@ -922,12 +957,15 @@ async function updateTab(_tab){
 	if(_tab == 'inventory') {
 		products = await getAllProducts();
 		array = products;
+		$('#products').css('display', '')
 	} else if (_tab == 'clients') {
 		clients = await getAllClients();
 		array = clients;
+		$('#people').css('display', '')
 	} else {
 		nolos = await getAllNolos();
 		array = nolos;
+		$('#nolo').css('display', '')
 	}
 
 	fillTable(array, _tab);
