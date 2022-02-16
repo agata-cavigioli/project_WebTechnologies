@@ -861,10 +861,10 @@ function doLogin(){
 }
 
 async function checkMailAndPwd(mail, pwd){
-	var user = await $.get(`http://site202123.tw.cs.unibo.it/clients?email=${mail}`);
+	var user = await $.get(`http://site202123.tw.cs.unibo.it/staff?email=${mail}`);
 	user = user[0];
 
-	if (user.pwd == pwd){
+	if (await user.pwd == pwd){
 		logged_user = user;
 		logged_id = user.id;
 		return true;
@@ -911,6 +911,9 @@ async function checkCredentials(){
 		//reset fields
 		$('#login_form :input').val('');
 
+		if(logged_user.role=='manager')
+			$('#manager_link').css('display', '');
+
 		logged = true;
 	}
 }
@@ -923,6 +926,7 @@ async function logout(){
 	$('.product_card_options').toggle();
 	$('#product_card').css('display', 'none');
 	$('#product_card_modify').css('display', 'none');
+	$('#manager_link').css('display', 'none');
 
 	$('#login_message_text').text('');
 	$('#login_message').toggle();

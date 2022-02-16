@@ -1,7 +1,78 @@
 const app = Vue.createApp({
   data() {
     return {
-      selected: 'Prodotti'
+      selected: 'Prodotti',
+      filosofi : [],
+      clients: [],
+      nolos: []
+    }
+  },
+  async mounted() {
+    this.filosofi = await $.get('http://site202123.tw.cs.unibo.it/products');
+    this.clients = await $.get('http://site202123.tw.cs.unibo.it/clients');
+    this.nolos = await $.get('http://site202123.tw.cs.unibo.it/nolos');
+  },
+  methods: {
+    arrayColumn : function(arr, n) {
+      return arr.map(x => x[n])
+    }, 
+    doProds : function() {
+      var prod_stats = [];
+      var dictNumNolos = []; // create an empty array
+      for (i in this.filosofi){
+        dictNumNolos.push({
+          id : this.filosofi[i].id,
+          valore:   [this.filosofi[i].name, 0]
+
+        });
+      }
+
+      for (j in this.nolos){
+        for (id in dictNumNolos){
+          if(this.nolos[j].product_id == dictNumNolos[id].id)
+            dictNumNolos[id].valore[1]++;
+        }
+      }
+
+      var filNumClassified = [];
+      for (id in dictNumNolos){
+        filNumClassified.push([dictNumNolos[id].valore[1],dictNumNolos[id].valore[0]]);
+      }
+      filNumClassified = filNumClassified.sort(function(a, b){return b[0]-a[0]});
+      filNumClassified = filNumClassified.slice(0, 9);
+      var filNumName = this.arrayColumn(filNumClassified, 1);
+      filNumClassified = this.arrayColumn(filNumClassified, 0);
+
+      prod_stats.push({
+        dataNolo : filNumClassified,
+        type: 'bar',
+        axis: 'y',
+        label_x: filNumName,
+        label : 'Classifica del numero di noleggi'
+      });
+
+
+
+      var conditionPhil = [0,0,0]
+      var conditions = ['Entusiasta','Stanco','Riflessivo']
+      for (fil in this.filosofi){
+        var s = this.filosofi[fil].nolo_data.condition;
+        if (s == 'Entusiasta') conditionPhil[0]++;
+        else if (s == 'Stanco') conditionPhil[1]++;
+        else if (s == 'Riflessivo') conditionPhil[2]++;
+      }
+
+      prod_stats.push({
+        dataNolo : conditionPhil,
+        type: 'pie',
+        axis: 'x',
+        label_x: conditions,
+        label : 'Condizione dei filosofi'
+      });
+
+      console.log(prod_stats);
+
+      return prod_stats;
     }
   },
   template: `
@@ -11,35 +82,35 @@ const app = Vue.createApp({
         <a class="nav-link"
         v-on:click="this.selected='Prodotti'"
         :class="{active: this.selected=='Prodotti'}"
-        :aria-current="{page: this.selected=='Prodotti'}"
+        :aria-current="page = this.selected=='Prodotti'"
         href="#">Prodotti</a>
       </li>
       <li class="nav-item">
         <a class="nav-link"
         v-on:click="this.selected='Inventario'"
         :class="{active: this.selected=='Inventario'}"
-        :aria-current="{page: this.selected=='Inventario'}"
+        :aria-current="page = this.selected=='Inventario'"
         href="#">Inventario</a>
       </li>
       <li class="nav-item">
         <a class="nav-link"
         v-on:click="this.selected='Clienti'"
         :class="{active: this.selected=='Clienti'}"
-        :aria-current="{page: this.selected=='Clienti'}"
+        :aria-current="page = this.selected=='Clienti'"
         href="#">Clienti</a>
       </li>
       <li class="nav-item">
         <a class="nav-link"
         v-on:click="this.selected='Noleggi'"
         :class="{active: this.selected=='Noleggi'}"
-        :aria-current="{page: this.selected=='Noleggi'}"
+        :aria-current="page = this.selected=='Noleggi'"
         href="#">Noleggi</a>
       </li>
     </ul>
-    <ChartSection v-if="this.selected=='Prodotti'" :name="'Prodotti'"/>
-    <ChartSection v-if="this.selected=='Inventario'" :name="'Inventario'"/>
-    <ChartSection v-if="this.selected=='Noleggi'" :name="'Noleggi'"/>
-    <ChartSection v-if="this.selected=='Clienti'" :name="'Clienti'"/>
+    <ChartSection v-if="this.selected=='Prodotti'" :name="'Prodotti'" :stats="this.doProds()"/>
+    <ChartSection v-if="this.selected=='Inventario'" :name="'Inventario'" :stats="this.inv_stats"/>
+    <ChartSection v-if="this.selected=='Noleggi'" :name="'Noleggi'" :stats="this.nolo_stats"/>
+    <ChartSection v-if="this.selected=='Clienti'" :name="'Clienti'" :stats="this.client_stats"/>
   </div>
   `
 });
@@ -49,12 +120,12 @@ app.component(
   { 
     data () {
       return {
-        stats : [
+        statas : [
           {
             dataNolo : [0,0,0,0,3,2,1,0,0,0,0,0],
             type: 'line',
             axis: 'x',
-            month : [
+            label_x : [
               'Gennaio',
               'Febbraio',
               'Marzo',
@@ -74,7 +145,7 @@ app.component(
             dataNolo : [0,0,0,0,3,2,1,0,0,0,0,0],
             type: 'pie',
             axis: 'x',
-            month : [
+            label_x : [
               'Gennaio',
               'Febbraio',
               'Marzo',
@@ -94,7 +165,7 @@ app.component(
             dataNolo : [0,0,0,0,3,2,1,0,0,0,0,0],
             type: 'bar',
             axis: 'x',
-            month : [
+            label_x : [
               'Gennaio',
               'Febbraio',
               'Marzo',
@@ -114,17 +185,18 @@ app.component(
       }
     },
     props: {
-      name: String
+      name: String,
+      stats: Array
     },
     template: `
     <div class="p-5 pt-3">
       <h2>{{name}}</h2>
       <div class="row" style="overflow: auto;">
         <div class="col" v-for="s in this.stats">
-            <Chart :id_div="'chart_' + name + stats.indexOf(s)"
+            <Chart :id_div="'chart_' + name + this.stats.indexOf(s)"
               :axis="s.axis"
               :type="s.type"
-              :labels_x="s.month"
+              :labels_x="s.label_x"
               :labeltotal="s.label"
               :data="s.dataNolo"/>
         </div>
