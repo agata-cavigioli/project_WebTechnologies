@@ -41,6 +41,8 @@ app.use('/backoffice/js' , express.static(global.rootDir +'/src/backoffice'));
 app.use('/backoffice/css' , express.static(global.rootDir +'/src/backoffice'));
 app.use('/backoffice/img' , express.static(global.rootDir +'/src/backoffice'));
 
+app.use('/dashboard/js' , express.static(global.rootDir +'/src/dashboard'));
+
 
 app.use('/js' , express.static(global.rootDir +'/public/js'));
 app.use('/css' , express.static(global.rootDir +'/public/css'));

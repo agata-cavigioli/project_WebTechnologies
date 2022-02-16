@@ -5,39 +5,13 @@
   height: 100vh;
   object-fit: cover;
   z-index: -1;
-}
 
-#twrap {
-  max-height: 60vh;
-  overflow: auto;
-  display:inline-block;
-  -ms-overflow-style: none;
-  scrollbar-width: none;  
 }
-
-#twrap::-webkit-scrollbar {
-  display: none;
-}
-
-tr:focus{
-  background-color: pink;
-}
-
-th, td {
-  max-width: 16.6%;
-}
-
-body{
+body {
   background-color: #fffdfa;
   background-size: cover;
   background-opacity: 0.3;
   overflow: hidden;
-}
-
-@media only screen and (max-width: 600px) {
-  body {
-    overflow-y: auto;
-  }
 }
 
 .major h1 {
@@ -74,7 +48,6 @@ body{
 
 a.btn {
   color: #FFFFFF;
-  background-color: #3674E7;
 }
 
 .my-bg * {
@@ -88,25 +61,3 @@ a.btn {
 .problem {
   background-color: #FA864C;
 }
-
-.card {
-  max-height: 70vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-#client_history {
-  max-height: 70vh;
-  max-width: 100vw;
-  overflow: auto;
-}
-
-#client_history .card {
-  overflow: hidden;
-}
-
-.content_tab {
-  max-height: 70vh;
-}
-
-https://coolors.co/3674e7-1fa2ff-fffdfa-fa864c-f7b32b

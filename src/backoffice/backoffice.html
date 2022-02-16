@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="it">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,12 +10,17 @@
 
   <body>
     <img id="background" src="backoffice/img/background.jpg" alt=""/>
+
     <div class="container-fluid">
-      <div id="title" class="major p-3 pt-lg-5 pb-lg-3 px-lg-5">
+      <div id="title" class="major p-3 pt-lg-4 pb-lg-3 px-lg-5">
         <div class="row justify-content-between">
-          <div class="col-lg-8">
-            <h1>Dining Philosophers' BackOffice</h1>
-            <small>powered by NoloNolo+</small>
+          <div class="my-bg col-lg-6">
+            <div class="p-3 pb-2">
+              <h1 lang="en">Dining Philosophers' BackOffice</h1>
+              <h2 id="login_message" style="display: none;">
+                Ciao, <span id="login_message_text"> Maria Maria </span>
+              </h2>
+            </div>
           </div>
           <div id="header_buttons" class= "col-lg-3">
             <button onclick="doLogin()" type="button" class="btn btn-primary w-100">Login</button>
@@ -62,90 +67,107 @@
         </div> 
       </div>
       <div id="the_office">
-        <ul id="the_nav" class="nav nav-tabs">
-          <li class="nav-item">
-            <a id="inventory_tab"
-               class="nav-link active top-tabs"
-               onclick="updateTab('inventory')"
-               aria-current="true"
-               href="#">Inventario</a>
-          </li>
-          <li class="nav-item">
-            <a id="nolos_tab"
-               class="nav-link top-tabs"
-               onclick="updateTab('nolos')"
-               style="background: #eeeeee; display: none;"
-               href="#">Noleggi</a>
-          </li>
-          <li class="nav-item">
-            <a id="clients_tab"
-               class="nav-link top-tabs"
-               onclick="updateTab('clients')"
-               style="background: #eeeeee; display: none;"
-               href="#">Clienti</a>
-          </li>
-        </ul>
+        <nav>
+          <ul role="navigation" id="the_nav" class="nav nav-tabs">
+            <li class="nav-item">
+              <a id="inventory_tab"
+                 class="nav-link active top-tabs"
+                 onclick="updateTab('inventory')"
+                 aria-current="true"
+                 href="#">Inventario</a>
+            </li>
+            <li class="nav-item">
+              <a id="nolos_tab"
+                 class="nav-link top-tabs"
+                 onclick="updateTab('nolos')"
+                 style="background: #eeeeee; display: none;"
+                 href="#">Noleggi</a>
+            </li>
+            <li class="nav-item">
+              <a id="clients_tab"
+                 class="nav-link top-tabs"
+                 onclick="updateTab('clients')"
+                 style="background: #eeeeee; display: none;"
+                 href="#">Clienti</a>
+            </li>
+          </ul>
+        </nav>
 
 
         <div id="inventory" class="content-tab my-bg p-3-lg row">
           <div class="table-responsive col-lg-8 col-12">
             <table id="twrap" class="text-start table table-striped table-hover ">
-              <thead id="header" >
+              <thead id="product_header" >
                 <tr>
-                  <th scope="col">
-                    Data di Nascita
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca data di nascita">
-                    </form>
-                  </th>
-                  <th scope="col">
-                    Luogo di Nascita
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca luogo di nascita">
-                    </form>
-                  </th>
-                  <th scope="col">
-                    Data di morte
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca data di morte">
-                    </form>
-                  </th>
-                  <th scope="col">
-                    Luogo di morte
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca luogo di morte">
-                    </form>
-                  </th>
-                  <th scope="col">
-                    Nome
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca nome">
-                    </form>
-                  </th>
-                  <th scope="col">
-                    Tematiche
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca tematiche">
-                    </form>
-                  </th>
+                  <form class="d-flex">
+                    <th scope="col">
+                      <label>
+                        Data di Nascita
+                        <input class="form-control me-2"
+                               name="birth"
+                               type="search"
+                               aria-label="Cerca data di nascita">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Luogo di Nascita
+                        <input class="form-control me-2"
+                               name="birth_p"
+                               type="search"
+                               aria-label="Cerca luogo di nascita">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Data di morte
+                        <input class="form-control me-2"
+                               name="death"
+                               type="search"
+                               placeholder="Cerca"
+                               aria-label="Cerca data di morte">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Luogo di morte
+                        <input class="form-control me-2"
+                               name="death_p"
+                               type="search"
+                               placeholder="Cerca"
+                               aria-label="Cerca luogo di morte">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Nome
+                        <input class="form-control me-2"
+                               name="name"
+                               type="search"
+                               placeholder="Cerca"
+                               aria-label="Cerca nome">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Tematiche
+                        <input class="form-control me-2"
+                               name="subjects"
+                               type="search"
+                               placeholder="Cerca"
+                               aria-label="Cerca tematiche">
+                      </label>
+                    </th>
+                    <th>
+                      <a class="w-100 btn btn-primary"
+                         href="#product_header"
+                         onclick="filterProducts()"
+                         role="button"
+                         type="submit">
+                        Filtra
+                      </a>
+                    </th>
+                  </form>
                 </tr>
               </thead>
               <tbody id="products">
@@ -154,15 +176,16 @@
             <div class="row justify-content-start g-3 major">
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
-                   href="#header"
+                   href="#product_header"
                    role="button"
+                   onclick="resetSearchInputs('#product_header')"
                    type="reset">
-                  Reset
+                  Aggiorna
                 </a>
               </div>
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
-                   href="#header"
+                   href="#product_header"
                    role="button">
                   Top
                 </a>
@@ -175,9 +198,9 @@
                   Nuovo 
                 </button>
               </div>
-
             </div>
           </div>
+
           <div class="col-lg-4 col-12 minor ">
             <div id="product_card"
                  class="card text-start"
@@ -204,8 +227,8 @@
                     style="display: none;"
                     class="list-group list-group-flush">
                   <li class="list-group-item">
-                    <div class="row">
-                     <div class="col-6 col-lg-2">
+                    <div class="row mb-3">
+                      <div class="col-6 col-lg-2">
                         <b>Da:</b>
                       </div>
                       <div class="col-6 col-lg-4">
@@ -227,16 +250,19 @@
                                aria-label="Termine noleggio">
                       </div>
                     </div>
-                      <span id="nolo_form_invalid_dates"
-                            style="display: none;">
-                        La data di inizio non può essere dopo la data di termine!
-                      </span>
-
+                    <p id="nolo_form_invalid_dates"
+                       style="display: none;">
+                      La data di inizio non può essere dopo la data di termine!
+                    </p>
+                    <p id="nolo_form_unavailable"
+                       style="display: none;">
+                      Il prodotto non è disponibile nelle date selezionate.
+                    </p>
                   </li>
-                <li class="list-group-item">
-                  <b> Prezzo giornaliero: </b>
-                  <span id="nolo_form_base_price"></span>
-                </li>
+                  <li class="list-group-item">
+                    <b> Prezzo giornaliero: </b>
+                    <span id="nolo_form_base_price"></span>
+                  </li>
                   <li class="list-group-item">
                     <div class="row">
                       <div class="col">
@@ -287,7 +313,7 @@
                   <span id="product_card_price"></span>
                 </li>
                 <li class="list-group-item">
-                  <b> Stato: </b>
+                  <b> Condizioni: </b>
                   <span id="product_card_condition"></span>
                 </li>
 
@@ -338,6 +364,7 @@
                   </div>
                   <div class="col-6 col-lg-3">
                     <a href="#"
+                       onclick="deleteProduct()"
                        class="product_card_options card-link"
                        style="display: none;">Elimina</a>
                   </div>
@@ -366,7 +393,7 @@
                   </div>
                   <div class="col">
                     <h6 class="fw-bold">Data di Nascita:</h6>
-                    <input type="date"
+                    <input type="number"
                            id="product_card_modify_birth"
                            name="birth"
                            class="card-text form-control"
@@ -384,11 +411,10 @@
                   </div>
                   <div class="col">
                     <h6 class="fw-bold">Data di Morte:</h6>
-                    <input type="date"
+                    <input type="number"
                            id="product_card_modify_death"
                            name="death"
                            class="card-text form-control"
-                           :placeholder="this.product['Died']"
                            aria-label="Data di Morte">
                   </div>
                 </div>
@@ -416,13 +442,32 @@
                 </li>
                 <li class="list-group-item">
                   <div class="row">
+                    <div class="col">
+                      <b>Condizioni:</b>
+                    </div>
+                    <div class="col">
+                      <select id="product_card_modify_condition"
+                              name="condition"
+                              class="card-text form-control"
+                              aria-label="Condizioni">
+                        <option value="Entusiasta">Entusiasta</option>
+                        <option value="Stanco">Stanco</option>
+                        <option value="Riflessivo">Riflessivo</option>
+                      </select>
+
+                    </div>
+                  </div>
+                </li>
+
+                <li class="list-group-item">
+                  <div class="row">
                     <div class="col-3">
                       <b>Disponibile da:</b>
                     </div>
                     <div class="col-3">
                       <input type="date"
                              id="product_card_modify_available_from"
-                             name="available"
+                             name="available_from"
                              class="card-text form-control"
                              aria-label="Inizio disponibilità">
                     </div>
@@ -432,7 +477,7 @@
                     <div class="col-3">
                       <input type="date"
                              id="product_card_modify_available_to"
-                             name="available"
+                             name="available_to"
                              class="card-text form-control"
                              aria-label="Fine disponibilità">
                     </div>
@@ -468,7 +513,7 @@
               </ul>
               <div class="card-body">
                 <a href="#"
-                   onclick=""
+                   onclick="updateProduct()"
                    class="card-link">
                   Salva</a>
                 <a href="#"
@@ -500,7 +545,7 @@
                   </div>
                   <div class="col">
                     <h6 class="fw-bold">Data di nascita:</h6>
-                    <input type="date"
+                    <input type="number"
                            id="product_card_insert_birth"
                            name="birth"
                            class="card-text form-control"
@@ -518,7 +563,7 @@
                   </div>
                   <div class="col">
                     <h6 class="fw-bold">Data di morte:</h6>
-                    <input type="date"
+                    <input type="number"
                            id="product_card_insert_death"
                            name="death"
                            class="card-text form-control"
@@ -550,14 +595,17 @@
                 <li class="list-group-item">
                   <div class="row">
                     <div class="col">
-                      <b>Stato:</b>
+                      <b>Condizioni:</b>
                     </div>
                     <div class="col">
-                      <input type="text"
-                             id="product_card_insert_cost"
-                             name="condition"
-                             class="card-text form-control"
-                             aria-label="Condizioni">
+                      <select id="product_card_insert_condition"
+                              name="condition"
+                              class="card-text form-control"
+                              aria-label="Condizioni">
+                        <option value="Entusiasta">Entusiasta</option>
+                        <option value="Stanco">Stanco</option>
+                        <option value="Riflessivo">Riflessivo</option>
+                      </select>
                     </div>
                   </div>
                 </li>
@@ -626,8 +674,6 @@
                    >Annulla</a>
               </div>
             </form>
-
-
           </div>
         </div>
 
@@ -637,39 +683,62 @@
              class="content-tab my-bg p-3-lg row">
           <div id="clients_table" class="table-responsive col-lg-8 col-12">
             <table id="twrap" class="text-start table table-striped table-hover ">
-              <thead id="header" >
+              <thead id="clients_header" >
                 <tr>
-                  <th scope="col">
-                    Nome <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..." aria-label="Cerca nome">
-                    </form>
-                  </th>
-                  <th scope="col">
-                    Cognome <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search" placeholder="..." aria-label="Cerca cognome">
-                    </form>
-                  </th>
-                  <th scope="col">
-                    Email <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search" placeholder="..." aria-label="Cerca email">
-                    </form>
-                  </th>
-                  <th scope="col">
-                    Telefono <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search" placeholder="..." aria-label="Cerca telefono">
-                    </form>
-                  </th>
-                  <th scope="col">
-                    Indirizzo <form class="d-flex">
-                      <input class="form-control me-2" type="search"
-                                                       placeholder="..." aria-label="Cerca indirizzo">
-                    </form>
-                  </th>
+                  <form class="d-flex">
+                    <th scope="col">
+                      <label>
+                        Nome
+                        <input class="form-control me-2"
+                               name="name"
+                               type="search"
+                               placeholder="Cerca">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Cognome
+                        <input class="form-control me-2"
+                               name="surname"
+                               type="search" placeholder="Cerca">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Email 
+                        <input class="form-control me-2"
+                               name="email"
+                               type="search" placeholder="Cerca">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Telefono
+                        <input class="form-control me-2"
+                               name="phone"
+                               type="search" placeholder="Cerca">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Indirizzo
+                        <input class="form-control me-2"
+                               name="address"
+                               type="search"
+                               placeholder="Cerca">
+                      </label>
+                    </th>
+                    <th>
+                      <a class="w-100 h-100 btn btn-primary"
+                         href="#clients_header"
+                         onclick="filterClients()"
+                         role="button"
+                         type="submit">
+                        Filtra
+                      </a>
+                    </th>
+
+                  </form>
                 </tr>
               </thead>
               <tbody id="people">
@@ -678,15 +747,17 @@
 
 
             <div class="row justify-content-start g-3 major">
+
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
-                   href="#header"
+                   href="#clients_header"
                    role="button"
-                   type="reset"> Reset </a>
+                   onclick="resetSearchInputs('#clients_header')"
+                   type="reset"> Aggiorna </a>
               </div>
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
-                   href="#header"
+                   href="#clients_header"
                    role="button">Top</a>
               </div>
               <div class="col col-lg-2">
@@ -702,10 +773,10 @@
                style="display: none;"
                class="col-lg-8 col-12 minor p-2 px-lg-5 py-lg-3">
             <div class="row">
-            <h1 class="col">Storico Cliente</h1>
-            <a href="#client_card"
-               onclick="hideHistory()"
-              class="col">Indietro</a>
+              <h1 class="col">Storico Cliente</h1>
+              <a href="#client_card"
+                 onclick="hideHistory()"
+                 class="col">Indietro</a>
             </div>
             <div>
               <h2>Noleggi passati</h2>
@@ -771,6 +842,7 @@
                 </div>
                 <div class="col">
                   <a href="#"
+                     onclick="deleteClient()"
                      class="client_card_options card-link">Elimina</a>
                 </div>
               </div>
@@ -835,7 +907,7 @@
               </ul>
               <div class="card-body">
                 <a href="#"
-                   onclick=""
+                   onclick="updateClient()"
                    class="card-link">
                   Salva</a>
                 <a href="#"
@@ -924,73 +996,99 @@
              style="display: none;">
           <div class="table-responsive col-lg-8 col-12">
             <table id="twrap" class="text-start table table-striped table-hover ">
-              <thead id="header">
+              <thead id="nolo_header">
                 <tr>
-                  <th scope="col">Cliente
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca cliente">
-                    </form>
-                  </th>
-                  <th scope="col">Inizio
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca inizio noleggio">
-                    </form>
-                  </th>
-                  <th scope="col">Fine
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca fine noleggio">
-                    </form>
-                  </th>
-                  <th scope="col">Dipendente
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca dipendente">
-                    </form>
-                  </th>
-                  <th scope="col">Prodotto
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca prodotto">
-                    </form>
-                  </th>
-                  <th scope="col">Stato
-                    <form class="d-flex">
-                      <input class="form-control me-2"
-                             type="search"
-                             placeholder="..."
-                             aria-label="Cerca stato">
-                    </form>
-                  </th>
+                  <form class="d-flex">
+                    <th scope="col">
+                      <label>
+                        Cliente
+                        <input class="form-control me-2"
+                               name="client"
+                               type="search"
+                               placeholder="Cerca">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Inizio
+                        <input class="form-control me-2"
+                               name="date_from"
+                               type="date"
+                               placeholder="Cerca">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Fine
+                        <input class="form-control me-2"
+                               name="date_to"
+                               type="date"
+                               placeholder="Cerca">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Dipendente
+                        <input class="form-control me-2"
+                               name="dep_id"
+                               type="search"
+                               placeholder="Cerca">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Prodotto
+                        <input class="form-control me-2"
+                               name="product"
+                               type="search"
+                               placeholder="Cerca">
+                      </label>
+                    </th>
+                    <th scope="col">
+                      <label>
+                        Stato
+
+                        <select name="status"
+                                class="form-control me-2 w-100"
+                                aria-label="Stato noleggio">
+                          <option value="">Tutti</option>
+                          <option value="Prenotato">Prenotato</option>
+                          <option value="Iniziato">Iniziato</option>
+                          <option value="Concluso">Concluso</option>
+                          <option value="In ritardo">In ritardo</option>
+                        </select>
+
+                      </label>
+                    </th>
+                    <th>
+                      <a class="w-100 h-100 btn btn-primary"
+                         href="#nolo_header"
+                         onclick="filterNolos()"
+                         role="button"
+                         type="submit">
+                        Filtra
+                      </a>
+                    </th>
+                  </form>
                 </tr>
               </thead>
               <tbody id="nolo">
               </tbody>
             </table>
             <div class="row justify-content-start g-3 major">
+
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
-                   href="#header"
+                   href="#nolo_header"
                    role="button"
+                   onclick="resetSearchInputs('#nolo_header')"
                    type="reset">
-                  Reset
+                  Aggiorna
                 </a>
               </div>
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
-                   href="#header"
+                   href="#nolo_header"
                    role="button">
                   Top
                 </a>
@@ -1037,7 +1135,7 @@
 
               <ul id="nolo_card_info_list" class="list-group list-group-flush">
                 <li class="list-group-item">
-                  <b> Stato: </b>
+                  <b> Stato noleggio: </b>
                   <span id="nolo_card_status"></span>
                 </li>
                 <li class="list-group-item">
@@ -1070,6 +1168,7 @@
                   </div>
                   <div class="col-6 col-lg-3">
                     <a href="#"
+                       onclick="deleteNolo()"
                        class="nolo_card_options card-link">Elimina</a>
                   </div>
                 </div>
@@ -1083,13 +1182,13 @@
                   <h6 class="fw-bold">Id Cliente:</h6>
                   <input type="number"
                          id="nolo_card_modify_client"
-                         name="client"
+                         name="client_id"
                          class="card-title form-control"
                          aria-label="Id Cliente">
                   <h6 class="fw-bold">Id Prodotto:</h6>
                   <input type="number"
                          id="nolo_card_modify_product"
-                         name="product"
+                         name="product_id"
                          class="card-text form-control"
                          aria-label="Id Prodotto">
                 </div>
@@ -1122,14 +1221,19 @@
                 <li class="list-group-item">
                   <div class="row">
                     <div class="col">
-                      <b>Stato:</b>
+                      <b>Stato noleggio:</b>
                     </div>
                     <div class="col">
-                      <input type="text"
-                             id="nolo_card_modify_status"
-                             name="status"
-                             class="card-text form-control"
-                             aria-label="Condizioni">
+                      <select id="nolo_card_modify_status"
+                              name="status"
+                              class="card-text form-control"
+                              aria-label="Stato noleggio">
+                        <option value="Prenotato">Prenotato</option>
+                        <option value="Iniziato">Iniziato</option>
+                        <option value="Concluso">Concluso</option>
+                        <option value="In ritardo">In ritardo</option>
+                      </select>
+
                     </div>
                   </div>
                 </li>
@@ -1193,7 +1297,7 @@
               </ul>
               <div class="card-body">
                 <a href="#"
-                   onclick=""
+                   onclick="updateNolo()"
                    class="card-link">
                   Salva</a>
                 <a href="#"
@@ -1221,43 +1325,53 @@
                          class="card-text form-control"
                          aria-label="Id Prodotto">
                 </div>
-                <div class="row mb-2">
+                <div>
                   <h6 class="fw-bold">Periodo:</h6>
-                  <div class="col-2">
-                    <b>Da: </b>
+                  <div class="row mb-2">
+                    <div class="col-2">
+                      <b>Da: </b>
+                    </div>
+                    <div class="col-4">
+                      <input type="date"
+                             id="nolo_card_insert_date_from"
+                             name="date_from"
+                             class="card-text form-control"
+                             aria-label="Inizio noleggio">
+                    </div>
+                    <div class="col-2">
+                      <b>a: </b>
+                    </div>
+                    <div class="col-4">
+                      <input type="date"
+                             id="nolo_card_insert_date_to"
+                             name="date_to"
+                             class="card-text form-control"
+                             :placeholder="this.nolo['Died']"
+                             aria-label="Termine noleggio">
+                    </div>
                   </div>
-                  <div class="col-4">
-                    <input type="date"
-                           id="nolo_card_insert_date_from"
-                           name="date_from"
-                           class="card-text form-control"
-                           aria-label="Inizio noleggio">
-                  </div>
-                  <div class="col-2">
-                    <b>a: </b>
-                  </div>
-                  <div class="col-4">
-                    <input type="date"
-                           id="nolo_card_insert_date_to"
-                           name="date_to"
-                           class="card-text form-control"
-                           :placeholder="this.nolo['Died']"
-                           aria-label="Termine noleggio">
-                  </div>
+                  <p id="nolo_card_insert_invalid_dates"
+                     style="display: none;">La data di inizio non può essere dopo la data di termine!</p>
+                  <p id="nolo_card_insert_unavailable"
+                     style="display: none;">Il prodotto non è disponibile nelle date selezionate.</p>
                 </div>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
                     <div class="col">
-                      <b>Stato:</b>
+                      <b>Stato noleggio:</b>
                     </div>
                     <div class="col">
-                      <input type="text"
-                             id="nolo_card_insert_status"
-                             name="status"
-                             class="card-text form-control"
-                             aria-label="Condizioni">
+                      <select id="nolo_card_insert_status"
+                              name="status"
+                              class="card-text form-control"
+                              aria-label="Stato noleggio">
+                        <option value="Prenotato">Prenotato</option>
+                        <option value="Iniziato">Iniziato</option>
+                        <option value="Concluso">Concluso</option>
+                        <option value="In ritardo">In ritardo</option>
+                      </select>
                     </div>
                   </div>
                 </li>
@@ -1334,9 +1448,9 @@
 
           </div>
         </div>
-
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="/backoffice/js/main.js"/>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
