@@ -4,6 +4,7 @@
 
 var logged_id = 0;
 var logged = false;
+var logged_user;
 
 var products;
 var clients;
@@ -66,7 +67,25 @@ function calculateTotal(nolo){
 	return Math.round(total*100)/100;
 }
 
-function checkAvailability(product_id, date_from, date_to){
+async function checkAvailability(product_id, from, to){
+	
+	var prod_nolos = await $.get(`http://site202123.tw.cs.unibo.it/nolos?product_id="${product_id}"`);
+
+	var date_from = new Date(from);
+	var date_to = new Date(to);
+
+	for(n in prod_nolos){
+		let nol = prod_nolos[n];
+
+		let sdate = new Date(nol.date_from);
+		let edate = new Date(nol.date_to);
+
+		if((date_from > sdate && date_from < edate) ||
+			(date_to > sdate && date_to < edate))
+			return false;
+	}
+
+	return true;
 }
 
 $(document).ready(async function() {
@@ -135,7 +154,7 @@ async function fillTable(list, type){
 		else if(type == 'clients')
 			$('#people').append(`<tr onclick="showClient(${y.id})">${values}</tr>`);
 		else if(type == 'nolos') {
-			if(y.status == "late")
+			if(y.status == "In ritardo")
 				$('#nolo').append(`<tr class="problem" onclick="showNolo(${y.id})">${values}</tr>`);
 			else
 				$('#nolo').append(`<tr onclick="showNolo(${y.id})">${values}</tr>`);
@@ -143,7 +162,28 @@ async function fillTable(list, type){
 	}
 }
 
+function getSearchInputs(div){
+	var values = {};
+	$(div + ' :input').each(function() {
+		values[this.name] = $(this).val();
+	});
+	return values;
+}
+
+function resetSearchInputs(div){
+	$(div + ' :input').each(function() {
+		$(this).val('');
+	});
+	var type = div == '#product_header' ? 'inventory' : 
+		(div == '#clients_header' ? 'clients' : 'nolos');
+	console.log(type);
+	updateTab(type);
+}
+
 function insertProduct(){
+	$('#product_card_insert :input').each(function() {
+		$(this).val('');
+	});
 	$('#product_card').css('display', 'none');	
 	$('#product_card_modify').css('display', 'none');	
 	$('#product_card_insert').css('display', '');	
@@ -175,7 +215,108 @@ async function saveNewProduct(){
 
 }
 
+async function filterProducts(){
+	var values = getSearchInputs('#product_header');
+
+	var query = '?';
+	for(v in values){
+		var val = values[v];
+		if(val == '') continue;
+		var s = `${v}={"$regex":"${val}"}&`;
+		query += s;
+	}
+
+	var res =
+		await $.get('http://site202123.tw.cs.unibo.it/products'+query);
+
+	eraseTables();
+	fillTable(res, 'inventory');
+}
+
+async function deleteProduct(){
+	var p_id = $('#product_card_id').text();
+	await $.ajax({
+		url: `http://site202123.tw.cs.unibo.it/products?id=${p_id}`,
+		type: 'DELETE'
+	});
+	updateTab('inventory');
+	$('#product_card').css('display', 'none');
+}
+
+async function updateProduct(){
+	var p_id = $('#product_card_id').text();
+
+	var values = getSearchInputs('#product_card_modify');
+
+	var obj = {nolo_data: {}};
+	var nolo_data_f = ["cost", "available_from", "available_to", "discount", "condition", "info"];
+
+	for(v in values){
+		if(nolo_data_f.includes(v)){
+			obj.nolo_data[v] = values[v];
+		} else obj[v] = values[v];
+	}
+
+	var update = {$set : obj};
+
+	await $.post(`http://site202123.tw.cs.unibo.it/update/products?id=${p_id}`, update);
+
+	updateTab('inventory');
+	$('#product_card_modify').css('display', 'none');
+
+
+}
+
+async function updateNolo(){
+	var p_id = $('#nolo_card_id').text();
+
+	var values = getSearchInputs('#nolo_card_modify');
+
+	var obj = {nolo_data: {}};
+	var nolo_data_f = ["daily_cost", "discount", "other_fees", "info"];
+
+	for(v in values){
+		if(nolo_data_f.includes(v)){
+			obj.nolo_data[v] = values[v];
+		} else obj[v] = values[v];
+	}
+
+	var update = {$set : obj};
+
+	await $.post(`http://site202123.tw.cs.unibo.it/update/nolos?id=${p_id}`, update);
+
+	updateTab('nolos');
+	$('#nolo_card_modify').css('display', 'none');
+
+}
+
+async function updateClient(){
+	var c_id = $('#client_card_id').text();
+
+	var values = getSearchInputs('#client_card_modify');
+
+	var obj = {nolo_data: {}};
+	var nolo_data_f = ["info"];
+
+	for(v in values){
+		if(nolo_data_f.includes(v)){
+			obj.nolo_data[v] = values[v];
+		} else obj[v] = values[v];
+	}
+
+	var update = {$set : obj};
+
+	await $.post(`http://site202123.tw.cs.unibo.it/update/clients?id=${c_id}`, update);
+
+	updateTab('clients');
+	$('#client_card_modify').css('display', 'none');
+
+}
+
 function insertNolo(){
+	$('#nolo_card_insert :input').each(function() {
+		$(this).val('');
+	});
 	$('#nolo_card').css('display', 'none');	
 	$('#nolo_card_modify').css('display', 'none');	
 	$('#nolo_card_insert').css('display', '');	
@@ -186,6 +327,22 @@ async function saveNewNolo(){
 	$('#nolo_card_insert :input').each(function() {
 		values[this.name] = $(this).val();
 	});
+
+
+	var days = calculateDays(values.date_from, values.date_to);
+	if(days <= 0){
+		$('#nolo_card_insert_invalid_dates').css('display', '');
+		return;
+	} else $('#nolo_card_insert_invalid_dates').css('display', 'none');
+
+	if(!await checkAvailability(values.product_id, values.date_from, values.date_to)){
+		$('#nolo_card_insert_unavailable').css('display', '');
+		return;
+	}
+	else {
+		$('#nolo_card_insert_unavailable').css('display', 'none');
+	} 
+
 
 	var obj = {nolo_data: {}};
 	var nolo_data_f = ["daily_cost", "discount", "other_fees", "info"];
@@ -209,7 +366,70 @@ async function saveNewNolo(){
 
 }
 
+async function filterNolos(){
+	var values = getSearchInputs('#nolo_header');
+
+	var query = '?';
+
+	if(values.client != ''){
+		let c_name = values.client;
+		var res = await
+			$.get(`http://site202123.tw.cs.unibo.it/clients?$or=[{"name":{"$regex":"${c_name}"}},{"surname":{"$regex":"${c_name}"}}]`);
+
+		var cquery = 'client_id={"$in":[';
+		//client_id={"$in":[15,16,20]}
+		for(r in res){
+			cquery +=  `"${res[r].id}"`;
+			if(r != res.length-1) cquery += ',';
+		}
+		cquery += ']}&'
+		query += cquery;
+	}
+
+	if(values.date_from != '') query += `date_from=${values.date_from}&`;
+	if(values.date_to != '') query += `date_to=${values.date_to}&`;
+	if(values.dep_id != '') query += `dep_id=${values.dep_id}&`;
+	if(values.status != '') query += `status=${values.status}&`;
+
+	if(values.product != ''){
+		let p_name = values.product;
+		var res = await
+			$.get(`http://site202123.tw.cs.unibo.it/products?name={"$regex":"${p_name}"}`);
+
+		var pquery = 'product_id={"$in":[';
+		//product_id={"$in":[15,16,20]}
+		for(r in res){
+			pquery +=  `"${res[r].id}"`;
+			if(r != res.length-1) pquery += ',';
+		}
+		pquery += ']}&'
+		query += pquery;
+	}
+
+	console.log(values);
+	console.log(query);
+
+	var res =
+		await $.get('http://site202123.tw.cs.unibo.it/nolos'+query);
+
+	eraseTables();
+	fillTable(res, 'nolos');
+}
+
+async function deleteNolo(){
+	var n_id = $('#nolo_card_id').text();
+	await $.ajax({
+		url: `http://site202123.tw.cs.unibo.it/nolos?id=${n_id}`,
+		type: 'DELETE'
+	});
+	updateTab('nolos');
+	$('#nolo_card').css('display', 'none');
+}
+
 function insertClient(){
+	$('#client_card_insert :input').each(function() {
+		$(this).val('');
+	});
 	$('#client_card').css('display', 'none');	
 	$('#client_card_modify').css('display', 'none');	
 	$('#client_card_insert').css('display', '');	
@@ -239,6 +459,35 @@ async function saveNewClient(){
 	$('#client_card_modify').css('display', 'none');	
 	$('#client_card_insert').css('display', 'none');	
 
+}
+
+async function filterClients(){
+	var values = getSearchInputs('#clients_header');
+
+	var query = '?';
+	for(v in values){
+		var val = values[v];
+		if(val == '') continue;
+		var s = `${v}={"$regex":"${val}"}&`;
+		query += s;
+	}
+
+	var res =
+		await $.get('http://site202123.tw.cs.unibo.it/clients'+query);
+
+	eraseTables();
+	fillTable(res, 'clients');
+}
+
+async function deleteClient(){
+	var c_id = $('#client_card_id').text();
+	await $.ajax({
+		url: `http://site202123.tw.cs.unibo.it/clients?id=${c_id}`,
+		type: 'DELETE'
+	});
+	$('#client_card').css('display', 'none');
+	hideHistory();
+	updateTab('clients');
 }
 
 function eraseTables(){
@@ -372,15 +621,29 @@ async function showHistory() {
 
 	}
 
-	for(n in past_nolos)
-		$('#client_history_past')
-			.append(await createHistoryCard(past_nolos[n]));
-	for(n in current_nolos)
-		$('#client_history_present')
-			.append(await createHistoryCard(current_nolos[n]));
-	for(n in future_nolos)
-		$('#client_history_future')
-			.append(await createHistoryCard(future_nolos[n]));
+	if(past_nolos.length != 0){
+		for(n in past_nolos)
+			$('#client_history_past')
+				.append(await createHistoryCard(past_nolos[n]));
+	}
+	else $('#client_history_past')
+		.html('<p>Nessun noleggio.</p>');
+
+	if(current_nolos.length != 0){
+		for(n in current_nolos)
+			$('#client_history_present')
+				.append(await createHistoryCard(current_nolos[n]));
+	}
+	else $('#client_history_present')
+		.html('<p>Nessun noleggio.</p>');
+
+	if(future_nolos.length != 0){
+		for(n in future_nolos)
+			$('#client_history_future')
+				.append(await createHistoryCard(future_nolos[n]));
+	}
+	else $('#client_history_future')
+		.html('<p>Nessun noleggio.</p>');
 
 }
 
@@ -401,19 +664,18 @@ async function createHistoryCard(nolo){
 
 	var tot = calculateTotal(nolo);
 
-	if(!product) return '';
-
 	return `
 		<div class="col">
-		  <div class="card">
+		  <div class="card ${nolo.status == 'In ritardo' || !product ? "problem" : ''}">
 			<div class="card-body">
-			  <h3 class="card-title">${product.name}</h3>
+			  <h3 class="card-title">${product ? product.name : 'Prodotto non in elenco.'}</h3>
 			  <ul type="none">
 				<li>
 				  <b>Periodo:</b> da ${nolo.date_from} a ${nolo.date_to}
 				</li>
-				<li>
-				  <b>Stato:</b> ${nolo.status}
+				<li >
+				  <b>Stato:</b> 
+				  ${nolo.status}
 				</li>
 				<li>
 				  <b>Sconto:</b> ${nolo.nolo_data.discount} 
@@ -528,11 +790,24 @@ async function doNolo(){
 		values[this.name] = $(this).val();
 	});
 
+
 	var days = calculateDays(values.date_from, values.date_to);
 	if(days <= 0){
 		$('#nolo_form_invalid_dates').css('display', '');
 		return;
 	} else $('#nolo_form_invalid_dates').css('display', 'none');
+
+	if(logged){
+		if(!await checkAvailability(product.id, values.date_from, values.date_to)){
+			console.log('ops');
+			$('#nolo_form_unavailable').css('display', '');
+			return;
+		}
+		else {
+			$('#nolo_form_unavailable').css('display', 'none');
+		} 
+	}
+
 
 	const perc = (1 - parseInt(values.discount)/100);
 	const base_cost = days * parseInt(product.nolo_data.cost);
@@ -551,7 +826,18 @@ function doLogin(){
 	$('#login_window').toggle();
 }
 
-function checkCredentials(){
+async function checkMailAndPwd(mail, pwd){
+	var user = await $.get(`http://site202123.tw.cs.unibo.it/clients?email=${mail}`);
+	user = user[0];
+
+	if (user.pwd == pwd){
+		logged_user = user;
+		return true;
+	}
+	return false;
+}
+
+async function checkCredentials(){
 
 	// get input vals
 	var values = {};
@@ -559,10 +845,10 @@ function checkCredentials(){
 		values[this.name] = $(this).val();
 	});
 
-	console.log(values);
+	var correct = await checkMailAndPwd(values.email, values.password);
 
 	// check login
-	if(values.email != values.password){
+	if(!correct){
 		$('#incorrect_email_message').css('display', '');
 	} else {
 
@@ -584,6 +870,9 @@ function checkCredentials(){
 		$('#header_buttons').toggle();
 		$('#product_insert_button').toggle();
 
+		$('#login_message_text').text(logged_user.name + ' ' + logged_user.surname);
+		$('#login_message').toggle();
+
 		//reset fields
 		$('#login_form :input').val('');
 
@@ -600,9 +889,13 @@ async function logout(){
 	$('#product_card').css('display', 'none');
 	$('#product_card_modify').css('display', 'none');
 
+	$('#login_message_text').text('');
+	$('#login_message').toggle();
+
 	await updateTab('inventory');
 
 	logged = false;
+	logged_user = '';
 }
 
 
