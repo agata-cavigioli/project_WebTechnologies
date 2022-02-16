@@ -7,10 +7,10 @@ import Filter from './Filter.svelte';
 import Modal from 'svelte-simple-modal';
 import PrenotButton from './MyModal/PrenotButton.svelte';
 
-import { onMount } from 'svelte';
+import { onMount,afterUpdate } from 'svelte';
 import jQuery from 'jquery';
 
-let filosofi = "";
+export let filosofi = "";
 let id;
 
 onMount(() => {
@@ -18,6 +18,10 @@ onMount(() => {
 		console.log(filosofi);
 	});
 });
+
+afterUpdate(() => {
+		console.log("after update name:", filosofi);
+	})
 
 </script>
 

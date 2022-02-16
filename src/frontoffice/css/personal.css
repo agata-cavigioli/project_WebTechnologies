@@ -18,18 +18,20 @@
   margin-bottom: -1px;
 }
 
-#personaltabs span {
+.personalbutton {
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
-  display: block;
   padding: 0.5rem 1rem;
-  cursor: pointer;
 }
 
 
-#personaltabs li.active > span {
+li.active > .personalbutton {
   color: #495057;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
+}
+
+li.active > .personalbutton:focus {
+  border-color: var(--mycolor);
 }

@@ -1,5 +1,5 @@
 :root {
-  --mycolor:#fa864c;
+  --mycolor:rgb(250, 84, 26);
 }
 
 .bg{
@@ -120,4 +120,8 @@ top: 10px;
 }
 .nolosign .signupmodal1{
   padding-top: 0% !important;
+}
+#prenot-modal-content{
+  height: 80vh;
+  overflow:auto;
 }

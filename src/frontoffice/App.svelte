@@ -6,22 +6,39 @@
 	import Searchbar from './Components/Searchbar.svelte';
   import Personal from './Components/Personal.svelte';
   import Home from './Components/Home.svelte';
+  import { onMount,afterUpdate } from 'svelte';
 	export let url = "";
 
 	import 'css/global.css';
 	import 'css/extra.css';
 
 //let filosofi = "";
-let filosofi = "";
+let filosofiApp = [{ "name": "Aaron David Gordon",
+           "birth": "1856",
+           "birth_p": "Ukraine",
+           "death": "1922",
+           "death_p": "Palestine",
+           "subjects": "Agriculture, Zionism",
+           "nolo_data": { "cost": 100,
+               "available_from": "1/1/2345",
+              "available_to": "7/3/2736",
+             "discount": 0,
+             "info": "",
+            "condition": "Buono" }
+     }];
 
-function searchfunall(){
+    onMount(() => {
+		    searchfunall();
+	})
+
+async function searchfunall(){
     let searchurl = "http://site202123.tw.cs.unibo.it/products";
     console.log(searchurl);
-    jQuery.get(searchurl, async function(data){
-     filosofi = data;
-     console.log(filosofi);
-    })
-  }
+    let data = await jQuery.get(searchurl);
+    filosofiApp = data;
+    console.log("in app:");
+    console.log(filosofiApp);
+}
 
 </script>
 
@@ -55,14 +72,14 @@ function searchfunall(){
 
 			<form class="ricerca row" action="" method="get">
         <div class='col'>
-        <Searchbar bind:filosofi={filosofi}/>
+        <Searchbar bind:filosofi={filosofiApp}/>
         </div>
       </form>
 			<div class='row align-items-center m-5 h2'>
 			<div class='col' style='font-weight: 700;'> Don't know who you are looking for?</div>
 			<div class=' col-lg-3 search-button ' style='border-radius: 5px;'>
 
-        <Link class="searchlink" to="/home" style="color:white;" on:click={searchfunall}>Search everyone</Link>
+        <Link class="searchlink" to="/home" style="color:white;">Search everyone</Link>
 
       </div>
 			</div>
@@ -73,7 +90,7 @@ function searchfunall(){
 
     </Route>
 		<Route path="/home">
-		    <Home filosofi={filosofi} />
+		    <Home filosofi={filosofiApp} />
 		</Route>
     <Route path="/personal">
 		    <Personal/>

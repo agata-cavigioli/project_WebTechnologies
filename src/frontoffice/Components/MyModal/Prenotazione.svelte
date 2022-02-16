@@ -137,6 +137,7 @@ function sendnolo(){
   if(note){
     booking.nolo_data.info = note;
   }
+  else booking.nolo_data.info = "";
 
   let payment = document.getElementById('inputGroupPay').value;
   if(payment){
@@ -151,9 +152,9 @@ function sendnolo(){
     booking.product_id = filo.id;
     booking.client_id = user;
     booking.dep_id = -1;
-    booking.status = (datefrom==today) ? "started" : "booked";
+    booking.status = (datefrom==today) ? "Iniziato" : "Prenotato";
     booking.nolo_data.discount = filo.nolo_data.discount;
-    booking.nolo_data.cost = filo.nolo_data.cost;
+    booking.nolo_data.daily_cost = filo.nolo_data.cost;
     booking.nolo_data.other_fees = 0;
   bookingArray.push({...booking});
   confermato = true;
@@ -192,7 +193,7 @@ if (booking){
 
 
 <div class="modal-dialog modal-notify modal-warning prenotazione" role="document">
-  <div class="modal-content container" id="prenot-modal-content">
+  <div class="modal-content container" id="prenot-modal-content" tabindex="-1">
       <div class='row'>
           <div class="col-lg m-2">
               <div class="card">
@@ -246,12 +247,15 @@ if (booking){
 
       {#if !islogged}
 
-      <p type="button" class="btn btn-outline-warning waves-effect" on:click={preventivo}>Calcola un preventivo</p>
+      <button  class="btn btn-outline-warning waves-effect" on:click={preventivo}>Calcola un preventivo</button>
       <div id="preventivo">
       </div>
 
       <div class="modal-footer justify-content-center container">
-      <h5 class="font-weight-bold text-secondary mt-4 row">
+      <h5 class="font-weight-bold text-danger mt-4 row">
+      Attenzione! Il filosofo potrebbe non essere disponibile delle date selezionate
+      </h5>
+      <h5 class="font-weight-bold text-secondary row">
       Registrati o accedi per noleggiare
       </h5>
       <div class="row nolosign">
@@ -286,21 +290,22 @@ Inserisci eventuali note
 {:else if confermato}
 
 
-<h4 class="font-weight-bold text-info mt-4">
+<h4 class="font-weight-bold text-my mt-4">
 Riepilogo dell'ordine
 </h4>
 <h5 class="font-weight-bold text-secondary mt-4" id="riepilogodiv">
-Periodo: da {booking.datefrom} a {booking.dateto}
+Periodo: da {booking.date_from} a {booking.date_to}
 <br>
 Costo per {booking.diffdate} {(booking.diffdate>1)? "giorni":"giorno"}: &euro;{booking.diffdate*filo.nolo_data.cost}
 <br>
 Sconto applicato: {filo.nolo_data.discount}&#37;
 <br>
 <div class="text-danger">
-Prezzo finale: &euro;{(booking.diffdate*filo.nolo_data.cost)-((booking.diffdate*filo.nolo_data.cost*filo.nolo_data.discount)/100)}
+Prezzo finale: &euro; {(booking.diffdate*filo.nolo_data.cost)-((booking.diffdate*filo.nolo_data.cost*filo.nolo_data.discount)/100)}
 </div>
 Metodo di pagamento: {booking.payment}
-Note: {filo.nolo_data.info}
+<br>
+Note: {booking.nolo_data.info}
 </h5>
 
 

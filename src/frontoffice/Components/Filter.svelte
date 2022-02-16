@@ -18,11 +18,11 @@
 </script>
 
 
-<div class=" dropdown position-static">
+<div id = "filterbar" class=" dropdown position-static">
   <button class="btn descrip border-0 btn-secondary dropdown-toggle text-start" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     Filtri di ricerca
   </button>
-  <ul class="dropdown-menu mt-0 shadow border-0  border-outline-success" aria-labelledby="dropdownMenuButton1">
+  <ul class="dropdown-menu mt-0 shadow border-0  border-outline-success" aria-labelledby="dropdownFilters">
     <li>
 		<div class="container-fluid">
 		<div class="row px-2">
@@ -43,7 +43,7 @@
 		  <div class="col-sm order-3">
 		      <div class="input-group mb-2 mr-sm-2">
 		        <div class="input-group-prepend">
-		          <div class="input-group-text customcol-smor">Luogo di nascita</div>
+		          <label for="birthplace" class="input-group-text customcol-smor">Luogo di nascita</label>
 		        </div>
 		        <input type="text" class="form-control" id="birthplace" placeholder="Any" value="">
 		      </div>
@@ -52,10 +52,10 @@
 			<div class="col-sm-5 order-2">
 				<div class="input-group mb-2 mr-sm-2">
 						<div class="input-group-prepend">
-							<div class="input-group-text customcol-smor">Costo giornaliero da:</div>
+							<label for="costfrom" class="input-group-text customcol-smor">Costo giornaliero da:</label>
 						</div>
 					<input type="text" class="form-control" id="costfrom" placeholder="0" value="" >
-					<div class="input-group-text rounded-0 border-left-0 border-right-0 customcol-smor">a:</div>
+					<label for="costto" class="input-group-text rounded-0 border-left-0 border-right-0 customcol-smor">a:</label>
 					<input type="text" class="form-control" id="costto" placeholder="500" value="">
 
 				</div>
@@ -65,7 +65,7 @@
 		<div class="col-sm order-3 order-lg-0">
 			<div class="input-group mb-3 ">
 				<div class="input-group-prepend">
-					<div class="input-group-text customcol-smor">Tematiche</div>
+					<label for="inputtematiche" class="input-group-text customcol-smor">Tematiche</label>
 				</div>
 				<input type="text" class="form-control" id="inputtematiche" placeholder="Any" value="">
 			</div>
@@ -73,7 +73,7 @@
 		<div class="col-sm order-lg-3">
 				<div class="input-group mb-2 mr-sm-2">
 					<div class="input-group-prepend">
-						<div class="input-group-text customcol-smor">Luogo di morte</div>
+						<label for="deathplace" class="input-group-text customcol-smor">Luogo di morte</label>
 					</div>
 					<input type="text" class="form-control" id="deathplace" placeholder="Any" value="">
 				</div>
@@ -82,11 +82,11 @@
 		  <div class="col-sm-5 order-2">
 					<div class="input-group mb-2 mr-sm-2">
 						<div class="input-group-prepend">
-						<div class="input-group-text customcol-smor">Da:</div>
+						<label for="datefrom" class="input-group-text customcol-smor">Da:</label>
 						</div>
 						    <input class="input-group date form-control" type="date" id="datefrom" value="">
 
-							<div class="input-group-text rounded-0 border-left-0 border-right-0 customcol-smor">a:</div>
+							<label for="dateto" class="input-group-text rounded-0 border-left-0 border-right-0 customcol-smor">a:</label>
 							    <input type="date" class="input-group date form-control"  id="dateto" value="">
 
 				</div>
@@ -95,14 +95,14 @@
 			<div class="row px-2">
 		    <div class="col">
 			   <div class="form-check">
-		       <input class="form-check-input" type="checkbox" value="" id="discoutCheck" >
+		       <input class="form-check-input" type="checkbox" value="" id="discoutCheck" tab-index="0">
 		         <label class="form-check-label" style="col-smor: #495057;" for="discoutCheck">
 			          In sconto
 		         </label>
 		     </div>
       </div>
       <div class="col">
-        <p type="button" class="btn btn-outline-warning waves-effect" on:click={filterreset}>Resetta i filtri</p>
+        <button tab-index="0" class="btn btn-outline-warning waves-effect" on:click={filterreset}>Resetta i filtri</button>
       </div>
     </div>
 		</li>

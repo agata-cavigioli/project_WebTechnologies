@@ -13,7 +13,19 @@
   userID.subscribe(value => {
 		id = value;
 	});
+/*
+  let focusableElements;
+  if(op == "Login"){
+    focusableElements =
+        [ 'form3', 'form2', 'btn-check-2', 'sendloginbutton'];
 
+
+  } else if (op == "Signup"){
+    focusableElements =
+        [ 'form0', 'form1', 'form3', 'form2', 'btn-check-2', 'form4', 'form5', 'sendsignupbutton'];
+
+  }
+*/
   onMount(() => {
     jQuery( document ).ready(function() {
       if (document.getElementById('home')&& !document.getElementById('prenot-modal-content')){
@@ -32,7 +44,43 @@
               document.getElementById('prenot-modal-content').classList.add("overflow-auto");
             });
           }
+/*
+          // add all the elements inside modal which you want to make focusable
+          const modal = document.getElementById('#mymodal'); // select the modal by it's id
+          console.log(focusableElements[0]);
+          const firstFocusableElement = document.getElementById(focusableElements[0]); // get first element to be focused inside modal
+          //const focusableContent = modal.querySelectorAll(focusableElements);
+          const lastFocusableElement = document.getElementById(focusableElements[focusableElements.length - 1]); // get last element to be focused inside modal
+
+
+          document.addEventListener('keydown', function(e) {
+            let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+
+            if (!isTabPressed) {
+              return;
+            }
+
+            if (e.shiftKey) { // if shift key pressed for shift + tab combination
+              if (document.activeElement === firstFocusableElement) {
+                lastFocusableElement.focus(); // add focus for the last focusable element
+                e.preventDefault();
+              }
+            } else { // if tab key is pressed
+              if (document.activeElement === lastFocusableElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
+                firstFocusableElement.focus(); // add focus for the first focusable element
+                e.preventDefault();
+              }
+            }
+          });
+
+          firstFocusableElement.focus();
+
+          //////////////////
+          */
     });
+
+
+
   });
 
   function revealpwd() {
@@ -44,7 +92,7 @@
     }
   }
 
-  function checklogin(){
+async function checklogin(){
     var mail = document.getElementById("form3").value;
     var pwd = document.getElementById("form2").value;
     if (!mail || !pwd) {
@@ -54,8 +102,10 @@
     }
 
 
-    tempurl = '?email="'+ document.getElementById("form3").value + '"&pwd="' + document.getElementById("form2").value +'"';
-    if (checkpassword(mail,pwd)){
+    const tempurl = '?email="'+ document.getElementById("form3").value + '"&pwd="' + document.getElementById("form2").value +'"';
+    let done = await checkpassword(tempurl);
+    console.log(done);
+    if (done){
       loggedIn.update(b => !b);
       let element;
       if (element=document.getElementById('home')&& !document.getElementById('prenot-modal-content')){
@@ -80,12 +130,11 @@
       //let created =
       await jQuery.post("http://site202123.tw.cs.unibo.it/clients",signup).done(
         function(res){
-          userID.update(b => res.id);
+          userID.set(res.id);
           console.log(id);
         }
       );
 
-      //userID.update(b=>created.id);
       loggedIn.update(b => !b);
 
       let element;
@@ -155,12 +204,33 @@
     else return false;
 }
 
-  function checkpassword(mail, pwd){
+async function checkpassword(tempurl){
+    const url = "http://site202123.tw.cs.unibo.it/clients"+tempurl;
+    console.log(url);
+    let done;
+    await jQuery.get(url).done(
+      function(res){
+        let personlogged = res[0];
+        console.log(personlogged);
+        if (personlogged) {
+          console.log("found");
+          userID.set(personlogged.id);
+          console.log(id);
+          done =  true;        }
+        else {
+          alert("wrong email or password");
+          done =  false;
+        }
+      }
+    );
+    return done;
+/*
     if (mail == pwd) return true;
     else {
       alert("wrong email or password");
       return false;
     }
+    */
   }
 
   const validateEmail = (email) => {
@@ -182,29 +252,76 @@
 
     document.getElementById(id).appendChild(redstar);
   }
+
+/////////////////// accessibilitá
+// add all the elements inside modal which you want to make focusable
+/*
+let focusableElements;
+if(op == "Login"){
+  focusableElements =
+      ['"modaltitle"', 'form3', 'form2', 'btn-check-2', 'sendloginbutton'];
+
+
+} else if (op == "Signup"){
+  focusableElements =
+      ['modaltitle', 'form0', 'form1', 'form3', 'form2', 'btn-check-2', 'form4', 'form5', 'sendsignupbutton'];
+
+}
+const modal = document.getElementById('#mymodal'); // select the modal by it's id
+console.log(focusableElements[0]);
+const firstFocusableElement = document.getElementById(focusableElements[0]); // get first element to be focused inside modal
+//const focusableContent = modal.querySelectorAll(focusableElements);
+const lastFocusableElement = document.getElementById(focusableElements[focusableElements.length - 1]); // get last element to be focused inside modal
+
+
+document.addEventListener('keydown', function(e) {
+  let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+
+  if (!isTabPressed) {
+    return;
+  }
+
+  if (e.shiftKey) { // if shift key pressed for shift + tab combination
+    if (document.activeElement === firstFocusableElement) {
+      lastFocusableElement.focus(); // add focus for the last focusable element
+      e.preventDefault();
+    }
+  } else { // if tab key is pressed
+    if (document.activeElement === lastFocusableElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
+      firstFocusableElement.focus(); // add focus for the first focusable element
+      e.preventDefault();
+    }
+  }
+});
+
+firstFocusableElement.focus();
+*/
+//////////////////
 </script>
 
 
 
 {#if (op == "Login")}
-<div class='mymodal'>
+<div class='mymodal' id="mymodal">
 <div class="modal-dialog modal-notify modal-warning" role="document">
   <div class="modal-content">
     <div class="modal-header text-center">
-      <h4 class="modal-title white-text w-100 font-weight-bold py-2">{op}</h4>
+      <h4 class="modal-title white-text w-100 font-weight-bold py-2" id="modaltitle">
+      {op}
+      </h4>
     </div>
 
 
     <div class="modal-body">
       <div class="md-form mb-5">
         <i class="bi bi-envelope prefix grey-text"></i>
-        <label class="float-left" data-error="wrong" data-success="right" for="form3">Email</label>
+        <label class="float-left" data-error="wrong" data-success="right" for="form3" id ="label3">Email</label>
         <input type="text" id="form3" class="form-control validate">
       </div>
 
       <div class="md-form">
         <i class="fas fa-envelope prefix grey-text"></i>
-        <label class="float-left" data-error="wrong" data-success="right" for="form2">Password</label>
+        <label class="float-left" data-error="wrong" data-success="right" for="form2" id ="label2">Password</label>
         <input type="password" id="form2" class="form-control validate">
 
         <div class="form-check float-right form-switch">
@@ -216,7 +333,7 @@
     </div>
 
     <div class="modal-footer justify-content-center">
-      <p type="button" class="btn btn-outline-warning waves-effect" on:click={checklogin}>Send </p>
+      <button class="btn btn-outline-warning waves-effect" on:click={checklogin} id="sendloginbutton">Send </button>
     </div>
   </div>
   </div>
@@ -226,7 +343,9 @@
   <div class="modal-dialog modal-notify modal-warning" role="document">
     <div class="modal-content overflow-auto" style="overfow-y:auto !important; height:80vh">
       <div class="modal-header text-center">
-        <h4 class="modal-title white-text w-100 font-weight-bold py-2">{op}</h4>
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2" id="modaltitle">
+        {op}
+        </h4>
       </div>
 
 
@@ -275,7 +394,7 @@
       </div>
 
       <div class="modal-footer justify-content-center">
-        <p type="button" class="btn btn-outline-warning waves-effect" on:click={checksignup}>Send </p>
+        <button class="btn btn-outline-warning waves-effect" on:click={checksignup} id="sendsignupbutton" >Send </button>
       </div>
     </div>
     </div>
