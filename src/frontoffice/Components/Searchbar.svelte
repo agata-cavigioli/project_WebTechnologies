@@ -126,18 +126,19 @@ function searchphilosophersfun(tempurl, count){
 <div class="product-search">
     <div class="search-element" style='border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;'>
-      <label class="search-label" >Who are you looking for?</label>
+      <label for="NameSearch" class="search-label" >Who are you looking for?</label>
       <input id = "NameSearch" class="search-input" type="text" autocomplete="on" placeholder="Philosopher's name" name="query" value="">
     </div>
     <div class="search-element">
-      <label class="search-label" >Where are you looking?</label>
+      <label for="PlaceSearch" class="search-label" >Where are you looking?</label>
       <input id = "PlaceSearch" class="search-input" type="text" placeholder="State" autocomplete="on" name="location">
     </div>
     <div class="text-center">
-    <Link class="searchlink" on:click={searchfunction} to="/home" style="color:white">
-    <div class="search-button" id="principalsearch">
+
+    <Link class="searchlink search-button" id="principalsearch" on:click={searchfunction} to="/home">
         Search
-    </div>
-    </Link>
+          </Link>
+
+
     </div>
 </div>

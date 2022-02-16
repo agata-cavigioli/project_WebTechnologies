@@ -16,7 +16,7 @@ main{
   height: 100% !important;
   background-image:
       /* top, transparent red */
-      linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6)),
+      linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)),
       /* your image */
       url("../background.jpg") !important;
 
@@ -35,13 +35,7 @@ main{
   z-index: 0;
   left: 10%;
 }
-.searchlink:hover{
-  text-decoration: none;
-}
-.searchlink{
-  text-decoration: none;
-  height: 100% !important;
-}
+
 
 @media (min-width: 640px) {
   main {
@@ -115,7 +109,7 @@ main{
 #titolo{
   grid-area: head1;
   font-family: 'Lobster', cursive;
-  color: rgb(100, 149, 237);
+  color: rgb(50, 100, 200);
   font-size: 8vw;
   text-align: center;
 }
@@ -169,15 +163,14 @@ main{
   flex-grow: 1;
   text-align: center;
   font-size: 1.5vw;
-  font-weight: 300;
+  font-weight: 500;
   border: 0;
   padding: 1em;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  color: white;
-  background-color: rgb(100, 149, 237);
+  background-color: rgb(50, 100, 200);
 
   border-right: 1px solid rgba(10,10,10,.1);
   display: flex;
@@ -187,12 +180,13 @@ main{
   height: 100% !important;
   border-radius: 5px !important;
 }
-a {
-  text-decoration: none;
+.search-button:hover, .search-button:focus {
+  box-shadow: 0 0 0 .25rem rgba(50, 100, 200,.5)
 }
 
-.search-button:hover {
-  background-color: #1859c9db
+.searchlink{
+  text-decoration: none;
+  color:white !important;
 }
 
 #basso {
@@ -227,7 +221,7 @@ a {
 .signup-button {
   justify-content: center;
   align-items: center;
-  font-weight: 300;
+  font-weight: 500;
   height: 55px;
   width: 4em !important;
   margin-right: 7px;
@@ -235,27 +229,31 @@ a {
   border-radius: 5px;
   background-color: #e9ecf0;
   cursor: pointer;
+  color:rgb(50, 100, 200);
 }
 /**/
 .login-button {
   justify-content: center;
   align-items: center;
-  font-weight: 300;
+  font-weight: 500;
   width: 4em;
   height: 55px;
   border: none;
   border-radius: 5px;
   color: #fff;
-  background-color: rgb(100, 149, 237);
+  background-color: rgb(50, 100, 200);
   cursor: pointer
 }
 
-.login-button:hover {
-  background-color: #1859c9db
+.login-button:hover, .login-button:focus  {
+  background-color: #e9ecf0d1;
+  color: rgb(50, 100, 200);
+  box-shadow: 0 0 0 .25rem rgba(50, 100, 200,.5)
 }
 
-.signup-button:hover {
-  background-color: #e9ecf0d1
+.signup-button:hover, .signup-button:focus {
+  background-color: #e9ecf0d1;
+  box-shadow: 0 0 0 .25rem rgba(50, 100, 200,.5)
 }
 
 .signature-div {
@@ -274,4 +272,18 @@ font-weight: 500
 
 button:focus{
   outline: none !important;
+}
+.text-my{
+  color:rgb(50, 100, 200) !important;
+}
+
+.btn-outline-info{
+  color:rgb(50, 100, 200) !important;
+  border-color:rgb(50, 100, 200) !important;
+}
+
+.btn-outline-info:focus:not(:focus-visible), .btn-outline-info:hover{
+  color:rgb(50, 100, 200) !important;
+  background-color: white !important;
+  box-shadow: 0 0 0 .25rem rgba(50, 100, 200,.5)
 }

@@ -4,7 +4,7 @@ import { getContext } from 'svelte';
   const { open } = getContext('simple-modal');
   export let philosopher;
 
-  
+
 
   const prenota = () => {
     document.getElementById('home').classList.add("overflow-hidden");
@@ -14,4 +14,4 @@ import { getContext } from 'svelte';
 
 </script>
 
-<p type="button" class="btn btn-outline-warning waves-effect mt-2" on:click={() => prenota()}>Prenota</p>
+<button aria-label="Prenota" class="btn btn-outline-warning waves-effect mt-2" on:click={() => prenota()}>Prenota</button>
