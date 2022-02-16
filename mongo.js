@@ -4,6 +4,38 @@ const mongouri = 'mongodb://site202123:thieCah0@mongo_site202123?writeConcern=ma
 
 const mongo = new MongoClient(mongouri);
 
+exports.update = async function(query, update, collection, database='nolonolo') {
+	let cursor;
+
+	try {
+		await mongo.connect();
+
+		const db = mongo.db(database);
+		const coll = db.collection(collection);
+
+		cursor = await coll.updateOne(query, update, {});
+
+	} finally {
+		await mongo.close();
+	}
+}
+
+exports.delete = async function(query, collection, database='nolonolo') {
+	let cursor;
+
+	try {
+		await mongo.connect();
+
+		const db = mongo.db(database);
+		const coll = db.collection(collection);
+
+		cursor = await coll.deleteOne(query);
+
+	} finally {
+		await mongo.close();
+	}
+}
+
 exports.insert_many = async function(object, collection, database='nolonolo') {
 	try {
 		await mongo.connect();
