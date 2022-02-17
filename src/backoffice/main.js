@@ -670,7 +670,7 @@ async function showHistory() {
 	$('#client_history').css('display', '');
 
 	var c_id = $('#client_card_id').text();
-	var client_nols = await $.get(`http://site202123.tw.cs.unibo.it/nolos?client_id="${c_id}"`);
+	var client_nols = await $.get(`http://site202123.tw.cs.unibo.it/nolos?client_id=${c_id}`);
 
 	var past_nolos = [];
 	var current_nolos = [];
