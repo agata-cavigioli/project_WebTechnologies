@@ -83,20 +83,6 @@
                  aria-current="true"
                  href="#">Inventario</a>
             </li>
-            <li class="nav-item">
-              <a id="nolos_tab"
-                 class="nav-link top-tabs"
-                 onclick="updateTab('nolos')"
-                 style="background: #eeeeee; display: none;"
-                 href="#">Noleggi</a>
-            </li>
-            <li class="nav-item">
-              <a id="clients_tab"
-                 class="nav-link top-tabs"
-                 onclick="updateTab('clients')"
-                 style="background: #eeeeee; display: none;"
-                 href="#">Clienti</a>
-            </li>
           </ul>
         </nav>
 
@@ -104,6 +90,7 @@
         <div id="inventory" class="content-tab my-bg p-3-lg row">
           <div class="table-responsive col-lg-8 col-12">
             <table id="twrap" class="text-start table table-striped table-hover ">
+              <caption class="visually-hidden">Elenco prodotti</caption>
               <thead id="product_header" >
                 <tr>
                   <form class="d-flex">
@@ -224,7 +211,7 @@
                     <p id="product_card_subject" class="card-text"></p>
                   </div>
                   <div class="col"> 
-                    <img src="" class="card-img-top" alt="...">
+                    <img id="product_card_image" src="" class="card-img-top" alt="...">
                   </div>
                 </div>
               </div>
@@ -431,6 +418,12 @@
                        name="subjects"
                        class="card-text form-control"
                        aria-label="Tematiche">
+                <h6 class="fw-bold mt-2">Url immagine:</h6>
+                <input type="url"
+                       id="product_card_modify_image"
+                       name="img"
+                       class="card-text form-control"
+                       aria-label="Url immagine">
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
@@ -583,6 +576,12 @@
                        name="subjects"
                        class="card-text form-control"
                        aria-label="Tematiche">
+                <h6 class="fw-bold mt-2">Url immagine:</h6>
+                <input type="url"
+                       id="product_card_insert_image"
+                       name="img"
+                       class="card-text form-control"
+                       aria-label="Url immagine">
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">
@@ -690,6 +689,7 @@
              class="content-tab my-bg p-3-lg row">
           <div id="clients_table" class="table-responsive col-lg-8 col-12">
             <table id="twrap" class="text-start table table-striped table-hover ">
+              <caption class="visually-hidden">Elenco clienti</caption>
               <thead id="clients_header" >
                 <tr>
                   <form class="d-flex">
@@ -824,9 +824,6 @@
                       <p id="client_card_address" ></p>
                     </p>
 
-                  </div>
-                  <div class="col"> 
-                    <img src="" class="card-img-top" alt="...">
                   </div>
                 </div>
               </div>
@@ -1003,6 +1000,7 @@
              style="display: none;">
           <div class="table-responsive col-lg-8 col-12">
             <table id="twrap" class="text-start table table-striped table-hover ">
+              <caption class="visually-hidden">Elenco noleggi</caption>
               <thead id="nolo_header">
                 <tr>
                   <form class="d-flex">
