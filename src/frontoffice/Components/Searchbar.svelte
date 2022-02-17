@@ -86,14 +86,14 @@ function searchfunction(){
       var datefrom = document.getElementById('datefrom').value;
       if(datefrom) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='nolo_data.available_from={"$gt":'+datefrom+'}';
+        tempurl+='nolo_data.available_from={"$lt":"'+datefrom+'"}';
         count++;
       }
 
       var dateto = document.getElementById('dateto').value;
       if(dateto) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='nolo_data.available_to={"$lt":'+dateto+'}';
+        tempurl+='nolo_data.available_to={"$gt":"'+dateto+'"}';
         count++;
       }
 
