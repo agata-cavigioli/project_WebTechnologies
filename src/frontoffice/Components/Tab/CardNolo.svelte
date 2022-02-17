@@ -40,15 +40,30 @@ function calcolofinale(noleggio){
 function downloadBill(){
 
 }
-function deleteNolo(){
 
+async function deleteNolo(){
+	let myurl = "http://site202123.tw.cs.unibo.it/nolos?id=" + noleggio.id;
+  await jQuery.ajax({
+         url: myurl ,
+         type: 'DELETE'
+     });
+	document.getElementById('cardnolo{noleggio.id}').innerHTML=("Noleggio eliminato");
 }
-function modifyNolo(){
 
+function modifyNolo(){
+  let divmio = 'dateNolo' + noleggio.id;
+  console.log(divmio);
+    document.getElementById(divmio).innerHTML = "Periodo di noleggio: <div class='input-group mb-2 mr-sm-2'> \
+      <div class='input-group-prepend'><label for='datefrom' class='input-group-text customcol-smor'>Da:</label> \
+    </div>  <input class='input-group date form-control' type='date' id='datefrom' value='" + noleggio.date_from + "'> \
+    <label for='dateto' class='input-group-text rounded-0 border-left-0 border-right-0 customcol-smor'>a:</label>  \
+        <input type='date' class='input-group date form-control'  id='dateto' value='"+ noleggio.date_to + "'> </div>";
+
+  //cambia pulsante conferma
 }
 </script>
 
-<div class="card flex-row row mt-2">
+<div id="cardnolo{noleggio.id}" class="card flex-row row mt-2">
     <div class="col-3 m-2">
         <div class="card-img-actions"> <img src={image} class="card-img img-fluid" width="96" height="350" alt=""> </div>
     </div>
@@ -61,7 +76,7 @@ function modifyNolo(){
               {FiloName}
               </div>
             </h6>
-            <div class="text-muted" data-abc="true">
+            <div id="dateNolo{noleggio.id}" class="text-muted" data-abc="true">
             Periodo di noleggio: {noleggio.date_from} - {noleggio.date_to}
             </div>
             <div class="text-my" data-abc="true">
