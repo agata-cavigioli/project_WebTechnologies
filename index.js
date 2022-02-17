@@ -1,7 +1,6 @@
 global.rootDir = __dirname ;
 global.startDate = null;
 
-
 const path = require('path') ;
 const express = require('express') ;
 const cors = require('cors');
@@ -12,7 +11,13 @@ let app = express();
 
 var id_num; 
 
-calculateMaxId(); 
+async function setup(){
+    await calculateMaxId();
+    //await populateDeps();
+}
+
+setup();
+
 
 async function calculateMaxId(){
     id_num = Math.max(
@@ -32,6 +37,42 @@ function findMax(obj){
     }
     return m;
 }
+
+async function populateDeps(){
+    let deps = [
+        {
+            name: 'Marco',
+            surname: 'Amerotti',
+            dep_id: 7,
+            role: 'employee',
+            pwd: 'marco',
+            email: 'marco@nolo.com'
+        },
+        {
+            name: 'Agata',
+            surname: 'Cavigioli',
+            dep_id: 4,
+            role: 'employee',
+            pwd: 'agata',
+            email: 'agata@nolo.com'
+        },
+        {
+            name: 'Gorgia',
+            surname: 'Messina',
+            dep_id: 13,
+            role: 'manager',
+            pwd: 'gorgia',
+            email: 'gorgia@nolo.com'
+        }
+    ];
+    for(d in deps){
+        var obj = deps[d];
+        obj.id = ++id_num;
+        await mongo.insert_one(obj, 'staff');
+    }
+}
+
+
 
 app.use('/frontoffice/js' , express.static(global.rootDir +'/src/frontoffice'));
 app.use('/frontoffice/css' , express.static(global.rootDir +'/src/frontoffice'));
@@ -131,7 +172,7 @@ app.post('/update/nolos',  async function (req, res) {
     obj.$set.nolo_data.daily_cost = parseInt(obj.$set.nolo_data.daily_cost);
     obj.$set.nolo_data.discount = parseInt(obj.$set.nolo_data.discount);
     obj.$set.nolo_data.other_fees = parseInt(obj.$set.nolo_data.other_fees);
-
+    console.log(obj);
 
     res.send(await
         mongo.update(createMongoQuery(req), obj, 'nolos'));
