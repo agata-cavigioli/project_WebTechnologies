@@ -10,6 +10,7 @@ userID.subscribe(value => {
 });
 
 let modifyconfirm = "modify";
+
 function modifyconfirmfun(){
 	if (modifyconfirm == "modify") modify();
 	else confirm();
@@ -86,7 +87,7 @@ function modify(){
 
 async function confirm(){
 	console.log("confirm");
-	/////////////////////////// post sul database
+	/////////////////////////// post
 	let modify= sendmodify();
 	if (modify){
 	let url = "http://site202123.tw.cs.unibo.it/update/clients?id="+id;
@@ -94,7 +95,8 @@ async function confirm(){
 	console.log(modify);
 
 	var update = {$set : modify};
-
+	console.log("update");
+	console.log(update);
 	await jQuery.post(url,update);
 /////////////////////////////
 	loadinfo();

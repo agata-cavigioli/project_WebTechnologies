@@ -57,7 +57,7 @@ button:not(:disabled):active {
   z-index: 30;
   position: fixed;
   left: 65%;
-  top: 4em;
+  top: 3vh;
   width: 33px;
   height: 33px;
   opacity: 0.8;

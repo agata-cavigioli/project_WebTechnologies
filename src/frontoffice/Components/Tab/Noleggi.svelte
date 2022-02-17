@@ -36,7 +36,19 @@ function getPersonalNolos(){
    noleggi = data;
   })
 }
+function difSToday(date){
+	const mydate = new Date(date);
+	const today = new Date();
+	const diffTimetoday = today - mydate;
+	const diffDaystoday = Math.ceil(diffTimetoday / (1000 * 60 * 60 * 24));
+	console.log("difference: "+diffDaystoday);
+	//17-17->0
+	//17-16->1  start>=0
+	//17-18 -> -1 finish<=0
+	//17-16 -> 1 finish >0 passato
+	return diffDaystoday;
 
+}
 </script>
 <div class="personaltab container">
 <div class="row">
@@ -51,7 +63,7 @@ function getPersonalNolos(){
 Noleggi in corso
 </h4>
 {#each noleggi as noleggio}
-		{#if ((noleggio.date_from<=today)&&(noleggio.date_to>=today))}
+		{#if ((difSToday(noleggio.date_from)>=0)&&(difSToday(noleggio.date_to)<=0))}
     <CardNolo time={"present"} noleggio={noleggio}/>
 		{/if}
 {/each}
@@ -61,7 +73,7 @@ Noleggi in corso
 Noleggi previsti
 </h4>
 {#each noleggi as noleggio}
-		{#if (noleggio.date_from>today)}
+		{#if (difSToday(noleggio.date_from)<0)}
 		<CardNolo time={"future"} noleggio={noleggio}/>
 		{/if}
 {/each}
@@ -71,7 +83,7 @@ Noleggi previsti
 Noleggi conclusi
 </h4>
 {#each noleggi as noleggio}
-		{#if (noleggio.date_to<today)}
+		{#if (difSToday(noleggio.date_to)>0)}
 		<CardNolo time={"past"} noleggio={noleggio}/>
 		{/if}
 {/each}
