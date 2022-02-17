@@ -7,16 +7,20 @@ export let noleggio;
 
 let image = "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png";
 let FiloName = "Gino";
+let FilImg = "";
 let modifyconfirm = "modify";
 
 onMount(async () => {
     await getFilNameById();
 })
 
+let filosofo;
+
 async function getFilNameById(){
     let searchurl = "http://site202123.tw.cs.unibo.it/products?id=" + noleggio.product_id ;
     let data = await jQuery.get(searchurl);
     FiloName = data[0] && data[0].name;
+    FilImg = data[0] && data[0].img;
     console.log(FiloName);
     return true;
 }
@@ -170,7 +174,7 @@ function downloadBill(){
 
 <div id="cardnolo{noleggio.id}" class="card flex-row row mt-2">
     <div class="col-3 m-2">
-        <div class="card-img-actions"> <img src={image} class="card-img img-fluid" width="96" height="350" alt=""> </div>
+        <div class="card-img-actions"> <img src={FilImg} class="card-img "  height="350" alt="">  </div>
     </div>
 
     <div id="fattura{noleggio.id}" class="col-lg-6 m-2">
