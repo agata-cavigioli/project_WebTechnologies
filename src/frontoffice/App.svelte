@@ -65,7 +65,7 @@ async function searchfunall(){
         <div  id='titolo'>Dining philosophers
         </div>
         <div id='benvenuto' class='fw-bold'>
-        Welcome!
+        Benvenuto! Nel nostro sito potrai noleggiare il tuo filosofo preferito per allietare le tue serate
         </div>
   			</div>
       </div>
@@ -76,10 +76,10 @@ async function searchfunall(){
         </div>
       </form>
 			<div class='row align-items-center m-5 h2'>
-			<div class='col' style='font-weight: 700;'> Don't know who you are looking for?</div>
+			<div class='col' style='font-weight: 700;'> Non sai chi cercare?</div>
 			<div class=' col-lg-3 search-button ' style='border-radius: 5px;'>
 
-        <Link class="searchlink" to="/home" style="color:white;">Search everyone</Link>
+        <Link class="searchlink" to="/home" style="color:white;">Cerca tutti</Link>
 
       </div>
 			</div>

@@ -127,6 +127,7 @@
 }
 
 .card {
+    height: 100vh !important;
     position: relative;
     display: -ms-flexbox;
     display: flex;

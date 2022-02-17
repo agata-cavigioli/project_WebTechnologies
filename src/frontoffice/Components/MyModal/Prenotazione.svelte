@@ -270,7 +270,7 @@ if (booking){
           <div class="col-lg m-2">
               <div class="card">
                   <div class="card-body">
-                      <div class="card-img-actions"> <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
+                      <div class="card-img-actions"> <img src={filo.img} class="card-img "  height="350" alt=""> </div>
                   </div>
                   <div class="card-body bg-light text-center">
                       <div class="mb-2">
