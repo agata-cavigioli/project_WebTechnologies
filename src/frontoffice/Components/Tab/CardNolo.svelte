@@ -16,7 +16,7 @@ onMount(async () => {
 async function getFilNameById(){
     let searchurl = "http://site202123.tw.cs.unibo.it/products?id=" + noleggio.product_id ;
     let data = await jQuery.get(searchurl);
-    FiloName = data[0].name;
+    FiloName = data[0] && data[0].name;
     console.log(FiloName);
     return true;
 }
@@ -43,11 +43,6 @@ function calcolofinale(noleggio){
 
 	return ((diffDays*noleggio.nolo_data.daily_cost)-((diffDays*noleggio.nolo_data.daily_cost*noleggio.nolo_data.discount)/100)+noleggio.nolo_data.other_fees);
 }
-
-function downloadBill(){
-
-}
-
 async function deleteNolo(){
 	let myurl = "http://site202123.tw.cs.unibo.it/nolos?id=" + noleggio.id;
   await jQuery.ajax({
@@ -153,6 +148,24 @@ async function canModify(){
 
   }
 }
+
+
+function downloadBill(){
+          let invoiceid = 'fattura'+ noleggio.id;
+          const invoice = document.getElementById(invoiceid);
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 1,
+                filename: 'fattura.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+
+}
+
 </script>
 
 <div id="cardnolo{noleggio.id}" class="card flex-row row mt-2">
@@ -160,7 +173,7 @@ async function canModify(){
         <div class="card-img-actions"> <img src={image} class="card-img img-fluid" width="96" height="350" alt=""> </div>
     </div>
 
-    <div class="col-lg-6 m-2">
+    <div id="fattura{noleggio.id}" class="col-lg-6 m-2">
 
         <div class="mb-2">
             <h6 class="font-weight-semibold mb-2">
@@ -200,7 +213,7 @@ async function canModify(){
             </div>
 
             <div class="col">
-              <p id="nolofattura" type='button' class='row-lg mt-4 btn btn-outline-warning waves-effect' on:click={deleteNolo}>Elimina</p>
+              <p id="nolodelete" type='button' class='row-lg mt-4 btn btn-outline-warning waves-effect' on:click={deleteNolo}>Elimina</p>
             </div>
           </div>
         </div>
@@ -208,7 +221,7 @@ async function canModify(){
     {:else if ((time=="past"))}
         <div class="col-lg-2 container">
         <div class="container text-center">
-          <p id="nolofattura" type='button' class='row-lg mt-4 btn btn-outline-warning waves-effect' on:click={downloadBill}>Scarica fattura</p>
+          <button class="row-lg mt-4 btn btn-outline-warning waves-effect" id="download" on:click={downloadBill}> Scarica fattura</button>
         </div>
         </div>
     {/if}
