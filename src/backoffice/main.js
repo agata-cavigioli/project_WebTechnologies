@@ -69,10 +69,12 @@ function calculateTotal(nolo){
 
 async function checkAvailability(product_id, from, to){
 	
-	var prod_nolos = await $.get(`http://site202123.tw.cs.unibo.it/nolos?product_id="${product_id}"`);
+	var prod_nolos = await $.get(`http://site202123.tw.cs.unibo.it/nolos?product_id=${product_id}`);
 
 	var date_from = new Date(from);
 	var date_to = new Date(to);
+
+	console.log(prod_nolos);
 
 	for(n in prod_nolos){
 		let nol = prod_nolos[n];
@@ -80,9 +82,16 @@ async function checkAvailability(product_id, from, to){
 		let sdate = new Date(nol.date_from);
 		let edate = new Date(nol.date_to);
 
-		if((date_from > sdate && date_from < edate) ||
-			(date_to > sdate && date_to < edate))
+		if((date_from >= sdate && date_from <= edate) ||
+			(date_to >= sdate && date_to <= edate)){
+			console.log('bingo');
 			return false;
+		}
+		if((sdate > date_from && sdate < date_to) ||
+			(edate> date_from && edate < date_to)){
+			console.log('bingo');
+			return false;
+		}
 	}
 
 	return true;
@@ -315,6 +324,24 @@ async function updateNolo(){
 
 	obj.dep_id = logged_id;
 
+	var days = calculateDays(values.date_from, values.date_to);
+	if(days <= 0){
+		$('#nolo_card_modify_invalid_dates').css('display', '');
+		return;
+	} else $('#nolo_card_modify_invalid_dates').css('display', 'none');
+
+
+	var isAv = await checkAvailability(values.product_id, values.date_from, values.date_to);
+
+	console.log(isAv);
+	if(!isAv){
+		$('#nolo_card_modify_unavailable').css('display', '');
+		return;
+	}
+	else {
+		$('#nolo_card_modify_unavailable').css('display', 'none');
+	}
+
 	var update = {$set : obj};
 
 	await $.post(`http://site202123.tw.cs.unibo.it/update/nolos?id=${p_id}`, update);
@@ -369,7 +396,10 @@ async function saveNewNolo(){
 		return;
 	} else $('#nolo_card_insert_invalid_dates').css('display', 'none');
 
-	if(!await checkAvailability(values.product_id, values.date_from, values.date_to)){
+	var isAv = await checkAvailability(values.product_id, values.date_from, values.date_to);
+
+	console.log(isAv);
+	if(!isAv){
 		$('#nolo_card_insert_unavailable').css('display', '');
 		return;
 	}
@@ -838,7 +868,6 @@ async function doNolo(){
 
 	if(logged){
 		if(!await checkAvailability(product.id, values.date_from, values.date_to)){
-			console.log('ops');
 			$('#nolo_form_unavailable').css('display', '');
 			return;
 		}
