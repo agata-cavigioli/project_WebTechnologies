@@ -14,12 +14,13 @@ function searchfunction(){
 
   var name = document.getElementById('NameSearch').value;
     if (name) {
-      tempurl+='name='+name;
+      tempurl+='name={"$regex":"'+name+'"}';
       count++;}
   var place = document.getElementById('PlaceSearch').value;
     if(place) {
       if (count>0){tempurl+='&'; count++;}
-      tempurl+='death_p='+place;
+      //$or=[{"death_p":{"$regex":"Gre"}},{"birth_p":{"$regex":"Gre"}}]
+      tempurl+='$or=[{"death_p":{"$regex":"'+place+'"}},{"birth_p":{"$regex":"'+place+'"}}]';
       count++;
     }
 
@@ -42,7 +43,7 @@ function searchfunction(){
 
         //birth={"$gt":"1400"}&death={"$lt":"1900"}
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='birth={"$gt":"'+livedfrom+'"}&death={"$lt":"'+livedto+'"}';
+        tempurl+='birth={"$gt":'+livedfrom+'}&death={"$lt":'+livedto+'}';
         //$or=[{birth={"$gt":"'+livedfrom+'"}&death={"$lt":"'+livedto+'"}},{"surname":{"$regex":"${c_name}"}}]
         count++;
 
@@ -50,56 +51,56 @@ function searchfunction(){
       var costfrom = document.getElementById('costfrom').value;
       if(costfrom && !isNaN(costfrom)) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='cost={"$gt":"'+costfrom+'"}';
+        tempurl+='nolo_data.cost={"$gt":'+costfrom+'}';
         count++;
       }
 
       var costto = document.getElementById('costto').value;
       if(costto && !isNaN(costto)) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='cost={"$lt":"'+costto+'"}';
+        tempurl+='nolo_data.cost={"$lt":'+costto+'}';
         count++;
       }
 
       var birthplace = document.getElementById('birthplace').value;
       if(birthplace) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='birth_p='+birthplace;
+        tempurl+='birth_p={"$regex":"'+birthplace+'"}';
         count++;
       }
 
       var deathplace = document.getElementById('deathplace').value;
       if(deathplace) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='death_p='+deathplace;
+        tempurl+='death_p={"$regex":"'+deathplace+'"}';
         count++;
       }
 
       var inputtematiche = document.getElementById('inputtematiche').value;
       if(inputtematiche) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='subjects='+inputtematiche;
+        tempurl+='subjects={"$regex":"'+inputtematiche+'"}';
         count++;
       }
 
       var datefrom = document.getElementById('datefrom').value;
       if(datefrom) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='available_from={"$gt":"'+datefrom+'"}';
+        tempurl+='nolo_data.available_from={"$gt":'+datefrom+'}';
         count++;
       }
 
       var dateto = document.getElementById('dateto').value;
       if(dateto) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='available_to={"$lt":"'+dateto+'"}';
+        tempurl+='nolo_data.available_to={"$lt":'+dateto+'}';
         count++;
       }
 
       if(document.getElementById("discoutCheck").checked == true)
       {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='discount={"$gt":"0"}';
+        tempurl+='nolo_data.discount={"$gt":0}';
         count++;
       }
 
@@ -127,17 +128,17 @@ function searchphilosophersfun(tempurl, count){
 <div class="product-search">
     <div class="search-element" style='border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;'>
-      <label for="NameSearch" class="search-label" >Who are you looking for?</label>
-      <input id = "NameSearch" class="search-input" type="text" autocomplete="on" placeholder="Philosopher's name" name="query" value="">
+      <label for="NameSearch" class="search-label" >Chi stai cercando?</label>
+      <input id = "NameSearch" class="search-input" type="text" autocomplete="on" placeholder="Nome del filosofo" name="query" value="">
     </div>
     <div class="search-element">
-      <label for="PlaceSearch" class="search-label" >Where are you looking?</label>
-      <input id = "PlaceSearch" class="search-input" type="text" placeholder="State" autocomplete="on" name="location">
+      <label for="PlaceSearch" class="search-label" >Dove stai cercando?</label>
+      <input id = "PlaceSearch" class="search-input" type="text" placeholder="Luogo" autocomplete="on" name="location">
     </div>
     <div class="text-center">
 
     <Link class="searchlink search-button" id="principalsearch" on:click={searchfunction} to="/home">
-        Search
+        Cerca
           </Link>
 
 
