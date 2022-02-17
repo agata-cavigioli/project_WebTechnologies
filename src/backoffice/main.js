@@ -180,13 +180,13 @@ async function fillTable(list, type){
 	if (list.length == 0){
 		if(type == 'inventory')
 			$('#products').css('display', 'none')
-				.before('<h2 class="p-3 text-center no-results-message">Nessun risultato</h2>');
+				.before('<h2 class="p-3 tabindex=0 text-center no-results-message">Nessun risultato</h2>');
 		else if(type == 'clients')
 			$('#people').css('display', 'none')
-				.before('<h2 class="p-3 text-center no-results-message">Nessun risultato</h2>');
+				.before('<h2 class="p-3 tabindex=0 text-center no-results-message">Nessun risultato</h2>');
 		else if(type == 'nolos') {
 			$('#nolo').css('display', 'none')
-				.before('<h2 class="p-3 text-center no-results-message">Nessun risultato</h2>');
+				.before('<h2 class="p-3 tabindex=0 text-center no-results-message">Nessun risultato</h2>');
 		}
 	}
 }
@@ -312,6 +312,8 @@ async function updateNolo(){
 			obj.nolo_data[v] = values[v];
 		} else obj[v] = values[v];
 	}
+
+	obj.dep_id = logged_id;
 
 	var update = {$set : obj};
 
@@ -538,12 +540,15 @@ async function showProduct(prod_no){
 	$('#product_card_name').text(product.name);
 	$('#product_card_id').text(prod_no);
 	$('#product_card_age').text(`
-		${product.birth}, ${product.birth_p} - 
-		${product.death}, ${product.death_p}
+		${Math.abs(product.birth)} ${product.birth < 0 ? 'a.C.' : ''}, ${product.birth_p} - 
+		${Math.abs(product.death)} ${product.death < 0 ? 'a.C.' : ''}, ${product.death_p}
 	`);
 	$('#product_card_subject').text(product.subjects);
 
 	$('#product_card_price').text(product.nolo_data.cost);
+
+	$('#product_card_image').attr('src', product.img ? product.img : '');
+	$('#product_card_image').attr('alt', product.name);
 
 	if(product.nolo_data.available_from == "" &&
 		product.nolo_data.available_from == ""){
@@ -862,11 +867,11 @@ function doLogin(){
 
 async function checkMailAndPwd(mail, pwd){
 	var user = await $.get(`http://site202123.tw.cs.unibo.it/staff?email=${mail}`);
-	user = user[0];
+	user = await user[0];
 
 	if (await user.pwd == pwd){
-		logged_user = user;
-		logged_id = user.id;
+		logged_user = await user;
+		logged_id = await user.id;
 		return true;
 	}
 	return false;
@@ -899,8 +904,26 @@ async function checkCredentials(){
 		$('#incorrect_email_message').css('display', 'none');
 		$('#the_office').toggle();
 		$('#login_window').toggle();
-		$('#clients_tab').toggle();
-		$('#nolos_tab').toggle();
+
+
+		$('#the_nav').append(`
+			<li class="nav-item">
+              <a id="nolos_tab"
+                 class="nav-link top-tabs"
+                 onclick="updateTab('nolos')"
+                 style="background: #eeeeee;"
+                 href="#">Noleggi</a>
+            </li>
+            <li class="nav-item">
+              <a id="clients_tab"
+                 class="nav-link top-tabs"
+                 onclick="updateTab('clients')"
+                 style="background: #eeeeee;"
+                 href="#">Clienti</a>
+            </li>
+		`);
+
+
 		$('.product_card_options').toggle();
 		$('#header_buttons').toggle();
 		$('#product_insert_button').toggle();

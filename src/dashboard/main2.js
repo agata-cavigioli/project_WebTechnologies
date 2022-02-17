@@ -374,7 +374,7 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
             stats: Array
           },
           template: `
-    <div class="p-2 p-lg-5 pt-3">
+    <div class="p-2 p-lg-5 pt-lg-3">
       <h2>{{name}}</h2>
       <div class="row" style="overflow: auto;">
         <div class="col-12 col-lg-4" v-for="s in this.stats">
