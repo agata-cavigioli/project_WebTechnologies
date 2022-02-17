@@ -1,6 +1,6 @@
 .mybooking .bg{
   position: fixed !important;
-top: 5em !important;
+top: 4vh !important;
 z-index: 1000;
 width: 60%;
 left: 20%;

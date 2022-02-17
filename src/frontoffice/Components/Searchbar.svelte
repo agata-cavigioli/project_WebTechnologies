@@ -14,7 +14,7 @@ function searchfunction(){
 
   var name = document.getElementById('NameSearch').value;
     if (name) {
-      tempurl+='birth='+name;
+      tempurl+='name='+name;
       count++;}
   var place = document.getElementById('PlaceSearch').value;
     if(place) {

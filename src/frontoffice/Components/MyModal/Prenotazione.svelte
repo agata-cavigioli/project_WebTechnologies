@@ -14,12 +14,7 @@
   export const message = 'Hi';
 
   let nolotime = "present";
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  var yyyy = today.getFullYear();
 
-  today = mm + '/' + dd + '/' + yyyy;
 
 	loggedIn.subscribe(value => {
 		islogged = value;
@@ -45,6 +40,8 @@
 
 function preventivo(){
   //remove red stars
+  document.getElementById("inserimentodate").innerHTML = "Inserisci la date di noleggio";
+
   const stars = document.querySelectorAll('.redstar');
     stars.forEach(redstar => {
     redstar.remove();
@@ -55,13 +52,30 @@ function preventivo(){
     let discount = filo.nolo_data.discount;
     let datefrom = document.getElementById('datefromnolo').value;
     let dateto = document.getElementById('datetonolo').value;
-    if(datefrom && dateto && datefrom<=dateto && datefrom>=today) {
+    let sendprev = true;
+    if(datefrom && dateto) {
       const date1 = new Date(datefrom);
       const date2 = new Date(dateto);
-      const diffTime = Math.abs(date2 - date1);
+      const diffTime = date2 - date1;
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
-
-      document.getElementById("preventivo").innerHTML="";
+      const today = new Date();
+      const diffTimetoday = today - date1;
+      const diffDaystoday = Math.ceil(diffTimetoday / (1000 * 60 * 60 * 24)) - 1;
+      console.log( "diffdays" + diffDays);
+      console.log(diffDaystoday);
+      if (diffDaystoday>0) {
+        document.getElementById("inserimentodate").innerHTML+= "<br><div class='text-danger'>Inserire una data di inizio successiva ad oggi</div>";
+        redstar('dadate');
+        redstar('todate');
+        sendprev = false;
+      }
+      else if (diffDays<1){
+        document.getElementById("inserimentodate").innerHTML+= "<br><div class='text-danger'>Modificare la data di fine noleggio</div>";
+        redstar('dadate');
+        redstar('todate');
+        sendprev = false;
+      }
+      if(sendprev){document.getElementById("preventivo").innerHTML="";
       const node = document.createElement("h5");
 
       const totale = document.createElement("div");
@@ -85,10 +99,12 @@ function preventivo(){
       finale.classList.add("font-weight-bold");
       finale.classList.add( "text-danger");
 
-      document.getElementById("preventivo").appendChild(node);
+      document.getElementById("preventivo").appendChild(node);}
+
 
     }
     else {
+      document.getElementById("inserimentodate").innerHTML+= "<br><div class='text-danger'>Inserire le date</div>";
       redstar('dadate');
       redstar('todate');
       document.getElementById("preventivo").innerHTML="";
@@ -108,7 +124,31 @@ function redstar(id){
   document.getElementById(id).appendChild(redstar);
 }
 
+async function checkAvailability(product_id, from, to){
+     let url = "http://site202123.tw.cs.unibo.it/nolos?product_id=" + product_id;
+     console.log(url);
+     var prod_nolos = await jQuery.get(url);
+     console.log(prod_nolos);
+     var date_from = new Date(from);
+     var date_to = new Date(to);
+
+     for(n in prod_nolos){
+         let nol = prod_nolos[n];
+
+         let sdate = new Date(nol.date_from);
+         let edate = new Date(nol.date_to);
+
+         if((date_from > sdate && date_from < edate) ||
+             (date_to > sdate && date_to < edate))
+             console.log('non disponibile');
+              return false;
+     }
+     console.log("checked");
+     return true;
+}
+
 function sendnolo(){
+  document.getElementById("inserimentodate").innerHTML = "Inserisci la date di noleggio";
   const stars = document.querySelectorAll('.redstar');
     stars.forEach(redstar => {
     redstar.remove();
@@ -117,17 +157,44 @@ function sendnolo(){
     var bookingArray = [];
   let datefrom = document.getElementById('datefromnolo').value;
   let dateto = document.getElementById('datetonolo').value;
-  if(datefrom && dateto && datefrom<=dateto && datefrom>=today) {
+
+  if(datefrom && dateto) {
     const date1 = new Date(datefrom);
     const date2 = new Date(dateto);
-    const diffTime = Math.abs(date2 - date1);
+    const diffTime = date2 - date1;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
-
+    const today = new Date();
+    const diffTimetoday = today - date1;
+    const diffDaystoday = Math.ceil(diffTimetoday / (1000 * 60 * 60 * 24)) - 1;
+    console.log(diffDays);
+    console.log(diffDaystoday);
+    if (diffDaystoday>0) {
+      document.getElementById("inserimentodate").innerHTML+= "<br><div class='text-danger'>Inserire una data di inizio successiva ad oggi</div>";
+      redstar('dadate');
+      redstar('todate');
+      sendcheck = false;
+    }
+    else if (diffDays<1){
+      document.getElementById("inserimentodate").innerHTML+= "<br><div class='text-danger'>Modificare la data di fine noleggio</div>";
+      redstar('dadate');
+      redstar('todate');
+      sendcheck = false;
+    }
+    else if (!checkAvailability(filo.id, datefrom, dateto)){
+      document.getElementById("inserimentodate").innerHTML+= "<br><div class='text-danger'>Il filosofo non &eacute; disponibile in queste date</div>";
+      redstar('dadate');
+      redstar('todate');
+      sendcheck = false;
+    }
+    else{
+    document.getElementById("inserimentodate").innerHTML = "Inserisci la date di noleggio";
     booking.date_from = datefrom;
     booking.date_to = dateto;
-    booking.diffdate = diffDays;
+    booking.diffdate = diffDays;}
+
   }
   else{
+    document.getElementById("inserimentodate").innerHTML+= "<br><div class='text-danger'>Inserire le date</div>";
     redstar('dadate');
     redstar('todate');
     sendcheck = false;
@@ -152,7 +219,12 @@ function sendnolo(){
     booking.product_id = filo.id;
     booking.client_id = user;
     booking.dep_id = -1;
-    booking.status = (datefrom==today) ? "Iniziato" : "Prenotato";
+    const date1 = new Date(datefrom);
+    const today = new Date();
+    const diffTimetoday = today - date1;
+    const diffDaystoday = Math.ceil(diffTimetoday / (1000 * 60 * 60 * 24)) - 1;
+    booking.status = (diffDaystoday==0) ? "Iniziato" : "Prenotato";
+    console.log(booking.status);
     booking.nolo_data.discount = filo.nolo_data.discount;
     booking.nolo_data.daily_cost = filo.nolo_data.cost;
     booking.nolo_data.other_fees = 0;
@@ -181,7 +253,7 @@ if (booking){
   confermato = false;
 
   let element;
-  if (element=document.getElementById('home')&& !document.getElementById('prenot-modal-content')){
+  if (element=document.getElementById('home')){
   document.getElementById('home').classList.remove("overflow-hidden");
   document.getElementById('home').classList.add("overflow-auto");
   }
@@ -232,7 +304,7 @@ if (booking){
         <h4 class="modal-title white-text w-100 font-weight-bold py-2">Noleggia {filo.name}</h4>
         </div>
         {#if !confermato}
-        <h5 class="font-weight-bold text-secondary mt-4">
+        <h5 id="inserimentodate" class="font-weight-bold text-secondary mt-4">
         Inserisci la date di noleggio
         </h5>
         <div class=" input-group mb-2 mr-sm-2">

@@ -4,19 +4,26 @@ import jQuery from 'jquery';
 
 export let time;
 export let noleggio;
+
 let image = "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png";
 let FiloName = "Gino";
+let modifyconfirm = "modify";
 
 onMount(async () => {
     await getFilNameById();
 })
 
 async function getFilNameById(){
-    let searchurl = "http://site202123.tw.cs.unibo.it/products"+'?id=' + noleggio.product_id ;
+    let searchurl = "http://site202123.tw.cs.unibo.it/products?id=" + noleggio.product_id ;
     let data = await jQuery.get(searchurl);
     FiloName = data[0].name;
     console.log(FiloName);
     return true;
+}
+
+function modifyconfirmNolo(){
+  if (modifyconfirm == "modify") modify();
+  else confirm();
 }
 
 function calcolocosto(noleggio){
@@ -47,19 +54,104 @@ async function deleteNolo(){
          url: myurl ,
          type: 'DELETE'
      });
-	document.getElementById('cardnolo{noleggio.id}').innerHTML=("Noleggio eliminato");
+  let divmio = 'cardnolo'+noleggio.id;
+	document.getElementById(divmio).innerHTML=("Noleggio eliminato");
 }
 
-function modifyNolo(){
+function modify(){
   let divmio = 'dateNolo' + noleggio.id;
   console.log(divmio);
     document.getElementById(divmio).innerHTML = "Periodo di noleggio: <div class='input-group mb-2 mr-sm-2'> \
       <div class='input-group-prepend'><label for='datefrom' class='input-group-text customcol-smor'>Da:</label> \
     </div>  <input class='input-group date form-control' type='date' id='datefrom' value='" + noleggio.date_from + "'> \
     <label for='dateto' class='input-group-text rounded-0 border-left-0 border-right-0 customcol-smor'>a:</label>  \
-        <input type='date' class='input-group date form-control'  id='dateto' value='"+ noleggio.date_to + "'> </div>";
+        <input type='date' class='input-group date form-control'  id='dateto' value='"+ noleggio.date_to + "'> </div> \
+        <div id='aggiunte"+noleggio.id+"' class='text-default text-danger'> </div>";
 
   //cambia pulsante conferma
+  modifyconfirm = "confirm";
+  document.getElementById('modifyconfirm').innerHTML="Conferma";
+  //document.getElementById('modifyconfirm').removeEventListener("click", modify);
+  //document.getElementById('modifyconfirm').addEventListener("click", confirm);
+  document.getElementById('modifyconfirm').classList.remove("btn-outline-info");
+  document.getElementById('modifyconfirm').classList.add("btn-outline-warning");
+}
+
+function confirm(){
+  let aggiunte = "aggiunte" + noleggio.id;
+  console.log(aggiunte);
+  document.getElementById(aggiunte).innerHTML = "";
+  if(canModify()){
+      noleggio.date_from = document.getElementById('datefrom').value;
+      noleggio.date_to = document.getElementById('dateto').value;
+
+      let divmio = 'dateNolo' + noleggio.id;
+      console.log("confermo la modifica");
+      document.getElementById(divmio).innerHTML = "Periodo di noleggio: " + noleggio.date_from + " / " + noleggio.date_to;
+
+      console.log("cambio il bottone");
+    	modifyconfirm = "modify";
+    	document.getElementById('modifyconfirm').innerHTML="Modifica";
+    	//document.getElementById('modifyconfirm').removeEventListener("click", confirm);
+    	//document.getElementById('modifyconfirm').addEventListener("click", modify);
+    	document.getElementById('modifyconfirm').classList.add("btn-outline-info");
+    	document.getElementById('modifyconfirm').classList.remove("btn-outline-warning");}
+
+}
+
+async function canModify(){
+  let modDateFrom = document.getElementById('datefrom').value;
+  let modDateTo = document.getElementById('dateto').value;
+  let aggiunte = 'aggiunte' + noleggio.id;
+  let sendMod
+  if(modDateFrom && modDateTo) {
+    const date1 = new Date(modDateFrom);
+    const date2 = new Date(modDateTo);
+    const diffTime = date2 - date1;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+    const today = new Date();
+    const diffTimetoday = today - date1;
+    const diffDaystoday = Math.ceil(diffTimetoday / (1000 * 60 * 60 * 24)) - 1;
+    console.log( "diffdays" + diffDays);
+    console.log(diffDaystoday);
+    if (diffDaystoday>0) {
+      document.getElementById(aggiunte).innerHTML+= "Inserire una data di inizio successiva ad oggi";
+      return false;
+    }
+    else if (diffDays<1){
+      document.getElementById(aggiunte).innerHTML+= "Modificare la data di fine noleggio";
+      return false;
+    }
+    console.log("post");
+    //////// POST
+
+    let modify = {};
+    modify.diffdate = diffDays;
+    modify.date_from =  modDateFrom;
+    modify.date_to =  modDateTo;
+    modify.payment = noleggio.payment;
+    modify.product_id = noleggio.product_id;
+    modify.client_id = noleggio.client_id;
+    modify.dep_id = noleggio.dep_id;
+    modify.status= noleggio.status;
+    modify.nolo_data = noleggio.nolo_data;
+    if (modify){
+  	let url = "http://site202123.tw.cs.unibo.it/update/nolos?id="+noleggio.id;
+  	console.log(url);
+  	console.log(modify);
+
+  	var update = {$set : modify};
+    console.log(update);
+  	await jQuery.post(url,update);
+    return true;
+  }
+    ////////GET
+  }
+  else{
+    document.getElementById(aggiunte).innerHTML+= "Inserire le date";
+    return false;
+
+  }
 }
 </script>
 
@@ -77,7 +169,9 @@ function modifyNolo(){
               </div>
             </h6>
             <div id="dateNolo{noleggio.id}" class="text-muted" data-abc="true">
-            Periodo di noleggio: {noleggio.date_from} - {noleggio.date_to}
+            Periodo di noleggio: {noleggio.date_from} / {noleggio.date_to}
+              <div id="aggiunte{noleggio.id}" class='text-default text-danger'>
+              </div>
             </div>
             <div class="text-my" data-abc="true">
             Stato del noleggio: {noleggio.status}
@@ -102,7 +196,7 @@ function modifyNolo(){
       <div class="container">
           <div class="row">
             <div class="col">
-              <p id="nolofattura" type='button' class='mt-4 btn btn-outline-info waves-effect' on:click={modifyNolo}>Modifica</p>
+              <p id="modifyconfirm" type='button' class='mt-4 btn btn-outline-info waves-effect' on:click={modifyconfirmNolo}>Modifica</p>
             </div>
 
             <div class="col">
