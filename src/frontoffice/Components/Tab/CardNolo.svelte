@@ -173,7 +173,7 @@ function downloadBill(){
 </script>
 
 <div id="cardnolo{noleggio.id}" class="card flex-row row mt-2">
-    <div class="col-3 m-2">
+    <div class="col-lg-3 m-2">
         <div class="card-img-actions"> <img src={FilImg} class="card-img "  height="350" alt="">  </div>
     </div>
 

@@ -289,6 +289,10 @@ if (booking){
                       {filo.death}
                       {filo.death_p}
                       </div>
+                      <div class="text-info mb-3">
+                      Condizione del filosofo:
+                      {filo.nolo_data.condition}
+                      </div>
                       <h3 class="mb-0 font-weight-semibold">&euro; {filo.nolo_data.cost} al giorno</h3>
                       {#if (filo.nolo_data.discount>0)}
                       <h3 class="mb-0 font-weight-semibold text-danger">Sconto:  {filo.nolo_data.discount}&#37;</h3>
