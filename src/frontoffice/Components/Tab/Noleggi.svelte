@@ -29,7 +29,7 @@ let noleggi = "";
 
 function getPersonalNolos(){
   let searchurl = "http://site202123.tw.cs.unibo.it/nolos";
-  searchurl += '?client_id="' + id + '"';
+  searchurl += '?client_id=' + id + '';
   console.log(searchurl);
 
   jQuery.get(searchurl, async function(data){

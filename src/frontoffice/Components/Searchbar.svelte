@@ -43,6 +43,7 @@ function searchfunction(){
         //birth={"$gt":"1400"}&death={"$lt":"1900"}
         if (count>0){tempurl+='&'; count++;}
         tempurl+='birth={"$gt":"'+livedfrom+'"}&death={"$lt":"'+livedto+'"}';
+        //$or=[{birth={"$gt":"'+livedfrom+'"}&death={"$lt":"'+livedto+'"}},{"surname":{"$regex":"${c_name}"}}]
         count++;
 
       }
