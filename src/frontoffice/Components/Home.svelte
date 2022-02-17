@@ -65,6 +65,10 @@ afterUpdate(() => {
                     {filosofo.death}
                     {filosofo.death_p}
                     </div>
+										<div class="text-info mb-3">
+                    Condizione del filosofo:
+                    {filosofo.nolo_data.condition}
+                    </div>
                     <h3 class="mb-0 font-weight-semibold">&euro; {filosofo.nolo_data.cost} al giorno</h3>
                     {#if (filosofo.nolo_data.discount>0)}
                     <h3 class="mb-0 font-weight-semibold text-danger">Sconto:  {filosofo.nolo_data.discount}&#37;</h3>
