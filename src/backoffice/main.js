@@ -1,6 +1,6 @@
 //pagina prodotto modifica
 //nuovo prodotto
-// $.post('http://site202123.tw.cs.unibo.it/products', products[0]);
+// $.post('//site202123.tw.cs.unibo.it/products', products[0]);
 
 var logged_id = 0;
 var logged = false;
@@ -8,48 +8,6 @@ var logged_user;
 
 var products;
 var clients;
-
-var prods = [
-	{"name": "Aaron David Gordon", "birth": 1856, "birth_p": "Ukraine", "death": 1922, "death_p": "Palestine", "subjects": "Agriculture, Zionism", "nolo_data": 
-		{"cost": 134, "available_from": "", "available_to": "", "discount": 0, "condition": "Entusiasta", "info": ""}}]; 
-
-var clt = [{"name":"agata","surname":"cavigioli","email":"agata.cav@gmail.com","pwd":"agata","phone":"333","address":"via via","nolo_data":{"info":""}},{"name":"maria","surname":"mari","email":"maria.maria@gmail.com","pwd":"maria","phone":"466","address":"via mari","nolo_data":{"info":""}},{"name":"Luca","surname":"Rossi","email":"luca.rossi@gmail.com","pwd":"luca","phone":"222","address":"via rossa","nolo_data":{"info":""}},{"name":"giulio","surname":"neri","email":"giulio.neri@gmail.com","pwd":"giulio","phone":"234","address":"via scura","nolo_data":{"info":""}},{"name":"lucia","surname":"verdi","email":"lucia.verdi@gmail.com","pwd":"lucia","phone":"224","address":"via verde","nolo_data":{"info":""}},{"name":"giulia","surname":"rini","email":"giulia.rini@gmail.it","pwd":"giulia","phone":"222","address":"via del cio","nolo_data":{"info":""}},{"name":"mia","surname":"mai","email":"miamai@gmail.com","pwd":"miamia","phone":"4567890","address":"piazza po","nolo_data":{"info":""}}];
-
-var nols = [{
-	"product_id" : 2,
-	"client_id" : 3,
-	"date_from" : "12/12/2021",
-	"date_to" : "1/1/2022",
-	"status" : "booked",
-	"dep_id" : 3,
-	"nolo_data" : {
-		"daily_cost" : 123,
-		"discount" : 0,
-		"other_fees" : 0,
-		"info" : ""
-	}
-}];
-
-async function populateProds(){
-	for(p in prods){
-		console.log(prods[p]);
-		await $.post('http://site202123.tw.cs.unibo.it/products', prods[p]);
-	}
-}
-
-async function populateNolos(){
-	for(n in nols){
-		console.log(nols[n]);
-		await $.post('http://site202123.tw.cs.unibo.it/nolos', nols[n]);
-	}
-}
-
-async function populateClients(){
-	for(c in clt){
-		console.log(clt[c]);
-		await $.post('http://site202123.tw.cs.unibo.it/clients', clt[c]);
-	}
-}
 
 function calculateDays(date_from, date_to){
 	const date1 = new Date(date_from);
@@ -67,17 +25,16 @@ function calculateTotal(nolo){
 	return Math.round(total*100)/100;
 }
 
-async function checkAvailability(product_id, from, to){
-	
-	var prod_nolos = await $.get(`http://site202123.tw.cs.unibo.it/nolos?product_id=${product_id}`);
+async function checkAvailability(nolo_id, product_id, from, to){
+	var prod_nolos = await $.get(`//site202123.tw.cs.unibo.it/nolos?product_id=${product_id}`);
 
 	var date_from = new Date(from);
 	var date_to = new Date(to);
 
-	console.log(prod_nolos);
-
 	for(n in prod_nolos){
 		let nol = prod_nolos[n];
+
+		if(nol.id == nolo_id) continue;
 
 		let sdate = new Date(nol.date_from);
 		let edate = new Date(nol.date_to);
@@ -98,38 +55,19 @@ async function checkAvailability(product_id, from, to){
 }
 
 $(document).ready(async function() {
-
-	products = await getAllProducts();
+	products = await getAll('products');
 	fillTable(products, 'inventory');
-
 });
 
-async function getAllProducts(){
+async function getAll(type){
 	let tmp;
-	await $.get('http://site202123.tw.cs.unibo.it/products', function(data){
-		tmp = data;
-	});
-	return tmp;
-}
-
-async function getAllClients(){
-	let tmp;
-	await $.get('http://site202123.tw.cs.unibo.it/clients', function(data){
-		tmp = data;
-	});
-	return tmp;
-}
-
-async function getAllNolos(){
-	let tmp;
-	await $.get('http://site202123.tw.cs.unibo.it/nolos', function(data){
+	await $.get('//site202123.tw.cs.unibo.it/'+type , function(data){
 		tmp = data;
 	});
 	return tmp;
 }
 
 async function fillTable(list, type){
-
 	for(x in list){
 		let values = '';
 		let y = list[x];
@@ -141,15 +79,22 @@ async function fillTable(list, type){
 
 		for(i in keys){
 			name = keys[i];
+
 			if(name == "nolo_data" | name == "_id" | name == "id") continue;
+
 			if(name == "client_id"){
-				var client = await $.get(`http://site202123.tw.cs.unibo.it/clients?id=${y[name]}`);
+
+				var client = await $.get(`//site202123.tw.cs.unibo.it/clients?id=${y[name]}`);
 				client = client[0];
+
 				val = client ? `${client?.name} ${client?.surname}`: y[name];
 				values += `<td>${val}</td>`;
+
 			} else if (name == "product_id") {
-				var product = await $.get(`http://site202123.tw.cs.unibo.it/products?id=${y[name]}`);
+
+				var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${y[name]}`);
 				product = product[0];
+
 				val = product ? product.name : y[name];
 				values += `<td>${val}</td>`;
 			}
@@ -158,49 +103,36 @@ async function fillTable(list, type){
 			}
 		}
 
-		if(type == 'inventory')
-			$('#products')
-				.append(`<tr tabindex=0 onclick="showProduct(${y.id})">
-				${values}
-				<td><button class="btn" aria-label="Visualizza" onclick="showProduct(${y.id})">></button>
-				</tr>`);
-		else if(type == 'clients')
-			$('#people')
-				.append(`<tr tabindex=0 onclick="showClient(${y.id})">
-				${values}
-				<td><button class="btn" aria-label="Visualizza" onclick="showClient(${y.id})">></button>
-				</tr>`);
-		else if(type == 'nolos') {
-			if(y.status == "In ritardo")
-				$('#nolo')
-					.append(`<tr tabindex=0 class="problem" onclick="showNolo(${y.id})">
-					${values}
-					<td><button class="btn" aria-label="Visualizza" onclick="showNolo(${y.id})">></button>
-					</tr>`);
-			else
-				$('#nolo')
-					.append(`<tr tabindex=0 onclick="showNolo(${y.id})">
-					${values}
-					<td><button class="btn" aria-label="Visualizza" onclick="showNolo(${y.id})">></button>
-					</tr>`);
+		var html_elem;
+		var showFunction;
+
+		if(type == 'inventory'){
+			html_elem = $('#products');
+			showFunction = `showProduct(${y.id})`;
+		} else if(type == 'clients'){
+			html_elem = $('#clients');
+			showFunction = `showClient(${y.id})`;
+		} else if(type == 'nolos') {
+			html_elem = $('#nolos');
+			showFunction = `showNolo(${y.id})`;
 		}
+		html_elem.append(`<tr tabindex=0 onclick="${showFunction}">
+							${values}
+							<td>
+								<button class="btn" aria-label="Visualizza" onclick="${showFunction}">
+								>
+								</button>
+							</td>
+						</tr>`);
 	}
 
 	if (list.length == 0){
-		if(type == 'inventory')
-			$('#products').css('display', 'none')
-				.before('<h2 class="p-3 tabindex=0 text-center no-results-message">Nessun risultato</h2>');
-		else if(type == 'clients')
-			$('#people').css('display', 'none')
-				.before('<h2 class="p-3 tabindex=0 text-center no-results-message">Nessun risultato</h2>');
-		else if(type == 'nolos') {
-			$('#nolo').css('display', 'none')
-				.before('<h2 class="p-3 tabindex=0 text-center no-results-message">Nessun risultato</h2>');
-		}
+		html_elem.css('display', 'none')
+			.before('<h2 class="p-3 tabindex=0 text-center no-results-message">Nessun risultato</h2>');
 	}
 }
 
-function getSearchInputs(div){
+function getElemInputs(div){
 	var values = {};
 	$(div + ' :input').each(function() {
 		values[this.name] = $(this).val();
@@ -221,23 +153,22 @@ function resetSearchInputs(div){
 	updateTab(type);
 }
 
-function insertProduct(){
-	$('#product_card_insert :input').each(function() {
+function insertElem(div_prefix){
+	$(`#${div_prefix}_card_insert :input`).each(function() {
 		$(this).val('');
 	});
-	$('#product_card').css('display', 'none');	
-	$('#product_card_modify').css('display', 'none');	
-	$('#product_card_insert').css('display', '');	
+	$(`#${div_prefix}_card`).css('display', 'none');	
+	$(`#${div_prefix}_card_modify`).css('display', 'none');	
+	$(`#${div_prefix}_card_insert`).css('display', '');	
 }
 
-async function saveNewProduct(){
-	var values = {};
-	$('#product_card_insert :input').each(function() {
-		values[this.name] = $(this).val();
-	});
-
+function makeDbRecord(type, values){
+	var fields = [];
 	var obj = {nolo_data: {}};
-	var nolo_data_f = ["cost", "available_from", "available_to", "discount", "condition", "info"];
+
+	if(type == 'product') fields = ["cost", "available_from", "available_to", "discount", "condition", "info"];
+	else if(type == 'client') fields = ["info"];
+	else if(type == 'nolo') fields = ["daily_cost", "discount", "other_fees", "info"];
 
 	for(v in values){
 		if(nolo_data_f.includes(v)){
@@ -245,19 +176,155 @@ async function saveNewProduct(){
 		} else obj[v] = values[v];
 	}
 
-	await $.post("http://site202123.tw.cs.unibo.it/products", obj)
+	return obj;
+}
+
+function postElem(collection, obj){
+	await $.post(`//site202123.tw.cs.unibo.it/${collection}`, obj)
 		.done(function(res){
 			console.log(res);
 		});
-
-	$('#product_card').css('display', 'none');	
-	$('#product_card_modify').css('display', 'none');	
-	$('#product_card_insert').css('display', 'none');	
-
 }
 
+function hideCards(div_prefix){
+	$(`#${div_prefix}_card`).css('display', 'none');	
+	$(`#${div_prefix}_card_modify`).css('display', 'none');	
+	$(`#${div_prefix}_card_insert`).css('display', 'none');	
+}
+
+async function saveNewProduct(){
+	var values = getElemInputs('#product_card_insert');
+
+	var obj = makeDbRecord('product', values);
+
+	postElem('products', obj);
+	hideCards('product');
+}
+
+async function saveNewNolo(){
+	var values = getElemInputs('#nolo_card_insert');
+
+	var days = calculateDays(values.date_from, values.date_to);
+
+	if(days <= 0){
+		$('#nolo_card_insert_invalid_dates').css('display', '');
+		return;
+	} else $('#nolo_card_insert_invalid_dates').css('display', 'none');
+
+	var isAv = await checkAvailability(-1, values.product_id, values.date_from, values.date_to);
+
+	if(!isAv){
+		$('#nolo_card_insert_unavailable').css('display', '');
+		return;
+	} else {
+		$('#nolo_card_insert_unavailable').css('display', 'none');
+	} 
+
+	var obj = makeDbRecord('nolo', values);
+	obj.dep_id = logged_id;
+
+	postElem('nolos', obj);
+
+	hideCards('nolo');
+}
+
+async function saveNewClient(){
+	var values = getElemInputs('#client_card_insert');
+
+	var obj = makeDbRecord('client', values);
+	obj.pwd = obj.name + obj.surname;
+
+	postElem('clients', obj);
+
+	hideCards('client');
+}
+
+async function deleteElem(prefix, collection, tab){
+	var id = $(`#${prefix}_card_id`).text();
+
+	await $.ajax({
+		url: `//site202123.tw.cs.unibo.it/${collection}?id=${id}`,
+		type: 'DELETE'
+	});
+
+	$(`#${prefix}_card`).css('display', 'none');
+
+	updateTab(tab);
+}
+
+async function deleteProduct(){
+	deleteElem('product', 'products', 'inventory');
+}
+
+async function deleteNolo(){
+	deleteElem('nolo', 'nolos', 'nolos');
+}
+
+async function deleteClient(){
+	deleteElem('client', 'clients', 'clients');
+	hideHistory();
+}
+
+async function updateProduct(){
+	var p_id = $('#product_card_id').text();
+	var values = getElemInputs('#product_card_modify');
+
+	var obj = makeDbRecord('product', values);
+	var update = {$set : obj};
+
+	await $.post(`//site202123.tw.cs.unibo.it/update/products?id=${p_id}`, update);
+
+	updateTab('inventory');
+	$('#product_card_modify').css('display', 'none');
+}
+
+async function updateNolo(){
+	var n_id = $('#nolo_card_id').text();
+	var values = getElemInputs('#nolo_card_modify');
+
+	var days = calculateDays(values.date_from, values.date_to);
+	if(days <= 0){
+		$('#nolo_card_modify_invalid_dates').css('display', '');
+		return;
+	} else $('#nolo_card_modify_invalid_dates').css('display', 'none');
+
+
+	var isAv = await checkAvailability(n_id, values.product_id, values.date_from, values.date_to);
+	if(!isAv){
+		$('#nolo_card_modify_unavailable').css('display', '');
+		return;
+	} else {
+		$('#nolo_card_modify_unavailable').css('display', 'none');
+	}
+
+	var obj = makeDbRecord('nolo', values);
+	obj.dep_id = logged_id;
+
+	var update = {$set : obj};
+
+	await $.post(`//site202123.tw.cs.unibo.it/update/nolos?id=${n_id}`, update);
+
+	updateTab('nolos');
+	$('#nolo_card_modify').css('display', 'none');
+}
+
+async function updateClient(){
+	var c_id = $('#client_card_id').text();
+	var values = getElemInputs('#client_card_modify');
+
+	var obj = makeDbRecord('client', values);
+	var update = {$set : obj};
+
+	await $.post(`//site202123.tw.cs.unibo.it/update/clients?id=${c_id}`, update);
+
+	updateTab('clients');
+	$('#client_card_modify').css('display', 'none');
+}
+
+/*****************************************************************************************************/
+
 async function filterProducts(){
-	var values = getSearchInputs('#product_header');
+	var values = getElemInputs('#product_header');
 
 	var query = '?';
 	for(v in values){
@@ -268,182 +335,25 @@ async function filterProducts(){
 	}
 
 	var res =
-		await $.get('http://site202123.tw.cs.unibo.it/products'+query);
+		await $.get('//site202123.tw.cs.unibo.it/products'+query);
 
 	eraseTables();
 	fillTable(res, 'inventory');
 }
 
-async function deleteProduct(){
-	var p_id = $('#product_card_id').text();
-	await $.ajax({
-		url: `http://site202123.tw.cs.unibo.it/products?id=${p_id}`,
-		type: 'DELETE'
-	});
-	updateTab('inventory');
-	$('#product_card').css('display', 'none');
-}
-
-async function updateProduct(){
-	var p_id = $('#product_card_id').text();
-
-	var values = getSearchInputs('#product_card_modify');
-
-	var obj = {nolo_data: {}};
-	var nolo_data_f = ["cost", "available_from", "available_to", "discount", "condition", "info"];
-
-	for(v in values){
-		if(nolo_data_f.includes(v)){
-			obj.nolo_data[v] = values[v];
-		} else obj[v] = values[v];
-	}
-
-	var update = {$set : obj};
-
-	await $.post(`http://site202123.tw.cs.unibo.it/update/products?id=${p_id}`, update);
-
-	updateTab('inventory');
-	$('#product_card_modify').css('display', 'none');
-
-
-}
-
-async function updateNolo(){
-	var p_id = $('#nolo_card_id').text();
-
-	var values = getSearchInputs('#nolo_card_modify');
-
-	var obj = {nolo_data: {}};
-	var nolo_data_f = ["daily_cost", "discount", "other_fees", "info"];
-
-	for(v in values){
-		if(nolo_data_f.includes(v)){
-			obj.nolo_data[v] = values[v];
-		} else obj[v] = values[v];
-	}
-
-	obj.dep_id = logged_id;
-
-	var days = calculateDays(values.date_from, values.date_to);
-	if(days <= 0){
-		$('#nolo_card_modify_invalid_dates').css('display', '');
-		return;
-	} else $('#nolo_card_modify_invalid_dates').css('display', 'none');
-
-
-	var isAv = await checkAvailability(values.product_id, values.date_from, values.date_to);
-
-	console.log(isAv);
-	if(!isAv){
-		$('#nolo_card_modify_unavailable').css('display', '');
-		return;
-	}
-	else {
-		$('#nolo_card_modify_unavailable').css('display', 'none');
-	}
-
-	var update = {$set : obj};
-
-	await $.post(`http://site202123.tw.cs.unibo.it/update/nolos?id=${p_id}`, update);
-
-	updateTab('nolos');
-	$('#nolo_card_modify').css('display', 'none');
-
-}
-
-async function updateClient(){
-	var c_id = $('#client_card_id').text();
-
-	var values = getSearchInputs('#client_card_modify');
-
-	var obj = {nolo_data: {}};
-	var nolo_data_f = ["info"];
-
-	for(v in values){
-		if(nolo_data_f.includes(v)){
-			obj.nolo_data[v] = values[v];
-		} else obj[v] = values[v];
-	}
-
-	var update = {$set : obj};
-
-	await $.post(`http://site202123.tw.cs.unibo.it/update/clients?id=${c_id}`, update);
-
-	updateTab('clients');
-	$('#client_card_modify').css('display', 'none');
-
-}
-
-function insertNolo(){
-	$('#nolo_card_insert :input').each(function() {
-		$(this).val('');
-	});
-	$('#nolo_card').css('display', 'none');	
-	$('#nolo_card_modify').css('display', 'none');	
-	$('#nolo_card_insert').css('display', '');	
-}
-
-async function saveNewNolo(){
-	var values = {};
-	$('#nolo_card_insert :input').each(function() {
-		values[this.name] = $(this).val();
-	});
-
-
-	var days = calculateDays(values.date_from, values.date_to);
-	if(days <= 0){
-		$('#nolo_card_insert_invalid_dates').css('display', '');
-		return;
-	} else $('#nolo_card_insert_invalid_dates').css('display', 'none');
-
-	var isAv = await checkAvailability(values.product_id, values.date_from, values.date_to);
-
-	console.log(isAv);
-	if(!isAv){
-		$('#nolo_card_insert_unavailable').css('display', '');
-		return;
-	}
-	else {
-		$('#nolo_card_insert_unavailable').css('display', 'none');
-	} 
-
-
-	var obj = {nolo_data: {}};
-	var nolo_data_f = ["daily_cost", "discount", "other_fees", "info"];
-
-	for(v in values){
-		if(nolo_data_f.includes(v)){
-			obj.nolo_data[v] = values[v];
-		} else obj[v] = values[v];
-	}
-
-	obj.dep_id = logged_id;
-
-	await $.post("http://site202123.tw.cs.unibo.it/nolos", obj)
-		.done(function(res){
-			console.log(res);
-		});
-
-	$('#nolo_card').css('display', 'none');	
-	$('#nolo_card_modify').css('display', 'none');	
-	$('#nolo_card_insert').css('display', 'none');	
-
-}
-
 async function filterNolos(){
-	var values = getSearchInputs('#nolo_header');
+	var values = getElemInputs('#nolo_header');
 
 	var query = '?';
 
 	if(values.client != ''){
 		let c_name = values.client;
 		var res = await
-			$.get(`http://site202123.tw.cs.unibo.it/clients?$or=[{"name":{"$regex":"${c_name}"}},{"surname":{"$regex":"${c_name}"}}]`);
+			$.get(`//site202123.tw.cs.unibo.it/clients?$or=[{"name":{"$regex":"${c_name}"}},{"surname":{"$regex":"${c_name}"}}]`);
 
 		var cquery = 'client_id={"$in":[';
-		//client_id={"$in":[15,16,20]}
 		for(r in res){
-			cquery +=  `"${res[r].id}"`;
+			cquery +=  `${res[r].id}`;
 			if(r != res.length-1) cquery += ',';
 		}
 		cquery += ']}&'
@@ -458,77 +368,26 @@ async function filterNolos(){
 	if(values.product != ''){
 		let p_name = values.product;
 		var res = await
-			$.get(`http://site202123.tw.cs.unibo.it/products?name={"$regex":"${p_name}"}`);
+			$.get(`//site202123.tw.cs.unibo.it/products?name={"$regex":"${p_name}"}`);
 
 		var pquery = 'product_id={"$in":[';
-		//product_id={"$in":[15,16,20]}
 		for(r in res){
-			pquery +=  `"${res[r].id}"`;
+			pquery +=  `${res[r].id}`;
 			if(r != res.length-1) pquery += ',';
 		}
 		pquery += ']}&'
 		query += pquery;
 	}
 
-	console.log(values);
-	console.log(query);
-
 	var res =
-		await $.get('http://site202123.tw.cs.unibo.it/nolos'+query);
+		await $.get('//site202123.tw.cs.unibo.it/nolos'+query);
 
 	eraseTables();
 	fillTable(res, 'nolos');
 }
 
-async function deleteNolo(){
-	var n_id = $('#nolo_card_id').text();
-	await $.ajax({
-		url: `http://site202123.tw.cs.unibo.it/nolos?id=${n_id}`,
-		type: 'DELETE'
-	});
-	updateTab('nolos');
-	$('#nolo_card').css('display', 'none');
-}
-
-function insertClient(){
-	$('#client_card_insert :input').each(function() {
-		$(this).val('');
-	});
-	$('#client_card').css('display', 'none');	
-	$('#client_card_modify').css('display', 'none');	
-	$('#client_card_insert').css('display', '');	
-}
-
-async function saveNewClient(){
-	var values = {};
-	$('#client_card_insert :input').each(function() {
-		values[this.name] = $(this).val();
-	});
-
-	var obj = {nolo_data: {}};
-	var client_data_f = ["info"];
-
-	for(v in values){
-		if(client_data_f.includes(v)){
-			obj.nolo_data[v] = values[v];
-		} else obj[v] = values[v];
-	}
-
-	obj.pwd = obj.name + obj.surname;
-
-	await $.post("http://site202123.tw.cs.unibo.it/clients", obj)
-		.done(function(res){
-			console.log(res);
-		});
-
-	$('#client_card').css('display', 'none');	
-	$('#client_card_modify').css('display', 'none');	
-	$('#client_card_insert').css('display', 'none');	
-
-}
-
 async function filterClients(){
-	var values = getSearchInputs('#clients_header');
+	var values = getElemInputs('#clients_header');
 
 	var query = '?';
 	for(v in values){
@@ -539,21 +398,10 @@ async function filterClients(){
 	}
 
 	var res =
-		await $.get('http://site202123.tw.cs.unibo.it/clients'+query);
+		await $.get('//site202123.tw.cs.unibo.it/clients'+query);
 
 	eraseTables();
 	fillTable(res, 'clients');
-}
-
-async function deleteClient(){
-	var c_id = $('#client_card_id').text();
-	await $.ajax({
-		url: `http://site202123.tw.cs.unibo.it/clients?id=${c_id}`,
-		type: 'DELETE'
-	});
-	$('#client_card').css('display', 'none');
-	hideHistory();
-	updateTab('clients');
 }
 
 function eraseTables(){
@@ -564,7 +412,7 @@ function eraseTables(){
 
 async function showProduct(prod_no){
 
-	var product = await $.get(`http://site202123.tw.cs.unibo.it/products?id=${prod_no}`);
+	var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${prod_no}`);
 	product = product[0];
 
 	$('#product_card_name').text(product.name);
@@ -604,7 +452,7 @@ async function showProduct(prod_no){
 }
 
 async function showClient(client_no){
-	var client = await $.get(`http://site202123.tw.cs.unibo.it/clients?id=${client_no}`);
+	var client = await $.get(`//site202123.tw.cs.unibo.it/clients?id=${client_no}`);
 	client = client[0];
 
 	$('#client_card_name').text(`${client.name} ${client.surname}`);
@@ -622,13 +470,13 @@ async function showClient(client_no){
 }
 
 async function showNolo(nolo_no){
-	var nolo = await $.get(`http://site202123.tw.cs.unibo.it/nolos?id=${nolo_no}`);
+	var nolo = await $.get(`//site202123.tw.cs.unibo.it/nolos?id=${nolo_no}`);
 	nolo = nolo[0];
 
-	var client = await $.get(`http://site202123.tw.cs.unibo.it/clients?id=${nolo.client_id}`);
+	var client = await $.get(`//site202123.tw.cs.unibo.it/clients?id=${nolo.client_id}`);
 	client = client[0];
 
-	var product = await $.get(`http://site202123.tw.cs.unibo.it/products?id=${nolo.product_id}`);
+	var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${nolo.product_id}`);
 	product = product[0];
 
 	$('#nolo_card_id').text(nolo_no);
@@ -670,7 +518,7 @@ async function showHistory() {
 	$('#client_history').css('display', '');
 
 	var c_id = $('#client_card_id').text();
-	var client_nols = await $.get(`http://site202123.tw.cs.unibo.it/nolos?client_id=${c_id}`);
+	var client_nols = await $.get(`//site202123.tw.cs.unibo.it/nolos?client_id=${c_id}`);
 
 	var past_nolos = [];
 	var current_nolos = [];
@@ -728,7 +576,7 @@ function hideHistory() {
 
 async function createHistoryCard(nolo){
 
-	var product = await $.get(`http://site202123.tw.cs.unibo.it/products?id=${nolo.product_id}`);
+	var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${nolo.product_id}`);
 	product = product[0];
 
 	var tot = calculateTotal(nolo);
@@ -767,7 +615,7 @@ async function createHistoryCard(nolo){
 async function modifyProduct(){
 	var p_id = $('#product_card_id').text();
 
-	var product = await $.get(`http://site202123.tw.cs.unibo.it/products?id=${p_id}`);
+	var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${p_id}`);
 	product = product[0];
 
 	for(name in product){
@@ -785,7 +633,7 @@ async function modifyProduct(){
 
 async function modifyClient(){
 	var c_id = $('#client_card_id').text();
-	var client = await $.get(`http://site202123.tw.cs.unibo.it/clients?id=${c_id}`);
+	var client = await $.get(`//site202123.tw.cs.unibo.it/clients?id=${c_id}`);
 	client = client[0];
 
 	for(name in client){
@@ -798,7 +646,7 @@ async function modifyClient(){
 
 async function modifyNolo(){
 	var n_id = $('#nolo_card_id').text();
-	var nolo = await $.get(`http://site202123.tw.cs.unibo.it/nolos?id=${n_id}`);
+	var nolo = await $.get(`//site202123.tw.cs.unibo.it/nolos?id=${n_id}`);
 	nolo = nolo[0];
 
 	for(name in nolo){
@@ -851,7 +699,7 @@ function noloProduct(){
 async function doNolo(){
 	var p_id = $('#product_card_id').text();
 
-	var product = await $.get(`http://site202123.tw.cs.unibo.it/products?id=${p_id}`);
+	var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${p_id}`);
 	product = product[0];
 
 	var values = {};
@@ -895,7 +743,7 @@ function doLogin(){
 }
 
 async function checkMailAndPwd(mail, pwd){
-	var user = await $.get(`http://site202123.tw.cs.unibo.it/staff?email=${mail}`);
+	var user = await $.get(`//site202123.tw.cs.unibo.it/staff?email=${mail}`);
 	user = await user[0];
 
 	if (await user.pwd == pwd){
@@ -937,19 +785,19 @@ async function checkCredentials(){
 
 		$('#the_nav').append(`
 			<li class="nav-item">
-              <a id="nolos_tab"
-                 class="nav-link top-tabs"
-                 onclick="updateTab('nolos')"
-                 style="background: #eeeeee;"
-                 href="#">Noleggi</a>
-            </li>
-            <li class="nav-item">
-              <a id="clients_tab"
-                 class="nav-link top-tabs"
-                 onclick="updateTab('clients')"
-                 style="background: #eeeeee;"
-                 href="#">Clienti</a>
-            </li>
+			  <a id="nolos_tab"
+				 class="nav-link top-tabs"
+				 onclick="updateTab('nolos')"
+				 style="background: #eeeeee;"
+				 href="#">Noleggi</a>
+			</li>
+			<li class="nav-item">
+			  <a id="clients_tab"
+				 class="nav-link top-tabs"
+				 onclick="updateTab('clients')"
+				 style="background: #eeeeee;"
+				 href="#">Clienti</a>
+			</li>
 		`);
 
 
@@ -1011,15 +859,15 @@ async function updateTab(_tab){
 
 	let array;
 	if(_tab == 'inventory') {
-		products = await getAllProducts();
+		products = await getAll('products');
 		array = products;
 		$('#products').css('display', '')
 	} else if (_tab == 'clients') {
-		clients = await getAllClients();
+		clients = await getAll('clients');
 		array = clients;
 		$('#people').css('display', '')
 	} else {
-		nolos = await getAllNolos();
+		nolos = await getAll('nolos');
 		array = nolos;
 		$('#nolo').css('display', '')
 	}
