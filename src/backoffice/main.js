@@ -1,7 +1,3 @@
-//pagina prodotto modifica
-//nuovo prodotto
-// $.post('//site202123.tw.cs.unibo.it/products', products[0]);
-
 var logged_id = 0;
 var logged = false;
 var logged_user;
@@ -67,6 +63,12 @@ async function getAll(type){
 	return tmp;
 }
 
+async function getById(collection, id){
+	var elem = await $.get(`//site202123.tw.cs.unibo.it/${collection}?id=${id}`);
+	elem = elem[0];
+	return elem;
+}
+
 async function fillTable(list, type){
 	for(x in list){
 		let values = '';
@@ -84,18 +86,25 @@ async function fillTable(list, type){
 
 			if(name == "client_id"){
 
-				var client = await $.get(`//site202123.tw.cs.unibo.it/clients?id=${y[name]}`);
-				client = client[0];
+				var client = await getById('clients', y[name]);
 
 				val = client ? `${client?.name} ${client?.surname}`: y[name];
 				values += `<td>${val}</td>`;
 
 			} else if (name == "product_id") {
 
-				var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${y[name]}`);
-				product = product[0];
+				var product = await getById('products', y[name]);
 
 				val = product ? product.name : y[name];
+				values += `<td>${val}</td>`;
+			} else if (name == "dep_id") {
+
+				if(y[name] == -1) val = 'Web';
+				else {
+					var dep = await getById('staff', y[name]);
+					val = dep ? dep.name + ' ' + dep.surname : y[name];
+				}
+
 				values += `<td>${val}</td>`;
 			}
 			else {
@@ -110,10 +119,10 @@ async function fillTable(list, type){
 			html_elem = $('#products');
 			showFunction = `showProduct(${y.id})`;
 		} else if(type == 'clients'){
-			html_elem = $('#clients');
+			html_elem = $('#people');
 			showFunction = `showClient(${y.id})`;
 		} else if(type == 'nolos') {
-			html_elem = $('#nolos');
+			html_elem = $('#nolo');
 			showFunction = `showNolo(${y.id})`;
 		}
 		html_elem.append(`<tr tabindex=0 onclick="${showFunction}">
@@ -171,7 +180,7 @@ function makeDbRecord(type, values){
 	else if(type == 'nolo') fields = ["daily_cost", "discount", "other_fees", "info"];
 
 	for(v in values){
-		if(nolo_data_f.includes(v)){
+		if(fields.includes(v)){
 			obj.nolo_data[v] = values[v];
 		} else obj[v] = values[v];
 	}
@@ -179,7 +188,7 @@ function makeDbRecord(type, values){
 	return obj;
 }
 
-function postElem(collection, obj){
+async function postElem(collection, obj){
 	await $.post(`//site202123.tw.cs.unibo.it/${collection}`, obj)
 		.done(function(res){
 			console.log(res);
@@ -190,6 +199,18 @@ function hideCards(div_prefix){
 	$(`#${div_prefix}_card`).css('display', 'none');	
 	$(`#${div_prefix}_card_modify`).css('display', 'none');	
 	$(`#${div_prefix}_card_insert`).css('display', 'none');	
+}
+
+function insertProduct(){
+	insertElem('product');
+}
+
+function insertClient(){
+	insertElem('client');
+}
+
+function insertNolo(){
+	insertElem('nolo');
 }
 
 async function saveNewProduct(){
@@ -321,11 +342,7 @@ async function updateClient(){
 	$('#client_card_modify').css('display', 'none');
 }
 
-/*****************************************************************************************************/
-
-async function filterProducts(){
-	var values = getElemInputs('#product_header');
-
+function buildFilterQuery(values){
 	var query = '?';
 	for(v in values){
 		var val = values[v];
@@ -333,6 +350,13 @@ async function filterProducts(){
 		var s = `${v}={"$regex":"${val}"}&`;
 		query += s;
 	}
+	return query;
+}
+
+async function filterProducts(){
+	var values = getElemInputs('#product_header');
+
+	var query = buildFilterQuery(values);
 
 	var res =
 		await $.get('//site202123.tw.cs.unibo.it/products'+query);
@@ -389,13 +413,7 @@ async function filterNolos(){
 async function filterClients(){
 	var values = getElemInputs('#clients_header');
 
-	var query = '?';
-	for(v in values){
-		var val = values[v];
-		if(val == '') continue;
-		var s = `${v}={"$regex":"${val}"}&`;
-		query += s;
-	}
+	var query = buildFilterQuery(values);
 
 	var res =
 		await $.get('//site202123.tw.cs.unibo.it/clients'+query);
@@ -411,9 +429,7 @@ function eraseTables(){
 }
 
 async function showProduct(prod_no){
-
-	var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${prod_no}`);
-	product = product[0];
+	var product = await getById('products', prod_no);
 
 	$('#product_card_name').text(product.name);
 	$('#product_card_id').text(prod_no);
@@ -452,8 +468,7 @@ async function showProduct(prod_no){
 }
 
 async function showClient(client_no){
-	var client = await $.get(`//site202123.tw.cs.unibo.it/clients?id=${client_no}`);
-	client = client[0];
+	var client = await getById('clients', client_no);
 
 	$('#client_card_name').text(`${client.name} ${client.surname}`);
 	$('#client_card_id').text(client_no);
@@ -470,14 +485,11 @@ async function showClient(client_no){
 }
 
 async function showNolo(nolo_no){
-	var nolo = await $.get(`//site202123.tw.cs.unibo.it/nolos?id=${nolo_no}`);
-	nolo = nolo[0];
+	var nolo = await getById('nolos', nolo_no);
 
-	var client = await $.get(`//site202123.tw.cs.unibo.it/clients?id=${nolo.client_id}`);
-	client = client[0];
+	var client = await getById('clients', nolo.client_id);
 
-	var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${nolo.product_id}`);
-	product = product[0];
+	var product = await getById('products', nolo.product_id);
 
 	$('#nolo_card_id').text(nolo_no);
 
@@ -561,7 +573,6 @@ async function showHistory() {
 	}
 	else $('#client_history_future')
 		.html('<p>Nessun noleggio.</p>');
-
 }
 
 function hideHistory() {
@@ -575,9 +586,7 @@ function hideHistory() {
 
 
 async function createHistoryCard(nolo){
-
-	var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${nolo.product_id}`);
-	product = product[0];
+	var product = await getById('products', nolo.product_id);
 
 	var tot = calculateTotal(nolo);
 
@@ -612,76 +621,47 @@ async function createHistoryCard(nolo){
 		</div>`;
 }
 
-async function modifyProduct(){
-	var p_id = $('#product_card_id').text();
+async function modifyElem(prefix, collection){
+	var id = $(`#${prefix}_card_id`).text();
 
-	var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${p_id}`);
-	product = product[0];
+	var elem = await getById(collection, id);
 
-	for(name in product){
+	for(name in elem){
 		if(name ==  "nolo_data"){
-			for(val in product[name]){
-				$('#product_card_modify_' + val).val(product[name][val]);
+			for(val in elem[name]){
+				$(`#${prefix}_card_modify_` + val).val(elem[name][val]);
 			}
 		} else
-			$('#product_card_modify_' + name).val(product[name]);
+			$(`#${prefix}_card_modify_` + name).val(elem[name]);
 	}
 
-	$('#product_card').toggle();
-	$('#product_card_modify').toggle();
+	$(`#${prefix}_card`).toggle();
+	$(`#${prefix}_card_modify`).toggle();
+}
+
+async function modifyProduct(){
+	modifyElem('product', 'products'); 	
 }
 
 async function modifyClient(){
-	var c_id = $('#client_card_id').text();
-	var client = await $.get(`//site202123.tw.cs.unibo.it/clients?id=${c_id}`);
-	client = client[0];
-
-	for(name in client){
-		$('#client_card_modify_' + name).val(client[name]);
-	}
-
-	$('#client_card').toggle();
-	$('#client_card_modify').toggle();
+	modifyElem('client', 'clients'); 	
 }
 
 async function modifyNolo(){
-	var n_id = $('#nolo_card_id').text();
-	var nolo = await $.get(`//site202123.tw.cs.unibo.it/nolos?id=${n_id}`);
-	nolo = nolo[0];
-
-	for(name in nolo){
-		if(name ==  "nolo_data"){
-			for(val in nolo[name]){
-				$('#nolo_card_modify_' + val).val(nolo[name][val]);
-			}
-		} else
-			$('#nolo_card_modify_' + name).val(nolo[name]);
-	}
-
-	$('#nolo_card_modify_client')
-		.val(`${nolo.client_id}`);
-
-	$('#nolo_card_modify_product')
-		.val(`${nolo.product_id}`);
-
-	$('#nolo_card').toggle();
-	$('#nolo_card_modify').toggle();
+	modifyElem('nolo', 'nolos'); 	
 }
 
 function abortModify(type){
 	if(type == 'inventory'){
-		$('#product_card').toggle();
-		$('#product_card_modify').css('display', 'none');
-		$('#product_card_insert').css('display', 'none');
+		prefix = 'product';
 	} else if(type == 'clients'){
-		$('#client_card').toggle();
-		$('#client_card_modify').css('display', 'none');
-		$('#client_card_insert').css('display', 'none');
+		prefix = 'client';
 	} else if(type == 'nolos'){
-		$('#nolo_card').toggle();
-		$('#nolo_card_modify').css('display', 'none');
-		$('#nolo_card_insert').css('display', 'none');
+		prefix = 'nolo';
 	}
+	$(`#${prefix}_card`).toggle();
+	$(`#${prefix}_card_modify`).css(`display`, `none`);
+	$(`#${prefix}_card_insert`).css(`display`, `none`);
 }
 
 function noloProduct(){
@@ -699,8 +679,7 @@ function noloProduct(){
 async function doNolo(){
 	var p_id = $('#product_card_id').text();
 
-	var product = await $.get(`//site202123.tw.cs.unibo.it/products?id=${p_id}`);
-	product = product[0];
+	var product = await getById('products', p_id);
 
 	var values = {};
 	$('#nolo_form :input').each(function() {
@@ -733,7 +712,6 @@ async function doNolo(){
 	$('#nolo_form_days').text(days);
 	$('#nolo_form_total').text('');
 	$('#nolo_form_total').text(Math.round(total * 100)/100);
-
 }
 
 function doLogin(){
@@ -755,12 +733,7 @@ async function checkMailAndPwd(mail, pwd){
 }
 
 async function checkCredentials(){
-
-	// get input vals
-	var values = {};
-	$('#login_form :input').each(function() {
-		values[this.name] = $(this).val();
-	});
+	var values = getElemInputs('#login_form');
 
 	var correct = await checkMailAndPwd(values.email, values.password);
 
