@@ -15,9 +15,9 @@ function calculateDays(date_from, date_to){
 
 function calculateTotal(nolo){
 	var days = calculateDays(nolo.date_from, nolo.date_to);
-	const perc = (1 - parseInt(nolo.nolo_data.discount)/100);
-	const base_cost = days * parseInt(nolo.nolo_data.daily_cost);
-	const total = (base_cost * perc) + parseInt(nolo.nolo_data.other_fees);
+	const perc = (1 - parseFloat(nolo.nolo_data.discount)/100);
+	const base_cost = days * parseFloat(nolo.nolo_data.daily_cost);
+	const total = (base_cost * perc) + parseFloat(nolo.nolo_data.other_fees);
 	return Math.round(total*100)/100;
 }
 
@@ -127,7 +127,7 @@ async function fillTable(list, type){
 		}
 		html_elem.append(`<tr tabindex=0 onclick="${showFunction}">
 							${values}
-							<td>
+							<td style="text-align: center;">
 								<button class="btn" aria-label="Visualizza" onclick="${showFunction}">
 								>
 								</button>
@@ -665,6 +665,10 @@ function abortModify(type){
 }
 
 function noloProduct(){
+	$('#nolo_form :input').each(function() {
+		$(this).val(0);
+	});
+
 	var text = $('#nolo_button').text();
 	$('#nolo_button').text(text == 'Preventivo' ? 'Annulla' : 'Preventivo');
 
@@ -704,9 +708,9 @@ async function doNolo(){
 	}
 
 
-	const perc = (1 - parseInt(values.discount)/100);
-	const base_cost = days * parseInt(product.nolo_data.cost);
-	const total = (base_cost * perc) + parseInt(values.other_fees);
+	const perc = (1 - parseFloat(values.discount)/100);
+	const base_cost = days * parseFloat(product.nolo_data.cost);
+	const total = (base_cost * perc) + parseFloat(values.other_fees);
 
 
 	$('#nolo_form_days').text(days);

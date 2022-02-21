@@ -24,10 +24,10 @@
           </div>
           <div id="manager_link"
                style="display: none;"
-            class= "col-lg-3">
+               class= "col-lg-3">
             <a href="/dashboard"
                type="button"
-              class="btn btn-primary w-100">Dashboard</a>
+               class="btn btn-primary w-100">Dashboard</a>
           </div>
           <div id="header_buttons" class= "col-lg-3">
             <button onclick="doLogin()" type="button" class="btn btn-primary w-100">Login</button>
@@ -40,16 +40,16 @@
             <h2 class="mb-3 text-center">BackOffice login</h2>
             <div class='mb-3'>
               <label for='LoginFormEmail' class='form-label'>Email address</label>
-              <input name="email" type='email'
-                     class='form-control'
-                     id='LoginFormEmail'
-                     placeholder='name@example.com'>
+              <input required name="email" type='email'
+                              class='form-control'
+                              id='LoginFormEmail'
+                              placeholder='name@example.com'>
             </div>
             <div class='mb-3'>
               <label for='LoginFormPassword' class='form-label'>Password</label>
-              <input name="password" type='password'
-                     class='form-control'
-                     id='LoginFormPassword'>
+              <input required name="password" type='password'
+                              class='form-control'
+                              id='LoginFormPassword'>
             </div>
             <div class='mb-3'>
               <div class="row">
@@ -87,9 +87,9 @@
         </nav>
 
 
-        <div id="inventory" class="content-tab my-bg p-3-lg row">
+        <div id="inventory" class="content-tab my-bg p-3-lg row g-0">
           <div class="table-responsive col-lg-8 col-12">
-            <table id="twrap" class="text-start table table-striped table-hover ">
+            <table id="twrap" class="text-start table table-bordered table-striped table-hover">
               <caption class="visually-hidden">Elenco prodotti</caption>
               <thead id="product_header" >
                 <tr>
@@ -97,59 +97,59 @@
                     <th scope="col">
                       <label>
                         Data di Nascita
-                        <input class="form-control me-2"
-                               name="birth"
-                               type="search"
-                               aria-label="Cerca data di nascita">
+                        <input required class="form-control me-2"
+                                        name="birth"
+                                        type="search"
+                                        aria-label="Cerca data di nascita">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Luogo di Nascita
-                        <input class="form-control me-2"
-                               name="birth_p"
-                               type="search"
-                               aria-label="Cerca luogo di nascita">
+                        <input required class="form-control me-2"
+                                        name="birth_p"
+                                        type="search"
+                                        aria-label="Cerca luogo di nascita">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Data di morte
-                        <input class="form-control me-2"
-                               name="death"
-                               type="search"
-                               placeholder="Cerca"
-                               aria-label="Cerca data di morte">
+                        <input required class="form-control me-2"
+                                        name="death"
+                                        type="search"
+                                        placeholder="Cerca"
+                                        aria-label="Cerca data di morte">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Luogo di morte
-                        <input class="form-control me-2"
-                               name="death_p"
-                               type="search"
-                               placeholder="Cerca"
-                               aria-label="Cerca luogo di morte">
+                        <input required class="form-control me-2"
+                                        name="death_p"
+                                        type="search"
+                                        placeholder="Cerca"
+                                        aria-label="Cerca luogo di morte">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Nome
-                        <input class="form-control me-2"
-                               name="name"
-                               type="search"
-                               placeholder="Cerca"
-                               aria-label="Cerca nome">
+                        <input required class="form-control me-2"
+                                        name="name"
+                                        type="search"
+                                        placeholder="Cerca"
+                                        aria-label="Cerca nome">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Tematiche
-                        <input class="form-control me-2"
-                               name="subjects"
-                               type="search"
-                               placeholder="Cerca"
-                               aria-label="Cerca tematiche">
+                        <input required class="form-control me-2"
+                                        name="subjects"
+                                        type="search"
+                                        placeholder="Cerca"
+                                        aria-label="Cerca tematiche">
                       </label>
                     </th>
                     <th>
@@ -197,9 +197,9 @@
 
           <div class="col-lg-4 col-12 minor ">
             <div id="product_card"
-                 class="card text-start"
+                 class="show-card card text-start"
                  style="display: none;">
-              <div class="card-body">
+              <div class="card-body card-top">
                 <div class="row"> 
                   <div class="col"> 
                     <h5 id="product_card_name"
@@ -211,7 +211,7 @@
                     <p id="product_card_subject" class="card-text"></p>
                   </div>
                   <div class="col"> 
-                    <img id="product_card_image" src="" class="card-img-top" alt="...">
+                    <img id="product_card_image" src="" class="card-pic card-img-top" alt="..."/>
                   </div>
                 </div>
               </div>
@@ -219,29 +219,29 @@
               <form id="nolo_form">
                 <ul id="product_card_nolo_list"
                     style="display: none;"
-                    class="list-group list-group-flush">
+                    class="card-list list-group list-group-flush">
                   <li class="list-group-item">
-                    <div class="row mb-3">
+                    <div class="row mb-3 g-3">
                       <div class="col-6 col-lg-2">
                         <b>Da:</b>
                       </div>
                       <div class="col-6 col-lg-4">
-                        <input type="date"
-                               id="nolo_form_date_from"
-                               name="date_from"
-                               class="card-text form-control"
-                               aria-label="Inizio noleggio">
+                        <input required type="date"
+                                        id="nolo_form_date_from"
+                                        name="date_from"
+                                        class="card-text form-control"
+                                        aria-label="Inizio noleggio">
                       </div>
 
                       <div class="col-6 col-lg-2">
                         <b>A:</b>
                       </div>
                       <div class="col-6 col-lg-4">
-                        <input type="date"
-                               id="nolo_form_date_to"
-                               name="date_to"
-                               class="card-text form-control"
-                               aria-label="Termine noleggio">
+                        <input required type="date"
+                                        id="nolo_form_date_to"
+                                        name="date_to"
+                                        class="card-text form-control"
+                                        aria-label="Termine noleggio">
                       </div>
                     </div>
                     <p id="nolo_form_invalid_dates"
@@ -264,6 +264,10 @@
                       </div>
                       <div class="col">
                         <input type="number"
+                               min=0
+                               value=0
+                               max=100
+                               step=0.1
                                id="nolo_form_discount"
                                name="discount"
                                class="card-text form-control"
@@ -278,6 +282,10 @@
                       </div>
                       <div class="col">
                         <input type="number"
+                               min=any
+                               max=any
+                               value=0
+                               step=0.1
                                id="nolo_form_insert_other_fees"
                                name="other_fees"
                                class="card-text form-control"
@@ -301,7 +309,7 @@
                 </ul>
               </form>
 
-              <ul id="product_card_info_list" class="list-group list-group-flush">
+              <ul id="product_card_info_list" class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <b> Prezzo: </b>
                   <span id="product_card_price"></span>
@@ -316,8 +324,6 @@
                   <b> Disponibile: </b>
                   <span id="product_card_available"></span>
                 </li>
-
-
                 <li id="product_card_available_dates"
                     style="display: none;"
                     class="list-group-item">
@@ -346,12 +352,13 @@
                   </div>
                   <div class="col-6 col-lg-3">
                     <a class="btn btn-primary"
+                       href="#product_card"
                        id="nolo_calc_button"
                        onclick="doNolo()"
                        style="display: none;">Calcola</a>
                   </div>
                   <div class="col-6 col-lg-3">
-                    <a href="#"
+                    <a href="#product_card_modify"
                        class="product_card_options card-link"
                        style="display: none;"
                        onclick="modifyProduct()">Modifica</a>
@@ -367,76 +374,85 @@
             </div>
 
             <form id="product_card_modify" 
-                  class="card text-start"
+                  class="show-card card text-start"
                   style="display: none;">
-              <div class="card-body">
+              <div class="card-body card-top">
                 <h6 class="fw-bold">Nome:</h6>
-                <input type="text"
-                       id="product_card_modify_name"
-                       name="name"
-                       class="card-title fw-bold form-control"
-                       aria-label="Nome">
+                <input required type="text"
+                                id="product_card_modify_name"
+                                name="name"
+                                class="card-title fw-bold form-control"
+                                aria-label="Nome">
                 <div class="row mb-2">
                   <div class="col">
                     <h6 class="fw-bold">Luogo di Nascita:</h6>
-                    <input type="text"
-                           id="product_card_modify_birth_p"
-                           name="birth_p"
-                           class="card-text form-control"
-                           aria-label="Luogo di Nascita">
+                    <input required type="text"
+                                    id="product_card_modify_birth_p"
+                                    name="birth_p"
+                                    class="card-text form-control"
+                                    aria-label="Luogo di Nascita">
                   </div>
                   <div class="col">
                     <h6 class="fw-bold">Data di Nascita:</h6>
-                    <input type="number"
-                           id="product_card_modify_birth"
-                           name="birth"
-                           class="card-text form-control"
-                           aria-label="Data di Nascita">
+                    <input required type="number"
+                                    min=any
+                                    max=any
+                                    step=1
+                                    id="product_card_modify_birth"
+                                    name="birth"
+                                    class="card-text form-control"
+                                    aria-label="Data di Nascita">
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="col">
                     <h6 class="fw-bold">Luogo di Morte:</h6>
-                    <input type="text"
-                           id="product_card_modify_death_p"
-                           name="death_p"
-                           class="card-text form-control"
-                           aria-label="Luogo di morte">
+                    <input required type="text"
+                                    id="product_card_modify_death_p"
+                                    name="death_p"
+                                    class="card-text form-control"
+                                    aria-label="Luogo di morte">
                   </div>
                   <div class="col">
                     <h6 class="fw-bold">Data di Morte:</h6>
-                    <input type="number"
-                           id="product_card_modify_death"
-                           name="death"
-                           class="card-text form-control"
-                           aria-label="Data di Morte">
+                    <input required type="number"
+                                    min=any
+                                    max=any
+                                    step=1
+                                    id="product_card_modify_death"
+                                    name="death"
+                                    class="card-text form-control"
+                                    aria-label="Data di Morte">
                   </div>
                 </div>
                 <h6 class="fw-bold">Tematiche:</h6>
-                <input type="text"
-                       id="product_card_modify_subjects"
-                       name="subjects"
-                       class="card-text form-control"
-                       aria-label="Tematiche">
+                <input required type="text"
+                                id="product_card_modify_subjects"
+                                name="subjects"
+                                class="card-text form-control"
+                                aria-label="Tematiche">
                 <h6 class="fw-bold mt-2">Url immagine:</h6>
-                <input type="url"
-                       id="product_card_modify_img"
-                       name="img"
-                       class="card-text form-control"
-                       aria-label="Url immagine">
+                <input required type="url"
+                                id="product_card_modify_img"
+                                name="img"
+                                class="card-text form-control"
+                                aria-label="Url immagine">
               </div>
-              <ul class="list-group list-group-flush">
+              <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
                     <div class="col">
                       <b>Prezzo:</b>
                     </div>
                     <div class="col">
-                      <input type="number"
-                             id="product_card_modify_cost"
-                             name="cost"
-                             class="card-text form-control"
-                             aria-label="Prezzo">
+                      <input required type="number"
+                                      min=0
+                                      max=any
+                                      step=0.1
+                                      id="product_card_modify_cost"
+                                      name="cost"
+                                      class="card-text form-control"
+                                      aria-label="Prezzo">
                     </div>
                   </div>
                 </li>
@@ -458,42 +474,46 @@
                     </div>
                   </div>
                 </li>
-
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col-3">
-                      <b>Disponibile da:</b>
+                    <h6 class="fw-bold">Disponibilità</h6>
+                    <div class="col-6 col-lg-2">
+                      <b>Da:</b>
                     </div>
-                    <div class="col-3">
-                      <input type="date"
-                             id="product_card_modify_available_from"
-                             name="available_from"
-                             class="card-text form-control"
-                             aria-label="Inizio disponibilità">
+                    <div class="col">
+                      <input required type="date"
+                                      id="product_card_modify_available_from"
+                                      name="available_from"
+                                      class="card-text form-control"
+                                      aria-label="Inizio disponibilità">
                     </div>
-                    <div class="col-3">
+                    <div class="col-6 col-lg-2">
                       <b>a:</b>
                     </div>
-                    <div class="col-3">
-                      <input type="date"
-                             id="product_card_modify_available_to"
-                             name="available_to"
-                             class="card-text form-control"
-                             aria-label="Fine disponibilità">
+                    <div class="col">
+                      <input required type="date"
+                                      id="product_card_modify_available_to"
+                                      name="available_to"
+                                      class="card-text form-control"
+                                      aria-label="Fine disponibilità">
                     </div>
-
                   </div>
-                </li><li class="list-group-item">
+                </li>
+                <li class="list-group-item">
                   <div class="row">
                     <div class="col">
                       <b>Sconto:</b>
                     </div>
                     <div class="col">
-                      <input type="number"
-                             id="product_card_modify_discount"
-                             name="discount"
-                             class="card-text form-control"
-                             aria-label="Sconto">
+                      <input required type="number"
+                                      min=0
+                                      max=100
+                                      value=0
+                                      step=0.1
+                                      id="product_card_modify_discount"
+                                      name="discount"
+                                      class="card-text form-control"
+                                      aria-label="Sconto">
                     </div>
                   </div>
                 </li><li class="list-group-item">
@@ -503,10 +523,10 @@
                     </div>
                     <div class="col">
                       <input type="text"
-                             id="product_card_modify_info"
-                             name="info"
-                             class="card-text form-control"
-                             aria-label="Note">
+                                      id="product_card_modify_info"
+                                      name="info"
+                                      class="card-text form-control"
+                                      aria-label="Note">
                     </div>
                   </div>
                 </li>
@@ -524,77 +544,86 @@
             </form>
 
             <form id="product_card_insert" 
-                  class="card text-start"
+                  class="show-card card text-start"
                   style="display: none;"
                   aria-label="Inserisci prodotto">
-              <div class="card-body">
+              <div class="card-body card-top">
                 <h6 class="fw-bold">Nome:</h6>
-                <input type="text"
-                       id="product_card_insert_name"
-                       name="name"
-                       class="card-title fw-bold form-control"
-                       aria-label="Nome">
+                <input required type="text"
+                                id="product_card_insert_name"
+                                name="name"
+                                class="card-title fw-bold form-control"
+                                aria-label="Nome">
                 <div class="row mb-2">
                   <div class="col">
                     <h6 class="fw-bold">Luogo di nascita:</h6>
-                    <input type="text"
-                           id="product_card_insert_birth_p"
-                           name="birth_p"
-                           class="card-text form-control"
-                           aria-label="Luogo di Nascita">
+                    <input required type="text"
+                                    id="product_card_insert_birth_p"
+                                    name="birth_p"
+                                    class="card-text form-control"
+                                    aria-label="Luogo di Nascita">
                   </div>
                   <div class="col">
                     <h6 class="fw-bold">Data di nascita:</h6>
-                    <input type="number"
-                           id="product_card_insert_birth"
-                           name="birth"
-                           class="card-text form-control"
-                           aria-label="Data di Nascita">
+                    <input required type="number"
+                                    min=any
+                                    max=any
+                                    step=1
+                                    id="product_card_insert_birth"
+                                    name="birth"
+                                    class="card-text form-control"
+                                    aria-label="Data di Nascita">
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="col">
                     <h6 class="fw-bold">Luogo di morte:</h6>
-                    <input type="text"
-                           id="product_card_insert_death_p"
-                           name="death_p"
-                           class="card-text form-control"
-                           aria-label="Luogo di morte">
+                    <input required type="text"
+                                    id="product_card_insert_death_p"
+                                    name="death_p"
+                                    class="card-text form-control"
+                                    aria-label="Luogo di morte">
                   </div>
                   <div class="col">
                     <h6 class="fw-bold">Data di morte:</h6>
-                    <input type="number"
-                           id="product_card_insert_death"
-                           name="death"
-                           class="card-text form-control"
-                           aria-label="Data di Morte">
+                    <input required type="number"
+                                    min=any
+                                    max=any
+                                    step=1
+                                    id="product_card_insert_death"
+                                    name="death"
+                                    class="card-text form-control"
+                                    aria-label="Data di Morte">
                   </div>
                 </div>
                 <h6 class="fw-bold">Tematiche:</h6>
                 <input type="text"
-                       id="product_card_insert_subjects"
-                       name="subjects"
-                       class="card-text form-control"
-                       aria-label="Tematiche">
+                                id="product_card_insert_subjects"
+                                name="subjects"
+                                class="card-text form-control"
+                                aria-label="Tematiche">
                 <h6 class="fw-bold mt-2">Url immagine:</h6>
                 <input type="url"
-                       id="product_card_insert_image"
-                       name="img"
-                       class="card-text form-control"
-                       aria-label="Url immagine">
+                                id="product_card_insert_image"
+                                name="img"
+                                class="card-text form-control"
+                                aria-label="Url immagine">
               </div>
-              <ul class="list-group list-group-flush">
+              <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
                     <div class="col">
                       <b>Prezzo:</b>
                     </div>
                     <div class="col">
-                      <input type="number"
-                             id="product_card_insert_cost"
-                             name="cost"
-                             class="card-text form-control"
-                             aria-label="Prezzo">
+                      <input required type="number"
+                                      min=0
+                                      max=any
+                                      step=0.1
+                                      id="product_card_insert_cost"
+                                      name="cost"
+                                      class="card-text form-control"
+                                      aria-label="Prezzo">
                     </div>
                   </div>
                 </li>
@@ -604,7 +633,7 @@
                       <b>Condizioni:</b>
                     </div>
                     <div class="col">
-                      <select id="product_card_insert_condition"
+                      <select required id="product_card_insert_condition"
                               name="condition"
                               class="card-text form-control"
                               aria-label="Condizioni">
@@ -623,20 +652,20 @@
                     </div>
                     <div class="col-3">
                       <input type="date"
-                             id="product_card_insert_available_from"
-                             name="available_from"
-                             class="card-text form-control"
-                             aria-label="Inizio disponibilità">
+                                      id="product_card_insert_available_from"
+                                      name="available_from"
+                                      class="card-text form-control"
+                                      aria-label="Inizio disponibilità">
                     </div>
                     <div class="col-3">
                       <b>a:</b>
                     </div>
                     <div class="col-3">
                       <input type="date"
-                             id="product_card_insert_available_to"
-                             name="available_to"
-                             class="card-text form-control"
-                             aria-label="Fine disponibilità">
+                                      id="product_card_insert_available_to"
+                                      name="available_to"
+                                      class="card-text form-control"
+                                      aria-label="Fine disponibilità">
                     </div>
                   </div>
                 </li>
@@ -647,10 +676,14 @@
                     </div>
                     <div class="col">
                       <input type="number"
-                             id="product_card_insert_discount"
-                             name="discount"
-                             class="card-text form-control"
-                             aria-label="Sconto">
+                                      min=0
+                                      max=100
+                                      value=0
+                                      step=0.1
+                                      id="product_card_insert_discount"
+                                      name="discount"
+                                      class="card-text form-control"
+                                      aria-label="Sconto">
                     </div>
                   </div>
                 </li>
@@ -661,10 +694,10 @@
                     </div>
                     <div class="col">
                       <input type="text"
-                             id="product_card_insert_info"
-                             name="info"
-                             class="card-text form-control"
-                             aria-label="Note">
+                                      id="product_card_insert_info"
+                                      name="info"
+                                      class="card-text form-control"
+                                      aria-label="Note">
                     </div>
                   </div>
                 </li>
@@ -688,7 +721,7 @@
              style="display: none;"
              class="content-tab my-bg p-3-lg row">
           <div id="clients_table" class="table-responsive col-lg-8 col-12">
-            <table id="twrap" class="text-start table table-striped table-hover ">
+            <table id="twrap" class="text-start table table-bordered table-striped table-hover ">
               <caption class="visually-hidden">Elenco clienti</caption>
               <thead id="clients_header" >
                 <tr>
@@ -696,43 +729,43 @@
                     <th scope="col">
                       <label>
                         Nome
-                        <input class="form-control me-2"
-                               name="name"
-                               type="search"
-                               placeholder="Cerca">
+                        <input required class="form-control me-2"
+                                        name="name"
+                                        type="search"
+                                        placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Cognome
-                        <input class="form-control me-2"
-                               name="surname"
-                               type="search" placeholder="Cerca">
+                        <input required class="form-control me-2"
+                                        name="surname"
+                                        type="search" placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Email 
-                        <input class="form-control me-2"
-                               name="email"
-                               type="search" placeholder="Cerca">
+                        <input required class="form-control me-2"
+                                        name="email"
+                                        type="search" placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Telefono
-                        <input class="form-control me-2"
-                               name="phone"
-                               type="search" placeholder="Cerca">
+                        <input required class="form-control me-2"
+                                        name="phone"
+                                        type="search" placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Indirizzo
-                        <input class="form-control me-2"
-                               name="address"
-                               type="search"
-                               placeholder="Cerca">
+                        <input required class="form-control me-2"
+                                        name="address"
+                                        type="search"
+                                        placeholder="Cerca">
                       </label>
                     </th>
                     <th>
@@ -803,9 +836,9 @@
 
           <div class="col-lg-4 col-12 minor">
             <div id="client_card"
-                 class="card text-start"
+                 class="show-card card text-start"
                  style="display: none;">
-              <div class="card-body">
+              <div class="card-body card-top">
                 <div class="row"> 
                   <div class="col"> 
                     <h5 id="client_card_name"
@@ -828,7 +861,7 @@
                 </div>
               </div>
 
-              <ul id="client_card_info_list" class="list-group list-group-flush">
+              <ul id="client_card_info_list" class="card_list list-group list-group-flush">
                 <li class="list-group-item">
                   <b> Note: </b>
                   <span id="client_card_info"></span>
@@ -840,7 +873,7 @@
               </ul>
               <div class="card-body row">
                 <div class="col">
-                  <a href="#"
+                  <a href="#client_card_modify"
                      class="client_card_options card-link"
                      onclick="modifyClient()">Modifica</a>
                 </div>
@@ -853,47 +886,47 @@
             </div>
 
             <form id="client_card_modify" 
-                  class="card text-start"
+                  class="show-card card text-start"
                   style="display: none;">
-              <div class="card-body">
+              <div class="card-body card-top">
                 <div class="row mb-2">
                   <div class="col">
                     <h6 class="fw-bold">Nome:</h6>
-                    <input type="text"
-                           id="client_card_modify_name"
-                           name="name"
-                           class="card-title form-control"
-                           aria-label="Nome">
+                    <input required type="text"
+                                    id="client_card_modify_name"
+                                    name="name"
+                                    class="card-title form-control"
+                                    aria-label="Nome">
                   </div>
                   <div class="col">
                     <h6 class="fw-bold">Cognome:</h6>
-                    <input type="text"
-                           id="client_card_modify_surname"
-                           name="surname"
-                           class="card-title form-control"
-                           aria-label="Cognome">
+                    <input required type="text"
+                                    id="client_card_modify_surname"
+                                    name="surname"
+                                    class="card-title form-control"
+                                    aria-label="Cognome">
                   </div>
                 </div>
                 <h6 class="fw-bold">Email:</h6>
-                <input type="email"
-                       id="client_card_modify_email"
-                       name="email"
-                       class="card-text form-control mb-2"
-                       aria-label="Email">
+                <input required type="email"
+                                id="client_card_modify_email"
+                                name="email"
+                                class="card-text form-control mb-2"
+                                aria-label="Email">
                 <h6 class="fw-bold">Telefono:</h6>
-                <input type="tel"
-                       id="client_card_modify_phone"
-                       name="phone"
-                       class="card-text form-control mb-2"
-                       aria-label="Telefono">
+                <input required type="tel"
+                                id="client_card_modify_phone"
+                                name="phone"
+                                class="card-text form-control mb-2"
+                                aria-label="Telefono">
                 <h6 class="fw-bold">Indirizzo:</h6>
-                <input type="text"
-                       id="client_card_modify_address"
-                       name="address"
-                       class="card-text form-control mb-2"
-                       aria-label="Address">
+                <input required type="text"
+                                id="client_card_modify_address"
+                                name="address"
+                                class="card-text form-control mb-2"
+                                aria-label="Address">
               </div>
-              <ul class="list-group list-group-flush">
+              <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
                     <div class="col">
@@ -901,10 +934,10 @@
                     </div>
                     <div class="col">
                       <input type="text"
-                             id="client_card_modify_info"
-                             name="info"
-                             class="card-text form-control"
-                             aria-label="Note">
+                                      id="client_card_modify_info"
+                                      name="info"
+                                      class="card-text form-control"
+                                      aria-label="Note">
                     </div>
                   </div>
                 </li>
@@ -922,47 +955,47 @@
             </form>
 
             <form id="client_card_insert" 
-                  class="card text-start"
+                  class="show-card card text-start"
                   style="display: none;">
-              <div class="card-body">
+              <div class="card-body card-top">
                 <div class="row mb-2">
                   <div class="col">
                     <h6 class="fw-bold">Nome:</h6>
-                    <input type="text"
-                           id="client_card_insert_name"
-                           name="name"
-                           class="card-title form-control"
-                           aria-label="Nome">
+                    <input required type="text"
+                                    id="client_card_insert_name"
+                                    name="name"
+                                    class="card-title form-control"
+                                    aria-label="Nome">
                   </div>
                   <div class="col">
                     <h6 class="fw-bold">Cognome:</h6>
-                    <input type="text"
-                           id="client_card_insert_surname"
-                           name="surname"
-                           class="card-title form-control"
-                           aria-label="Cognome">
+                    <input required type="text"
+                                    id="client_card_insert_surname"
+                                    name="surname"
+                                    class="card-title form-control"
+                                    aria-label="Cognome">
                   </div>
                 </div>
                 <h6 class="fw-bold">Email:</h6>
-                <input type="email"
-                       id="client_card_insert_email"
-                       name="email"
-                       class="card-text form-control mb-2"
-                       aria-label="Email">
+                <input required type="email"
+                                id="client_card_insert_email"
+                                name="email"
+                                class="card-text form-control mb-2"
+                                aria-label="Email">
                 <h6 class="fw-bold">Telefono:</h6>
-                <input type="tel"
-                       id="client_card_insert_phone"
-                       name="phone"
-                       class="card-text form-control mb-2"
-                       aria-label="Telefono">
+                <input required type="tel"
+                                id="client_card_insert_phone"
+                                name="phone"
+                                class="card-text form-control mb-2"
+                                aria-label="Telefono">
                 <h6 class="fw-bold">Indirizzo:</h6>
-                <input type="text"
-                       id="client_card_insert_address"
-                       name="address"
-                       class="card-text form-control mb-2"
-                       aria-label="Address">
+                <input required type="text"
+                                id="client_card_insert_address"
+                                name="address"
+                                class="card-text form-control mb-2"
+                                aria-label="Address">
               </div>
-              <ul class="list-group list-group-flush">
+              <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
                     <div class="col">
@@ -970,10 +1003,10 @@
                     </div>
                     <div class="col">
                       <input type="text"
-                             id="client_card_insert_info"
-                             name="info"
-                             class="card-text form-control"
-                             aria-label="Note">
+                                      id="client_card_insert_info"
+                                      name="info"
+                                      class="card-text form-control"
+                                      aria-label="Note">
                     </div>
                   </div>
                 </li>
@@ -999,7 +1032,7 @@
              class="content-tab my-bg p-3-lg row"
              style="display: none;">
           <div class="table-responsive col-lg-8 col-12">
-            <table id="twrap" class="text-start table table-striped table-hover ">
+            <table id="twrap" class="text-start table table-bordered table-striped table-hover ">
               <caption class="visually-hidden">Elenco noleggi</caption>
               <thead id="nolo_header">
                 <tr>
@@ -1007,46 +1040,46 @@
                     <th scope="col">
                       <label>
                         Cliente
-                        <input class="form-control me-2"
-                               name="client"
-                               type="search"
-                               placeholder="Cerca">
+                        <input required class="form-control me-2"
+                                        name="client"
+                                        type="search"
+                                        placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Inizio
-                        <input class="form-control me-2"
-                               name="date_from"
-                               type="date"
-                               placeholder="Cerca">
+                        <input required class="form-control me-2"
+                                        name="date_from"
+                                        type="date"
+                                        placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Fine
-                        <input class="form-control me-2"
-                               name="date_to"
-                               type="date"
-                               placeholder="Cerca">
+                        <input required class="form-control me-2"
+                                        name="date_to"
+                                        type="date"
+                                        placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Dipendente
-                        <input class="form-control me-2"
-                               name="dep_id"
-                               type="search"
-                               placeholder="Cerca">
+                        <input required class="form-control me-2"
+                                        name="dep_id"
+                                        type="search"
+                                        placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Prodotto
-                        <input class="form-control me-2"
-                               name="product"
-                               type="search"
-                               placeholder="Cerca">
+                        <input required class="form-control me-2"
+                                        name="product"
+                                        type="search"
+                                        placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
@@ -1110,9 +1143,9 @@
           </div>
           <div class="col-lg-4 col-12 minor ">
             <div id="nolo_card"
-                 class="card text-start"
+                 class="show-card card text-start"
                  style="display: none;">
-              <div class="card-body">
+              <div class="card-body card-top">
                 <div class="row"> 
                   <div class="col"> 
                     <p>Id: <small id="nolo_card_id"></small></p>
@@ -1135,7 +1168,7 @@
               </div>
 
 
-              <ul id="nolo_card_info_list" class="list-group list-group-flush">
+              <ul id="nolo_card_info_list" class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <b> Stato noleggio: </b>
                   <span id="nolo_card_status"></span>
@@ -1164,7 +1197,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-6 col-lg-3">
-                    <a href="#"
+                    <a href="#nolo_card_modify"
                        class="nolo_card_options card-link"
                        onclick="modifyNolo()">Modifica</a>
                   </div>
@@ -1177,53 +1210,59 @@
               </div>
             </div>
             <form id="nolo_card_modify" 
-                  class="card text-start"
+                  class="show-card card text-start"
                   style="display: none;">
-              <div class="card-body">
+              <div class="card-body card-top">
                 <div class="mb-2">
                   <h6 class="fw-bold">Id Cliente:</h6>
-                  <input type="number"
-                         id="nolo_card_modify_client_id"
-                         name="client_id"
-                         class="card-title form-control"
-                         aria-label="Id Cliente">
+                  <input required type="number"
+                                  min=0
+                                  max=any
+                                  step=1
+                                  id="nolo_card_modify_client_id"
+                                  name="client_id"
+                                  class="card-title form-control"
+                                  aria-label="Id Cliente">
                   <h6 class="fw-bold">Id Prodotto:</h6>
-                  <input type="number"
-                         id="nolo_card_modify_product_id"
-                         name="product_id"
-                         class="card-text form-control"
-                         aria-label="Id Prodotto">
+                  <input required type="number"
+                                  min=0
+                                  max=any
+                                  step=1
+                                  id="nolo_card_modify_product_id"
+                                  name="product_id"
+                                  class="card-text form-control"
+                                  aria-label="Id Prodotto">
                 </div>
                 <div class="row mb-2">
                   <h6 class="fw-bold">Periodo:</h6>
-                  <div class="col-3">
+                  <div class="col-6 col-lg-2">
                     Da:
                   </div>
-                  <div class="col-3">
-                    <input type="date"
-                           id="nolo_card_modify_date_from"
-                           name="date_from"
-                           class="card-text form-control"
-                           aria-label="Inizio noleggio">
+                  <div class="col">
+                    <input required type="date"
+                                    id="nolo_card_modify_date_from"
+                                    name="date_from"
+                                    class="card-text form-control"
+                                    aria-label="Inizio noleggio">
                   </div>
-                  <div class="col-3">
+                  <div class="col-6 col-lg-2">
                     a:
                   </div>
-                  <div class="col-3">
-                    <input type="date"
-                           id="nolo_card_modify_date_to"
-                           name="date_to"
-                           class="card-text form-control"
-                           :placeholder="this.nolo['Died']"
-                           aria-label="Termine noleggio">
+                  <div class="col">
+                    <input required type="date"
+                                    id="nolo_card_modify_date_to"
+                                    name="date_to"
+                                    class="card-text form-control"
+                                    :placeholder="this.nolo['Died']"
+                                    aria-label="Termine noleggio">
                   </div>
                 </div>
                 <p id="nolo_card_modify_invalid_dates"
-                     style="display: none;">La data di inizio non può essere dopo la data di termine!</p>
-                  <p id="nolo_card_modify_unavailable"
-                     style="display: none;">Il prodotto non è disponibile nelle date selezionate.</p>
+                   style="display: none;">La data di inizio non può essere dopo la data di termine!</p>
+                <p id="nolo_card_modify_unavailable"
+                   style="display: none;">Il prodotto non è disponibile nelle date selezionate.</p>
               </div>
-              <ul class="list-group list-group-flush">
+              <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
                     <div class="col">
@@ -1249,11 +1288,14 @@
                       <b>Costo giornaliero:</b>
                     </div>
                     <div class="col">
-                      <input type="number"
-                             id="nolo_card_modify_daily_cost"
-                             name="daily_cost"
-                             class="card-text form-control"
-                             aria-label="Costo giornaliero">
+                      <input required type="number"
+                                      min=0
+                                      max=any
+                                      step=0.1
+                                      id="nolo_card_modify_daily_cost"
+                                      name="daily_cost"
+                                      class="card-text form-control"
+                                      aria-label="Costo giornaliero">
                     </div>
                   </div>
                 </li>
@@ -1263,11 +1305,15 @@
                       <b>Sconto:</b>
                     </div>
                     <div class="col">
-                      <input type="number"
-                             id="nolo_card_modify_discount"
-                             name="discount"
-                             class="card-text form-control"
-                             aria-label="Sconto">
+                      <input required type="number"
+                                      min=0
+                                      max=100
+                                      value=0
+                                      step=0.1
+                                      id="nolo_card_modify_discount"
+                                      name="discount"
+                                      class="card-text form-control"
+                                      aria-label="Sconto">
                     </div>
                   </div>
                 </li>
@@ -1278,11 +1324,15 @@
                       <b>Costi aggiuntivi:</b>
                     </div>
                     <div class="col">
-                      <input type="number"
-                             id="nolo_card_modify_other_fees"
-                             name="other_fees"
-                             class="card-text form-control"
-                             aria-label="Costi aggiuntivi">
+                      <input required type="number"
+                                      min=any
+                                      max=any
+                                      step=0.1
+                                      value=0
+                                      id="nolo_card_modify_other_fees"
+                                      name="other_fees"
+                                      class="card-text form-control"
+                                      aria-label="Costi aggiuntivi">
                     </div>
                   </div>
                 </li>
@@ -1293,10 +1343,10 @@
                     </div>
                     <div class="col">
                       <input type="text"
-                             id="nolo_card_modify_info"
-                             name="info"
-                             class="card-text form-control"
-                             aria-label="Note">
+                                      id="nolo_card_modify_info"
+                                      name="info"
+                                      class="card-text form-control"
+                                      aria-label="Note">
                     </div>
                   </div>
                 </li>
@@ -1314,46 +1364,52 @@
             </form>
 
             <form id="nolo_card_insert" 
-                  class="card text-start"
+                  class="show-card card text-start"
                   style="display: none;">
-              <div class="card-body">
+              <div class="card-body card-top">
                 <div class="mb-2">
                   <h6 class="fw-bold">Id Cliente:</h6>
-                  <input type="number"
-                         id="nolo_card_insert_client"
-                         name="client_id"
-                         class="card-title form-control"
-                         aria-label="Id Cliente">
+                  <input required type="number"
+                                  min=0
+                                  max=any
+                                  step=1
+                                  id="nolo_card_insert_client"
+                                  name="client_id"
+                                  class="card-title form-control"
+                                  aria-label="Id Cliente">
                   <h6 class="fw-bold">Id Prodotto:</h6>
-                  <input type="number"
-                         id="nolo_card_insert_product"
-                         name="product_id"
-                         class="card-text form-control"
-                         aria-label="Id Prodotto">
+                  <input required type="number"
+                                  min=0
+                                  max=any
+                                  step=1
+                                  id="nolo_card_insert_product"
+                                  name="product_id"
+                                  class="card-text form-control"
+                                  aria-label="Id Prodotto">
                 </div>
                 <div>
-                  <h6 class="fw-bold">Periodo:</h6>
                   <div class="row mb-2">
-                    <div class="col-2">
+                    <h6 class="fw-bold">Periodo:</h6>
+                    <div class="col-6 col-lg-2">
                       <b>Da: </b>
                     </div>
-                    <div class="col-4">
-                      <input type="date"
-                             id="nolo_card_insert_date_from"
-                             name="date_from"
-                             class="card-text form-control"
-                             aria-label="Inizio noleggio">
+                    <div class="col">
+                      <input required type="date"
+                                      id="nolo_card_insert_date_from"
+                                      name="date_from"
+                                      class="card-text form-control"
+                                      aria-label="Inizio noleggio">
                     </div>
-                    <div class="col-2">
+                    <div class="col-6 col-lg-2">
                       <b>a: </b>
                     </div>
-                    <div class="col-4">
-                      <input type="date"
-                             id="nolo_card_insert_date_to"
-                             name="date_to"
-                             class="card-text form-control"
-                             :placeholder="this.nolo['Died']"
-                             aria-label="Termine noleggio">
+                    <div class="col">
+                      <input required type="date"
+                                      id="nolo_card_insert_date_to"
+                                      name="date_to"
+                                      class="card-text form-control"
+                                      :placeholder="this.nolo['Died']"
+                                      aria-label="Termine noleggio">
                     </div>
                   </div>
                   <p id="nolo_card_insert_invalid_dates"
@@ -1362,7 +1418,7 @@
                      style="display: none;">Il prodotto non è disponibile nelle date selezionate.</p>
                 </div>
               </div>
-              <ul class="list-group list-group-flush">
+              <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
                     <div class="col">
@@ -1387,11 +1443,14 @@
                       <b>Costo giornaliero:</b>
                     </div>
                     <div class="col">
-                      <input type="number"
-                             id="nolo_card_insert_daily_cost"
-                             name="daily_cost"
-                             class="card-text form-control"
-                             aria-label="Costo giornaliero">
+                      <input required type="number"
+                                      min=0
+                                      max=any
+                                      step=0.1
+                                      id="nolo_card_insert_daily_cost"
+                                      name="daily_cost"
+                                      class="card-text form-control"
+                                      aria-label="Costo giornaliero">
                     </div>
                   </div>
                 </li>
@@ -1401,11 +1460,15 @@
                       <b>Sconto:</b>
                     </div>
                     <div class="col">
-                      <input type="number"
-                             id="nolo_card_insert_discount"
-                             name="discount"
-                             class="card-text form-control"
-                             aria-label="Sconto">
+                      <input required type="number"
+                                      min=0
+                                      max=100
+                                      step=0.1
+                                      value=0
+                                      id="nolo_card_insert_discount"
+                                      name="discount"
+                                      class="card-text form-control"
+                                      aria-label="Sconto">
                     </div>
                   </div>
                 </li>
@@ -1416,11 +1479,15 @@
                       <b>Costi aggiuntivi:</b>
                     </div>
                     <div class="col">
-                      <input type="number"
-                             id="nolo_card_insert_other_fees"
-                             name="other_fees"
-                             class="card-text form-control"
-                             aria-label="Costi aggiuntivi">
+                      <input required type="number"
+                                      min=any
+                                      max=any
+                                      step=0.1
+                                      value=0
+                                      id="nolo_card_insert_other_fees"
+                                      name="other_fees"
+                                      class="card-text form-control"
+                                      aria-label="Costi aggiuntivi">
                     </div>
                   </div>
                 </li>
@@ -1431,10 +1498,10 @@
                     </div>
                     <div class="col">
                       <input type="text"
-                             id="nolo_card_insert_info"
-                             name="info"
-                             class="card-text form-control"
-                             aria-label="Note">
+                                      id="nolo_card_insert_info"
+                                      name="info"
+                                      class="card-text form-control"
+                                      aria-label="Note">
                     </div>
                   </div>
                 </li>
