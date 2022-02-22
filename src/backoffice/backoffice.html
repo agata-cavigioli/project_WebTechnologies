@@ -6,6 +6,7 @@
     <title>NoloNoloPLVS Retrobottega</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="backoffice/css/style.css">
+    <link rel="stylesheet" href="backoffice/css/color.css">
   </head>
 
   <body>
@@ -26,11 +27,15 @@
                style="display: none;"
                class= "col-lg-3">
             <a href="/dashboard"
-               type="button"
+               lang="en"
+               role="button"
                class="btn btn-primary w-100">Dashboard</a>
           </div>
           <div id="header_buttons" class= "col-lg-3">
-            <button onclick="doLogin()" type="button" class="btn btn-primary w-100">Login</button>
+            <button onclick="doLogin()"
+                    lang="en"
+                    type="button"
+                    class="btn btn-primary w-100">Login</button>
           </div>
         </div>
       </div>
@@ -87,8 +92,9 @@
         </nav>
 
 
-        <div id="inventory" class="content-tab my-bg p-3-lg row g-0">
-          <div class="table-responsive col-lg-8 col-12">
+        <div id="inventory" class="content-tab my-bg p-3-lg row ">
+          <h2 class="visually-hidden">Tabella prodotti</h2>
+          <div class=" col-lg-8 col-12">
             <table id="twrap" class="text-start table table-bordered table-striped table-hover">
               <caption class="visually-hidden">Elenco prodotti</caption>
               <thead id="product_header" >
@@ -97,64 +103,64 @@
                     <th scope="col">
                       <label>
                         Data di Nascita
-                        <input required class="form-control me-2"
-                                        name="birth"
-                                        type="search"
-                                        aria-label="Cerca data di nascita">
+                        <input class="form-control me-2"
+                               name="birth"
+                               type="search"
+                               aria-label="Cerca data di nascita">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Luogo di Nascita
-                        <input required class="form-control me-2"
-                                        name="birth_p"
-                                        type="search"
-                                        aria-label="Cerca luogo di nascita">
+                        <input class="form-control me-2"
+                               name="birth_p"
+                               type="search"
+                               aria-label="Cerca luogo di nascita">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Data di morte
-                        <input required class="form-control me-2"
-                                        name="death"
-                                        type="search"
-                                        placeholder="Cerca"
-                                        aria-label="Cerca data di morte">
+                        <input class="form-control me-2"
+                               name="death"
+                               type="search"
+                               placeholder="Cerca"
+                               aria-label="Cerca data di morte">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Luogo di morte
-                        <input required class="form-control me-2"
-                                        name="death_p"
-                                        type="search"
-                                        placeholder="Cerca"
-                                        aria-label="Cerca luogo di morte">
+                        <input class="form-control me-2"
+                               name="death_p"
+                               type="search"
+                               placeholder="Cerca"
+                               aria-label="Cerca luogo di morte">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Nome
-                        <input required class="form-control me-2"
-                                        name="name"
-                                        type="search"
-                                        placeholder="Cerca"
-                                        aria-label="Cerca nome">
+                        <input class="form-control me-2"
+                               name="name"
+                               type="search"
+                               placeholder="Cerca"
+                               aria-label="Cerca nome">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Tematiche
-                        <input required class="form-control me-2"
-                                        name="subjects"
-                                        type="search"
-                                        placeholder="Cerca"
-                                        aria-label="Cerca tematiche">
+                        <input class="form-control me-2"
+                               name="subjects"
+                               type="search"
+                               placeholder="Cerca"
+                               aria-label="Cerca tematiche">
                       </label>
                     </th>
                     <th>
                       <a class="w-100 btn btn-primary"
-                         href="#product_header"
+                         href="#products"
                          onclick="filterProducts()"
                          role="button"
                          type="submit">
@@ -167,10 +173,10 @@
               <tbody id="products">
               </tbody>
             </table>
-            <div class="row justify-content-start g-3 major">
+            <div class="row justify-content-start major">
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
-                   href="#product_header"
+                   href="#products"
                    role="button"
                    onclick="resetSearchInputs('#product_header')"
                    type="reset">
@@ -185,10 +191,11 @@
                 </a>
               </div>
               <div class="col col-lg-2">
-                <button id="product_insert_button" class="w-100 btn btn-primary mb-2"
-                                                   style="display: none;"
-                                                   onclick="insertProduct()"
-                                                   type="">
+                <button id="product_insert_button"
+                        class="w-100 btn btn-primary mb-2"
+                        style="display: none;"
+                        onclick="insertProduct()"
+                        type="">
                   Nuovo 
                 </button>
               </div>
@@ -197,17 +204,20 @@
 
           <div class="col-lg-4 col-12 minor ">
             <div id="product_card"
+                 tabindex=0
                  class="show-card card text-start"
                  style="display: none;">
-              <div class="card-body card-top">
+              <div
+                tabindex=0
+                class="card-body card-top">
                 <div class="row"> 
                   <div class="col"> 
-                    <h5 id="product_card_name"
-                        class="card-title fw-bold"></h5>
+                    <h3 id="product_card_name"
+                        class="h5 card-title fw-bold"></h3>
                     <p>Id: <small id="product_card_id"></small></p>
                     <p id="product_card_age"
                        class="card-text"></p>
-                    <h6 class="fw-bold">Tematiche:</h6>
+                    <h4 class="h6 fw-bold">Tematiche:</h4>
                     <p id="product_card_subject" class="card-text"></p>
                   </div>
                   <div class="col"> 
@@ -218,6 +228,7 @@
 
               <form id="nolo_form">
                 <ul id="product_card_nolo_list"
+                    tabindex=0
                     style="display: none;"
                     class="card-list list-group list-group-flush">
                   <li class="list-group-item">
@@ -259,9 +270,9 @@
                   </li>
                   <li class="list-group-item">
                     <div class="row">
-                      <div class="col">
+                      <label for="nolo_form_discount" class="col">
                         <b>Sconto</b>
-                      </div>
+                      </label>
                       <div class="col">
                         <input type="number"
                                min=0
@@ -277,9 +288,9 @@
                   </li>
                   <li class="list-group-item">
                     <div class="row">
-                      <div class="col">
+                      <label for="nolo_form_insert_other_fees" class="col">
                         <b>Costi aggiuntivi</b>
-                      </div>
+                      </label>
                       <div class="col">
                         <input type="number"
                                min=any
@@ -294,24 +305,26 @@
                     </div>
                   </li>
                   <li class="list-group-item">
-                    <div class="row">
+                    <div id="nolo_form_total_result" tabindex=0 class="row">
                       <b class="col"> Giorni: </b>
                       <span class="col"id="nolo_form_days"></span>
                     </div>
                   </li>
 
                   <li class="list-group-item">
-                    <div class="row">
+                    <div class="row" tabindex=0>
                       <b class="col"> Totale: </b>
-                      <span class="col"id="nolo_form_total"></span>
+                      <span class="col" id="nolo_form_total"></span>
                     </div>
                   </li>
                 </ul>
               </form>
 
-              <ul id="product_card_info_list" class="card-list list-group list-group-flush">
+              <ul id="product_card_info_list"
+                  tabindex=0
+                  class="card-list list-group list-group-flush">
                 <li class="list-group-item">
-                  <b> Prezzo: </b>
+                  <b>Prezzo:</b>
                   <span id="product_card_price"></span>
                 </li>
                 <li class="list-group-item">
@@ -345,17 +358,16 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-6 col-lg-3">
-                    <a href="#product_card"
+                    <a href="#product_card_nolo_list"
                        id="nolo_button"
                        onclick="noloProduct()"
                        class="card-link">Preventivo</a>
                   </div>
                   <div class="col-6 col-lg-3">
-                    <a class="btn btn-primary"
-                       href="#product_card"
-                       id="nolo_calc_button"
-                       onclick="doNolo()"
-                       style="display: none;">Calcola</a>
+                    <button class="btn btn-primary"
+                            id="nolo_calc_button"
+                            onclick="doNolo()"
+                            style="display: none;">Calcola</button>
                   </div>
                   <div class="col-6 col-lg-3">
                     <a href="#product_card_modify"
@@ -364,7 +376,7 @@
                        onclick="modifyProduct()">Modifica</a>
                   </div>
                   <div class="col-6 col-lg-3">
-                    <a href="#"
+                    <a href="#products"
                        onclick="deleteProduct()"
                        class="product_card_options card-link"
                        style="display: none;">Elimina</a>
@@ -377,73 +389,80 @@
                   class="show-card card text-start"
                   style="display: none;">
               <div class="card-body card-top">
-                <h6 class="fw-bold">Nome:</h6>
-                <input required type="text"
-                                id="product_card_modify_name"
-                                name="name"
-                                class="card-title fw-bold form-control"
-                                aria-label="Nome">
+                <label class="fw-bold w-100">Nome:
+                  <input required type="text"
+                                  id="product_card_modify_name"
+                                  name="name"
+                                  class="card-title fw-bold form-control"
+                                  aria-label="Nome">
+                </label>
                 <div class="row mb-2">
                   <div class="col">
-                    <h6 class="fw-bold">Luogo di Nascita:</h6>
-                    <input required type="text"
-                                    id="product_card_modify_birth_p"
-                                    name="birth_p"
-                                    class="card-text form-control"
-                                    aria-label="Luogo di Nascita">
+                    <label class="fw-bold w-100">Luogo di Nascita:
+                      <input required type="text"
+                                      id="product_card_modify_birth_p"
+                                      name="birth_p"
+                                      class="card-text form-control"
+                                      aria-label="Luogo di Nascita">
+                    </label>
                   </div>
                   <div class="col">
-                    <h6 class="fw-bold">Data di Nascita:</h6>
-                    <input required type="number"
-                                    min=any
-                                    max=any
-                                    step=1
-                                    id="product_card_modify_birth"
-                                    name="birth"
-                                    class="card-text form-control"
-                                    aria-label="Data di Nascita">
+                    <label class="fw-bold w-100">Data di Nascita:
+                      <input required type="number"
+                                      min=any
+                                      max=any
+                                      step=1
+                                      id="product_card_modify_birth"
+                                      name="birth"
+                                      class="card-text form-control"
+                                      aria-label="Data di Nascita">
+                    </label>
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="col">
-                    <h6 class="fw-bold">Luogo di Morte:</h6>
-                    <input required type="text"
-                                    id="product_card_modify_death_p"
-                                    name="death_p"
-                                    class="card-text form-control"
-                                    aria-label="Luogo di morte">
+                    <label class="fw-bold w-100">Luogo di Morte:
+                      <input required type="text"
+                                      id="product_card_modify_death_p"
+                                      name="death_p"
+                                      class="card-text form-control"
+                                      aria-label="Luogo di morte">
+                    </label>
                   </div>
                   <div class="col">
-                    <h6 class="fw-bold">Data di Morte:</h6>
-                    <input required type="number"
-                                    min=any
-                                    max=any
-                                    step=1
-                                    id="product_card_modify_death"
-                                    name="death"
-                                    class="card-text form-control"
-                                    aria-label="Data di Morte">
+                    <label class="fw-bold w-100">Data di Morte:
+                      <input required type="number"
+                                      min=any
+                                      max=any
+                                      step=1
+                                      id="product_card_modify_death"
+                                      name="death"
+                                      class="card-text form-control"
+                                      aria-label="Data di Morte">
+                    </label>
                   </div>
                 </div>
-                <h6 class="fw-bold">Tematiche:</h6>
-                <input required type="text"
-                                id="product_card_modify_subjects"
-                                name="subjects"
-                                class="card-text form-control"
-                                aria-label="Tematiche">
-                <h6 class="fw-bold mt-2">Url immagine:</h6>
-                <input required type="url"
-                                id="product_card_modify_img"
-                                name="img"
-                                class="card-text form-control"
-                                aria-label="Url immagine">
+                <label class="fw-bold w-100 mb-2">Tematiche:
+                  <input required type="text"
+                                  id="product_card_modify_subjects"
+                                  name="subjects"
+                                  class="card-text form-control"
+                                  aria-label="Tematiche">
+                </label>
+                <label class="fw-bold w-100 mb-2">Url immagine:
+                  <input required type="url"
+                                  id="product_card_modify_img"
+                                  name="img"
+                                  class="card-text form-control"
+                                  aria-label="Url immagine">
+                </label>
               </div>
               <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="product_card_modify_cost" class="col">
                       <b>Prezzo:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input required type="number"
                                       min=0
@@ -458,9 +477,9 @@
                 </li>
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="product_card_modify_condition" class="col">
                       <b>Condizioni:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <select id="product_card_modify_condition"
                               name="condition"
@@ -477,21 +496,21 @@
                 <li class="list-group-item">
                   <div class="row">
                     <h6 class="fw-bold">Disponibilità</h6>
-                    <div class="col-6 col-lg-2">
+                    <label for="product_card_modify_available_from" class="col-6 col-lg-2">
                       <b>Da:</b>
-                    </div>
+                    </label>
                     <div class="col">
-                      <input required type="date"
+                      <input type="date"
                                       id="product_card_modify_available_from"
                                       name="available_from"
                                       class="card-text form-control"
                                       aria-label="Inizio disponibilità">
                     </div>
-                    <div class="col-6 col-lg-2">
+                    <label for="product_card_modify_available_to" class="col-6 col-lg-2">
                       <b>a:</b>
-                    </div>
+                    </label>
                     <div class="col">
-                      <input required type="date"
+                      <input type="date"
                                       id="product_card_modify_available_to"
                                       name="available_to"
                                       class="card-text form-control"
@@ -501,9 +520,9 @@
                 </li>
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="product_card_modify_discount" class="col">
                       <b>Sconto:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input required type="number"
                                       min=0
@@ -516,27 +535,28 @@
                                       aria-label="Sconto">
                     </div>
                   </div>
-                </li><li class="list-group-item">
+                </li>
+                <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="product_card_modify_info" class="col">
                       <b>Note:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input type="text"
-                                      id="product_card_modify_info"
-                                      name="info"
-                                      class="card-text form-control"
-                                      aria-label="Note">
+                             id="product_card_modify_info"
+                             name="info"
+                             class="card-text form-control"
+                             aria-label="Note">
                     </div>
                   </div>
                 </li>
               </ul>
               <div class="card-body">
-                <a href="#"
+                <a href="#product_card"
                    onclick="updateProduct()"
                    class="card-link">
                   Salva</a>
-                <a href="#"
+                <a href="#product_card"
                    class="card-link"
                    onclick="abortModify('inventory')"
                    >Annulla</a>
@@ -548,73 +568,80 @@
                   style="display: none;"
                   aria-label="Inserisci prodotto">
               <div class="card-body card-top">
-                <h6 class="fw-bold">Nome:</h6>
-                <input required type="text"
-                                id="product_card_insert_name"
-                                name="name"
-                                class="card-title fw-bold form-control"
-                                aria-label="Nome">
+                <label class="fw-bold w-100">Nome:
+                  <input required type="text"
+                                  id="product_card_insert_name"
+                                  name="name"
+                                  class="card-title fw-bold form-control"
+                                  aria-label="Nome">
+                </label>
                 <div class="row mb-2">
                   <div class="col">
-                    <h6 class="fw-bold">Luogo di nascita:</h6>
-                    <input required type="text"
-                                    id="product_card_insert_birth_p"
-                                    name="birth_p"
-                                    class="card-text form-control"
-                                    aria-label="Luogo di Nascita">
+                    <label class="fw-bold w-100">Luogo di nascita:
+                      <input required type="text"
+                                      id="product_card_insert_birth_p"
+                                      name="birth_p"
+                                      class="card-text form-control"
+                                      aria-label="Luogo di Nascita">
+                    </label>
                   </div>
                   <div class="col">
-                    <h6 class="fw-bold">Data di nascita:</h6>
-                    <input required type="number"
-                                    min=any
-                                    max=any
-                                    step=1
-                                    id="product_card_insert_birth"
-                                    name="birth"
-                                    class="card-text form-control"
-                                    aria-label="Data di Nascita">
+                    <label class="fw-bold w-100">Data di nascita:
+                      <input required type="number"
+                                      min=any
+                                      max=any
+                                      step=1
+                                      id="product_card_insert_birth"
+                                      name="birth"
+                                      class="card-text form-control"
+                                      aria-label="Data di Nascita">
+                    </label>
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="col">
-                    <h6 class="fw-bold">Luogo di morte:</h6>
-                    <input required type="text"
-                                    id="product_card_insert_death_p"
-                                    name="death_p"
-                                    class="card-text form-control"
-                                    aria-label="Luogo di morte">
+                    <label class="fw-bold w-100">Luogo di morte:
+                      <input required type="text"
+                                      id="product_card_insert_death_p"
+                                      name="death_p"
+                                      class="card-text form-control"
+                                      aria-label="Luogo di morte">
+                    </label>
                   </div>
                   <div class="col">
-                    <h6 class="fw-bold">Data di morte:</h6>
-                    <input required type="number"
-                                    min=any
-                                    max=any
-                                    step=1
-                                    id="product_card_insert_death"
-                                    name="death"
-                                    class="card-text form-control"
-                                    aria-label="Data di Morte">
+                    <label class="fw-bold w-100">Data di morte:
+                      <input required type="number"
+                                      min=any
+                                      max=any
+                                      step=1
+                                      id="product_card_insert_death"
+                                      name="death"
+                                      class="card-text form-control"
+                                      aria-label="Data di Morte">
+                    </label>
                   </div>
                 </div>
-                <h6 class="fw-bold">Tematiche:</h6>
-                <input type="text"
-                                id="product_card_insert_subjects"
-                                name="subjects"
-                                class="card-text form-control"
-                                aria-label="Tematiche">
-                <h6 class="fw-bold mt-2">Url immagine:</h6>
-                <input type="url"
-                                id="product_card_insert_image"
-                                name="img"
-                                class="card-text form-control"
-                                aria-label="Url immagine">
+                <label class="fw-bold w-100 mb-2">Tematiche:
+                  <input type="text"
+                         id="product_card_insert_subjects"
+                         name="subjects"
+                         class="card-text form-control"
+                         aria-label="Tematiche">
+                </label>
+                <label class="fw-bold w-100 mb-2">Url immagine:
+                  <input type="url"
+                         id="product_card_insert_image"
+                         name="img"
+                         class="card-text form-control"
+                         aria-label="Url immagine">
+                </label>
               </div>
               <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="product_card_insert_cost" class="col">
                       <b>Prezzo:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input required type="number"
                                       min=0
@@ -629,14 +656,14 @@
                 </li>
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="product_card_insert_condition" class="col">
                       <b>Condizioni:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <select required id="product_card_insert_condition"
-                              name="condition"
-                              class="card-text form-control"
-                              aria-label="Condizioni">
+                                       name="condition"
+                                       class="card-text form-control"
+                                       aria-label="Condizioni">
                         <option value="Entusiasta">Entusiasta</option>
                         <option value="Stanco">Stanco</option>
                         <option value="Riflessivo">Riflessivo</option>
@@ -647,67 +674,69 @@
 
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col-3">
-                      <b>Disponibile da:</b>
-                    </div>
-                    <div class="col-3">
+                    <h6 class="fw-bold">Disponibilità</h6>
+                    <label for="product_card_insert_available_from" class="col-6 col-lg-2">
+                      <b>Da:</b>
+                    </label>
+                    <div class="col">
                       <input type="date"
-                                      id="product_card_insert_available_from"
-                                      name="available_from"
-                                      class="card-text form-control"
-                                      aria-label="Inizio disponibilità">
+                             id="product_card_insert_available_from"
+                             name="available_from"
+                             class="card-text form-control"
+                             aria-label="Inizio disponibilità">
                     </div>
-                    <div class="col-3">
+                    <label for="product_card_insert_available_to" class="col-6 col-lg-2">
                       <b>a:</b>
-                    </div>
-                    <div class="col-3">
+                    </label>
+                    <div class="col">
                       <input type="date"
-                                      id="product_card_insert_available_to"
-                                      name="available_to"
-                                      class="card-text form-control"
-                                      aria-label="Fine disponibilità">
+                             id="product_card_insert_available_to"
+                             name="available_to"
+                             class="card-text form-control"
+                             aria-label="Fine disponibilità">
                     </div>
                   </div>
                 </li>
+
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="product_card_insert_discount" class="col">
                       <b>Sconto:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input type="number"
-                                      min=0
-                                      max=100
-                                      value=0
-                                      step=0.1
-                                      id="product_card_insert_discount"
-                                      name="discount"
-                                      class="card-text form-control"
-                                      aria-label="Sconto">
+                             min=0
+                             max=100
+                             value=0
+                             step=0.1
+                             id="product_card_insert_discount"
+                             name="discount"
+                             class="card-text form-control"
+                             aria-label="Sconto">
                     </div>
                   </div>
                 </li>
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="product_card_insert_info" class="col">
                       <b>Note:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input type="text"
-                                      id="product_card_insert_info"
-                                      name="info"
-                                      class="card-text form-control"
-                                      aria-label="Note">
+                             id="product_card_insert_info"
+                             name="info"
+                             class="card-text form-control"
+                             aria-label="Note">
                     </div>
                   </div>
                 </li>
               </ul>
               <div class="card-body">
-                <a href="#"
+                <a href="#product_card"
                    onclick="saveNewProduct()"
                    class="card-link">
                   Salva</a>
-                <a href="#"
+                <a href="#product_card"
                    class="card-link"
                    onclick="abortModify('inventory')"
                    >Annulla</a>
@@ -719,8 +748,9 @@
 
         <div id="clients"
              style="display: none;"
-             class="content-tab my-bg p-3-lg row">
-          <div id="clients_table" class="table-responsive col-lg-8 col-12">
+             class="content-tab my-bg p-3-lg row ">
+          <div id="clients_table" class=" col-lg-8 col-12">
+            <h2 class="visually-hidden">Tabella clienti</h2>
             <table id="twrap" class="text-start table table-bordered table-striped table-hover ">
               <caption class="visually-hidden">Elenco clienti</caption>
               <thead id="clients_header" >
@@ -729,48 +759,48 @@
                     <th scope="col">
                       <label>
                         Nome
-                        <input required class="form-control me-2"
-                                        name="name"
-                                        type="search"
-                                        placeholder="Cerca">
+                        <input class="form-control me-2"
+                               name="name"
+                               type="search"
+                               placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Cognome
-                        <input required class="form-control me-2"
-                                        name="surname"
-                                        type="search" placeholder="Cerca">
+                        <input class="form-control me-2"
+                               name="surname"
+                               type="search" placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Email 
-                        <input required class="form-control me-2"
-                                        name="email"
-                                        type="search" placeholder="Cerca">
+                        <input class="form-control me-2"
+                               name="email"
+                               type="search" placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Telefono
-                        <input required class="form-control me-2"
-                                        name="phone"
-                                        type="search" placeholder="Cerca">
+                        <input class="form-control me-2"
+                               name="phone"
+                               type="search" placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Indirizzo
-                        <input required class="form-control me-2"
-                                        name="address"
-                                        type="search"
-                                        placeholder="Cerca">
+                        <input class="form-control me-2"
+                               name="address"
+                               type="search"
+                               placeholder="Cerca">
                       </label>
                     </th>
                     <th>
                       <a class="w-100 h-100 btn btn-primary"
-                         href="#clients_header"
+                         href="#clients"
                          onclick="filterClients()"
                          role="button"
                          type="submit">
@@ -790,10 +820,10 @@
 
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
-                   href="#clients_header"
+                   href="#clients"
                    role="button"
                    onclick="resetSearchInputs('#clients_header')"
-                   type="reset"> Aggiorna </a>
+                   type="reset">Aggiorna</a>
               </div>
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
@@ -813,23 +843,23 @@
                style="display: none;"
                class="col-lg-8 col-12 minor p-2 px-lg-5 py-lg-3">
             <div class="row">
-              <h1 class="col">Storico Cliente</h1>
+              <h2 class="col">Storico Cliente</h2>
               <a href="#client_card"
                  onclick="hideHistory()"
                  class="col">Indietro</a>
             </div>
             <div>
-              <h2>Noleggi passati</h2>
+              <h3>Noleggi passati</h3>
               <div id="client_history_past"
-                   class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+                   class="h2 row row-cols-1 row-cols-md-3 g-4 mb-3">
               </div>
-              <h2>Noleggi presenti</h2>
+              <h3>Noleggi presenti</h3>
               <div id="client_history_present"
-                   class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+                   class="h2 row row-cols-1 row-cols-md-3 g-4 mb-3">
               </div>
-              <h2>Noleggi futuri</h2>
+              <h3>Noleggi futuri</h3>
               <div id="client_history_future"
-                   class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+                   class="h2 row row-cols-1 row-cols-md-3 g-4 mb-3">
               </div>
             </div>
           </div>
@@ -874,11 +904,13 @@
               <div class="card-body row">
                 <div class="col">
                   <a href="#client_card_modify"
+                     role="button"
                      class="client_card_options card-link"
                      onclick="modifyClient()">Modifica</a>
                 </div>
                 <div class="col">
-                  <a href="#"
+                  <a href="#people"
+                     role="button"
                      onclick="deleteClient()"
                      class="client_card_options card-link">Elimina</a>
                 </div>
@@ -891,63 +923,68 @@
               <div class="card-body card-top">
                 <div class="row mb-2">
                   <div class="col">
-                    <h6 class="fw-bold">Nome:</h6>
-                    <input required type="text"
-                                    id="client_card_modify_name"
-                                    name="name"
-                                    class="card-title form-control"
-                                    aria-label="Nome">
+                    <label class="fw-bold w-100">Nome:
+                      <input required type="text"
+                                      id="client_card_modify_name"
+                                      name="name"
+                                      class="card-title form-control"
+                                      aria-label="Nome">
+                    </label>
                   </div>
                   <div class="col">
-                    <h6 class="fw-bold">Cognome:</h6>
-                    <input required type="text"
-                                    id="client_card_modify_surname"
-                                    name="surname"
-                                    class="card-title form-control"
-                                    aria-label="Cognome">
+                    <label class="fw-bold w-100">Cognome:
+                      <input required type="text"
+                                      id="client_card_modify_surname"
+                                      name="surname"
+                                      class="card-title form-control"
+                                      aria-label="Cognome">
+                    </label>
                   </div>
                 </div>
-                <h6 class="fw-bold">Email:</h6>
-                <input required type="email"
-                                id="client_card_modify_email"
-                                name="email"
-                                class="card-text form-control mb-2"
-                                aria-label="Email">
-                <h6 class="fw-bold">Telefono:</h6>
-                <input required type="tel"
-                                id="client_card_modify_phone"
-                                name="phone"
-                                class="card-text form-control mb-2"
-                                aria-label="Telefono">
-                <h6 class="fw-bold">Indirizzo:</h6>
-                <input required type="text"
-                                id="client_card_modify_address"
-                                name="address"
-                                class="card-text form-control mb-2"
-                                aria-label="Address">
+                <label class="fw-bold w-100">Email:
+                  <input required type="email"
+                                  id="client_card_modify_email"
+                                  name="email"
+                                  class="card-text form-control mb-2"
+                                  aria-label="Email">
+                </label>
+                <label class="fw-bold w-100">Telefono:
+                  <input required type="tel"
+                                  id="client_card_modify_phone"
+                                  name="phone"
+                                  class="card-text form-control mb-2"
+                                  aria-label="Telefono">
+                </label>
+                <label class="fw-bold w-100">Indirizzo:
+                  <input required type="text"
+                                  id="client_card_modify_address"
+                                  name="address"
+                                  class="card-text form-control mb-2"
+                                  aria-label="Address">
+                </label>
               </div>
               <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="client_card_modify_info" class="col">
                       Note:
-                    </div>
+                    </label>
                     <div class="col">
                       <input type="text"
-                                      id="client_card_modify_info"
-                                      name="info"
-                                      class="card-text form-control"
-                                      aria-label="Note">
+                             id="client_card_modify_info"
+                             name="info"
+                             class="card-text form-control"
+                             aria-label="Note">
                     </div>
                   </div>
                 </li>
               </ul>
               <div class="card-body">
-                <a href="#"
+                <a href="#client_card"
                    onclick="updateClient()"
                    class="card-link">
                   Salva</a>
-                <a href="#"
+                <a href="#client_card"
                    class="card-link"
                    onclick="abortModify('clients')"
                    >Annulla</a>
@@ -960,63 +997,68 @@
               <div class="card-body card-top">
                 <div class="row mb-2">
                   <div class="col">
-                    <h6 class="fw-bold">Nome:</h6>
-                    <input required type="text"
-                                    id="client_card_insert_name"
-                                    name="name"
-                                    class="card-title form-control"
-                                    aria-label="Nome">
+                    <label class="fw-bold w-100">Nome:
+                      <input required type="text"
+                                      id="client_card_insert_name"
+                                      name="name"
+                                      class="card-title form-control"
+                                      aria-label="Nome">
+                    </label>
                   </div>
                   <div class="col">
-                    <h6 class="fw-bold">Cognome:</h6>
-                    <input required type="text"
-                                    id="client_card_insert_surname"
-                                    name="surname"
-                                    class="card-title form-control"
-                                    aria-label="Cognome">
+                    <label class="fw-bold w-100">Cognome:
+                      <input required type="text"
+                                      id="client_card_insert_surname"
+                                      name="surname"
+                                      class="card-title form-control"
+                                      aria-label="Cognome">
+                    </label>
                   </div>
                 </div>
-                <h6 class="fw-bold">Email:</h6>
-                <input required type="email"
-                                id="client_card_insert_email"
-                                name="email"
-                                class="card-text form-control mb-2"
-                                aria-label="Email">
-                <h6 class="fw-bold">Telefono:</h6>
-                <input required type="tel"
-                                id="client_card_insert_phone"
-                                name="phone"
-                                class="card-text form-control mb-2"
-                                aria-label="Telefono">
-                <h6 class="fw-bold">Indirizzo:</h6>
-                <input required type="text"
-                                id="client_card_insert_address"
-                                name="address"
-                                class="card-text form-control mb-2"
-                                aria-label="Address">
+                <label class="fw-bold w-100">Email:
+                  <input required type="email"
+                                  id="client_card_insert_email"
+                                  name="email"
+                                  class="card-text form-control mb-2"
+                                  aria-label="Email">
+                </label>
+                <label class="fw-bold w-100">Telefono:
+                  <input required type="tel"
+                                  id="client_card_insert_phone"
+                                  name="phone"
+                                  class="card-text form-control mb-2"
+                                  aria-label="Telefono">
+                </label>
+                <label class="fw-bold w-100">Indirizzo:
+                  <input required type="text"
+                                  id="client_card_insert_address"
+                                  name="address"
+                                  class="card-text form-control mb-2"
+                                  aria-label="Address">
+                </label>
               </div>
               <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="client_card_insert_info" class="col">
                       Note:
-                    </div>
+                    </label>
                     <div class="col">
                       <input type="text"
-                                      id="client_card_insert_info"
-                                      name="info"
-                                      class="card-text form-control"
-                                      aria-label="Note">
+                             id="client_card_insert_info"
+                             name="info"
+                             class="card-text form-control"
+                             aria-label="Note">
                     </div>
                   </div>
                 </li>
               </ul>
               <div class="card-body">
-                <a href="#"
+                <a href="#client_card"
                    onclick="saveNewClient()"
                    class="card-link">
                   Salva</a>
-                <a href="#"
+                <a href="#client_card"
                    class="card-link"
                    onclick="abortModify('clients')"
                    >Annulla</a>
@@ -1029,9 +1071,10 @@
 
 
         <div id="nolos"
-             class="content-tab my-bg p-3-lg row"
+             class="content-tab my-bg p-3-lg row "
              style="display: none;">
-          <div class="table-responsive col-lg-8 col-12">
+          <div class=" col-lg-8 col-12">
+            <h2 class="visually-hidden">Tabella noleggi</h2>
             <table id="twrap" class="text-start table table-bordered table-striped table-hover ">
               <caption class="visually-hidden">Elenco noleggi</caption>
               <thead id="nolo_header">
@@ -1040,52 +1083,51 @@
                     <th scope="col">
                       <label>
                         Cliente
-                        <input required class="form-control me-2"
-                                        name="client"
-                                        type="search"
-                                        placeholder="Cerca">
+                        <input class="form-control me-2"
+                               name="client"
+                               type="search"
+                               placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Inizio
-                        <input required class="form-control me-2"
-                                        name="date_from"
-                                        type="date"
-                                        placeholder="Cerca">
+                        <input class="form-control me-2"
+                               name="date_from"
+                               type="date"
+                               placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Fine
-                        <input required class="form-control me-2"
-                                        name="date_to"
-                                        type="date"
-                                        placeholder="Cerca">
+                        <input class="form-control me-2"
+                               name="date_to"
+                               type="date"
+                               placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Dipendente
-                        <input required class="form-control me-2"
-                                        name="dep_id"
-                                        type="search"
-                                        placeholder="Cerca">
+                        <input class="form-control me-2"
+                               name="dep_id"
+                               type="search"
+                               placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Prodotto
-                        <input required class="form-control me-2"
-                                        name="product"
-                                        type="search"
-                                        placeholder="Cerca">
+                        <input class="form-control me-2"
+                               name="product"
+                               type="search"
+                               placeholder="Cerca">
                       </label>
                     </th>
                     <th scope="col">
                       <label>
                         Stato
-
                         <select name="status"
                                 class="form-control me-2 w-100"
                                 aria-label="Stato noleggio">
@@ -1100,7 +1142,7 @@
                     </th>
                     <th>
                       <a class="w-100 h-100 btn btn-primary"
-                         href="#nolo_header"
+                         href="#nolos"
                          onclick="filterNolos()"
                          role="button"
                          type="submit">
@@ -1117,7 +1159,7 @@
 
               <div class="col col-lg-2">
                 <a class="w-100 btn btn-primary mb-2"
-                   href="#nolo_header"
+                   href="#nolos"
                    role="button"
                    onclick="resetSearchInputs('#nolo_header')"
                    type="reset">
@@ -1198,11 +1240,12 @@
                 <div class="row">
                   <div class="col-6 col-lg-3">
                     <a href="#nolo_card_modify"
+                       role="button"
                        class="nolo_card_options card-link"
                        onclick="modifyNolo()">Modifica</a>
                   </div>
                   <div class="col-6 col-lg-3">
-                    <a href="#"
+                    <a href="#nolos"
                        onclick="deleteNolo()"
                        class="nolo_card_options card-link">Elimina</a>
                   </div>
@@ -1214,24 +1257,26 @@
                   style="display: none;">
               <div class="card-body card-top">
                 <div class="mb-2">
-                  <h6 class="fw-bold">Id Cliente:</h6>
-                  <input required type="number"
-                                  min=0
-                                  max=any
-                                  step=1
-                                  id="nolo_card_modify_client_id"
-                                  name="client_id"
-                                  class="card-title form-control"
-                                  aria-label="Id Cliente">
-                  <h6 class="fw-bold">Id Prodotto:</h6>
-                  <input required type="number"
-                                  min=0
-                                  max=any
-                                  step=1
-                                  id="nolo_card_modify_product_id"
-                                  name="product_id"
-                                  class="card-text form-control"
-                                  aria-label="Id Prodotto">
+                  <label class="fw-bold w-100">Id Cliente:
+                    <input required type="number"
+                                    min=0
+                                    max=any
+                                    step=1
+                                    id="nolo_card_modify_client_id"
+                                    name="client_id"
+                                    class="card-title form-control"
+                                    aria-label="Id Cliente">
+                  </label>
+                  <label class="fw-bold w-100">Id Prodotto:
+                    <input required type="number"
+                                    min=0
+                                    max=any
+                                    step=1
+                                    id="nolo_card_modify_product_id"
+                                    name="product_id"
+                                    class="card-text form-control"
+                                    aria-label="Id Prodotto">
+                  </label>
                 </div>
                 <div class="row mb-2">
                   <h6 class="fw-bold">Periodo:</h6>
@@ -1253,7 +1298,6 @@
                                     id="nolo_card_modify_date_to"
                                     name="date_to"
                                     class="card-text form-control"
-                                    :placeholder="this.nolo['Died']"
                                     aria-label="Termine noleggio">
                   </div>
                 </div>
@@ -1265,9 +1309,9 @@
               <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="nolo_card_modify_status "class="col">
                       <b>Stato noleggio:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <select id="nolo_card_modify_status"
                               name="status"
@@ -1284,9 +1328,9 @@
                 </li>
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="nolo_card_modify_daily_cost" class="col">
                       <b>Costo giornaliero:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input required type="number"
                                       min=0
@@ -1301,9 +1345,9 @@
                 </li>
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="nolo_card_modify_discount" class="col">
                       <b>Sconto:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input required type="number"
                                       min=0
@@ -1320,9 +1364,9 @@
 
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="nolo_card_modify_other_fees" class="col">
                       <b>Costi aggiuntivi:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input required type="number"
                                       min=any
@@ -1338,28 +1382,30 @@
                 </li>
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="nolo_card_modify_info" class="col">
                       <b>Note:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input type="text"
-                                      id="nolo_card_modify_info"
-                                      name="info"
-                                      class="card-text form-control"
-                                      aria-label="Note">
+                             id="nolo_card_modify_info"
+                             name="info"
+                             class="card-text form-control"
+                             aria-label="Note">
                     </div>
                   </div>
                 </li>
               </ul>
               <div class="card-body">
-                <a href="#"
+                <a href="#nolo_card"
+                   role="button"
                    onclick="updateNolo()"
                    class="card-link">
                   Salva</a>
-                <a href="#"
+                <a href="#nolo_card"
                    class="card-link"
-                   onclick="abortModify('nolos')"
-                   >Annulla</a>
+                   role="button"
+                   onclick="abortModify('nolos')">
+                  Annulla</a>
               </div>
             </form>
 
@@ -1368,24 +1414,26 @@
                   style="display: none;">
               <div class="card-body card-top">
                 <div class="mb-2">
-                  <h6 class="fw-bold">Id Cliente:</h6>
-                  <input required type="number"
-                                  min=0
-                                  max=any
-                                  step=1
-                                  id="nolo_card_insert_client"
-                                  name="client_id"
-                                  class="card-title form-control"
-                                  aria-label="Id Cliente">
-                  <h6 class="fw-bold">Id Prodotto:</h6>
-                  <input required type="number"
-                                  min=0
-                                  max=any
-                                  step=1
-                                  id="nolo_card_insert_product"
-                                  name="product_id"
-                                  class="card-text form-control"
-                                  aria-label="Id Prodotto">
+                  <label class="fw-bold w-100">Id Cliente:
+                    <input required type="number"
+                                    min=0
+                                    max=any
+                                    step=1
+                                    id="nolo_card_insert_client"
+                                    name="client_id"
+                                    class="card-title form-control"
+                                    aria-label="Id Cliente">
+                  </label>
+                  <label class="fw-bold w-100">Id Prodotto:
+                    <input required type="number"
+                                    min=0
+                                    max=any
+                                    step=1
+                                    id="nolo_card_insert_product"
+                                    name="product_id"
+                                    class="card-text form-control"
+                                    aria-label="Id Prodotto">
+                  </label>
                 </div>
                 <div>
                   <div class="row mb-2">
@@ -1408,7 +1456,6 @@
                                       id="nolo_card_insert_date_to"
                                       name="date_to"
                                       class="card-text form-control"
-                                      :placeholder="this.nolo['Died']"
                                       aria-label="Termine noleggio">
                     </div>
                   </div>
@@ -1421,9 +1468,9 @@
               <ul class="card-list list-group list-group-flush">
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="nolo_card_insert_status" class="col">
                       <b>Stato noleggio:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <select id="nolo_card_insert_status"
                               name="status"
@@ -1439,9 +1486,9 @@
                 </li>
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="nolo_card_insert_daily_cost" class="col">
                       <b>Costo giornaliero:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input required type="number"
                                       min=0
@@ -1456,9 +1503,9 @@
                 </li>
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="nolo_card_insert_discount" class="col">
                       <b>Sconto:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input required type="number"
                                       min=0
@@ -1475,9 +1522,9 @@
 
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="nolo_card_insert_other_fees" class="col">
                       <b>Costi aggiuntivi:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input required type="number"
                                       min=any
@@ -1493,25 +1540,26 @@
                 </li>
                 <li class="list-group-item">
                   <div class="row">
-                    <div class="col">
+                    <label for="nolo_card_insert_info" class="col">
                       <b>Note:</b>
-                    </div>
+                    </label>
                     <div class="col">
                       <input type="text"
-                                      id="nolo_card_insert_info"
-                                      name="info"
-                                      class="card-text form-control"
-                                      aria-label="Note">
+                             id="nolo_card_insert_info"
+                             name="info"
+                             class="card-text form-control"
+                             aria-label="Note">
                     </div>
                   </div>
                 </li>
               </ul>
               <div class="card-body">
-                <a href="#"
+                <a href="#nolo_card"
+                   role="button"
                    onclick="saveNewNolo()"
                    class="card-link">
                   Salva</a>
-                <a href="#"
+                <a href="#nolo_card"
                    class="card-link"
                    onclick="abortModify('nolos')"
                    >Annulla</a>

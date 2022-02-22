@@ -7,26 +7,19 @@
   z-index: -1;
 }
 
-#twrap {
-  max-height: 60vh;
-  overflow: auto;
-  display:inline-block;
-}
+/****************************************/
 
-tr:focus{
-  background-color: pink;
-}
-
-th, td {
-  width: 16.6%;
-}
-
-body{
-  background-color: #fffdfa;
-  background-size: cover;
-  background-opacity: 0.3;
+body {
   overflow: hidden;
 }
+
+@media only screen and (max-width: 600px) {
+  body {
+    overflow-y: auto;
+  }
+}
+
+/****************************************/
 
 body * {
   -ms-overflow-style: none;
@@ -37,98 +30,112 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-@media only screen and (max-width: 600px) {
-  body {
-    overflow-y: auto;
-  }
+/****************************************/
+
+#twrap {
+  max-height: 60vh;
+  overflow-y: auto;
+  display:inline-block;
 }
 
-.major h1 {
-  color: #3674E7;
+tr:focus{
+  background-color: pink;
 }
 
-.major b, .major h2, .major a {
-  color: #1FA2FF;
+#inventory th,
+#inventory td {
+    width: 14%;
 }
 
-.major button, .major .btn {
-  border-style: none;
-  background-color: #3674E7;
-}
-.major button:hover {
-  background-color: #1FA2FF;
+#nolos th,
+#nolos td {
+    width: 14%;
 }
 
-.minor h1 {
-  color: #FA864C;
-}
-.minor b, .minor h2, .minor a{
-  color: #F7B32B;
+#clients th,
+#clients td {
+    width: 16%;
 }
 
-.minor button, .minor .btn {
-  border-style: none;
-  background-color: #FA864C;
+/****************************************/
+
+.content-tab {
+  height: 70vh;
 }
 
-.minor button:hover {
-  background-color: #F7B32B;
+/****************************************/
+
+.show-card {
+  max-height: 70vh;
 }
 
-a.btn {
-  color: #FFFFFF;
-  background-color: #3674E7;
+.card-list,
+#product_card_modify .card-top,
+#nolo_form,
+#product_card_insert .card-top {
+  overflow-y: scroll;
+  -ms-overflow-style: ;
+  scrollbar-width: thin;  
 }
 
-.my-bg * {
-  background-color: #fffdfa;
+.card-list::-webkit-scrollbar,
+#product_card_insert::-webkit-scrollbar,
+#nolo_form::-webkit-scrollbar,
+#product_card_modify::-webkit-scrollbar {
+  display: none;
 }
 
-.top-tabs{
-  color: #000000;
+.card-pic {
+  max-height: 30vh;
+  object-fit: cover;
 }
 
-.problem {
-  background-color: #FA864C;
-}
+/****************************************/
 
+
+/****************************************/
 /*
-.card-list {
-max-height: 20vh;
-overflow-y: scroll;
-overflow-x: hidden;
+
+th, td {
+  width: 16.6%;
 }
- */
 
-  #client_history {
-    max-height: 70vh;
-    max-width: 100vw;
-    overflow: auto;
-  }
+body {
+  background-color: #fffdfa;
+  background-size: cover;
+  background-opacity: 0.3;
+  overflow: hidden;
+}
 
-  #client_history .card {
-    overflow: hidden;
-  }
+#client_history {
+  max-height: 70vh;
+  max-width: 100vw;
+  overflow: auto;
+}
 
-  .content_tab {
-    max-height: 70vh;
-    overflow-x: hidden;
-  }
+#client_history .card {
+  overflow: hidden;
+}
 
-  .card-pic {
-    height: 30vh;
-    object-fit: cover;
-  }
+.content_tab {
+  max-height: 70vh;
+  overflow-x: hidden;
+}
 
+.card-pic {
+  height: 30vh;
+  object-fit: cover;
+}
+
+.show-card {
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
+@media only screen and (max-width: 600px) {
   .show-card {
-    max-height: 60vh;
-    overflow-y: scroll;
+    max-height: 100%;
   }
+}
 
-  @media only screen and (max-width: 600px) {
-    .show-card {
-      max-height: 100%;
-    }
-  }
-
-  /*https://coolors.co/3674e7-1fa2ff-fffdfa-fa864c-f7b32b*/
+https://coolors.co/3674e7-1fa2ff-fffdfa-fa864c-f7b32b*/

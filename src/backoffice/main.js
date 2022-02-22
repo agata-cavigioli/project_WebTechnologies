@@ -463,8 +463,10 @@ async function showProduct(prod_no){
 
 	$('#product_card_modify').css('display', 'none');
 	$('#product_card').css('display', '');
+	document.getElementById('product_card').focus();
 
 	window.location.href='#product_card';
+
 }
 
 async function showClient(client_no){
@@ -662,6 +664,9 @@ function abortModify(type){
 	$(`#${prefix}_card`).toggle();
 	$(`#${prefix}_card_modify`).css(`display`, `none`);
 	$(`#${prefix}_card_insert`).css(`display`, `none`);
+
+	var s = `#${prefix}_card`;
+	window.location.href = s;
 }
 
 function noloProduct(){
@@ -678,6 +683,7 @@ function noloProduct(){
 	$('#nolo_form_base_price').text(
 		$('#product_card_price').text()
 	);
+
 }
 
 async function doNolo(){
@@ -716,6 +722,8 @@ async function doNolo(){
 	$('#nolo_form_days').text(days);
 	$('#nolo_form_total').text('');
 	$('#nolo_form_total').text(Math.round(total * 100)/100);
+
+	$('#nolo_form_total_result').focus();
 }
 
 function doLogin(){
