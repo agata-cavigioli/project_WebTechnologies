@@ -463,7 +463,7 @@ async function showProduct(prod_no){
 
 	$('#product_card_modify').css('display', 'none');
 	$('#product_card').css('display', '');
-	document.getElementById('product_card').focus();
+	$('#product_card').focus();
 
 	window.location.href='#product_card';
 
@@ -482,6 +482,7 @@ async function showClient(client_no){
 
 	$('#client_card_modify').css('display', 'none');
 	$('#client_card').css('display', '');
+	$('#client_card').focus();
 
 	window.location.href='#client_card';
 }
@@ -523,14 +524,12 @@ async function showNolo(nolo_no){
 
 	$('#nolo_card_modify').css('display', 'none');
 	$('#nolo_card').css('display', '');
+	$('#nolo_card').focus('display', '');
 
 	window.location.href='#nolo_card';
 }
 
 async function showHistory() {
-	$('#clients_table').css('display', 'none');
-	$('#client_history').css('display', '');
-
 	var c_id = $('#client_card_id').text();
 	var client_nols = await $.get(`//site202123.tw.cs.unibo.it/nolos?client_id=${c_id}`);
 
@@ -575,6 +574,10 @@ async function showHistory() {
 	}
 	else $('#client_history_future')
 		.html('<p>Nessun noleggio.</p>');
+
+	$('#clients_table').css('display', 'none');
+	$('#client_history').css('display', '');
+	$('#client_history').focus();
 }
 
 function hideHistory() {
@@ -594,8 +597,8 @@ async function createHistoryCard(nolo){
 
 	return `
 		<div class="col">
-		  <div class="card ${nolo.status == 'In ritardo' || !product ? "problem" : ''}">
-			<div class="card-body">
+		  <div tabindex=0 class="card ${nolo.status == 'In ritardo' || !product ? "problem" : ''}">
+			<div class="card-body card-text text-start">
 			  <h3 class="card-title">${product ? product.name : 'Prodotto non in elenco.'}</h3>
 			  <ul type="none">
 				<li>
