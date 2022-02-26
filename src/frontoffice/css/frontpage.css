@@ -1,3 +1,7 @@
+:root{
+    --bs-body-line-height: 1.2 !important;
+}
+
 :global(body){
   margin: 0;
   text-align: center;
@@ -7,7 +11,11 @@
   overflow: hidden;
   font-size: 1.9vw;
   font-weight: 100;
+
   }
+img{
+  object-fit:cover;
+}
 main{
 
   margin: 0px;
@@ -16,7 +24,7 @@ main{
   height: 100% !important;
   background-image:
       /* top, transparent red */
-      linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)),
+      linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6)),
       /* your image */
       url("../background.jpg") !important;
 
@@ -152,7 +160,6 @@ main{
   height: 100%;
   font-size: 1.9vw;
   line-height: 1.2em;
-  margin-top: 5px;
 }
 
 .search-input:focus {

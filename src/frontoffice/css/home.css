@@ -1,3 +1,5 @@
+
+
 .home{
   display:flex;
   overflow-y: scroll;
@@ -31,7 +33,6 @@
 }
 .home   .product-search{
   font-size: 0.3em;
-  padding: 0 !important;
 }
 .home   .search-label, .home   .search-input,.home   .search-button{
   font-size:1.4vw ;
@@ -46,6 +47,9 @@
   grid-area:display;
   margin: 1em;
   padding-bottom: 2em;
+}
+.home .card {
+  height:100% !important;
 }
 
 

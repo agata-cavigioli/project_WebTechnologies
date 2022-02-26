@@ -15,12 +15,12 @@ let id;
 
 onMount(() => {
 	jQuery( document ).ready(function() {
-		console.log(filosofi);
+		//console.log(filosofi);
 	});
 });
 
 afterUpdate(() => {
-		console.log("after update name:", filosofi);
+		//console.log("after update name:", filosofi);
 	})
 
 </script>
@@ -33,7 +33,7 @@ afterUpdate(() => {
       <div class='row'>
         <div id='titolo' >Dining philosophers</div>
       </div>
-        <div class=" row ricerca mt-4">
+        <div class=" row m-3">
           <Searchbar bind:filosofi={filosofi}/>
         </div>
         <div class='row m-3'>

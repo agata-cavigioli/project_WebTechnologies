@@ -28,7 +28,7 @@ function searchfunction(){
     if (filters=document.getElementById('home')){
       var period = document.getElementById('inputGroupPeriod').value;
       if(period) {
-        console.log(period);
+        //console.log(period);
 
         let livedfrom = 0;
         let livedto = 0;
@@ -43,10 +43,9 @@ function searchfunction(){
 
         //birth={"$gt":"1400"}&death={"$lt":"1900"}
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='birth={"$gt":'+livedfrom+'}&death={"$lt":'+livedto+'}';
-        //$or=[{birth={"$gt":"'+livedfrom+'"}&death={"$lt":"'+livedto+'"}},{"surname":{"$regex":"${c_name}"}}]
+        //$or=[{ "$and": [ { "birth": { "$gt": 1492 } }, { "birth": { "$lt": 1815 } } ] },{ "$and": [ { "death": { "$gt": 1492 } }, { "death": { "$lt": 1815 } } ] }]
+        tempurl+='$or=[{ "$and": [ { "birth": { "$gt": '+livedfrom+' } }, { "birth": { "$lt": '+livedto+' } } ] },{ "$and": [ { "death": { "$gt": '+livedfrom+' } }, { "death": { "$lt": '+livedto+' } } ] }]';
         count++;
-
       }
       var costfrom = document.getElementById('costfrom').value;
       if(costfrom && !isNaN(costfrom)) {
@@ -113,13 +112,13 @@ function searchfunction(){
 }
 
 function searchphilosophersfun(tempurl, count){
-  let searchurl = "http://site202123.tw.cs.unibo.it/products";
+  let searchurl = "//site202123.tw.cs.unibo.it/products";
   if (count>0) searchurl += "?" + tempurl;
-  console.log(searchurl);
+  //console.log(searchurl);
 
   jQuery.get(searchurl, async function(data){
    filosofi = data;
-   console.log(filosofi);
+   //console.log(filosofi);
   })
 }
 
@@ -128,11 +127,11 @@ function searchphilosophersfun(tempurl, count){
 <div class="product-search">
     <div class="search-element" style='border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;'>
-      <label for="NameSearch" class="search-label" >Chi stai cercando?</label>
+      <label for="NameSearch" class="search-label m-2" >Chi stai cercando?</label>
       <input id = "NameSearch" class="search-input" type="text" autocomplete="on" placeholder="Nome del filosofo" name="query" value="">
     </div>
     <div class="search-element">
-      <label for="PlaceSearch" class="search-label" >Dove stai cercando?</label>
+      <label for="PlaceSearch" class="search-label m-2" >Dove stai cercando?</label>
       <input id = "PlaceSearch" class="search-input" type="text" placeholder="Luogo" autocomplete="on" name="location">
     </div>
     <div class="text-center">

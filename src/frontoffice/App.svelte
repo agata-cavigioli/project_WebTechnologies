@@ -32,12 +32,12 @@ let filosofiApp = [{ "name": "Aaron David Gordon",
 	})
 
 async function searchfunall(){
-    let searchurl = "http://site202123.tw.cs.unibo.it/products";
-    console.log(searchurl);
+    let searchurl = "//site202123.tw.cs.unibo.it/products";
+    //console.log(searchurl);
     let data = await jQuery.get(searchurl);
     filosofiApp = data;
-    console.log("in app:");
-    console.log(filosofiApp);
+    //console.log("in app:");
+    //console.log(filosofiApp);
 }
 
 </script>
@@ -65,24 +65,23 @@ async function searchfunall(){
         <div  id='titolo'>Dining philosophers
         </div>
         <div id='benvenuto' class='fw-bold'>
-        Benvenuto! Nel nostro sito potrai noleggiare il tuo filosofo preferito per allietare le tue serate
+        Ti poni molte domande sulla vita? <br> Prenota un filosofo per un incontro memorabile
         </div>
   			</div>
       </div>
 
-			<form class="ricerca row" action="" method="get">
+			<form class="ricerca row">
         <div class='col'>
         <Searchbar bind:filosofi={filosofiApp}/>
         </div>
-      </form>
+
 			<div class='row align-items-center m-5 h2'>
-			<div class='col' style='font-weight: 700;'> Non sai chi cercare?</div>
-			<div class=' col-lg-3 search-button ' style='border-radius: 5px;'>
-
-        <Link class="searchlink" to="/home" style="color:white;">Cerca tutti</Link>
-
-      </div>
+			   <div class='col' style='font-weight: 700;'> Non sai chi cercare?</div>
+			      <div class=' col-lg-3 search-button ' style='border-radius: 5px;'>
+              <Link class="searchlink" to="/home" style="color:white;">Cerca tutti</Link>
+            </div>
 			</div>
+        </form>
 		</div>
 
 		<Signlog/>
