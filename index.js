@@ -97,6 +97,7 @@ app.use('/backoffice/css' , express.static(global.rootDir +'/src/backoffice'));
 app.use('/backoffice/img' , express.static(global.rootDir +'/src/backoffice'));
 
 app.use('/dashboard/js' , express.static(global.rootDir +'/src/dashboard'));
+app.use('/dashboard/css' , express.static(global.rootDir +'/src/dashboard'));
 
 
 app.use('/js' , express.static(global.rootDir +'/public/js'));

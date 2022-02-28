@@ -176,10 +176,11 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
             var states = ['Prenotato', 'Iniziato', 'Concluso', 'In ritardo'];
             for (nol in this.nolos){
               var st = this.nolos[nol].status;
+              console.log(st);
               if (st == 'Prenotato') stateNolo[0]++;
               else if (st == 'Iniziato') stateNolo[1]++;
               else if (st == 'Concluso') stateNolo[2]++;
-              else if (st == 'In ritardo') stateNolo[4]++;
+              else if (st == 'In ritardo') stateNolo[3]++;
             }
 
             nolo_stats.push({
@@ -308,7 +309,7 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
             var avg = {};
 
             for(name in totals){
-              avg[name] = totals[name] / nolo_num[name];
+              avg[name] = Math.round(100*totals[name] / nolo_num[name])/100;
             }
 
             cl_stats.push({
@@ -326,7 +327,7 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
         },
         template: `
   <div class="minor">
-  <nav>
+  <nav id="the_nav">
     <ul class="nav nav-pills">
       <li class="nav-item">
         <a class="nav-link"
@@ -358,10 +359,12 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
       </li>
     </ul>
   </nav>
+  <div class="border rounded">
     <ChartSection tabindex=0 v-if="this.selected=='Prodotti'" :name="'Prodotti'" :stats="this.doProds()"/>
     <ChartSection tabindex=0 v-if="this.selected=='Inventario'" :name="'Inventario'" :stats="this.doInv()"/>
     <ChartSection tabindex=0 v-if="this.selected=='Noleggi'" :name="'Noleggi'" :stats="this.doNolos()"/>
     <ChartSection tabindex=0 v-if="this.selected=='Clienti'" :name="'Clienti'" :stats="this.doClients()"/>
+  </div>
   </div>
   `
       });

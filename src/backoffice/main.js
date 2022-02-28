@@ -123,6 +123,7 @@ async function fillTable(list, type){
 			else {
 				values += `<td>${y[name]}</td>`;
 			}
+
 		}
 
 		var showFunction;
@@ -232,6 +233,9 @@ async function saveNewProduct(){
 }
 
 async function saveNewNolo(){
+	$('#nolo_card_insert_invalid_dates').css('display', 'none');
+	$('#nolo_card_insert_unavailable').css('display', 'none');
+
 	var values = getElemInputs('#nolo_card_insert');
 
 	var days = calculateDays(values.date_from, values.date_to);
@@ -239,15 +243,13 @@ async function saveNewNolo(){
 	if(days <= 0){
 		$('#nolo_card_insert_invalid_dates').css('display', '');
 		return;
-	} else $('#nolo_card_insert_invalid_dates').css('display', 'none');
+	} 
 
 	var isAv = await checkAvailability(-1, values.product_id, values.date_from, values.date_to);
 
 	if(!isAv){
 		$('#nolo_card_insert_unavailable').css('display', '');
 		return;
-	} else {
-		$('#nolo_card_insert_unavailable').css('display', 'none');
 	} 
 
 	var obj = makeDbRecord('nolo', values);
@@ -506,6 +508,7 @@ async function showProduct(prod_no){
 	$('#product_card_condition').text(product.nolo_data.condition);
 
 
+	$('#product_card_insert').css('display', 'none');
 	$('#product_card_modify').css('display', 'none');
 	$('#product_card').css('display', '');
 	$('#product_card').focus();
@@ -525,6 +528,7 @@ async function showClient(client_no){
 	$('#client_card_info').text(client.nolo_data.info != 0 ? client.nolo_data.info : '-');
 
 
+	$('#client_card_insert').css('display', 'none');
 	$('#client_card_modify').css('display', 'none');
 	$('#client_card').css('display', '');
 	$('#client_card').focus();
@@ -567,6 +571,7 @@ async function showNolo(nolo_no){
 		.text(nolo.nolo_data.discount!= 0 ? nolo.nolo_data.discount: '-');
 
 
+	$('#nolo_card_insert').css('display', 'none');
 	$('#nolo_card_modify').css('display', 'none');
 	$('#nolo_card').css('display', '');
 	$('#nolo_card').focus('display', '');
@@ -782,6 +787,8 @@ function doLogin(){
 
 async function checkMailAndPwd(mail, pwd){
 	var user = await $.get(`//site202123.tw.cs.unibo.it/staff?email=${mail}`);
+	if(user.length == 0) return false;
+
 	user = await user[0];
 
 	if (await user.pwd == pwd){
@@ -796,6 +803,7 @@ async function checkCredentials(){
 	var values = getElemInputs('#login_form');
 
 	var correct = await checkMailAndPwd(values.email, values.password);
+	console.log(correct);
 
 	// check login
 	if(!correct){
@@ -863,6 +871,16 @@ async function logout(){
 
 	$('#login_message_text').text('');
 	$('#login_message').toggle();
+
+	$('#the_nav').html(`
+			<li class="nav-item">
+			  <a id="inventory_tab"
+				 class="nav-link active top-tabs"
+				 onclick="updateTab('inventory')"
+				 aria-current="true"
+				 href="#">Inventario</a>
+			</li>
+		`);
 
 	await updateTab('inventory');
 

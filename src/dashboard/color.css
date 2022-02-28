@@ -1,0 +1,65 @@
+body {
+  background-color: #fffdfa;
+}
+
+.major h1,
+.major h3,
+.major h5 {
+  color: #3674E7;
+}
+
+.major b,
+.major h2,
+.major h4,
+.major h6,
+.major a {
+  color: #1FA2FF;
+}
+
+.major button, .major .btn {
+  border-style: none;
+  background-color: #3674E7;
+}
+.major button:hover {
+  background-color: #1FA2FF;
+}
+
+.minor h1,
+.minor h3,
+.minor h5 {
+  color: #FA864C;
+}
+
+.minor b,
+.minor h2,
+.minor h4,
+.minor h6,
+.minor a{
+  color: #F7B32B;
+}
+
+.minor button, .minor .btn {
+  border-style: none;
+  background-color: #FA864C;
+}
+
+.minor button:hover {
+  background-color: #F7B32B;
+}
+
+a.btn {
+  color: #FFFFFF;
+  background-color: #3674E7;
+}
+
+.my-bg * {
+  background-color: #fffdfa;
+}
+
+.top-tabs{
+  color: #000000;
+}
+
+.problem {
+  background-color: #FA864C;
+}

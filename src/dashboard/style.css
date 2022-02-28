@@ -5,59 +5,53 @@
   height: 100vh;
   object-fit: cover;
   z-index: -1;
-
 }
+
+/****************************************/
+
 body {
-  background-color: #fffdfa;
-  background-size: cover;
-  background-opacity: 0.3;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
-.major h1 {
-  color: #3674E7;
+@media only screen and (max-width: 600px) {
+  body {
+    overflow-y: auto;
+  }
 }
 
-.major b, .major h2, .major a {
-  color: #1FA2FF;
+/****************************************/
+
+body * {
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
 }
 
-.major button, .major .btn {
-  border-style: none;
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/****************************************/
+
+
+#the_nav li {
+  background-color: #eeeeee;
+}
+
+#the_nav a {
+  color: black;
+}
+
+#the_nav .active {
   background-color: #3674E7;
 }
-.major button:hover {
-  background-color: #1FA2FF;
+
+#the_nav .active {
+  color: white;
 }
 
-.minor h1 {
-  color: #FA864C;
-}
-.minor b, .minor h2, .minor a{
-  color: #F7B32B;
-}
+/****************************************/
 
-.minor button, .minor .btn {
-  border-style: none;
-  background-color: #FA864C;
-}
-
-.minor button:hover {
-  background-color: #F7B32B;
-}
-
-a.btn {
-  color: #FFFFFF;
-}
-
-.my-bg * {
-  background-color: #fffdfa;
-}
-
-.top-tabs{
-  color: #000000;
-}
-
-.problem {
-  background-color: #FA864C;
+.card {
+  overflow-y: scroll;
+  max-height: 65vh;
 }
