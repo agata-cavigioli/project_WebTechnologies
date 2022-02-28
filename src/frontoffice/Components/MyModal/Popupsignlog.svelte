@@ -104,7 +104,7 @@ async function checklogin(){
 
     const tempurl = '?email="'+ document.getElementById("form3").value + '"&pwd="' + document.getElementById("form2").value +'"';
     let done = await checkpassword(tempurl);
-    console.log(done);
+    //console.log(done);
     if (done){
       loggedIn.update(b => !b);
       let element;
@@ -112,7 +112,7 @@ async function checklogin(){
       document.getElementById('home').classList.remove("overflow-hidden");
       document.getElementById('home').classList.add("overflow-auto");
       }
-      console.log(document.getElementById('prenot-modal-content'));
+      //console.log(document.getElementById('prenot-modal-content'));
       if (document.getElementById('prenot-modal-content')){
       document.getElementById('prenot-modal-content').classList.remove("overflow-hidden");
       document.getElementById('prenot-modal-content').classList.add("overflow-auto");
@@ -128,10 +128,10 @@ async function checklogin(){
       //console.log("stringa: " + JSON.stringify(signupArray));
       //console.log("array" + signupArray);
       //let created =
-      await jQuery.post("http://site202123.tw.cs.unibo.it/clients",signup).done(
+      await jQuery.post("//site202123.tw.cs.unibo.it/clients",signup).done(
         function(res){
           userID.set(res.id);
-          console.log(id);
+          //console.log(id);
         }
       );
 
@@ -196,7 +196,7 @@ async function checklogin(){
         signup.nolo_data.info = "";
       signupArray.push({...signup});
       //console.log(signupArray);
-      console.log(signup);
+      //console.log(signup);
       //console.log(JSON.stringify(signupArray));
       //console.log(JSON.stringify(signup));
       return signup;
@@ -205,17 +205,17 @@ async function checklogin(){
 }
 
 async function checkpassword(tempurl){
-    const url = "http://site202123.tw.cs.unibo.it/clients"+tempurl;
-    console.log(url);
+    const url = "//site202123.tw.cs.unibo.it/clients"+tempurl;
+    //console.log(url);
     let done;
     await jQuery.get(url).done(
       function(res){
         let personlogged = res[0];
-        console.log(personlogged);
+        //console.log(personlogged);
         if (personlogged) {
-          console.log("found");
+          //console.log("found");
           userID.set(personlogged.id);
-          console.log(id);
+          //console.log(id);
           done =  true;        }
         else {
           alert("wrong email or password");
@@ -302,7 +302,7 @@ firstFocusableElement.focus();
 
 
 {#if (op == "Login")}
-<div class='mymodal' id="mymodal">
+<div class='mymodal nololog' id="mymodal">
 <div class="modal-dialog modal-notify modal-warning" role="document">
   <div class="modal-content">
     <div class="modal-header text-center">
@@ -339,9 +339,9 @@ firstFocusableElement.focus();
   </div>
 </div>
   {:else if (op=='Signup')}
-<div class='mymodal signupmodal1'>
+<div class='mymodal nolosignup signupmodal1'>
   <div class="modal-dialog modal-notify modal-warning" role="document">
-    <div class="modal-content overflow-auto" style="overfow-y:auto !important; height:80vh">
+    <div class="modal-content overflow-auto">
       <div class="modal-header text-center">
         <h4 class="modal-title white-text w-100 font-weight-bold py-2" id="modaltitle">
         {op}
@@ -350,25 +350,27 @@ firstFocusableElement.focus();
 
 
       <div class="modal-body">
-      <div class="md-form mb-5">
+      <div class="row">
+      <div class="col md-form mb-5">
         <i class="bi bi-envelope prefix grey-text"></i>
         <label class="float-left" data-error="wrong" data-success="right" for="form0" id="label0">Nome</label>
         <input type="text" id="form0" class="form-control validate">
       </div>
 
-      <div class="md-form mb-5">
+      <div class="col md-form mb-5">
         <i class="bi bi-envelope prefix grey-text"></i>
         <label class="float-left" data-error="wrong" data-success="right" for="form1" id="label1">Cognome</label>
         <input type="text" id="form1" class="form-control validate">
       </div>
-
-        <div class="md-form mb-5">
+      </div>
+      <div class="row">
+        <div class="col md-form mb-5">
           <i class="bi bi-envelope prefix grey-text"></i>
           <label class="float-left" data-error="wrong" data-success="right" for="form3" id="label3">Email</label>
           <input type="text" id="form3" class="form-control validate">
         </div>
 
-        <div class="md-form">
+        <div class="col md-form">
           <i class="fas fa-envelope prefix grey-text"></i>
           <label class="float-left" data-error="wrong" data-success="right" for="form2" id="label2">Password</label>
           <input type="password" id="form2" class="form-control validate">
@@ -377,22 +379,23 @@ firstFocusableElement.focus();
             <input class="form-check-input float-none "  on:click={revealpwd} type="checkbox" id="btn-check-2" name="darkmode" value="yes" unchecked>
             <label class="form-check-label " for="btn-check-2">Show Password</label>
           </div>
-
         </div>
 
-        <div class="md-form mb-5">
+        </div>
+        <div class="row">
+        <div class="col md-form mb-5">
           <i class="bi bi-envelope prefix grey-text"></i>
           <label class="float-left" data-error="wrong" data-success="right" for="form4" id="label4">Telefono</label>
           <input type="text" id="form4" class="form-control validate">
         </div>
 
-        <div class="md-form mb-5">
+        <div class="col md-form mb-5">
           <i class="bi bi-envelope prefix grey-text"></i>
           <label class="float-left" data-error="wrong" data-success="right" for="form5" id="label5">Indirizzo</label>
           <input type="text" id="form5" class="form-control validate">
         </div>
       </div>
-
+      </div>
       <div class="modal-footer justify-content-center">
         <button class="btn btn-outline-warning waves-effect" on:click={checksignup} id="sendsignupbutton" >Send </button>
       </div>

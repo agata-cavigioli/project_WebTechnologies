@@ -17,10 +17,10 @@ function modifyconfirmfun(){
 }
 onMount(() => {
 	jQuery( document ).ready(async function() {
-		console.log("id: "+id);
+		//console.log("id: "+id);
 		//document.getElementById('datatab').innerHTML="";
 		const found = await getPersonalData();
-		console.log(found);
+		//console.log(found);
 		loadinfo(found);
 		//console.log(found);
 		//if (found) loadinfo();
@@ -32,15 +32,15 @@ let personaldata = "";
 
 async function getPersonalData(){
 
-	let searchurl = "http://site202123.tw.cs.unibo.it/clients";
+	let searchurl = "//site202123.tw.cs.unibo.it/clients";
   searchurl += "?id=" + id;
-  console.log(searchurl);
+  //console.log(searchurl);
 
   await jQuery.get(searchurl).done(
 		function(data){
 	 			personaldata = data[0];
 	 			if(personaldata) {
-					console.log(personaldata);
+					//console.log(personaldata);
 					//console.log(personaldata.name);
 					//return true;
 				}
@@ -53,18 +53,18 @@ async function getPersonalData(){
 }
 
 function loadinfo(found){
-		console.log(personaldata);
+		//console.log(personaldata);
 		document.getElementById('datatab').innerHTML=( "<h5 class='font-weight-bold text-secondary mt-4' id='riepilogodiv'> \
 		Nome: <span class='modificabile d-inline'>"+ personaldata.name + " </span> <br> \
 		Cognome: <span class='modificabile d-inline'>"+ personaldata.surname + " </span> <br> \
 		Email: <span class='modificabile d-inline'>"+ personaldata.email + " </span> <br> \
-		Numero di phone: <span class='modificabile d-inline'>"+ personaldata.phone + " </span> <br> \
+		Numero di telefono: <span class='modificabile d-inline'>"+ personaldata.phone + " </span> <br> \
 		Indirizzo: <span class='modificabile d-inline'>"+ personaldata.address + " </span> \
 		</h5> ")
 	}
 
 function modify(){
-	console.log("modify");
+	//console.log("modify");
 	document.getElementById('datatab').innerHTML="";
 	document.getElementById('datatab').innerHTML=(
 	"	<h5 class='font-weight-bold text-secondary mt-4' id='riepilogodiv'> \
@@ -86,21 +86,21 @@ function modify(){
 }
 
 async function confirm(){
-	console.log("confirm");
+	//console.log("confirm");
 	/////////////////////////// post
 	let modify= sendmodify();
 	if (modify){
-	let url = "http://site202123.tw.cs.unibo.it/update/clients?id="+id;
-	console.log(url);
-	console.log(modify);
+	let url = "//site202123.tw.cs.unibo.it/update/clients?id="+id;
+	//console.log(url);
+	//console.log(modify);
 
 	var update = {$set : modify};
-	console.log("update");
-	console.log(update);
+	//console.log("update");
+	//console.log(update);
 	await jQuery.post(url,update);
 /////////////////////////////
 	loadinfo();
-	console.log("cambio il bottone");
+	//console.log("cambio il bottone");
 	modifyconfirm = "modify";
 	document.getElementById('modifyconfirm').innerHTML="Modifica";
 	//document.getElementById('modifyconfirm').removeEventListener("click", confirm);
@@ -183,7 +183,7 @@ const validateEmail = (email) => {
 };
 
 async function deleteprofile(){
-	let myurl = "http://site202123.tw.cs.unibo.it/clients?id=" + id;
+	let myurl = "//site202123.tw.cs.unibo.it/clients?id=" + id;
   await jQuery.ajax({
          url: myurl ,
          type: 'DELETE'

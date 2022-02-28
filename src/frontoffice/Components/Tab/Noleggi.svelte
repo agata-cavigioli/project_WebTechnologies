@@ -28,14 +28,15 @@ let image = "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.p
 let noleggi = "";
 
 function getPersonalNolos(){
-  let searchurl = "http://site202123.tw.cs.unibo.it/nolos";
+  let searchurl = "//site202123.tw.cs.unibo.it/nolos";
   searchurl += '?client_id=' + id + '';
-  console.log(searchurl);
+  //console.log(searchurl);
 
   jQuery.get(searchurl, async function(data){
    noleggi = data;
   })
 }
+/*
 function difSToday(date){
 	const mydate = new Date(date);
 	const today = new Date();
@@ -49,6 +50,7 @@ function difSToday(date){
 	return diffDaystoday;
 
 }
+*/
 </script>
 <div class="personaltab container">
 <div class="row">
@@ -63,7 +65,7 @@ function difSToday(date){
 Noleggi in corso
 </h4>
 {#each noleggi as noleggio}
-		{#if ((difSToday(noleggio.date_from)>=0)&&(difSToday(noleggio.date_to)<=0))}
+		{#if ((noleggio.status=="Iniziato")||(noleggio.status=="In ritardo"))}
     <CardNolo time={"present"} noleggio={noleggio}/>
 		{/if}
 {/each}
@@ -73,7 +75,7 @@ Noleggi in corso
 Noleggi previsti
 </h4>
 {#each noleggi as noleggio}
-		{#if (difSToday(noleggio.date_from)<0)}
+		{#if (noleggio.status=="Prenotato")}
 		<CardNolo time={"future"} noleggio={noleggio}/>
 		{/if}
 {/each}
@@ -83,7 +85,7 @@ Noleggi previsti
 Noleggi conclusi
 </h4>
 {#each noleggi as noleggio}
-		{#if (difSToday(noleggio.date_to)>0)}
+		{#if (noleggio.status=="Concluso")}
 		<CardNolo time={"past"} noleggio={noleggio}/>
 		{/if}
 {/each}

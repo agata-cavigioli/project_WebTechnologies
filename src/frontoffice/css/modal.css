@@ -12,10 +12,12 @@
   font-size: 2.5vw;
   font-weight: 600;
 }
-
+.modal-body{
+  text-align: left;
+}
 
 .mymodal{
-  padding-top: 10%;
+  padding-top: 5%;
 }
 
 .modal-content{
@@ -105,14 +107,20 @@ top: 10px;
 .modal-title{
   font-size: 7vw;
 }
-.prenotazione{
+.nolosignup .modal-content{
+   overflow-y :auto !important;
+    height:80vh;
 }
 }
 
 .modal-footer .button-div{
   position:inherit !important;
 }
-.nolosign .modal-dialog{
+.nolosignup .modal-dialog{
+  width: 70vw !important;
+  max-width: 10000px !important;
+}
+.nololog .modal-dialog{
   max-width: 500px !important;
 }
 .nolosign .close{
@@ -120,8 +128,4 @@ top: 10px;
 }
 .nolosign .signupmodal1{
   padding-top: 0% !important;
-}
-#prenot-modal-content{
-  height: 80vh;
-  overflow:auto;
 }

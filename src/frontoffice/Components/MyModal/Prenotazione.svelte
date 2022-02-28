@@ -61,8 +61,8 @@ function preventivo(){
       const today = new Date();
       const diffTimetoday = today - date1;
       const diffDaystoday = Math.ceil(diffTimetoday / (1000 * 60 * 60 * 24)) - 1;
-      console.log( "diffdays" + diffDays);
-      console.log(diffDaystoday);
+      ////console.log( "diffdays" + diffDays);
+      //console.log(diffDaystoday);
       if (diffDaystoday>0) {
         document.getElementById("inserimentodate").innerHTML+= "<br><div class='text-danger'>Inserire una data di inizio successiva ad oggi</div>";
         redstar('dadate');
@@ -125,29 +125,34 @@ function redstar(id){
 }
 
 async function checkAvailability(product_id, from, to){
-     let url = "http://site202123.tw.cs.unibo.it/nolos?product_id=" + product_id;
-     console.log(url);
+     let url = "//site202123.tw.cs.unibo.it/nolos?product_id=" + product_id;
+     //console.log(url);
      var prod_nolos = await jQuery.get(url);
-     console.log(prod_nolos);
+     //console.log(prod_nolos);
      var date_from = new Date(from);
      var date_to = new Date(to);
 
-     for(n in prod_nolos){
+     for(var n in prod_nolos){
+        //console.log("loop");
          let nol = prod_nolos[n];
-
+         //console.log(nol);
          let sdate = new Date(nol.date_from);
          let edate = new Date(nol.date_to);
+         //console.log(sdate);
+         //console.log(edate);
 
-         if((date_from > sdate && date_from < edate) ||
-             (date_to > sdate && date_to < edate))
-             console.log('non disponibile');
-              return false;
+         if((date_from >= sdate && date_from <= edate) ||
+             (date_to >= sdate && date_to <= edate) ||( date_from<=sdate && date_to>=edate))
+             {//console.log('non disponibile');
+             return false;
+           }
      }
-     console.log("checked");
+
+     //console.log("checked");
      return true;
 }
 
-function sendnolo(){
+async function sendnolo(){
   document.getElementById("inserimentodate").innerHTML = "Inserisci la date di noleggio";
   const stars = document.querySelectorAll('.redstar');
     stars.forEach(redstar => {
@@ -166,8 +171,8 @@ function sendnolo(){
     const today = new Date();
     const diffTimetoday = today - date1;
     const diffDaystoday = Math.ceil(diffTimetoday / (1000 * 60 * 60 * 24)) - 1;
-    console.log(diffDays);
-    console.log(diffDaystoday);
+    //console.log(diffDays);
+    //console.log(diffDaystoday);
     if (diffDaystoday>0) {
       document.getElementById("inserimentodate").innerHTML+= "<br><div class='text-danger'>Inserire una data di inizio successiva ad oggi</div>";
       redstar('dadate');
@@ -180,7 +185,7 @@ function sendnolo(){
       redstar('todate');
       sendcheck = false;
     }
-    else if (!checkAvailability(filo.id, datefrom, dateto)){
+    else if (await checkAvailability(filo.id, datefrom, dateto) == false){
       document.getElementById("inserimentodate").innerHTML+= "<br><div class='text-danger'>Il filosofo non &eacute; disponibile in queste date</div>";
       redstar('dadate');
       redstar('todate');
@@ -224,14 +229,14 @@ function sendnolo(){
     const diffTimetoday = today - date1;
     const diffDaystoday = Math.ceil(diffTimetoday / (1000 * 60 * 60 * 24)) - 1;
     booking.status = (diffDaystoday==0) ? "Iniziato" : "Prenotato";
-    console.log(booking.status);
+    //console.log(booking.status);
     booking.nolo_data.discount = filo.nolo_data.discount;
     booking.nolo_data.daily_cost = filo.nolo_data.cost;
     booking.nolo_data.other_fees = 0;
   bookingArray.push({...booking});
   confermato = true;
   booking = bookingArray[0];
-  console.log(booking);
+  //console.log(booking);
 }
 
 }
@@ -244,9 +249,9 @@ if (booking){
   //console.log("stringa: " + JSON.stringify(signupArray));
   //console.log("array" + signupArray);
   //let created =
-  await jQuery.post("http://site202123.tw.cs.unibo.it/nolos",booking).done(
+  await jQuery.post("//site202123.tw.cs.unibo.it/nolos",booking).done(
     function(res){
-      console.log("booking posted");
+      //console.log("booking posted");
     }
   );
 
@@ -267,7 +272,7 @@ if (booking){
 <div class="modal-dialog modal-notify modal-warning prenotazione" role="document">
   <div class="modal-content container" id="prenot-modal-content" tabindex="-1">
       <div class='row'>
-          <div class="col-lg m-2">
+          <div class="col-lg-4 m-2">
               <div class="card">
                   <div class="card-body">
                       <div class="card-img-actions"> <img src={filo.img} class="card-img "  height="350" alt=""> </div>
@@ -323,7 +328,7 @@ if (booking){
 
       {#if !islogged}
 
-      <button  class="btn btn-outline-warning waves-effect" on:click={preventivo}>Calcola un preventivo</button>
+      <button  class="btn btn-outline-warning waves-effect m-3" on:click={preventivo}>Calcola un preventivo</button>
       <div id="preventivo">
       </div>
 

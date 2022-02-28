@@ -6,26 +6,38 @@ export let time;
 export let noleggio;
 
 let image = "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png";
-let FiloName = "Gino";
-let FilImg = "";
+//let FiloName = "Gino";
+//let FilImg = "";
 let modifyconfirm = "modify";
 
+let promise = getFilNameById();
+/*
 onMount(async () => {
-    await getFilNameById();
-})
-
-let filosofo;
-
-async function getFilNameById(){
-    let searchurl = "http://site202123.tw.cs.unibo.it/products?id=" + noleggio.product_id ;
+    //await getFilNameById();
+    let searchurl = "//site202123.tw.cs.unibo.it/products?id=" + noleggio.product_id ;
     let data = await jQuery.get(searchurl);
     FiloName = data[0] && data[0].name;
     FilImg = data[0] && data[0].img;
-    console.log(FiloName);
-    return true;
-}
+    //console.log(FiloName);
+})
+*/
+async function getFilNameById(){
+    let searchurl = "//site202123.tw.cs.unibo.it/products?id=" + noleggio.product_id ;
+    let data = await jQuery.get(searchurl);
+    let FiloInfo = {};
+    FiloInfo.name = data[0] && data[0].name;
+    FiloInfo.img = data[0] && data[0].img;
+    ////console.log(FiloName);
+    //return FiloInfo;
 
+    if (data) {
+			return FiloInfo;
+		} else {
+			throw new Error(FiloInfo);
+		}
+}
 function modifyconfirmNolo(){
+  //console.log("want to " +modifyconfirm);
   if (modifyconfirm == "modify") modify();
   else confirm();
 }
@@ -48,7 +60,7 @@ function calcolofinale(noleggio){
 	return ((diffDays*noleggio.nolo_data.daily_cost)-((diffDays*noleggio.nolo_data.daily_cost*noleggio.nolo_data.discount)/100)+noleggio.nolo_data.other_fees);
 }
 async function deleteNolo(){
-	let myurl = "http://site202123.tw.cs.unibo.it/nolos?id=" + noleggio.id;
+	let myurl = "//site202123.tw.cs.unibo.it/nolos?id=" + noleggio.id;
   await jQuery.ajax({
          url: myurl ,
          type: 'DELETE'
@@ -59,7 +71,7 @@ async function deleteNolo(){
 
 function modify(){
   let divmio = 'dateNolo' + noleggio.id;
-  console.log(divmio);
+  //console.log(divmio);
     document.getElementById(divmio).innerHTML = "Periodo di noleggio: <div class='input-group mb-2 mr-sm-2'> \
       <div class='input-group-prepend'><label for='datefrom' class='input-group-text customcol-smor'>Da:</label> \
     </div>  <input class='input-group date form-control' type='date' id='datefrom' value='" + noleggio.date_from + "'> \
@@ -78,23 +90,26 @@ function modify(){
 
 function confirm(){
   let aggiunte = "aggiunte" + noleggio.id;
-  console.log(aggiunte);
+  //console.log(aggiunte);
   document.getElementById(aggiunte).innerHTML = "";
-  if(canModify()){
-      noleggio.date_from = document.getElementById('datefrom').value;
-      noleggio.date_to = document.getElementById('dateto').value;
+  canModify().then((value) => {
+    //console.log(value)
+    if(value){
+        noleggio.date_from = document.getElementById('datefrom').value;
+        noleggio.date_to = document.getElementById('dateto').value;
 
-      let divmio = 'dateNolo' + noleggio.id;
-      console.log("confermo la modifica");
-      document.getElementById(divmio).innerHTML = "Periodo di noleggio: " + noleggio.date_from + " / " + noleggio.date_to;
+        let divmio = 'dateNolo' + noleggio.id;
+        //console.log("confermo la modifica");
+        document.getElementById(divmio).innerHTML = "Periodo di noleggio: " + noleggio.date_from + " / " + noleggio.date_to;
 
-      console.log("cambio il bottone");
-    	modifyconfirm = "modify";
-    	document.getElementById('modifyconfirm').innerHTML="Modifica";
-    	//document.getElementById('modifyconfirm').removeEventListener("click", confirm);
-    	//document.getElementById('modifyconfirm').addEventListener("click", modify);
-    	document.getElementById('modifyconfirm').classList.add("btn-outline-info");
-    	document.getElementById('modifyconfirm').classList.remove("btn-outline-warning");}
+        //console.log("cambio il bottone");
+      	modifyconfirm = "modify";
+      	document.getElementById('modifyconfirm').innerHTML="Modifica";
+      	//document.getElementById('modifyconfirm').removeEventListener("click", confirm);
+      	//document.getElementById('modifyconfirm').addEventListener("click", modify);
+      	document.getElementById('modifyconfirm').classList.add("btn-outline-info");
+      	document.getElementById('modifyconfirm').classList.remove("btn-outline-warning");}
+  });
 
 }
 
@@ -102,7 +117,7 @@ async function canModify(){
   let modDateFrom = document.getElementById('datefrom').value;
   let modDateTo = document.getElementById('dateto').value;
   let aggiunte = 'aggiunte' + noleggio.id;
-  let sendMod
+  let sendMod = true;
   if(modDateFrom && modDateTo) {
     const date1 = new Date(modDateFrom);
     const date2 = new Date(modDateTo);
@@ -111,17 +126,23 @@ async function canModify(){
     const today = new Date();
     const diffTimetoday = today - date1;
     const diffDaystoday = Math.ceil(diffTimetoday / (1000 * 60 * 60 * 24)) - 1;
-    console.log( "diffdays" + diffDays);
-    console.log(diffDaystoday);
+    //console.log( "diffdays" + diffDays);
+    //console.log(diffDaystoday);
     if (diffDaystoday>0) {
       document.getElementById(aggiunte).innerHTML+= "Inserire una data di inizio successiva ad oggi";
-      return false;
+      sendMod = false;
     }
     else if (diffDays<1){
       document.getElementById(aggiunte).innerHTML+= "Modificare la data di fine noleggio";
-      return false;
+      sendMod = false;
     }
-    console.log("post");
+    else if (await checkAvailability(noleggio.product_id, noleggio.id, modDateFrom, modDateTo) == false){
+      document.getElementById(aggiunte).innerHTML+= "Filosofo non disponibile in queste date";
+      sendMod = false;
+    }
+    ////console.log("post: "+sendMod);
+    if (sendMod){
+    //console.log("post: "+sendMod);
     //////// POST
 
     let modify = {};
@@ -135,16 +156,20 @@ async function canModify(){
     modify.status= noleggio.status;
     modify.nolo_data = noleggio.nolo_data;
     if (modify){
-  	let url = "http://site202123.tw.cs.unibo.it/update/nolos?id="+noleggio.id;
-  	console.log(url);
-  	console.log(modify);
+  	let url = "//site202123.tw.cs.unibo.it/update/nolos?id="+noleggio.id;
+  	//console.log(url);
+  	//console.log(modify);
 
   	var update = {$set : modify};
-    console.log(update);
+    //console.log(update);
   	await jQuery.post(url,update);
+    //console.log("posted")
     return true;
-  }
-    ////////GET
+    }
+
+    }
+    //else console.log("post: "+sendMod);
+        ////////GET
   }
   else{
     document.getElementById(aggiunte).innerHTML+= "Inserire le date";
@@ -157,8 +182,8 @@ async function canModify(){
 function downloadBill(){
           let invoiceid = 'fattura'+ noleggio.id;
           const invoice = document.getElementById(invoiceid);
-            console.log(invoice);
-            console.log(window);
+            //console.log(invoice);
+            //console.log(window);
             var opt = {
                 margin: 1,
                 filename: 'fattura.pdf',
@@ -170,11 +195,48 @@ function downloadBill(){
 
 }
 
+async function checkAvailability(product_id, nolo_id, from, to){
+     let url = "//site202123.tw.cs.unibo.it/nolos?product_id=" + product_id;
+     //console.log(url);
+     var prod_nolos = await jQuery.get(url);
+     //console.log(prod_nolos);
+     var date_from = new Date(from);
+     var date_to = new Date(to);
+     //console.log(date_from);
+     //console.log(date_to);
+
+     for(var n in prod_nolos){
+        //console.log("loop");
+         let nol = prod_nolos[n];
+         //console.log(nol);
+         if(nolo_id != nol.id){
+              let sdate = new Date(nol.date_from);
+               let edate = new Date(nol.date_to);
+               //console.log(sdate);
+               //console.log(edate);
+
+               if((date_from >= sdate && date_from <= edate) ||
+                   (date_to >= sdate && date_to <= edate) ||
+                   (date_from<=sdate && date_to>=edate))
+                   {//console.log('non disponibile');
+                   return false;
+                 }
+            }
+     }
+
+     //console.log("checked");
+     return true;
+}
+
+
 </script>
 
+{#await promise}
+<div> loading... </div>
+{:then value}
 <div id="cardnolo{noleggio.id}" class="card flex-row row mt-2">
     <div class="col-lg-3 m-2">
-        <div class="card-img-actions"> <img src={FilImg} class="card-img "  height="350" alt="">  </div>
+        <div class="card-img-actions"> <img src={value.img} class="card-img "  height="350" alt="">  </div>
     </div>
 
     <div id="fattura{noleggio.id}" class="col-lg-6 m-2">
@@ -182,17 +244,23 @@ function downloadBill(){
         <div class="mb-2">
             <h6 class="font-weight-semibold mb-2">
               <div class="text-default mb-2" data-abc="true">
-              {FiloName}
+              {value.name}
               </div>
             </h6>
             <div id="dateNolo{noleggio.id}" class="text-muted" data-abc="true">
             Periodo di noleggio: {noleggio.date_from} / {noleggio.date_to}
-              <div id="aggiunte{noleggio.id}" class='text-default text-danger'>
+              <div id="aggiunte{noleggio.id}" class='text-default text-danger font-weight-semibold mb-2'>
               </div>
             </div>
+            {#if (noleggio.status == "In ritardo")}
+            <div class="text-danger" data-abc="true">
+            Stato del noleggio: {noleggio.status}
+            </div>
+            {:else}
             <div class="text-my" data-abc="true">
             Stato del noleggio: {noleggio.status}
             </div>
+            {/if}
         </div>
        <div class="text-muted mb-3">
         Costo giornaliero: &euro;{noleggio.nolo_data.daily_cost}
@@ -230,3 +298,6 @@ function downloadBill(){
         </div>
     {/if}
 </div>
+{:catch error}
+<div class="text-danger">ERRORE</div>
+{/await}
