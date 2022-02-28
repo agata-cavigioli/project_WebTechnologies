@@ -18,7 +18,7 @@
 </script>
 
 
-<div id = "filterbar" class=" dropdown position-static">
+<div id="filterbar" class="dropdown position-static">
   <button class="btn descrip border-0 btn-secondary dropdown-toggle text-start" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     Filtri di ricerca
   </button>

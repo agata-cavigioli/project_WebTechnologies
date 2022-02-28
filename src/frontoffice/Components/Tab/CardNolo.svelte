@@ -4,6 +4,7 @@ import jQuery from 'jquery';
 
 export let time;
 export let noleggio;
+export let filinfo = {'name':'ciao', 'img' : 'ciao'};
 
 let image = "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png";
 //let FiloName = "Gino";
@@ -234,7 +235,7 @@ async function checkAvailability(product_id, nolo_id, from, to){
 
 <div id="cardnolo{noleggio.id}" class="card flex-row row mt-2">
     <div class="col-lg-3 m-2">
-        <div class="card-img-actions"> <img src={noleggio.filinfo.img} class="card-img "  height="350" alt="">  </div>
+        <div class="card-img-actions"> <img src={filinfo.img} class="card-img "  height="350" alt="">  </div>
     </div>
 
     <div id="fattura{noleggio.id}" class="col-lg-6 m-2">
@@ -242,7 +243,7 @@ async function checkAvailability(product_id, nolo_id, from, to){
         <div class="mb-2">
             <h6 class="font-weight-semibold mb-2">
               <div class="text-default mb-2" data-abc="true">
-              {noleggio.filinfo.name}
+              {filinfo.name}
               </div>
             </h6>
             <div id="dateNolo{noleggio.id}" class="text-muted" data-abc="true">

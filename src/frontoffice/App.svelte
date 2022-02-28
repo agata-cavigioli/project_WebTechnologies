@@ -76,7 +76,7 @@ async function searchfunall(){
         <Searchbar bind:filosofi={filosofiApp}/>
         </div>
 
-			<div class='row align-items-center m-5 h2'>
+			<div class='row align-items-center mt-3 m-0 h2'>
 			   <div class='col' style='font-weight: 700;'> Non sai chi cercare?</div>
 			      <div class=' col-lg-3 search-button ' style='border-radius: 5px;'>
               <Link class="searchlink" to="/home" style="color:white;">Cerca tutti</Link>

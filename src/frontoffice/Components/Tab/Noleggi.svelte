@@ -18,47 +18,71 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 
 today = mm + '/' + dd + '/' + yyyy;
-
+/*
 onMount(() => {
 	jQuery( document ).ready(async function() {
-		await getPersonalNolos();
-		/*
-		for (var n in noleggi){
-			noleggi[n].filinfo = await getFilNameById(noleggi[n].product_id);
-		}
-		console.log(noleggi);
-		*/
+		await getPersonalNolos(()=>{console.log(noleggi);});
 	});
 });
 
-let image = "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png";
-
-
-function getPersonalNolos(){
+async function getPersonalNolos(){
   let searchurl = "//site202123.tw.cs.unibo.it/nolos";
   searchurl += '?client_id=' + id;
 
-  jQuery.get(searchurl, async function(data){
+  await jQuery.get(searchurl, function(data){
    noleggi = data;
-	 console.log(noleggi.length);
-	 for (let n = 0; n < noleggi.length; n++){
-		 noleggi[n].filinfo = await getFilNameById(noleggi[n].product_id);
-	 }
-	 console.log(noleggi);
-  })
+ 	});
+	console.log(noleggi.length);
+ 	await (async() => {
+	 for (let n in noleggi){
+	 noleggi[n].filinfo = await getFilNameById(noleggi[n].product_id);
+	}
+})();
+console.log(noleggi);
 }
-function getFilNameById(id){
+
+async function getFilNameById(id){
 		console.log("getFilNameById");
     let searchurl = "//site202123.tw.cs.unibo.it/products?id=" + id ;
-    jQuery.get(searchurl, function(data){
+    await jQuery.get(searchurl, function(data){
 			let FiloInfo = {};
       FiloInfo.name = data[0] && data[0].name;
       FiloInfo.img = data[0] && data[0].img;
-      ////console.log(FiloName);
-      //return FiloInfo;
+      console.log(FiloInfo);
   		return FiloInfo;
 	  });
 
+}
+*/
+onMount(() => {
+	jQuery(document).ready(
+		async function() {
+			await getPersonalNolos();
+		}
+	);
+});
+
+async function getPersonalNolos(){
+  let searchurl = "//site202123.tw.cs.unibo.it/nolos";
+  searchurl += '?client_id=' + id;
+
+  await jQuery.get(searchurl, function(data){
+   noleggi = data;
+	 	});
+	console.log(noleggi);
+
+}
+async function getFilNameById(id){
+
+	console.log("getFilNameById");
+	let searchurl = "//site202123.tw.cs.unibo.it/products?id=" + id ;
+	let data = await jQuery.get(searchurl);
+		let FiloInfo = {};
+		FiloInfo.name = data[0] && data[0].name;
+		FiloInfo.img = data[0] && data[0].img;
+		console.log(FiloInfo);
+		return FiloInfo;
+	//return {'name':'ue', 'img' : 'ue'};
 }
 
 /*
@@ -92,27 +116,33 @@ Noleggi in corso
 </h4>
 {#each noleggi as noleggio}
 		{#if ((noleggio.status=="Iniziato")||(noleggio.status=="In ritardo"))}
-    <CardNolo time={"present"} noleggio={noleggio}/>
+			{#await getFilNameById(noleggio.product_id) then value}
+    		<CardNolo time={"present"} noleggio={noleggio} filinfo={value}/>
+			{/await}
 		{/if}
 {/each}
 
-{:else if ((nolotime=="future"))}
+{:else if (nolotime=="future")}
 <h4 class='font-weight-bold text-my mt-4'>
 Noleggi previsti
 </h4>
 {#each noleggi as noleggio}
 		{#if (noleggio.status=="Prenotato")}
-		<CardNolo time={"future"} noleggio={noleggio}/>
+			{#await getFilNameById(noleggio.product_id) then value}
+				<CardNolo time={"future"} noleggio={noleggio} filinfo={value}/>
+			{/await}
 		{/if}
 {/each}
 
-{:else if ((nolotime=="past"))}
+{:else if (nolotime=="past")}
 <h4 class='font-weight-bold text-my mt-4'>
 Noleggi conclusi
 </h4>
 {#each noleggi as noleggio}
 		{#if (noleggio.status=="Concluso")}
-		<CardNolo time={"past"} noleggio={noleggio}/>
+			{#await getFilNameById(noleggio.product_id) then value}
+				<CardNolo time={"past"} noleggio={noleggio} filinfo={value}/>
+				{/await}
 		{/if}
 {/each}
 

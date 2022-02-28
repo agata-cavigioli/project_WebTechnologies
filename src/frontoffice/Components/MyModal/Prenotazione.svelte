@@ -307,7 +307,7 @@ if (booking){
               </div>
           </div>
 
-      <div class="col-lg">
+      <div class="col-lg mr-1">
 
         <div class="modal-header text-center">
         <h4 class="modal-title white-text w-100 font-weight-bold py-2">Noleggia {filo.name}</h4>

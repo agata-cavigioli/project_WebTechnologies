@@ -78,10 +78,12 @@
 .descrip{
   margin-top: 3vw;
  font-size: 4vw !important;
-
+}
 .search-label, .search-button, .search-input, button {
   font-size: 4vw !important;
-
+}
+  #filterbar, .cardcontainer{
+  padding:0 !important;
 }
 .home .search-element{
   width:100% !important;
@@ -130,8 +132,8 @@
     margin-bottom: 50px
 }
 
-.card {
-    height: 100vh !important;
+.home .card {
+    /*height: 100vh !important;*/
     position: relative;
     display: -ms-flexbox;
     display: flex;

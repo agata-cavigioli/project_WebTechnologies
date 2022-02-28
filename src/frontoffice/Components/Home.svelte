@@ -43,7 +43,7 @@ afterUpdate(() => {
 
         {#each filosofi as filosofo}
 
-        <div class="col-md-4 mt-2">
+        <div class="cardcontainer col-md-4 mt-2">
             <div class="card">
                 <div class="card-body">
                     <div class="card-img-actions"> <img src={filosofo.img} class="card-img "  height="350" alt=""> </div>
