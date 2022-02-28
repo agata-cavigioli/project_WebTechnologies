@@ -66,21 +66,24 @@ async function populateDeps(){
             role: 'manager',
             pwd: 'gorgia',
             email: 'gorgia@nolo.com'
-        },
-        {
-            name: 'Web',
-            surname: '',
-            dep_id: -1,
-            role: 'web',
-            pwd: 'web',
-            email: 'web@nolo.com'
-        }
-    ];
+        }];
+        
     for(d in deps){
         var obj = deps[d];
         obj.id = ++id_num;
         await mongo.insert_one(obj, 'staff');
     }
+    var web = {
+        name: 'Web',
+        surname: '',
+        dep_id: -1,
+        role: 'web',
+        pwd: 'web',
+        email: 'web@nolo.com',
+        id: -1
+    };
+    await mongo.insert_one(web, 'staff');
+
 }
 
 
