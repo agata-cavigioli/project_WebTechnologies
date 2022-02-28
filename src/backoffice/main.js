@@ -70,6 +70,19 @@ async function getById(collection, id){
 }
 
 async function fillTable(list, type){
+	var html_elem;
+
+	if(type == 'inventory'){
+		html_elem = $('#products');
+	} else if(type == 'clients'){
+		html_elem = $('#people');
+	} else if(type == 'nolos') {
+		html_elem = $('#nolo');
+	}
+
+	html_elem.css('display', '');
+	$('.no-results-message').css('display', 'none');
+
 	for(x in list){
 		let values = '';
 		let y = list[x];
@@ -112,19 +125,15 @@ async function fillTable(list, type){
 			}
 		}
 
-		var html_elem;
 		var showFunction;
-
 		if(type == 'inventory'){
-			html_elem = $('#products');
 			showFunction = `showProduct(${y.id})`;
 		} else if(type == 'clients'){
-			html_elem = $('#people');
 			showFunction = `showClient(${y.id})`;
 		} else if(type == 'nolos') {
-			html_elem = $('#nolo');
 			showFunction = `showNolo(${y.id})`;
 		}
+
 		html_elem.append(`<tr tabindex=0 onclick="${showFunction}">
 							${values}
 							<td style="text-align: center;">
@@ -344,10 +353,15 @@ async function updateClient(){
 
 function buildFilterQuery(values){
 	var query = '?';
+	var numeric = ['id', 'birth', 'death'];
 	for(v in values){
 		var val = values[v];
 		if(val == '') continue;
-		var s = `${v}={"$regex":"${val}"}&`;
+
+		var s;
+		if(numeric.includes(v)) s = `${v}=${val}&`;
+		else s = `${v}={"$regex":"${val}"}&`;
+
 		query += s;
 	}
 	return query;
@@ -357,6 +371,8 @@ async function filterProducts(){
 	var values = getElemInputs('#product_header');
 
 	var query = buildFilterQuery(values);
+
+	console.log(query);
 
 	var res =
 		await $.get('//site202123.tw.cs.unibo.it/products'+query);
@@ -371,9 +387,17 @@ async function filterNolos(){
 	var query = '?';
 
 	if(values.client != ''){
-		let c_name = values.client;
-		var res = await
-			$.get(`//site202123.tw.cs.unibo.it/clients?$or=[{"name":{"$regex":"${c_name}"}},{"surname":{"$regex":"${c_name}"}}]`);
+		let c_name = values.client.split(' ');
+		var res;
+
+		if(c_name.length == 1){
+			res =
+				await $.get(`//site202123.tw.cs.unibo.it/clients?$or=[{"name":{"$regex":"${c_name[0]}"}},{"surname":{"$regex":"${c_name[0]}"}}]`);
+		}
+		else {
+			res =
+				await $.get(`//site202123.tw.cs.unibo.it/clients?$and=[{"name":{"$regex":"${c_name[0]}"}},{"surname":{"$regex":"${c_name[1]}"}}]`);
+		}
 
 		var cquery = 'client_id={"$in":[';
 		for(r in res){
@@ -383,11 +407,6 @@ async function filterNolos(){
 		cquery += ']}&'
 		query += cquery;
 	}
-
-	if(values.date_from != '') query += `date_from=${values.date_from}&`;
-	if(values.date_to != '') query += `date_to=${values.date_to}&`;
-	if(values.dep_id != '') query += `dep_id=${values.dep_id}&`;
-	if(values.status != '') query += `status=${values.status}&`;
 
 	if(values.product != ''){
 		let p_name = values.product;
@@ -402,6 +421,32 @@ async function filterNolos(){
 		pquery += ']}&'
 		query += pquery;
 	}
+
+	if(values.employee != ''){
+		let d_name = values.employee.split(' ');
+		var res;
+
+		if(d_name.length == 1){
+			res =
+				await $.get(`//site202123.tw.cs.unibo.it/staff?$or=[{"name":{"$regex":"${d_name[0]}"}},{"surname":{"$regex":"${d_name[0]}"}}]`);
+		}
+		else {
+			res =
+				await $.get(`//site202123.tw.cs.unibo.it/staff?$and=[{"name":{"$regex":"${d_name[0]}"}},{"surname":{"$regex":"${d_name[1]}"}}]`);
+		}
+
+		var pquery = 'dep_id={"$in":[';
+		for(r in res){
+			pquery +=  `${res[r].id}`;
+			if(r != res.length-1) pquery += ',';
+		}
+		pquery += ']}&'
+		query += pquery;
+	}
+
+	if(values.date_from != '') query += `date_from=${values.date_from}&`;
+	if(values.date_to != '') query += `date_to=${values.date_to}&`;
+	if(values.status != '') query += `status=${values.status}&`;
 
 	var res =
 		await $.get('//site202123.tw.cs.unibo.it/nolos'+query);

@@ -59,11 +59,19 @@ async function populateDeps(){
         },
         {
             name: 'Gorgia',
-            surname: 'Messina',
+            surname: 'Lentini',
             dep_id: 13,
             role: 'manager',
             pwd: 'gorgia',
             email: 'gorgia@nolo.com'
+        },
+        {
+            name: 'Web',
+            surname: '',
+            dep_id: -1,
+            role: 'web',
+            pwd: 'web',
+            email: 'web@nolo.com'
         }
     ];
     for(d in deps){
