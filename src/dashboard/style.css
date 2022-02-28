@@ -32,9 +32,15 @@ body::-webkit-scrollbar {
 
 /****************************************/
 
+@media only screen and (max-width: 600px) {
+  #the_nav li {
+    max-width: 25%;
+  }
+}
 
 #the_nav li {
   background-color: #eeeeee;
+  align-content: center;
 }
 
 #the_nav a {
@@ -54,4 +60,10 @@ body::-webkit-scrollbar {
 .card {
   overflow-y: scroll;
   max-height: 65vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    max-height: 100%;
+  }
 }
