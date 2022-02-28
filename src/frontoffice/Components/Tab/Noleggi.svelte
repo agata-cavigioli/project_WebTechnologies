@@ -5,6 +5,7 @@ import jQuery from 'jquery';
 import CardNolo from './CardNolo.svelte';
 
 let id;
+let noleggi = "";
 
 userID.subscribe(value => {
 	id = value;
@@ -20,22 +21,46 @@ today = mm + '/' + dd + '/' + yyyy;
 
 onMount(() => {
 	jQuery( document ).ready(async function() {
-		let done = await getPersonalNolos();
+		await getPersonalNolos();
+		/*
+		for (var n in noleggi){
+			noleggi[n].filinfo = await getFilNameById(noleggi[n].product_id);
+		}
+		console.log(noleggi);
+		*/
 	});
 });
 
 let image = "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png";
-let noleggi = "";
+
 
 function getPersonalNolos(){
   let searchurl = "//site202123.tw.cs.unibo.it/nolos";
-  searchurl += '?client_id=' + id + '';
-  //console.log(searchurl);
+  searchurl += '?client_id=' + id;
 
   jQuery.get(searchurl, async function(data){
    noleggi = data;
+	 console.log(noleggi.length);
+	 for (let n = 0; n < noleggi.length; n++){
+		 noleggi[n].filinfo = await getFilNameById(noleggi[n].product_id);
+	 }
+	 console.log(noleggi);
   })
 }
+function getFilNameById(id){
+		console.log("getFilNameById");
+    let searchurl = "//site202123.tw.cs.unibo.it/products?id=" + id ;
+    jQuery.get(searchurl, function(data){
+			let FiloInfo = {};
+      FiloInfo.name = data[0] && data[0].name;
+      FiloInfo.img = data[0] && data[0].img;
+      ////console.log(FiloName);
+      //return FiloInfo;
+  		return FiloInfo;
+	  });
+
+}
+
 /*
 function difSToday(date){
 	const mydate = new Date(date);
@@ -51,6 +76,7 @@ function difSToday(date){
 
 }
 */
+
 </script>
 <div class="personaltab container">
 <div class="row">

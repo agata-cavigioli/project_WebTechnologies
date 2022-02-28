@@ -6,7 +6,8 @@
 	import Searchbar from './Components/Searchbar.svelte';
   import Personal from './Components/Personal.svelte';
   import Home from './Components/Home.svelte';
-  import { onMount,afterUpdate } from 'svelte';
+  import { onMount, afterUpdate } from 'svelte';
+  import jQuery from 'jquery';
 	export let url = "";
 
 	import 'css/global.css';
