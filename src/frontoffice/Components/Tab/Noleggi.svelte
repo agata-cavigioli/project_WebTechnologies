@@ -5,7 +5,7 @@ import jQuery from 'jquery';
 import CardNolo from './CardNolo.svelte';
 
 let id;
-let noleggi = "";
+let noleggi = [];
 
 userID.subscribe(value => {
 	id = value;
@@ -66,12 +66,13 @@ async function getPersonalNolos(){
   let searchurl = "//site202123.tw.cs.unibo.it/nolos";
   searchurl += '?client_id=' + id;
 
-  await jQuery.get(searchurl, function(data){
-   noleggi = data;
-	 	});
-	//console.log(noleggi);
+	await jQuery.get(searchurl, function(data){
+		noleggi = data;
+	});
+	console.log(noleggi);
 
 }
+
 async function getFilNameById(id){
 
 	//console.log("getFilNameById");
