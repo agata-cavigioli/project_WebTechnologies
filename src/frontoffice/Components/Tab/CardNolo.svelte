@@ -105,7 +105,7 @@ function modify(){
 }
 
 function cancel(){
-  console.log('cancel');
+  //console.log('cancel');
   let divmio = 'dateNolo' + noleggio.id;
   //console.log("confermo la modifica");
   document.getElementById(divmio).innerHTML = "Periodo di noleggio: " + noleggio.date_from + " / " + noleggio.date_to;
@@ -122,7 +122,7 @@ function cancel(){
 }
 
 function confirm(){
-  console.log('confirm');
+  //console.log('confirm');
   let aggiunte = "aggiunte" + noleggio.id;
   //console.log(aggiunte);
   document.getElementById(aggiunte).innerHTML = "";
