@@ -5,6 +5,7 @@ import jQuery from 'jquery';
 import CardNolo from './CardNolo.svelte';
 
 let id;
+let noleggi = "";
 
 userID.subscribe(value => {
 	id = value;
@@ -17,25 +18,75 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 
 today = mm + '/' + dd + '/' + yyyy;
-
+/*
 onMount(() => {
 	jQuery( document ).ready(async function() {
-		let done = await getPersonalNolos();
+		await getPersonalNolos(()=>{console.log(noleggi);});
 	});
 });
 
-let image = "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png";
-let noleggi = "";
-
-function getPersonalNolos(){
+async function getPersonalNolos(){
   let searchurl = "//site202123.tw.cs.unibo.it/nolos";
-  searchurl += '?client_id=' + id + '';
-  //console.log(searchurl);
+  searchurl += '?client_id=' + id;
 
-  jQuery.get(searchurl, async function(data){
+  await jQuery.get(searchurl, function(data){
    noleggi = data;
-  })
+ 	});
+	console.log(noleggi.length);
+ 	await (async() => {
+	 for (let n in noleggi){
+	 noleggi[n].filinfo = await getFilNameById(noleggi[n].product_id);
+	}
+})();
+console.log(noleggi);
 }
+
+async function getFilNameById(id){
+		console.log("getFilNameById");
+    let searchurl = "//site202123.tw.cs.unibo.it/products?id=" + id ;
+    await jQuery.get(searchurl, function(data){
+			let FiloInfo = {};
+      FiloInfo.name = data[0] && data[0].name;
+      FiloInfo.img = data[0] && data[0].img;
+      console.log(FiloInfo);
+  		return FiloInfo;
+	  });
+
+}
+*/
+onMount(() => {
+	jQuery(document).ready(
+		async function() {
+			await getPersonalNolos();
+		}
+	);
+});
+
+async function getPersonalNolos(){
+  let searchurl = "//site202123.tw.cs.unibo.it/nolos";
+  searchurl += '?client_id=' + id;
+
+  await jQuery.get(searchurl, function(data){
+   noleggi = data;
+	 	});
+	//console.log(noleggi);
+
+}
+async function getFilNameById(id){
+
+	//console.log("getFilNameById");
+	let searchurl = "//site202123.tw.cs.unibo.it/products?id=" + id ;
+	let data = await jQuery.get(searchurl);
+		let FiloInfo = {};
+		FiloInfo.name = data[0] && data[0].name;
+		FiloInfo.img = data[0] && data[0].img;
+		FiloInfo.available_from = data[0] && data[0].nolo_data && data[0].nolo_data.available_from;
+		FiloInfo.available_to = data[0] && data[0].nolo_data && data[0].nolo_data.available_to;
+	//console.log(FiloInfo);
+		return FiloInfo;
+	//return {'name':'ue', 'img' : 'ue'};
+}
+
 /*
 function difSToday(date){
 	const mydate = new Date(date);
@@ -51,12 +102,16 @@ function difSToday(date){
 
 }
 */
+async function reload(){
+	//console.log('reload');
+	await getPersonalNolos();
+}
 </script>
 <div class="personaltab container">
 <div class="row">
-<button id="nolopresent"  class='col btn btn-outline-info waves-effect' on:click={()=>(nolotime = "present")}>Noleggi in corso</button>
-<button id="nolofuture"  class='col btn btn-outline-info waves-effect' on:click={()=>(nolotime = "future")}>Noleggi previsti</button>
-<button id="nolopast"  class='col btn btn-outline-info waves-effect' on:click={()=>(nolotime = "past")}>Noleggi conclusi</button>
+<button id="nolopresent"  class='col btn btn-outline-info waves-effect' on:click={()=>{nolotime = "present"; reload()}}>Noleggi in corso</button>
+<button id="nolofuture"  class='col btn btn-outline-info waves-effect' on:click={()=>{nolotime = "future"; reload()}}>Noleggi previsti</button>
+<button id="nolopast"  class='col btn btn-outline-info waves-effect' on:click={()=>{nolotime = "past"; reload()}}>Noleggi conclusi</button>
 
 </div>
 
@@ -66,27 +121,33 @@ Noleggi in corso
 </h4>
 {#each noleggi as noleggio}
 		{#if ((noleggio.status=="Iniziato")||(noleggio.status=="In ritardo"))}
-    <CardNolo time={"present"} noleggio={noleggio}/>
+			{#await getFilNameById(noleggio.product_id) then value}
+    		<CardNolo time={"present"} noleggio={noleggio} filinfo={value}/>
+			{/await}
 		{/if}
 {/each}
 
-{:else if ((nolotime=="future"))}
+{:else if (nolotime=="future")}
 <h4 class='font-weight-bold text-my mt-4'>
 Noleggi previsti
 </h4>
 {#each noleggi as noleggio}
 		{#if (noleggio.status=="Prenotato")}
-		<CardNolo time={"future"} noleggio={noleggio}/>
+			{#await getFilNameById(noleggio.product_id) then value}
+				<CardNolo time={"future"} noleggio={noleggio} filinfo={value}/>
+			{/await}
 		{/if}
 {/each}
 
-{:else if ((nolotime=="past"))}
+{:else if (nolotime=="past")}
 <h4 class='font-weight-bold text-my mt-4'>
 Noleggi conclusi
 </h4>
 {#each noleggi as noleggio}
 		{#if (noleggio.status=="Concluso")}
-		<CardNolo time={"past"} noleggio={noleggio}/>
+			{#await getFilNameById(noleggio.product_id) then value}
+				<CardNolo time={"past"} noleggio={noleggio} filinfo={value}/>
+				{/await}
 		{/if}
 {/each}
 

@@ -4,14 +4,15 @@ import jQuery from 'jquery';
 
 export let time;
 export let noleggio;
+export let filinfo = {'name':'ciao', 'img' : 'ciao'};
 
 let image = "https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png";
 //let FiloName = "Gino";
 //let FilImg = "";
 let modifyconfirm = "modify";
-
-let promise = getFilNameById();
 /*
+let promise = getFilNameById();
+
 onMount(async () => {
     //await getFilNameById();
     let searchurl = "//site202123.tw.cs.unibo.it/products?id=" + noleggio.product_id ;
@@ -20,7 +21,7 @@ onMount(async () => {
     FilImg = data[0] && data[0].img;
     //console.log(FiloName);
 })
-*/
+
 async function getFilNameById(){
     let searchurl = "//site202123.tw.cs.unibo.it/products?id=" + noleggio.product_id ;
     let data = await jQuery.get(searchurl);
@@ -36,6 +37,7 @@ async function getFilNameById(){
 			throw new Error(FiloInfo);
 		}
 }
+*/
 function modifyconfirmNolo(){
   //console.log("want to " +modifyconfirm);
   if (modifyconfirm == "modify") modify();
@@ -86,9 +88,41 @@ function modify(){
   //document.getElementById('modifyconfirm').addEventListener("click", confirm);
   document.getElementById('modifyconfirm').classList.remove("btn-outline-info");
   document.getElementById('modifyconfirm').classList.add("btn-outline-warning");
+
+  var cancbutton = document.createElement("p");
+  cancbutton.setAttribute('id','cancbutton');
+  cancbutton.setAttribute('type','button');
+  cancbutton.classList.add('mt-4');
+  cancbutton.classList.add('btn');
+  cancbutton.classList.add('btn-outline-info');
+  cancbutton.classList.add('waves-effect');
+  var text = document.createTextNode("Annulla");
+  cancbutton.appendChild(text);
+
+  document.getElementById('cancelbutton').appendChild(cancbutton);
+
+  document.getElementById('cancbutton').addEventListener("click", cancel, false);
+}
+
+function cancel(){
+  //console.log('cancel');
+  let divmio = 'dateNolo' + noleggio.id;
+  //console.log("confermo la modifica");
+  document.getElementById(divmio).innerHTML = "Periodo di noleggio: " + noleggio.date_from + " / " + noleggio.date_to;
+
+  //console.log("cambio il bottone");
+  modifyconfirm = "modify";
+  document.getElementById('modifyconfirm').innerHTML="Modifica";
+  //document.getElementById('modifyconfirm').removeEventListener("click", confirm);
+  //document.getElementById('modifyconfirm').addEventListener("click", modify);
+  document.getElementById('modifyconfirm').classList.add("btn-outline-info");
+  document.getElementById('modifyconfirm').classList.remove("btn-outline-warning");
+
+  document.getElementById('cancelbutton').innerHTML = "";
 }
 
 function confirm(){
+  //console.log('confirm');
   let aggiunte = "aggiunte" + noleggio.id;
   //console.log(aggiunte);
   document.getElementById(aggiunte).innerHTML = "";
@@ -108,7 +142,11 @@ function confirm(){
       	//document.getElementById('modifyconfirm').removeEventListener("click", confirm);
       	//document.getElementById('modifyconfirm').addEventListener("click", modify);
       	document.getElementById('modifyconfirm').classList.add("btn-outline-info");
-      	document.getElementById('modifyconfirm').classList.remove("btn-outline-warning");}
+      	document.getElementById('modifyconfirm').classList.remove("btn-outline-warning");
+
+        document.getElementById('cancelbutton').innerHTML = "";
+      }
+
   });
 
 }
@@ -196,12 +234,25 @@ function downloadBill(){
 }
 
 async function checkAvailability(product_id, nolo_id, from, to){
+  var date_from = new Date(from);
+  var date_to = new Date(to);
+
+
+  var Sdefaultdate = new Date(filinfo.available_from);
+  var Edefaultdate = new Date(filinfo.available_to);
+  //console.log(filo.nolo_data.available_from);
+  //console.log(filo.nolo_data.available_to);
+  if((date_from <= Sdefaultdate || date_from >= Edefaultdate) ||
+        (date_to <= Sdefaultdate || date_to >= Edefaultdate))
+        {//console.log('non disponibile');
+        return false;
+      }
+
+
      let url = "//site202123.tw.cs.unibo.it/nolos?product_id=" + product_id;
      //console.log(url);
      var prod_nolos = await jQuery.get(url);
      //console.log(prod_nolos);
-     var date_from = new Date(from);
-     var date_to = new Date(to);
      //console.log(date_from);
      //console.log(date_to);
 
@@ -231,12 +282,9 @@ async function checkAvailability(product_id, nolo_id, from, to){
 
 </script>
 
-{#await promise}
-<div> loading... </div>
-{:then value}
 <div id="cardnolo{noleggio.id}" class="card flex-row row mt-2">
     <div class="col-lg-3 m-2">
-        <div class="card-img-actions"> <img src={value.img} class="card-img "  height="350" alt="">  </div>
+        <div class="card-img-actions"> <img src={filinfo.img} class="card-img "  height="350" alt="">  </div>
     </div>
 
     <div id="fattura{noleggio.id}" class="col-lg-6 m-2">
@@ -244,7 +292,7 @@ async function checkAvailability(product_id, nolo_id, from, to){
         <div class="mb-2">
             <h6 class="font-weight-semibold mb-2">
               <div class="text-default mb-2" data-abc="true">
-              {value.name}
+              {filinfo.name}
               </div>
             </h6>
             <div id="dateNolo{noleggio.id}" class="text-muted" data-abc="true">
@@ -279,13 +327,17 @@ async function checkAvailability(product_id, nolo_id, from, to){
     {#if ((time=="future"))}
     <div class="col-lg-2">
       <div class="container">
-          <div class="row">
+          <div class="row" id="button-container">
             <div class="col">
               <p id="modifyconfirm" type='button' class='mt-4 btn btn-outline-info waves-effect' on:click={modifyconfirmNolo}>Modifica</p>
             </div>
 
             <div class="col">
               <p id="nolodelete" type='button' class='row-lg mt-4 btn btn-outline-warning waves-effect' on:click={deleteNolo}>Elimina</p>
+            </div>
+
+            <div class="col" id="cancelbutton">
+
             </div>
           </div>
         </div>
@@ -298,6 +350,3 @@ async function checkAvailability(product_id, nolo_id, from, to){
         </div>
     {/if}
 </div>
-{:catch error}
-<div class="text-danger">ERRORE</div>
-{/await}

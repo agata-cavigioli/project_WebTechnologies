@@ -1,6 +1,4 @@
-:root{
-    --bs-body-line-height: 1.2 !important;
-}
+
 
 :global(body){
   margin: 0;
@@ -293,4 +291,7 @@ button:focus{
   color:rgb(50, 100, 200) !important;
   background-color: white !important;
   box-shadow: 0 0 0 .25rem rgba(50, 100, 200,.5)
+}
+.date{
+  font-size: 0.9em;
 }

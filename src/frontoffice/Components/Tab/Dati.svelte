@@ -46,6 +46,7 @@ async function getPersonalData(){
 				}
 	 			else {
 	 			document.getElementById('datatab').innerHTML=("Cannot find personal data");
+				document.getElementById('mybuttons').innerHTML="";
 				//return false;
 	 			}
  		}
@@ -183,16 +184,36 @@ const validateEmail = (email) => {
 };
 
 async function deleteprofile(){
-	let myurl = "//site202123.tw.cs.unibo.it/clients?id=" + id;
-  await jQuery.ajax({
-         url: myurl ,
-         type: 'DELETE'
-     });
-	userID.set(-1);
-	loggedIn.update(b => !b);
-	document.getElementById('datatab').innerHTML=("Profilo eliminato");
+	let candelete = await checkCurrentNolos();
+	console.log(candelete);
+	if(candelete){
+		console.log('can delete');
+		let myurl = "//site202123.tw.cs.unibo.it/clients?id=" + id;
+		await jQuery.ajax({
+	         url: myurl ,
+	         type: 'DELETE'
+	     });
+		userID.set(-1);
+		loggedIn.update(b => !b);
+		document.getElementById('datatab').innerHTML=("Profilo eliminato");
+		document.getElementById('mybuttons').innerHTML="";
+	}
 }
+async function checkCurrentNolos(){
+	let searchurl = "//site202123.tw.cs.unibo.it/nolos";
+  searchurl += '?client_id=' + id;
+	var noleggi;
+  await jQuery.get(searchurl, function(data){
+   noleggi = data;
+	 	});
 
+	for (var n in noleggi){
+		if ((noleggi[n].status=="Iniziato")||(noleggi[n].status=="In ritardo"))
+			{alert('Il profilo non puó essere eliminato. Dei noleggi sono in corso');
+				return false;}
+	}
+	return true;
+}
 </script>
 
 <div class="personaltab" >
@@ -200,7 +221,9 @@ async function deleteprofile(){
 Dati profilo
 </h4>
 <div id="datatab">
-</div>
+</div >
+<div id="mybuttons">
 <button id="modifyconfirm"  class='btn btn-outline-info waves-effect' on:click={modifyconfirmfun}>Modifica</button>
 <button id="modifyconfirm"  class='btn btn-outline-danger waves-effect' on:click={deleteprofile}>Elimina</button>
+</div>
 </div>
