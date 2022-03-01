@@ -80,7 +80,9 @@ async function getFilNameById(id){
 		let FiloInfo = {};
 		FiloInfo.name = data[0] && data[0].name;
 		FiloInfo.img = data[0] && data[0].img;
-		//console.log(FiloInfo);
+		FiloInfo.available_from = data[0] && data[0].nolo_data && data[0].nolo_data.available_from;
+		FiloInfo.available_to = data[0] && data[0].nolo_data && data[0].nolo_data.available_to;
+	//console.log(FiloInfo);
 		return FiloInfo;
 	//return {'name':'ue', 'img' : 'ue'};
 }

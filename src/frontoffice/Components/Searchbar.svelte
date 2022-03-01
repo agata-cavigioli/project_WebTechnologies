@@ -20,7 +20,7 @@ function searchfunction(){
     if(place) {
       if (count>0){tempurl+='&'; count++;}
       //$or=[{"death_p":{"$regex":"Gre"}},{"birth_p":{"$regex":"Gre"}}]
-      tempurl+='$or=[{"death_p":{"$regex":"'+place+'"}},{"birth_p":{"$regex":"'+place+'"}}]';
+      tempurl+='death_p={"$regex":"'+place+'"}';
       count++;
     }
 

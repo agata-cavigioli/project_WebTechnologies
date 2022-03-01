@@ -234,12 +234,25 @@ function downloadBill(){
 }
 
 async function checkAvailability(product_id, nolo_id, from, to){
+  var date_from = new Date(from);
+  var date_to = new Date(to);
+
+
+  var Sdefaultdate = new Date(filinfo.available_from);
+  var Edefaultdate = new Date(filinfo.available_to);
+  //console.log(filo.nolo_data.available_from);
+  //console.log(filo.nolo_data.available_to);
+  if((date_from <= Sdefaultdate || date_from >= Edefaultdate) ||
+        (date_to <= Sdefaultdate || date_to >= Edefaultdate))
+        {//console.log('non disponibile');
+        return false;
+      }
+
+
      let url = "//site202123.tw.cs.unibo.it/nolos?product_id=" + product_id;
      //console.log(url);
      var prod_nolos = await jQuery.get(url);
      //console.log(prod_nolos);
-     var date_from = new Date(from);
-     var date_to = new Date(to);
      //console.log(date_from);
      //console.log(date_to);
 

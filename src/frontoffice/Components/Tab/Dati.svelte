@@ -46,6 +46,7 @@ async function getPersonalData(){
 				}
 	 			else {
 	 			document.getElementById('datatab').innerHTML=("Cannot find personal data");
+				document.getElementById('mybuttons').innerHTML="";
 				//return false;
 	 			}
  		}
@@ -195,7 +196,7 @@ async function deleteprofile(){
 		userID.set(-1);
 		loggedIn.update(b => !b);
 		document.getElementById('datatab').innerHTML=("Profilo eliminato");
-
+		document.getElementById('mybuttons').innerHTML="";
 	}
 }
 async function checkCurrentNolos(){
@@ -220,7 +221,9 @@ async function checkCurrentNolos(){
 Dati profilo
 </h4>
 <div id="datatab">
-</div>
+</div >
+<div id="mybuttons">
 <button id="modifyconfirm"  class='btn btn-outline-info waves-effect' on:click={modifyconfirmfun}>Modifica</button>
 <button id="modifyconfirm"  class='btn btn-outline-danger waves-effect' on:click={deleteprofile}>Elimina</button>
+</div>
 </div>
