@@ -44,20 +44,20 @@ function searchfunction(){
         //birth={"$gt":"1400"}&death={"$lt":"1900"}
         if (count>0){tempurl+='&'; count++;}
         //$or=[{ "$and": [ { "birth": { "$gt": 1492 } }, { "birth": { "$lt": 1815 } } ] },{ "$and": [ { "death": { "$gt": 1492 } }, { "death": { "$lt": 1815 } } ] }]
-        tempurl+='$or=[{ "$and": [ { "birth": { "$gt": '+livedfrom+' } }, { "birth": { "$lt": '+livedto+' } } ] },{ "$and": [ { "death": { "$gt": '+livedfrom+' } }, { "death": { "$lt": '+livedto+' } } ] }]';
+        tempurl+='$or=[{ "$and": [ { "birth": { "$gte": '+livedfrom+' } }, { "birth": { "$lte": '+livedto+' } } ] },{ "$and": [ { "death": { "$gte": '+livedfrom+' } }, { "death": { "$lte": '+livedto+' } } ] }]';
         count++;
       }
       var costfrom = document.getElementById('costfrom').value;
       if(costfrom && !isNaN(costfrom)) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='nolo_data.cost={"$gt":'+costfrom+'}';
+        tempurl+='nolo_data.cost={"$gte":'+costfrom+'}';
         count++;
       }
 
       var costto = document.getElementById('costto').value;
       if(costto && !isNaN(costto)) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='nolo_data.cost={"$lt":'+costto+'}';
+        tempurl+='nolo_data.cost={"$lte":'+costto+'}';
         count++;
       }
 
@@ -85,14 +85,15 @@ function searchfunction(){
       var datefrom = document.getElementById('datefrom').value;
       if(datefrom) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='nolo_data.available_from={"$lt":"'+datefrom+'"}';
+        tempurl+='nolo_data.available_from={"$lte":"'+datefrom+'"}';
         count++;
+
       }
 
       var dateto = document.getElementById('dateto').value;
       if(dateto) {
         if (count>0){tempurl+='&'; count++;}
-        tempurl+='nolo_data.available_to={"$gt":"'+dateto+'"}';
+        tempurl+='nolo_data.available_to={"$gte":"'+dateto+'"}';
         count++;
       }
 

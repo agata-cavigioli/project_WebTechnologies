@@ -183,16 +183,36 @@ const validateEmail = (email) => {
 };
 
 async function deleteprofile(){
-	let myurl = "//site202123.tw.cs.unibo.it/clients?id=" + id;
-  await jQuery.ajax({
-         url: myurl ,
-         type: 'DELETE'
-     });
-	userID.set(-1);
-	loggedIn.update(b => !b);
-	document.getElementById('datatab').innerHTML=("Profilo eliminato");
-}
+	let candelete = await checkCurrentNolos();
+	console.log(candelete);
+	if(candelete){
+		console.log('can delete');
+		let myurl = "//site202123.tw.cs.unibo.it/clients?id=" + id;
+		await jQuery.ajax({
+	         url: myurl ,
+	         type: 'DELETE'
+	     });
+		userID.set(-1);
+		loggedIn.update(b => !b);
+		document.getElementById('datatab').innerHTML=("Profilo eliminato");
 
+	}
+}
+async function checkCurrentNolos(){
+	let searchurl = "//site202123.tw.cs.unibo.it/nolos";
+  searchurl += '?client_id=' + id;
+	var noleggi;
+  await jQuery.get(searchurl, function(data){
+   noleggi = data;
+	 	});
+
+	for (var n in noleggi){
+		if ((noleggi[n].status=="Iniziato")||(noleggi[n].status=="In ritardo"))
+			{alert('Il profilo non puó essere eliminato. Dei noleggi sono in corso');
+				return false;}
+	}
+	return true;
+}
 </script>
 
 <div class="personaltab" >

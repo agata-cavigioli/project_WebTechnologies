@@ -228,6 +228,7 @@ async function sendnolo(){
     const today = new Date();
     const diffTimetoday = today - date1;
     const diffDaystoday = Math.ceil(diffTimetoday / (1000 * 60 * 60 * 24)) - 1;
+    console.log('diffDaystoday'+diffDaystoday);
     booking.status = (diffDaystoday==0) ? "Iniziato" : "Prenotato";
     //console.log(booking.status);
     booking.nolo_data.discount = filo.nolo_data.discount;

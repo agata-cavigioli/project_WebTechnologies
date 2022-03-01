@@ -22,7 +22,7 @@
   <button class="btn descrip border-0 btn-secondary dropdown-toggle text-start" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     Filtri di ricerca
   </button>
-  <ul class="dropdown-menu mt-0 shadow border-0  border-outline-success" aria-labelledby="dropdownFilters">
+  <ul class="dropdown-menu dropdown-menu-center mt-0 shadow border-0  border-outline-success" aria-labelledby="dropdownFilters">
     <li>
 		<div class="container-fluid">
 		<div class="row px-2">

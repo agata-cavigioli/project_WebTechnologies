@@ -69,18 +69,18 @@ async function getPersonalNolos(){
   await jQuery.get(searchurl, function(data){
    noleggi = data;
 	 	});
-	console.log(noleggi);
+	//console.log(noleggi);
 
 }
 async function getFilNameById(id){
 
-	console.log("getFilNameById");
+	//console.log("getFilNameById");
 	let searchurl = "//site202123.tw.cs.unibo.it/products?id=" + id ;
 	let data = await jQuery.get(searchurl);
 		let FiloInfo = {};
 		FiloInfo.name = data[0] && data[0].name;
 		FiloInfo.img = data[0] && data[0].img;
-		console.log(FiloInfo);
+		//console.log(FiloInfo);
 		return FiloInfo;
 	//return {'name':'ue', 'img' : 'ue'};
 }
@@ -100,13 +100,16 @@ function difSToday(date){
 
 }
 */
-
+async function reload(){
+	//console.log('reload');
+	await getPersonalNolos();
+}
 </script>
 <div class="personaltab container">
 <div class="row">
-<button id="nolopresent"  class='col btn btn-outline-info waves-effect' on:click={()=>(nolotime = "present")}>Noleggi in corso</button>
-<button id="nolofuture"  class='col btn btn-outline-info waves-effect' on:click={()=>(nolotime = "future")}>Noleggi previsti</button>
-<button id="nolopast"  class='col btn btn-outline-info waves-effect' on:click={()=>(nolotime = "past")}>Noleggi conclusi</button>
+<button id="nolopresent"  class='col btn btn-outline-info waves-effect' on:click={()=>{nolotime = "present"; reload()}}>Noleggi in corso</button>
+<button id="nolofuture"  class='col btn btn-outline-info waves-effect' on:click={()=>{nolotime = "future"; reload()}}>Noleggi previsti</button>
+<button id="nolopast"  class='col btn btn-outline-info waves-effect' on:click={()=>{nolotime = "past"; reload()}}>Noleggi conclusi</button>
 
 </div>
 

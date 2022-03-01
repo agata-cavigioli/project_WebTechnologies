@@ -88,9 +88,41 @@ function modify(){
   //document.getElementById('modifyconfirm').addEventListener("click", confirm);
   document.getElementById('modifyconfirm').classList.remove("btn-outline-info");
   document.getElementById('modifyconfirm').classList.add("btn-outline-warning");
+
+  var cancbutton = document.createElement("p");
+  cancbutton.setAttribute('id','cancbutton');
+  cancbutton.setAttribute('type','button');
+  cancbutton.classList.add('mt-4');
+  cancbutton.classList.add('btn');
+  cancbutton.classList.add('btn-outline-info');
+  cancbutton.classList.add('waves-effect');
+  var text = document.createTextNode("Annulla");
+  cancbutton.appendChild(text);
+
+  document.getElementById('cancelbutton').appendChild(cancbutton);
+
+  document.getElementById('cancbutton').addEventListener("click", cancel, false);
+}
+
+function cancel(){
+  console.log('cancel');
+  let divmio = 'dateNolo' + noleggio.id;
+  //console.log("confermo la modifica");
+  document.getElementById(divmio).innerHTML = "Periodo di noleggio: " + noleggio.date_from + " / " + noleggio.date_to;
+
+  //console.log("cambio il bottone");
+  modifyconfirm = "modify";
+  document.getElementById('modifyconfirm').innerHTML="Modifica";
+  //document.getElementById('modifyconfirm').removeEventListener("click", confirm);
+  //document.getElementById('modifyconfirm').addEventListener("click", modify);
+  document.getElementById('modifyconfirm').classList.add("btn-outline-info");
+  document.getElementById('modifyconfirm').classList.remove("btn-outline-warning");
+
+  document.getElementById('cancelbutton').innerHTML = "";
 }
 
 function confirm(){
+  console.log('confirm');
   let aggiunte = "aggiunte" + noleggio.id;
   //console.log(aggiunte);
   document.getElementById(aggiunte).innerHTML = "";
@@ -110,7 +142,11 @@ function confirm(){
       	//document.getElementById('modifyconfirm').removeEventListener("click", confirm);
       	//document.getElementById('modifyconfirm').addEventListener("click", modify);
       	document.getElementById('modifyconfirm').classList.add("btn-outline-info");
-      	document.getElementById('modifyconfirm').classList.remove("btn-outline-warning");}
+      	document.getElementById('modifyconfirm').classList.remove("btn-outline-warning");
+
+        document.getElementById('cancelbutton').innerHTML = "";
+      }
+
   });
 
 }
@@ -278,13 +314,17 @@ async function checkAvailability(product_id, nolo_id, from, to){
     {#if ((time=="future"))}
     <div class="col-lg-2">
       <div class="container">
-          <div class="row">
+          <div class="row" id="button-container">
             <div class="col">
               <p id="modifyconfirm" type='button' class='mt-4 btn btn-outline-info waves-effect' on:click={modifyconfirmNolo}>Modifica</p>
             </div>
 
             <div class="col">
               <p id="nolodelete" type='button' class='row-lg mt-4 btn btn-outline-warning waves-effect' on:click={deleteNolo}>Elimina</p>
+            </div>
+
+            <div class="col" id="cancelbutton">
+
             </div>
           </div>
         </div>
