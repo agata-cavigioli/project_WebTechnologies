@@ -1,12 +1,12 @@
 var products;
 var nols;
 var clts;
-$.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
+$.get('//site202123.tw.cs.unibo.it/products', async function(data1){
   products = await data1;
-  $.get('http://site202123.tw.cs.unibo.it/clients', async function(data2){
+  $.get('//site202123.tw.cs.unibo.it/clients', async function(data2){
     clts = await data2;
 
-    $.get('http://site202123.tw.cs.unibo.it/nolos', async function(data3){
+    $.get('//site202123.tw.cs.unibo.it/nolos', async function(data3){
       nols = await data3;
 
       const app = Vue.createApp({
@@ -22,6 +22,23 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
           arrayColumn : function(arr, n) {
             return arr.map(x => x[n])
           }, 
+          sortObj: function(obj){
+            var sort = [];
+            for(name in obj){
+              sort.push([name, obj[name]]);
+            }
+
+            sort.sort(function(a, b) {
+              return b[1] - a[1];
+            });
+
+            var new_obj = {};
+            sort.forEach(function(item){
+              new_obj[item[0]] = item[1];
+            })
+
+            return new_obj;
+          },
           calculateCost: function(nolo) {
             const date1 = new Date(nolo.date_from);
             const date2 = new Date(nolo.date_to);
@@ -53,7 +70,7 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
               filNumClassified.push([dictNumNolos[id].valore[1],dictNumNolos[id].valore[0]]);
             }
             filNumClassified = filNumClassified.sort(function(a, b){return b[0]-a[0]});
-            filNumClassified = filNumClassified.slice(0, 9);
+            filNumClassified = filNumClassified.slice(0, 10);
             var filNumName = this.arrayColumn(filNumClassified, 1);
             filNumClassified = this.arrayColumn(filNumClassified, 0);
 
@@ -110,7 +127,7 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
                 [dictFactNolos[id].valore[1],dictFactNolos[id].valore[0]]);
             }
             filFactClassified = filFactClassified.sort(function(a, b){return b[0]-a[0]});
-            filFactClassified = filFactClassified.slice(0, 9);
+            filFactClassified = filFactClassified.slice(0, 10);
             var filFactName = this.arrayColumn(filFactClassified, 1);
             filFactClassified = this.arrayColumn(filFactClassified, 0);
 
@@ -153,7 +170,7 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
                 [this.calculateCost(this.nolos[nol]),this.nolos[nol].id]);
             }
             nolosClassified = nolosClassified.sort(function(a, b){return b[0]-a[0]});
-            nolosClassified = nolosClassified.slice(0, 9);
+            nolosClassified = nolosClassified.slice(0, 10);
             var nolosClassifyName = this.arrayColumn(nolosClassified, 1);
             nolosClassified = this.arrayColumn(nolosClassified, 0);
 
@@ -176,7 +193,6 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
             var states = ['Prenotato', 'Iniziato', 'Concluso', 'In ritardo'];
             for (nol in this.nolos){
               var st = this.nolos[nol].status;
-              console.log(st);
               if (st == 'Prenotato') stateNolo[0]++;
               else if (st == 'Iniziato') stateNolo[1]++;
               else if (st == 'Concluso') stateNolo[2]++;
@@ -207,7 +223,7 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
               if (s<=476 || s>d ) timeLivedPhil[0]++;
               else if (s<=1492) timeLivedPhil[1]++;
               else if (s<=1815) timeLivedPhil[2]++;
-              else if (s<=2022) timeLivedPhil[2]++;
+              else if (s<=2022) timeLivedPhil[3]++;
               else console.log("error");
             }
 
@@ -281,7 +297,8 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
               var id = nol.client_id
 
               var person = this.clients.find(el => el.id == id);
-              var name = person.name + ' ' + person.surname;
+              var name;
+              name = person ? person.name + ' ' + person.surname : 'Non in elenco';
 
               if (name in totals) totals[name] += this.calculateCost(nol);
               else totals[name] = this.calculateCost(nol);
@@ -290,19 +307,22 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
               else nolo_num[name] = 1;
             }
 
+            totals = this.sortObj(totals);
+            nolo_num = this.sortObj(nolo_num);
+
             cl_stats.push({
-              dataNolo : Object.values(totals),
+              dataNolo : Object.values(totals).slice(0, 10),
               type: 'bar',
               axis: 'y',
-              label_x: Object.keys(totals),
+              label_x: Object.keys(totals).slice(0, 10),
               label : 'Totale spesa per cliente'
             });
 
           cl_stats.push({
-              dataNolo : Object.values(nolo_num),
+              dataNolo : Object.values(nolo_num).slice(0, 10),
               type: 'bar',
               axis: 'x',
-              label_x: Object.keys(nolo_num),
+              label_x: Object.keys(nolo_num).slice(0, 10),
               label : 'Numero di noleggi per cliente'
             });
 
@@ -312,11 +332,13 @@ $.get('http://site202123.tw.cs.unibo.it/products', async function(data1){
               avg[name] = Math.round(100*totals[name] / nolo_num[name])/100;
             }
 
+            avg = this.sortObj(avg);
+
             cl_stats.push({
-              dataNolo : Object.values(avg),
+              dataNolo : Object.values(avg).slice(0, 10),
               type: 'bar',
               axis: 'x',
-              label_x: Object.keys(avg),
+              label_x: Object.keys(avg).slice(0, 10),
               label : 'Spesa media per cliente'
             });
 
