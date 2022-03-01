@@ -350,27 +350,27 @@ firstFocusableElement.focus();
 
 
       <div class="modal-body">
-      <div class="row-lg">
-      <div class="col-lg md-form mb-5">
+      <div class="row">
+      <div class="col-lg-6 col-sm-12 md-form mb-5">
         <i class="bi bi-envelope prefix grey-text"></i>
         <label class="float-left" data-error="wrong" data-success="right" for="form0" id="label0">Nome</label>
         <input type="text" id="form0" class="form-control validate">
       </div>
 
-      <div class="col-lg md-form mb-5">
+      <div class="col-lg-6 col-sm-12 md-form mb-5">
         <i class="bi bi-envelope prefix grey-text"></i>
         <label class="float-left" data-error="wrong" data-success="right" for="form1" id="label1">Cognome</label>
         <input type="text" id="form1" class="form-control validate">
       </div>
       </div>
-      <div class="row-lg">
-        <div class="col-lg md-form mb-5">
+      <div class="row">
+        <div class="col-lg-6 col-sm-12 md-form mb-5">
           <i class="bi bi-envelope prefix grey-text"></i>
           <label class="float-left" data-error="wrong" data-success="right" for="form3" id="label3">Email</label>
           <input type="text" id="form3" class="form-control validate">
         </div>
 
-        <div class="col-lg md-form">
+        <div class="col-lg-6 col-sm-12 md-form">
           <i class="fas fa-envelope prefix grey-text"></i>
           <label class="float-left" data-error="wrong" data-success="right" for="form2" id="label2">Password</label>
           <input type="password" id="form2" class="form-control validate">
@@ -382,14 +382,14 @@ firstFocusableElement.focus();
         </div>
 
         </div>
-        <div class="row-lg">
-        <div class="col-lg md-form mb-5">
+        <div class="row">
+        <div class="col-lg-6 col-sm-12 md-form mb-5">
           <i class="bi bi-envelope prefix grey-text"></i>
           <label class="float-left" data-error="wrong" data-success="right" for="form4" id="label4">Telefono</label>
           <input type="text" id="form4" class="form-control validate">
         </div>
 
-        <div class="col-lg md-form mb-5">
+        <div class="col-lg-6 col-sm-12 md-form mb-5">
           <i class="bi bi-envelope prefix grey-text"></i>
           <label class="float-left" data-error="wrong" data-success="right" for="form5" id="label5">Indirizzo</label>
           <input type="text" id="form5" class="form-control validate">
