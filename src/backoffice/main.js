@@ -41,13 +41,30 @@ async function checkAvailability(nolo_id, product_id, from, to){
 			return false;
 		}
 		if((sdate > date_from && sdate < date_to) ||
-			(edate> date_from && edate < date_to)){
+			(edate > date_from && edate < date_to)){
 			console.log('bingo');
 			return false;
 		}
 	}
 
+	var prod = await getById(product_id);
+
+	if(prod.nolo_data.available_from == '' && prod.nolo_data.available_to == ''){
+		return true;
+	}
+
+	let sdate = new Date(prod.nolo_data.available_from);
+	let edate = new Date(prod.nolo_data.available_to);
+
+	console.log(sdate, edate);
+
+	if(date_from < sdate || date_from > edate || date_to < sdate | date_to > edate){
+		console.log('bingo');
+		return false;
+	}
+
 	return true;
+
 }
 
 $(document).ready(async function() {
