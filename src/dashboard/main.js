@@ -12,6 +12,7 @@ $.get('//site202123.tw.cs.unibo.it/products', async function(data1){
       const app = Vue.createApp({
         data() {
           return {
+            logged: false,
             selected: 'Prodotti',
             filosofi : products,
             clients: clts,
@@ -147,11 +148,23 @@ $.get('//site202123.tw.cs.unibo.it/products', async function(data1){
             var dataNolo = [0,0,0,0,0,0,0,0,0,0,0,0];
             var month = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre','Ottobre', 'Novembre','Dicembre'];
             var label = 'Numero di noleggi';
+
             for (nol in this.nolos){
+
               var d1 = new Date(this.nolos[nol].date_from);
               var d2 = new Date(this.nolos[nol].date_to);
-              dataNolo[d1.getMonth()]++;
-              dataNolo[d2.getMonth()]++;
+
+              var startmonth = d1.getMonth();
+              var endmonth = d2.getMonth();
+
+              if(endmonth < startmonth) endmonth = endmonth + 12;
+
+              for (var i = startmonth; i <= endmonth; i++){
+                if (i >= 12)
+                  dataNolo[i - 12]++;
+                else
+                  dataNolo[i]++;
+              }
             }
 
             nolo_stats.push({
@@ -332,12 +345,12 @@ $.get('//site202123.tw.cs.unibo.it/products', async function(data1){
               label : 'Totale spesa per cliente'
             });
 
-          cl_stats.push({
-              dataNolo : Object.values(nolo_num).slice(0, 10),
+            cl_stats.push({
+              dataNolo: Object.values(nolo_num).slice(0, 10),
               type: 'bar',
               axis: 'x',
               label_x: Object.keys(nolo_num).slice(0, 10),
-              label : 'Numero di noleggi per cliente'
+              label: 'Numero di noleggi per cliente'
             });
 
             var avg = {};
@@ -363,43 +376,48 @@ $.get('//site202123.tw.cs.unibo.it/products', async function(data1){
         },
         template: `
   <div class="minor">
-  <nav id="the_nav">
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a class="nav-link"
-        v-on:click="this.selected='Prodotti'"
-        :class="{active: this.selected=='Prodotti'}"
-        :aria-current="page = this.selected=='Prodotti'"
-        href="#">Prodotti</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"
-        v-on:click="this.selected='Inventario'"
-        :class="{active: this.selected=='Inventario'}"
-        :aria-current="page = this.selected=='Inventario'"
-        href="#">Inventario</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"
-        v-on:click="this.selected='Clienti'"
-        :class="{active: this.selected=='Clienti'}"
-        :aria-current="page = this.selected=='Clienti'"
-        href="#">Clienti</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"
-        v-on:click="this.selected='Noleggi'"
-        :class="{active: this.selected=='Noleggi'}"
-        :aria-current="page = this.selected=='Noleggi'"
-        href="#">Noleggi</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="border rounded">
-    <ChartSection tabindex=0 v-if="this.selected=='Prodotti'" :name="'Prodotti'" :stats="this.doProds()"/>
-    <ChartSection tabindex=0 v-if="this.selected=='Inventario'" :name="'Inventario'" :stats="this.doInv()"/>
-    <ChartSection tabindex=0 v-if="this.selected=='Noleggi'" :name="'Noleggi'" :stats="this.doNolos()"/>
-    <ChartSection tabindex=0 v-if="this.selected=='Clienti'" :name="'Clienti'" :stats="this.doClients()"/>
+  <div v-if="this.logged">
+    <nav id="the_nav">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link"
+          v-on:click="this.selected='Prodotti'"
+          :class="{active: this.selected=='Prodotti'}"
+          :aria-current="page = this.selected=='Prodotti'"
+          href="#">Prodotti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          v-on:click="this.selected='Inventario'"
+          :class="{active: this.selected=='Inventario'}"
+          :aria-current="page = this.selected=='Inventario'"
+          href="#">Inventario</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          v-on:click="this.selected='Clienti'"
+          :class="{active: this.selected=='Clienti'}"
+          :aria-current="page = this.selected=='Clienti'"
+          href="#">Clienti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          v-on:click="this.selected='Noleggi'"
+          :class="{active: this.selected=='Noleggi'}"
+          :aria-current="page = this.selected=='Noleggi'"
+          href="#">Noleggi</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="border rounded">
+      <ChartSection tabindex=0 v-if="this.selected=='Prodotti'" :name="'Prodotti'" :stats="this.doProds()"/>
+      <ChartSection tabindex=0 v-if="this.selected=='Inventario'" :name="'Inventario'" :stats="this.doInv()"/>
+      <ChartSection tabindex=0 v-if="this.selected=='Noleggi'" :name="'Noleggi'" :stats="this.doNolos()"/>
+      <ChartSection tabindex=0 v-if="this.selected=='Clienti'" :name="'Clienti'" :stats="this.doClients()"/>
+    </div>
+  </div>
+  <div v-else="">
+    <LoginForm @logged-in="this.logging = false; this.logged = true"/>
   </div>
   </div>
   `
@@ -500,6 +518,75 @@ $.get('//site202123.tw.cs.unibo.it/products', async function(data1){
             </table>
           </div>
     `
+        }
+      );
+
+      app.component(
+        'LoginForm',
+        {
+          data () {
+            return {
+              email: '',
+              password: '',
+              wrong_credentials: false,
+            }
+          },
+          methods: {
+            checkLoginInfo : function() {
+
+              $.get(`//site202123.tw.cs.unibo.it/staff?email=${this.email}`).then((user) => {
+
+                var correct = false;
+
+                if(user.length != 0){
+                  user = user[0];
+                  correct = user.pwd == this.password && user.role == 'manager';
+                }
+
+                this.wrong_credentials = !correct;
+
+                if (correct) {
+                  this.$emit('logged-in');
+                }
+
+              });
+            }
+          },
+          template: `
+        <div class="row justify-content-center bg-transparent">
+            <div class="col-md-4 pt-5">
+              <h3 class="h3 mb-3">Login</h3>
+              <div class='mb-3'>
+                <label for='LoginFormEmail' class='form-label'>Email address</label>
+                <input v-model="email"
+                       type='email'
+                       class='form-control'
+                       id='LoginFormEmail'
+                       placeholder='name@example.com'>
+              </div>
+              <div class='mb-3'>
+                <label for='LoginFormPassword' class='form-label'>Password</label>
+                <input v-model="password"
+                       type='password'
+                       class='form-control'
+                       id='LoginFormPassword'>
+              </div>
+              <div class='mb-3'>
+                <div class="row">
+                  <div class="col">
+                    <button v-on:click="checkLoginInfo"
+                            type='submit'
+                            class='btn btn-primary w-100'
+                            id='LoginFormButton'>
+                      Login
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <p v-if="wrong_credentials">Email o password errata. Ritenta.</p>
+            </div>
+          </div>
+          `
         }
       );
 

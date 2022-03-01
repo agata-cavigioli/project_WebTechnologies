@@ -37,17 +37,15 @@ async function checkAvailability(nolo_id, product_id, from, to){
 
 		if((date_from >= sdate && date_from <= edate) ||
 			(date_to >= sdate && date_to <= edate)){
-			console.log('bingo');
 			return false;
 		}
 		if((sdate > date_from && sdate < date_to) ||
 			(edate > date_from && edate < date_to)){
-			console.log('bingo');
 			return false;
 		}
 	}
 
-	var prod = await getById(product_id);
+	var prod = await getById('products', product_id);
 
 	if(prod.nolo_data.available_from == '' && prod.nolo_data.available_to == ''){
 		return true;
@@ -56,10 +54,7 @@ async function checkAvailability(nolo_id, product_id, from, to){
 	let sdate = new Date(prod.nolo_data.available_from);
 	let edate = new Date(prod.nolo_data.available_to);
 
-	console.log(sdate, edate);
-
 	if(date_from < sdate || date_from > edate || date_to < sdate | date_to > edate){
-		console.log('bingo');
 		return false;
 	}
 
@@ -185,7 +180,6 @@ function resetSearchInputs(div){
 
 	var type = div == '#product_header' ? 'inventory' : 
 		(div == '#clients_header' ? 'clients' : 'nolos');
-	console.log(type);
 	updateTab(type);
 }
 
@@ -247,6 +241,7 @@ async function saveNewProduct(){
 
 	postElem('products', obj);
 	hideCards('product');
+	updateTab('inventory');
 }
 
 async function saveNewNolo(){
@@ -273,8 +268,8 @@ async function saveNewNolo(){
 	obj.dep_id = logged_id;
 
 	postElem('nolos', obj);
-
 	hideCards('nolo');
+	updateTab('nolos');
 }
 
 async function saveNewClient(){
@@ -284,8 +279,8 @@ async function saveNewClient(){
 	obj.pwd = obj.name + obj.surname;
 
 	postElem('clients', obj);
-
 	hideCards('client');
+	updateTab('clients');
 }
 
 async function deleteElem(prefix, collection, tab){
@@ -390,8 +385,6 @@ async function filterProducts(){
 	var values = getElemInputs('#product_header');
 
 	var query = buildFilterQuery(values);
-
-	console.log(query);
 
 	var res =
 		await $.get('//site202123.tw.cs.unibo.it/products'+query);
@@ -606,7 +599,6 @@ async function showHistory() {
 
 	const today = new Date();
 
-	console.log(today);
 	for(n in client_nols){
 		var nolo = client_nols[n];
 		var sdate = new Date(nolo.date_from);
@@ -774,7 +766,7 @@ async function doNolo(){
 	} else $('#nolo_form_invalid_dates').css('display', 'none');
 
 	if(logged){
-		if(!await checkAvailability(product.id, values.date_from, values.date_to)){
+		if(!await checkAvailability(-1, product.id, values.date_from, values.date_to)){
 			$('#nolo_form_unavailable').css('display', '');
 			return;
 		}
@@ -820,7 +812,6 @@ async function checkCredentials(){
 	var values = getElemInputs('#login_form');
 
 	var correct = await checkMailAndPwd(values.email, values.password);
-	console.log(correct);
 
 	// check login
 	if(!correct){
