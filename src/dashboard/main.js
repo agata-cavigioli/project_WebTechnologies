@@ -275,11 +275,25 @@ $.get('//site202123.tw.cs.unibo.it/products', async function(data1){
 
             }
 
+            subjs = this.sortObj(subjs);
+            var limit = 20;
+
+            var other = 0;
+            Object.values(subjs)
+              .slice(limit).forEach(function(a){
+                other += a;
+              });
+
+            var s_d =  Object.values(subjs).slice(0, limit);
+            s_d.push(other);
+            var s_l = Object.keys(subjs).slice(0, limit);
+            s_l.push('Altro');
+
             inv_stats.push({
-              dataNolo : Object.values(subjs),
+              dataNolo : s_d,
               type: 'pie',
               axis: 'y',
-              label_x: Object.keys(subjs),
+              label_x: s_l,
               label : 'Tematiche'
             });
 
