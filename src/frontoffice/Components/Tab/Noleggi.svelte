@@ -107,6 +107,14 @@ async function reload(){
 	//console.log('reload');
 	await getPersonalNolos();
 }
+
+function control(v){
+	//console.log(v);
+	if (!v.name) {
+		//console.log('non va');
+		return false;}
+	return true;
+}
 </script>
 <div class="personaltab container">
 <div class="row">
@@ -123,7 +131,9 @@ Noleggi in corso
 {#each noleggi as noleggio}
 		{#if ((noleggio.status=="Iniziato")||(noleggio.status=="In ritardo"))}
 			{#await getFilNameById(noleggio.product_id) then value}
+				{#if control(value)}
     		<CardNolo time={"present"} noleggio={noleggio} filinfo={value}/>
+				{/if}
 			{/await}
 		{/if}
 {/each}
@@ -135,7 +145,9 @@ Noleggi previsti
 {#each noleggi as noleggio}
 		{#if (noleggio.status=="Prenotato")}
 			{#await getFilNameById(noleggio.product_id) then value}
+				{#if control(value)}
 				<CardNolo time={"future"} noleggio={noleggio} filinfo={value}/>
+				{/if}
 			{/await}
 		{/if}
 {/each}
@@ -147,8 +159,10 @@ Noleggi conclusi
 {#each noleggi as noleggio}
 		{#if (noleggio.status=="Concluso")}
 			{#await getFilNameById(noleggio.product_id) then value}
+				{#if control(value)}
 				<CardNolo time={"past"} noleggio={noleggio} filinfo={value}/>
-				{/await}
+				{/if}
+			{/await}
 		{/if}
 {/each}
 
